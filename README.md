@@ -91,7 +91,7 @@ begin
   result = api_instance.get_convert_document_to_image(name, out_format, opts)
   p result
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling ConversionApi->get_convert_document_to_image: #{e}"
+  puts "Exception when calling HtmlApi->get_convert_document_to_image: #{e}"
 end
 
 ```
@@ -102,19 +102,21 @@ All URIs are relative to *https://api.aspose.cloud/v1.1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AsposeHtml::ConversionApi* | [**get_convert_document_to_image**](docs/ConversionApi.md#get_convert_document_to_image) | **GET** /html/{name}/convert/image/{outFormat} | Convert the HTML document from the storage by its name to the specified image format.
-*AsposeHtml::ConversionApi* | [**get_convert_document_to_image_by_url**](docs/ConversionApi.md#get_convert_document_to_image_by_url) | **GET** /html/convert/image/{outFormat} | Convert the HTML page from the web by its URL to the specified image format.
-*AsposeHtml::ConversionApi* | [**get_convert_document_to_pdf**](docs/ConversionApi.md#get_convert_document_to_pdf) | **GET** /html/{name}/convert/pdf | Convert the HTML document from the storage by its name to PDF.
-*AsposeHtml::ConversionApi* | [**get_convert_document_to_pdf_by_url**](docs/ConversionApi.md#get_convert_document_to_pdf_by_url) | **GET** /html/convert/pdf | Convert the HTML page from the web by its URL to PDF.
-*AsposeHtml::ConversionApi* | [**get_convert_document_to_xps**](docs/ConversionApi.md#get_convert_document_to_xps) | **GET** /html/{name}/convert/xps | Convert the HTML document from the storage by its name to XPS.
-*AsposeHtml::ConversionApi* | [**get_convert_document_to_xps_by_url**](docs/ConversionApi.md#get_convert_document_to_xps_by_url) | **GET** /html/convert/xps | Convert the HTML page from the web by its URL to XPS.
-*AsposeHtml::DocumentApi* | [**get_document**](docs/DocumentApi.md#get_document) | **GET** /html/{name} | Return the HTML document by the name from default or specified storage.
-*AsposeHtml::DocumentApi* | [**get_document_fragment_by_x_path**](docs/DocumentApi.md#get_document_fragment_by_x_path) | **GET** /html/{name}/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query. 
-*AsposeHtml::DocumentApi* | [**get_document_images**](docs/DocumentApi.md#get_document_images) | **GET** /html/{name}/images/all | Return all HTML document images packaged as a ZIP archive.
-*AsposeHtml::OcrApi* | [**get_recognize_and_import_to_html**](docs/OcrApi.md#get_recognize_and_import_to_html) | **GET** /html/{name}/ocr/import | Recognize text from the image file in the storage and import it to HTML format.
-*AsposeHtml::OcrApi* | [**get_recognize_and_translate_to_html**](docs/OcrApi.md#get_recognize_and_translate_to_html) | **GET** /html/{name}/ocr/translate/{srcLang}/{resLang} | Recognize text from the image file in the storage, import it to HTML format and translate to specified language.
-*AsposeHtml::TranslationApi* | [**get_translate_document**](docs/TranslationApi.md#get_translate_document) | **GET** /html/{name}/translate/{srcLang}/{resLang} | Translate the HTML document specified by the name from default or specified storage. 
-*AsposeHtml::TranslationApi* | [**get_translate_document_by_url**](docs/TranslationApi.md#get_translate_document_by_url) | **GET** /html/translate/{srcLang}/{resLang} | Translate the HTML document from Web specified by its URL.
+*AsposeHtml::HtmlApi* | [**get_convert_document_to_image**](docs/ConversionApi.md#get_convert_document_to_image) | **GET** /html/{name}/convert/image/{outFormat} | Convert the HTML document from the storage by its name to the specified image format.
+*AsposeHtml::HtmlApi* | [**get_convert_document_to_image_by_url**](docs/ConversionApi.md#get_convert_document_to_image_by_url) | **GET** /html/convert/image/{outFormat} | Convert the HTML page from the web by its URL to the specified image format.
+*AsposeHtml::HtmlApi* | [**get_convert_document_to_pdf**](docs/ConversionApi.md#get_convert_document_to_pdf) | **GET** /html/{name}/convert/pdf | Convert the HTML document from the storage by its name to PDF.
+*AsposeHtml::HtmlApi* | [**get_convert_document_to_pdf_by_url**](docs/ConversionApi.md#get_convert_document_to_pdf_by_url) | **GET** /html/convert/pdf | Convert the HTML page from the web by its URL to PDF.
+*AsposeHtml::HtmlApi* | [**get_convert_document_to_xps**](docs/ConversionApi.md#get_convert_document_to_xps) | **GET** /html/{name}/convert/xps | Convert the HTML document from the storage by its name to XPS.
+*AsposeHtml::HtmlApi* | [**get_convert_document_to_xps_by_url**](docs/ConversionApi.md#get_convert_document_to_xps_by_url) | **GET** /html/convert/xps | Convert the HTML page from the web by its URL to XPS.
+*AsposeHtml::HtmlApi* | [**get_document**](docs/DocumentApi.md#get_document) | **GET** /html/{name} | Return the HTML document by the name from default or specified storage.
+*AsposeHtml::HtmlApi* | [**get_document_fragment_by_x_path**](docs/DocumentApi.md#get_document_fragment_by_x_path) | **GET** /html/{name}/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query. 
+*AsposeHtml::HtmlApi* | [**get_document_images**](docs/DocumentApi.md#get_document_images) | **GET** /html/{name}/images/all | Return all HTML document images packaged as a ZIP archive.
+*AsposeHtml::HtmlApi* | [**get_recognize_and_import_to_html**](docs/OcrApi.md#get_recognize_and_import_to_html) | **GET** /html/{name}/ocr/import | Recognize text from the image file in the storage and import it to HTML format.
+*AsposeHtml::HtmlApi* | [**get_recognize_and_translate_to_html**](docs/OcrApi.md#get_recognize_and_translate_to_html) | **GET** /html/{name}/ocr/translate/{srcLang}/{resLang} | Recognize text from the image file in the storage, import it to HTML format and translate to specified language.
+*AsposeHtml::HtmlApi* | [**get_translate_document**](docs/TranslationApi.md#get_translate_document) | **GET** /html/{name}/translate/{srcLang}/{resLang} | Translate the HTML document specified by the name from default or specified storage. 
+*AsposeHtml::HtmlApi* | [**get_translate_document_by_url**](docs/TranslationApi.md#get_translate_document_by_url) | **GET** /html/translate/{srcLang}/{resLang} | Translate the HTML document from Web specified by its URL.
+*AsposeHtml::HtmlApi* | [**get_detect_html_keywords**](docs/SummarizationApi.md#get_detect_html_keywords) | **GET** /html/{name}/summ/keywords | Get the HTML document keywords using the keyword detection service.
+*AsposeHtml::HtmlApi* | [**get_detect_html_keywords_by_url**](docs/SummarizationApi.md#get_detect_html_keywords_by_url) | **GET** /html/summ/keywords | Get the keywords from HTML document from Web specified by its URL using the keyword detection service
 
 
 ## oauth
@@ -124,7 +126,7 @@ Class | Method | HTTP request | Description
 - **Authorization URL**: "https://api.aspose.cloud/oauth2/token"
 - **Scopes**: N/A
 
-[Tests](./spec/) contain various examples of using the Aspose.HTML SDK.
+[Tests](./spec/api/html_api_spec.rb) contain various examples of using the Aspose.HTML SDK.
 
 [Docs](./docs/) Documentation for Aspose.HTML Api SDK
 
@@ -132,38 +134,38 @@ Class | Method | HTTP request | Description
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AsposeStorage::FileApi* | [**delete_file**](docs/storage/FileApi.md#delete_file) | **DELETE** /storage/file | Remove a specific file 
-*AsposeStorage::FileApi* | [**get_download**](docs/storage/FileApi.md#get_download) | **GET** /storage/file | Download a specific file 
-*AsposeStorage::FileApi* | [**post_move_file**](docs/storage/FileApi.md#post_move_file) | **POST** /storage/file | Move a specific file 
-*AsposeStorage::FileApi* | [**put_create**](docs/storage/FileApi.md#put_create) | **PUT** /storage/file | Upload a specific file 
-*AsposeStorage::FolderApi* | [**delete_folder**](docs/storage/FolderApi.md#delete_folder) | **DELETE** /storage/folder | Remove a specific folder 
-*AsposeStorage::FolderApi* | [**get_list_files**](docs/storage/FolderApi.md#get_list_files) | **GET** /storage/folder | Get the file listing of a specific folder 
-*AsposeStorage::FolderApi* | [**post_move_folder**](docs/storage/FolderApi.md#post_move_folder) | **POST** /storage/folder | Move a specific folder 
-*AsposeStorage::FolderApi* | [**put_create_folder**](docs/storage/FolderApi.md#put_create_folder) | **PUT** /storage/folder | Create the folder 
-*AsposeStorage::StorageApi* | [**get_disc_usage**](docs/storage/StorageApi.md#get_disc_usage) | **GET** /storage/disc | Check the disk usage of the current account 
-*AsposeStorage::StorageApi* | [**get_is_exist**](docs/storage/StorageApi.md#get_is_exist) | **GET** /storage/exist | Check if a specific file or folder exists
-*AsposeStorage::StorageApi* | [**get_is_storage_exist**](docs/storage/StorageApi.md#get_is_storage_exist) | **GET** /storage/{name}/exist | Check if storage exists 
-*AsposeStorage::StorageApi* | [**get_list_file_versions**](docs/storage/StorageApi.md#get_list_file_versions) | **GET** /storage/version | Get the file's versions list 
+*AsposeHtml::StorageApi* | [**delete_file**](docs/storage/FileApi.md#delete_file) | **DELETE** /storage/file | Remove a specific file 
+*AsposeHtml::StorageApi* | [**get_download**](docs/storage/FileApi.md#get_download) | **GET** /storage/file | Download a specific file 
+*AsposeHtml::StorageApi* | [**post_move_file**](docs/storage/FileApi.md#post_move_file) | **POST** /storage/file | Move a specific file 
+*AsposeHtml::StorageApi* | [**put_create**](docs/storage/FileApi.md#put_create) | **PUT** /storage/file | Upload a specific file 
+*AsposeHtml::StorageApi* | [**delete_folder**](docs/storage/FolderApi.md#delete_folder) | **DELETE** /storage/folder | Remove a specific folder 
+*AsposeHtml::StorageApi* | [**get_list_files**](docs/storage/FolderApi.md#get_list_files) | **GET** /storage/folder | Get the file listing of a specific folder 
+*AsposeHtml::StorageApi* | [**post_move_folder**](docs/storage/FolderApi.md#post_move_folder) | **POST** /storage/folder | Move a specific folder 
+*AsposeHtml::StorageApi* | [**put_create_folder**](docs/storage/FolderApi.md#put_create_folder) | **PUT** /storage/folder | Create the folder 
+*AsposeHtml::StorageApi* | [**get_disc_usage**](docs/storage/StorageApi.md#get_disc_usage) | **GET** /storage/disc | Check the disk usage of the current account 
+*AsposeHtml::StorageApi* | [**get_is_exist**](docs/storage/StorageApi.md#get_is_exist) | **GET** /storage/exist | Check if a specific file or folder exists
+*AsposeHtml::StorageApi* | [**get_is_storage_exist**](docs/storage/StorageApi.md#get_is_storage_exist) | **GET** /storage/{name}/exist | Check if storage exists 
+*AsposeHtml::StorageApi* | [**get_list_file_versions**](docs/storage/StorageApi.md#get_list_file_versions) | **GET** /storage/version | Get the file's versions list 
 
 
 ## Documentation for Models
 
- - [AsposeStorage::DiscUsage](docs/storage/DiscUsage.md)
- - [AsposeStorage::File](docs/storage/FileDetail.md)
- - [AsposeStorage::FileExist](docs/storage/FileExist.md)
- - [AsposeStorage::SaaSposeResponse](docs/storage/MessageResponse.md)
- - [AsposeStorage::DiscUsageResponse](docs/storage/DiscUsageResponse.md)
- - [AsposeStorage::FileExistResponse](docs/storage/FileExistResponse.md)
- - [AsposeStorage::FileVersion](docs/storage/FileVersion.md)
- - [AsposeStorage::FileVersionsResponse](docs/storage/FileVersionsResponse.md)
- - [AsposeStorage::MoveFileResponse](docs/storage/MoveFileResponse.md)
- - [AsposeStorage::MoveFolderResponse](docs/storage/MoveFolderResponse.md)
- - [AsposeStorage::RemoveFileResponse](docs/storage/RemoveFileResponse.md)
- - [AsposeStorage::RemoveFolderResponse](docs/storage/RemoveFolderResponse.md)
- - [AsposeStorage::StorageExistResponse](docs/storage/StorageExistResponse.md)
+ - [AsposeHtml::DiscUsage](docs/storage/DiscUsage.md)
+ - [AsposeHtml::File](docs/storage/FileDetail.md)
+ - [AsposeHtml::FileExist](docs/storage/FileExist.md)
+ - [AsposeHtml::SaaSposeResponse](docs/storage/MessageResponse.md)
+ - [AsposeHtml::DiscUsageResponse](docs/storage/DiscUsageResponse.md)
+ - [AsposeHtml::FileExistResponse](docs/storage/FileExistResponse.md)
+ - [AsposeHtml::FileVersion](docs/storage/FileVersion.md)
+ - [AsposeHtml::FileVersionsResponse](docs/storage/FileVersionsResponse.md)
+ - [AsposeHtml::MoveFileResponse](docs/storage/MoveFileResponse.md)
+ - [AsposeHtml::MoveFolderResponse](docs/storage/MoveFolderResponse.md)
+ - [AsposeHtml::RemoveFileResponse](docs/storage/RemoveFileResponse.md)
+ - [AsposeHtml::RemoveFolderResponse](docs/storage/RemoveFolderResponse.md)
+ - [AsposeHtml::StorageExistResponse](docs/storage/StorageExistResponse.md)
 
 
 
-[Tests](./spec/storage_api.spec) contain various examples of using the Aspose.Storage SDK.
+[Tests](./spec/api/storage_api_spec.rb) contain various examples of using the Aspose.Storage SDK.
 
 [Docs](docs/storage/) Documentation for Aspose.Storage Api SDK

@@ -54,7 +54,7 @@ begin
   result = api_instance.get_convert_document_to_image(name, out_format, opts)
   p result
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling ConversionApi->get_convert_document_to_image: #{e}"
+  puts "Exception when calling HtmlApi->get_convert_document_to_image: #{e}"
 end
 ```
 
@@ -128,7 +128,7 @@ begin
   result = api_instance.get_convert_document_to_image_by_url(source_url, out_format, opts)
   p result
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling ConversionApi->get_convert_document_to_image_by_url: #{e}"
+  puts "Exception when calling HtmlApi->get_convert_document_to_image_by_url: #{e}"
 end
 ```
 
@@ -198,7 +198,7 @@ begin
   result = api_instance.get_convert_document_to_pdf(name, opts)
   p result
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling ConversionApi->get_convert_document_to_pdf: #{e}"
+  puts "Exception when calling HtmlApi->get_convert_document_to_pdf: #{e}"
 end
 ```
 
@@ -265,7 +265,7 @@ begin
   result = api_instance.get_convert_document_to_pdf_by_url(source_url, opts)
   p result
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling ConversionApi->get_convert_document_to_pdf_by_url: #{e}"
+  puts "Exception when calling HtmlApi->get_convert_document_to_pdf_by_url: #{e}"
 end
 ```
 
@@ -331,7 +331,7 @@ begin
   result = api_instance.get_convert_document_to_xps(name, opts)
   p result
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling ConversionApi->get_convert_document_to_xps: #{e}"
+  puts "Exception when calling HtmlApi->get_convert_document_to_xps: #{e}"
 end
 ```
 
@@ -398,7 +398,7 @@ begin
   result = api_instance.get_convert_document_to_xps_by_url(source_url, opts)
   p result
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling ConversionApi->get_convert_document_to_xps_by_url: #{e}"
+  puts "Exception when calling HtmlApi->get_convert_document_to_xps_by_url: #{e}"
 end
 ```
 

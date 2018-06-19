@@ -44,7 +44,7 @@ begin
   result = api_instance.get_translate_document(name, src_lang, res_lang, opts)
   p result
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling TranslationApi->get_translate_document: #{e}"
+  puts "Exception when calling HtmlApi->get_translate_document: #{e}"
 end
 ```
 
@@ -101,7 +101,7 @@ begin
   result = api_instance.get_translate_document_by_url(source_url, src_lang, res_lang)
   p result
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling TranslationApi->get_translate_document_by_url: #{e}"
+  puts "Exception when calling HtmlApi->get_translate_document_by_url: #{e}"
 end
 ```
 

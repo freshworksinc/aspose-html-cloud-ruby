@@ -41,7 +41,7 @@ begin
   result = api_instance.get_document(name, opts)
   p result
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling DocumentApi->get_document: #{e}"
+  puts "Exception when calling HtmlApi->get_document: #{e}"
 end
 ```
 
@@ -100,7 +100,7 @@ begin
   result = api_instance.get_document_fragment_by_x_path(name, x_path, out_format, opts)
   p result
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling DocumentApi->get_document_fragment_by_x_path: #{e}"
+  puts "Exception when calling HtmlApi->get_document_fragment_by_x_path: #{e}"
 end
 ```
 
@@ -157,7 +157,7 @@ begin
   result = api_instance.get_document_images(name, opts)
   p result
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling DocumentApi->get_document_images: #{e}"
+  puts "Exception when calling HtmlApi->get_document_images: #{e}"
 end
 ```
 

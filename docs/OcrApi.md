@@ -41,7 +41,7 @@ begin
   result = api_instance.get_recognize_and_import_to_html(name, opts)
   p result
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling OcrApi->get_recognize_and_import_to_html: #{e}"
+  puts "Exception when calling HtmlApi->get_recognize_and_import_to_html: #{e}"
 end
 ```
 
@@ -101,7 +101,7 @@ begin
   result = api_instance.get_recognize_and_translate_to_html(name, src_lang, res_lang, opts)
   p result
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling OcrApi->get_recognize_and_translate_to_html: #{e}"
+  puts "Exception when calling HtmlApi->get_recognize_and_translate_to_html: #{e}"
 end
 ```
 

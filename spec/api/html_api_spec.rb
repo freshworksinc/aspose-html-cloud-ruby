@@ -520,4 +520,59 @@ describe 'Test html_api' do
       save_to_test_dir(answer, "Translate_url_en_fr.zip")
     end
   end
+
+
+  #################################################
+  #            Summarization API
+  #################################################
+
+
+  # unit tests for get_detect_html_keywords
+  # Get the HTML document keywords using the keyword detection service.
+  #
+  # @param name Document name.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :folder Document folder.
+  # @option opts [String] :storage Document storage.
+  # @return [File]
+  describe 'get_detect_html_keywords test' do
+    it "Keyword by html document" do
+      name = "test_en.html"
+      opts = {storage: nil, folder: "HtmlTestDoc"}
+
+      # Upload file to server
+      res = upload_file(name)
+      expect(res.code).to eql(200)
+
+      answer = @instance.get_detect_html_keywords(name, opts)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer, "Keyword_by_doc.json")
+    end
+  end
+
+  # unit tests for get_detect_html_keywords_by_url
+  # Get the keywords from HTML document from Web specified by its URL using the keyword detection service
+  #
+  # @param source_url Source document URL.
+  # @return [File]
+  describe 'get_detect_html_keywords_by_url test' do
+    it "Keyword by url" do
+      source_url = "https://www.le.ac.uk/oerresources/bdra/html/page_01.htm"
+
+      answer = @instance.get_detect_html_keywords_by_url(source_url)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer, "Keyword_by_url.json")
+    end
+  end
+
 end
