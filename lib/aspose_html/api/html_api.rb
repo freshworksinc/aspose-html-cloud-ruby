@@ -533,6 +533,512 @@ module AsposeHtml
     end
 
 
+# Converts the HTML document (in request content) to the specified image format and uploads resulting file to storage.
+#
+# @param out_path Full resulting filename (ex. /folder1/folder2/result.jpg)
+# @param out_format
+# @param file A file to be converted.
+# @param [Hash] opts the optional parameters
+# @option opts [Integer] :width Resulting document page width in points (1/96 inch).
+# @option opts [Integer] :height Resulting document page height in points (1/96 inch).
+# @option opts [Integer] :left_margin Left resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :resolution Resolution of resulting image. Default is 96 dpi.
+# @return [File]
+    def put_convert_document_in_request_to_image(out_path, out_format, file, opts = {})
+      data, _status_code, _headers = put_convert_document_in_request_to_image_with_http_info(out_path, out_format, file, opts)
+      return {file: data, status: _status_code, headers: _headers}
+    end
+
+# Converts the HTML document (in request content) to the specified image format and uploads resulting file to storage.
+#
+# @param out_path Full resulting filename (ex. /folder1/folder2/result.jpg)
+# @param out_format
+# @param file A file to be converted.
+# @param [Hash] opts the optional parameters
+# @option opts [Integer] :width Resulting document page width in points (1/96 inch).
+# @option opts [Integer] :height Resulting document page height in points (1/96 inch).
+# @option opts [Integer] :left_margin Left resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :resolution Resolution of resulting image. Default is 96 dpi.
+# @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_convert_document_in_request_to_image_with_http_info(out_path, out_format, file, opts = {})
+      if @api_client.config.debug
+        @api_client.config.logger.debug "Calling API: ConversionApi.put_convert_document_in_request_to_image ..."
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling ConversionApi.put_convert_document_in_request_to_image"
+      end
+      # verify the required parameter 'out_format' is set
+      if @api_client.config.client_side_validation && out_format.nil?
+        fail ArgumentError, "Missing the required parameter 'out_format' when calling ConversionApi.put_convert_document_in_request_to_image"
+      end
+      # verify the required parameter 'file' is set
+      if @api_client.config.client_side_validation && file.nil?
+        fail ArgumentError, "Missing the required parameter 'file' when calling ConversionApi.put_convert_document_in_request_to_image"
+      end
+      # resource path
+      local_var_path = "/html/convert/image/{outFormat}".sub('{' + 'outFormat' + '}', out_format.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'leftMargin'] = opts[:'left_margin'] if !opts[:'left_margin'].nil?
+      query_params[:'rightMargin'] = opts[:'right_margin'] if !opts[:'right_margin'].nil?
+      query_params[:'topMargin'] = opts[:'top_margin'] if !opts[:'top_margin'].nil?
+      query_params[:'bottomMargin'] = opts[:'bottom_margin'] if !opts[:'bottom_margin'].nil?
+      query_params[:'resolution'] = opts[:'resolution'] if !opts[:'resolution'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = ::File.open(file,"rb").read
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        :header_params => header_params,
+                                                        :query_params => query_params,
+                                                        :form_params => form_params,
+                                                        :body => post_body,
+                                                        :return_type => 'File')
+      if @api_client.config.debug
+        @api_client.config.logger.debug "API called: ConversionApi#put_convert_document_in_request_to_image\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+# Converts the HTML document (in request content) to PDF and uploads resulting file to storage.
+#
+# @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
+# @param file A file to be converted.
+# @param [Hash] opts the optional parameters
+# @option opts [Integer] :width Resulting document page width in points (1/96 inch).
+# @option opts [Integer] :height Resulting document page height in points (1/96 inch).
+# @option opts [Integer] :left_margin Left resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
+# @return [File]
+    def put_convert_document_in_request_to_pdf(out_path, file, opts = {})
+      data, _status_code, _headers = put_convert_document_in_request_to_pdf_with_http_info(out_path, file, opts)
+      return {file: data, status: _status_code, headers: _headers}
+    end
+
+# Converts the HTML document (in request content) to PDF and uploads resulting file to storage.
+#
+# @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
+# @param file A file to be converted.
+# @param [Hash] opts the optional parameters
+# @option opts [Integer] :width Resulting document page width in points (1/96 inch).
+# @option opts [Integer] :height Resulting document page height in points (1/96 inch).
+# @option opts [Integer] :left_margin Left resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
+# @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_convert_document_in_request_to_pdf_with_http_info(out_path, file, opts = {})
+      if @api_client.config.debug
+        @api_client.config.logger.debug "Calling API: ConversionApi.put_convert_document_in_request_to_pdf ..."
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling ConversionApi.put_convert_document_in_request_to_pdf"
+      end
+      # verify the required parameter 'file' is set
+      if @api_client.config.client_side_validation && file.nil?
+        fail ArgumentError, "Missing the required parameter 'file' when calling ConversionApi.put_convert_document_in_request_to_pdf"
+      end
+      # resource path
+      local_var_path = "/html/convert/pdf"
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'leftMargin'] = opts[:'left_margin'] if !opts[:'left_margin'].nil?
+      query_params[:'rightMargin'] = opts[:'right_margin'] if !opts[:'right_margin'].nil?
+      query_params[:'topMargin'] = opts[:'top_margin'] if !opts[:'top_margin'].nil?
+      query_params[:'bottomMargin'] = opts[:'bottom_margin'] if !opts[:'bottom_margin'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = ::File.open(file,"rb").read
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        :header_params => header_params,
+                                                        :query_params => query_params,
+                                                        :form_params => form_params,
+                                                        :body => post_body,
+                                                        :return_type => 'File')
+      if @api_client.config.debug
+        @api_client.config.logger.debug "API called: ConversionApi#put_convert_document_in_request_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+# Converts the HTML document (in request content) to XPS and uploads resulting file to storage.
+#
+# @param out_path Full resulting filename (ex. /folder1/folder2/result.xps)
+# @param file A file to be converted.
+# @param [Hash] opts the optional parameters
+# @option opts [Integer] :width Resulting document page width in points (1/96 inch).
+# @option opts [Integer] :height Resulting document page height in points (1/96 inch).
+# @option opts [Integer] :left_margin Left resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
+# @return [File]
+    def put_convert_document_in_request_to_xps(out_path, file, opts = {})
+      data, _status_code, _headers = put_convert_document_in_request_to_xps_with_http_info(out_path, file, opts)
+      return {file: data, status: _status_code, headers: _headers}
+    end
+
+# Converts the HTML document (in request content) to XPS and uploads resulting file to storage.
+#
+# @param out_path Full resulting filename (ex. /folder1/folder2/result.xps)
+# @param file A file to be converted.
+# @param [Hash] opts the optional parameters
+# @option opts [Integer] :width Resulting document page width in points (1/96 inch).
+# @option opts [Integer] :height Resulting document page height in points (1/96 inch).
+# @option opts [Integer] :left_margin Left resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
+# @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_convert_document_in_request_to_xps_with_http_info(out_path, file, opts = {})
+      if @api_client.config.debug
+        @api_client.config.logger.debug "Calling API: ConversionApi.put_convert_document_in_request_to_xps ..."
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling ConversionApi.put_convert_document_in_request_to_xps"
+      end
+      # verify the required parameter 'file' is set
+      if @api_client.config.client_side_validation && file.nil?
+        fail ArgumentError, "Missing the required parameter 'file' when calling ConversionApi.put_convert_document_in_request_to_xps"
+      end
+      # resource path
+      local_var_path = "/html/convert/xps"
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'leftMargin'] = opts[:'left_margin'] if !opts[:'left_margin'].nil?
+      query_params[:'rightMargin'] = opts[:'right_margin'] if !opts[:'right_margin'].nil?
+      query_params[:'topMargin'] = opts[:'top_margin'] if !opts[:'top_margin'].nil?
+      query_params[:'bottomMargin'] = opts[:'bottom_margin'] if !opts[:'bottom_margin'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = ::File.open(file,"rb").read
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        :header_params => header_params,
+                                                        :query_params => query_params,
+                                                        :form_params => form_params,
+                                                        :body => post_body,
+                                                        :return_type => 'File')
+      if @api_client.config.debug
+        @api_client.config.logger.debug "API called: ConversionApi#put_convert_document_in_request_to_xps\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+# Converts the HTML document (located on storage) to the specified image format and uploads resulting file to storage.
+#
+# @param name Document name.
+# @param out_path Full resulting filename (ex. /folder1/folder2/result.jpg)
+# @param out_format
+# @param [Hash] opts the optional parameters
+# @option opts [Integer] :width Resulting document page width in points (1/96 inch).
+# @option opts [Integer] :height Resulting document page height in points (1/96 inch).
+# @option opts [Integer] :left_margin Left resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :resolution Resolution of resulting image. Default is 96 dpi.
+# @option opts [String] :folder The source document folder.
+# @option opts [String] :storage The source and resulting document storage.
+# @return [File]
+    def put_convert_document_to_image(name, out_path, out_format, opts = {})
+      data, _status_code, _headers = put_convert_document_to_image_with_http_info(name, out_path, out_format, opts)
+      return {file: data, status: _status_code, headers: _headers}
+    end
+
+# Converts the HTML document (located on storage) to the specified image format and uploads resulting file to storage.
+#
+# @param name Document name.
+# @param out_path Full resulting filename (ex. /folder1/folder2/result.jpg)
+# @param out_format
+# @param [Hash] opts the optional parameters
+# @option opts [Integer] :width Resulting document page width in points (1/96 inch).
+# @option opts [Integer] :height Resulting document page height in points (1/96 inch).
+# @option opts [Integer] :left_margin Left resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :resolution Resolution of resulting image. Default is 96 dpi.
+# @option opts [String] :folder The source document folder.
+# @option opts [String] :storage The source and resulting document storage.
+# @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_convert_document_to_image_with_http_info(name, out_path, out_format, opts = {})
+      if @api_client.config.debug
+        @api_client.config.logger.debug "Calling API: ConversionApi.put_convert_document_to_image ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling ConversionApi.put_convert_document_to_image"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling ConversionApi.put_convert_document_to_image"
+      end
+      # verify the required parameter 'out_format' is set
+      if @api_client.config.client_side_validation && out_format.nil?
+        fail ArgumentError, "Missing the required parameter 'out_format' when calling ConversionApi.put_convert_document_to_image"
+      end
+      # resource path
+      local_var_path = "/html/{name}/convert/image/{outFormat}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'outFormat' + '}', out_format.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'leftMargin'] = opts[:'left_margin'] if !opts[:'left_margin'].nil?
+      query_params[:'rightMargin'] = opts[:'right_margin'] if !opts[:'right_margin'].nil?
+      query_params[:'topMargin'] = opts[:'top_margin'] if !opts[:'top_margin'].nil?
+      query_params[:'bottomMargin'] = opts[:'bottom_margin'] if !opts[:'bottom_margin'].nil?
+      query_params[:'resolution'] = opts[:'resolution'] if !opts[:'resolution'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        :header_params => header_params,
+                                                        :query_params => query_params,
+                                                        :form_params => form_params,
+                                                        :body => post_body,
+                                                        :return_type => 'File')
+      if @api_client.config.debug
+        @api_client.config.logger.debug "API called: ConversionApi#put_convert_document_to_image\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+# Converts the HTML document (located on storage) to PDF and uploads resulting file to storage.
+#
+# @param name Document name.
+# @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
+# @param [Hash] opts the optional parameters
+# @option opts [Integer] :width Resulting document page width in points (1/96 inch).
+# @option opts [Integer] :height Resulting document page height in points (1/96 inch).
+# @option opts [Integer] :left_margin Left resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
+# @option opts [String] :folder The source document folder.
+# @option opts [String] :storage The source and resulting document storage.
+# @return [File]
+    def put_convert_document_to_pdf(name, out_path, opts = {})
+      data, _status_code, _headers = put_convert_document_to_pdf_with_http_info(name, out_path, opts)
+      return {file: data, status: _status_code, headers: _headers}
+    end
+
+# Converts the HTML document (located on storage) to PDF and uploads resulting file to storage.
+#
+# @param name Document name.
+# @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
+# @param [Hash] opts the optional parameters
+# @option opts [Integer] :width Resulting document page width in points (1/96 inch).
+# @option opts [Integer] :height Resulting document page height in points (1/96 inch).
+# @option opts [Integer] :left_margin Left resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
+# @option opts [String] :folder The source document folder.
+# @option opts [String] :storage The source and resulting document storage.
+# @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_convert_document_to_pdf_with_http_info(name, out_path, opts = {})
+      if @api_client.config.debug
+        @api_client.config.logger.debug "Calling API: ConversionApi.put_convert_document_to_pdf ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling ConversionApi.put_convert_document_to_pdf"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling ConversionApi.put_convert_document_to_pdf"
+      end
+      # resource path
+      local_var_path = "/html/{name}/convert/pdf".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'leftMargin'] = opts[:'left_margin'] if !opts[:'left_margin'].nil?
+      query_params[:'rightMargin'] = opts[:'right_margin'] if !opts[:'right_margin'].nil?
+      query_params[:'topMargin'] = opts[:'top_margin'] if !opts[:'top_margin'].nil?
+      query_params[:'bottomMargin'] = opts[:'bottom_margin'] if !opts[:'bottom_margin'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        :header_params => header_params,
+                                                        :query_params => query_params,
+                                                        :form_params => form_params,
+                                                        :body => post_body,
+                                                        :return_type => 'File')
+      if @api_client.config.debug
+        @api_client.config.logger.debug "API called: ConversionApi#put_convert_document_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+# Converts the HTML document (located on storage) to XPS and uploads resulting file to storage.
+#
+# @param name Document name.
+# @param out_path Full resulting filename (ex. /folder1/folder2/result.xps)
+# @param [Hash] opts the optional parameters
+# @option opts [Integer] :width Resulting document page width in points (1/96 inch).
+# @option opts [Integer] :height Resulting document page height in points (1/96 inch).
+# @option opts [Integer] :left_margin Left resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
+# @option opts [String] :folder The source document folder.
+# @option opts [String] :storage The source and resulting document storage.
+# @return [File]
+    def put_convert_document_to_xps(name, out_path, opts = {})
+      data, _status_code, _headers = put_convert_document_to_xps_with_http_info(name, out_path, opts)
+      return {file: data, status: _status_code, headers: _headers}
+    end
+
+# Converts the HTML document (located on storage) to XPS and uploads resulting file to storage.
+#
+# @param name Document name.
+# @param out_path Full resulting filename (ex. /folder1/folder2/result.xps)
+# @param [Hash] opts the optional parameters
+# @option opts [Integer] :width Resulting document page width in points (1/96 inch).
+# @option opts [Integer] :height Resulting document page height in points (1/96 inch).
+# @option opts [Integer] :left_margin Left resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
+# @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
+# @option opts [String] :folder The source document folder.
+# @option opts [String] :storage The source and resulting document storage.
+# @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_convert_document_to_xps_with_http_info(name, out_path, opts = {})
+      if @api_client.config.debug
+        @api_client.config.logger.debug "Calling API: ConversionApi.put_convert_document_to_xps ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling ConversionApi.put_convert_document_to_xps"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling ConversionApi.put_convert_document_to_xps"
+      end
+      # resource path
+      local_var_path = "/html/{name}/convert/xps".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'leftMargin'] = opts[:'left_margin'] if !opts[:'left_margin'].nil?
+      query_params[:'rightMargin'] = opts[:'right_margin'] if !opts[:'right_margin'].nil?
+      query_params[:'topMargin'] = opts[:'top_margin'] if !opts[:'top_margin'].nil?
+      query_params[:'bottomMargin'] = opts[:'bottom_margin'] if !opts[:'bottom_margin'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        :header_params => header_params,
+                                                        :query_params => query_params,
+                                                        :form_params => form_params,
+                                                        :body => post_body,
+                                                        :return_type => 'File')
+      if @api_client.config.debug
+        @api_client.config.logger.debug "API called: ConversionApi#put_convert_document_to_xps\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+
 ################################################################################
 #                             Document Api
 ################################################################################
