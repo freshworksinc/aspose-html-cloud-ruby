@@ -58,7 +58,7 @@ module AsposeHtml
 # @option opts [Integer] :y_resolution Vertical resolution of resulting image.
 # @option opts [String] :folder The source document folder.
 # @option opts [String] :storage The source document storage.
-# @return [File]
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
     def get_convert_document_to_image(name, out_format, opts = {})
       data, _status_code, _headers = get_convert_document_to_image_with_http_info(name, out_format, opts)
       return {file: data, status: _status_code, headers: _headers}
@@ -147,7 +147,7 @@ module AsposeHtml
 # @option opts [Integer] :y_resolution Vertical resolution of resulting image.
 # @option opts [String] :folder The document folder.
 # @option opts [String] :storage The document storage.
-# @return [File]
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
     def get_convert_document_to_image_by_url(source_url, out_format, opts = {})
       data, _status_code, _headers = get_convert_document_to_image_by_url_with_http_info(source_url, out_format, opts)
       return {file: data, status: _status_code, headers: _headers}
@@ -234,7 +234,7 @@ module AsposeHtml
 # @option opts [Integer] :bottom_margin Bottom resulting image margin.
 # @option opts [String] :folder The document folder.
 # @option opts [String] :storage The document storage.
-# @return [File]
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
     def get_convert_document_to_pdf(name, opts = {})
       data, _status_code, _headers = get_convert_document_to_pdf_with_http_info(name, opts)
       return {file: data, status: _status_code, headers: _headers}
@@ -311,7 +311,7 @@ module AsposeHtml
 # @option opts [Integer] :bottom_margin Bottom resulting image margin.
 # @option opts [String] :folder The document folder.
 # @option opts [String] :storage The document storage.
-# @return [File]
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
     def get_convert_document_to_pdf_by_url(source_url, opts = {})
       data, _status_code, _headers = get_convert_document_to_pdf_by_url_with_http_info(source_url, opts)
       return {file: data, status: _status_code, headers: _headers}
@@ -389,7 +389,7 @@ module AsposeHtml
 # @option opts [Integer] :bottom_margin Bottom resulting image margin.
 # @option opts [String] :folder The document folder.
 # @option opts [String] :storage The document storage.
-# @return [File]
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
     def get_convert_document_to_xps(name, opts = {})
       data, _status_code, _headers = get_convert_document_to_xps_with_http_info(name, opts)
       return {file: data, status: _status_code, headers: _headers}
@@ -466,7 +466,7 @@ module AsposeHtml
 # @option opts [Integer] :bottom_margin Bottom resulting image margin.
 # @option opts [String] :folder The document folder.
 # @option opts [String] :storage The document storage.
-# @return [File]
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
     def get_convert_document_to_xps_by_url(source_url, opts = {})
       data, _status_code, _headers = get_convert_document_to_xps_by_url_with_http_info(source_url, opts)
       return {file: data, status: _status_code, headers: _headers}
@@ -546,7 +546,7 @@ module AsposeHtml
 # @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
 # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
 # @option opts [Integer] :resolution Resolution of resulting image. Default is 96 dpi.
-# @return [File]
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
     def put_convert_document_in_request_to_image(out_path, out_format, file, opts = {})
       data, _status_code, _headers = put_convert_document_in_request_to_image_with_http_info(out_path, out_format, file, opts)
       return {file: data, status: _status_code, headers: _headers}
@@ -632,7 +632,7 @@ module AsposeHtml
 # @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
 # @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
 # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
-# @return [File]
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
     def put_convert_document_in_request_to_pdf(out_path, file, opts = {})
       data, _status_code, _headers = put_convert_document_in_request_to_pdf_with_http_info(out_path, file, opts)
       return {file: data, status: _status_code, headers: _headers}
@@ -710,7 +710,7 @@ module AsposeHtml
 # @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
 # @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
 # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
-# @return [File]
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
     def put_convert_document_in_request_to_xps(out_path, file, opts = {})
       data, _status_code, _headers = put_convert_document_in_request_to_xps_with_http_info(out_path, file, opts)
       return {file: data, status: _status_code, headers: _headers}
@@ -792,7 +792,7 @@ module AsposeHtml
 # @option opts [Integer] :resolution Resolution of resulting image. Default is 96 dpi.
 # @option opts [String] :folder The source document folder.
 # @option opts [String] :storage The source and resulting document storage.
-# @return [File]
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
     def put_convert_document_to_image(name, out_path, out_format, opts = {})
       data, _status_code, _headers = put_convert_document_to_image_with_http_info(name, out_path, out_format, opts)
       return {file: data, status: _status_code, headers: _headers}
@@ -883,7 +883,7 @@ module AsposeHtml
 # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
 # @option opts [String] :folder The source document folder.
 # @option opts [String] :storage The source and resulting document storage.
-# @return [File]
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
     def put_convert_document_to_pdf(name, out_path, opts = {})
       data, _status_code, _headers = put_convert_document_to_pdf_with_http_info(name, out_path, opts)
       return {file: data, status: _status_code, headers: _headers}
@@ -967,7 +967,7 @@ module AsposeHtml
 # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
 # @option opts [String] :folder The source document folder.
 # @option opts [String] :storage The source and resulting document storage.
-# @return [File]
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
     def put_convert_document_to_xps(name, out_path, opts = {})
       data, _status_code, _headers = put_convert_document_to_xps_with_http_info(name, out_path, opts)
       return {file: data, status: _status_code, headers: _headers}
@@ -1050,7 +1050,7 @@ module AsposeHtml
 # @param [Hash] opts the optional parameters
 # @option opts [String] :storage The document folder
 # @option opts [String] :folder The document folder.
-# @return [File]
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
     def get_document(name, opts = {})
       data, _status_code, _headers = get_document_with_http_info(name, opts)
       return {file: data, status: _status_code, headers: _headers}
@@ -1111,7 +1111,7 @@ module AsposeHtml
 # @param [Hash] opts the optional parameters
 # @option opts [String] :storage The document storage.
 # @option opts [String] :folder The document folder.
-# @return [File]
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
     def get_document_fragment_by_x_path(name, x_path, out_format, opts = {})
       data, _status_code, _headers = get_document_fragment_by_x_path_with_http_info(name, x_path, out_format, opts)
       return {file: data, status: _status_code, headers: _headers}
@@ -1175,13 +1175,78 @@ module AsposeHtml
       return data, status_code, headers
     end
 
+# Return list of HTML fragments matching the specified XPath query by the source page URL.
+#
+# @param source_url Source page URL.
+# @param x_path XPath query string.
+# @param out_format Output format. Possible values: &#39;plain&#39; and &#39;json&#39;.
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
+    def get_document_fragment_by_x_path_by_url(source_url, x_path, out_format)
+      data, _status_code, _headers = get_document_fragment_by_x_path_by_url_with_http_info(source_url, x_path, out_format)
+      return {file: data, status: _status_code, headers: _headers}
+    end
+
+# Return list of HTML fragments matching the specified XPath query by the source page URL.
+#
+# @param source_url Source page URL.
+# @param x_path XPath query string.
+# @param out_format Output format. Possible values: &#39;plain&#39; and &#39;json&#39;.
+# @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_document_fragment_by_x_path_by_url_with_http_info(source_url, x_path, out_format)
+      if @api_client.config.debug
+        @api_client.config.logger.debug "Calling API: DocumentApi.get_document_fragment_by_x_path_by_url ..."
+      end
+      # verify the required parameter 'source_url' is set
+      if @api_client.config.client_side_validation && source_url.nil?
+        fail ArgumentError, "Missing the required parameter 'source_url' when calling DocumentApi.get_document_fragment_by_x_path_by_url"
+      end
+      # verify the required parameter 'x_path' is set
+      if @api_client.config.client_side_validation && x_path.nil?
+        fail ArgumentError, "Missing the required parameter 'x_path' when calling DocumentApi.get_document_fragment_by_x_path_by_url"
+      end
+      # verify the required parameter 'out_format' is set
+      if @api_client.config.client_side_validation && out_format.nil?
+        fail ArgumentError, "Missing the required parameter 'out_format' when calling DocumentApi.get_document_fragment_by_x_path_by_url"
+      end
+      # resource path
+      local_var_path = "/html/fragments/{outFormat}".sub('{' + 'outFormat' + '}', out_format.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'sourceUrl'] = source_url
+      query_params[:'xPath'] = x_path
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/zip'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+                                                        :header_params => header_params,
+                                                        :query_params => query_params,
+                                                        :form_params => form_params,
+                                                        :body => post_body,
+                                                        :return_type => 'File')
+      if @api_client.config.debug
+        @api_client.config.logger.debug "API called: DocumentApi#get_document_fragment_by_x_path_by_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
 # Return all HTML document images packaged as a ZIP archive.
 #
 # @param name The document name.
 # @param [Hash] opts the optional parameters
 # @option opts [String] :folder The document folder.
 # @option opts [String] :storage The document storage.
-# @return [File]
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
     def get_document_images(name, opts = {})
       data, _status_code, _headers = get_document_images_with_http_info(name, opts)
       return {file: data, status: _status_code, headers: _headers}
@@ -1235,6 +1300,58 @@ module AsposeHtml
     end
 
 
+# Return all HTML page images packaged as a ZIP archive by the source page URL.
+#
+# @param source_url Source page URL.
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
+    def get_document_images_by_url(source_url)
+      data, _status_code, _headers = get_document_images_by_url_with_http_info(source_url)
+      return {file: data, status: _status_code, headers: _headers}
+    end
+
+# Return all HTML page images packaged as a ZIP archive by the source page URL.
+#
+# @param source_url Source page URL.
+# @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_document_images_by_url_with_http_info(source_url)
+      if @api_client.config.debug
+        @api_client.config.logger.debug "Calling API: DocumentApi.get_document_images_by_url ..."
+      end
+      # verify the required parameter 'source_url' is set
+      if @api_client.config.client_side_validation && source_url.nil?
+        fail ArgumentError, "Missing the required parameter 'source_url' when calling DocumentApi.get_document_images_by_url"
+      end
+      # resource path
+      local_var_path = "/html/images/all"
+
+      # query parameters
+      query_params = {}
+      query_params[:'sourceUrl'] = source_url
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/zip'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+                                                        :header_params => header_params,
+                                                        :query_params => query_params,
+                                                        :form_params => form_params,
+                                                        :body => post_body,
+                                                        :return_type => 'File')
+      if @api_client.config.debug
+        @api_client.config.logger.debug "API called: DocumentApi#get_document_images_by_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
 ################################################################################
 #                             OCR Api
 ################################################################################
@@ -1247,7 +1364,7 @@ module AsposeHtml
 # @option opts [String] :ocr_engine_lang OCR engine language - language  (default to en)
 # @option opts [String] :folder The source image folder.
 # @option opts [String] :storage The source image storage.
-# @return [File]
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
     def get_recognize_and_import_to_html(name, opts = {})
       data, _status_code, _headers = get_recognize_and_import_to_html_with_http_info(name, opts)
       return {file: data, status: _status_code, headers: _headers}
@@ -1315,7 +1432,7 @@ module AsposeHtml
 # @param [Hash] opts the optional parameters
 # @option opts [String] :folder The source image folder.
 # @option opts [String] :storage The source image storage.
-# @return [File]
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
     def get_recognize_and_translate_to_html(name, src_lang, res_lang, opts = {})
       data, _status_code, _headers = get_recognize_and_translate_to_html_with_http_info(name, src_lang, res_lang, opts)
       return {file: data, status: _status_code, headers: _headers}
@@ -1395,7 +1512,7 @@ module AsposeHtml
 # @param [Hash] opts the optional parameters
 # @option opts [String] :storage The source document storage.
 # @option opts [String] :folder The source document folder.
-# @return [File]
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
     def get_translate_document(name, src_lang, res_lang, opts = {})
       data, _status_code, _headers = get_translate_document_with_http_info(name, src_lang, res_lang, opts)
       return {file: data, status: _status_code, headers: _headers}
@@ -1463,7 +1580,7 @@ module AsposeHtml
 # @param source_url Source document URL.
 # @param src_lang Source language.
 # @param res_lang Result language.
-# @return [File]
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
     def get_translate_document_by_url(source_url, src_lang, res_lang)
       data, _status_code, _headers = get_translate_document_by_url_with_http_info(source_url, src_lang, res_lang)
       return {file: data, status: _status_code, headers: _headers}
@@ -1534,7 +1651,7 @@ module AsposeHtml
 # @param [Hash] opts the optional parameters
 # @option opts [String] :folder Document folder.
 # @option opts [String] :storage Document storage.
-# @return [File]
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
     def get_detect_html_keywords(name, opts = {})
       data, _status_code, _headers = get_detect_html_keywords_with_http_info(name, opts)
       return {file: data, status: _status_code, headers: _headers}
@@ -1591,7 +1708,7 @@ module AsposeHtml
 #
 # @param source_url Source document URL.
 # @param [Hash] opts the optional parameters
-# @return [File]
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
     def get_detect_html_keywords_by_url(source_url, opts = {})
       data, _status_code, _headers = get_detect_html_keywords_by_url_with_http_info(source_url, opts)
       return {file: data, status: _status_code, headers: _headers}

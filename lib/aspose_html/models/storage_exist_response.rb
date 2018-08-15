@@ -64,7 +64,7 @@ module AsposeHtml
       {
         :'code' => :'Code',
         :'status' => :'Status',
-        :'is_exist' => :'FileExist'
+        :'is_exist' => :'IsExist'
       }
     end
 
@@ -73,7 +73,7 @@ module AsposeHtml
       {
         :'code' => :'Integer',
         :'status' => :'String',
-        :'is_exist' => :'FileExist'
+        :'is_exist' => :'BOOLEAN'
       }
     end
 

@@ -61,7 +61,7 @@ describe 'Test html_api' do
   # @option opts [Integer] :y_resolution Vertical resolution of resulting image.
   # @option opts [String] :folder The source document folder.
   # @option opts [String] :storage The source document storage.
-  # @return [File]
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'get_convert_document_to_image test' do
     it "Convert html to bmp" do
       name = "test1.html"
@@ -110,7 +110,7 @@ describe 'Test html_api' do
   # @option opts [Integer] :y_resolution Vertical resolution of resulting image.
   # @option opts [String] :folder The document folder.
   # @option opts [String] :storage The document storage.
-  # @return [File]
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'get_convert_document_to_image_by_url test' do
     it "Convert url to png" do
       source_url = "https://stallman.org/articles/anonymous-payments-thru-phones.html"
@@ -152,7 +152,7 @@ describe 'Test html_api' do
   # @option opts [Integer] :bottom_margin Bottom resulting image margin.
   # @option opts [String] :folder The document folder.
   # @option opts [String] :storage The document storage.
-  # @return [File]
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'get_convert_document_to_pdf test' do
     it "Convert doc to pdf" do
       name = "test1.html"
@@ -195,7 +195,7 @@ describe 'Test html_api' do
   # @option opts [Integer] :bottom_margin Bottom resulting image margin.
   # @option opts [String] :folder The document folder.
   # @option opts [String] :storage The document storage.
-  # @return [File]
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'get_convert_document_to_pdf_by_url test' do
     it "Convert url to pdf" do
       source_url = "https://stallman.org/articles/anonymous-payments-thru-phones.html"
@@ -234,7 +234,7 @@ describe 'Test html_api' do
   # @option opts [Integer] :bottom_margin Bottom resulting image margin.
   # @option opts [String] :folder The document folder.
   # @option opts [String] :storage The document storage.
-  # @return [File]
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'get_convert_document_to_xps test' do
     it "Convert document to xps" do
       name = "test1.html"
@@ -277,7 +277,7 @@ describe 'Test html_api' do
   # @option opts [Integer] :bottom_margin Bottom resulting image margin.
   # @option opts [String] :folder The document folder.
   # @option opts [String] :storage The document storage.
-  # @return [File]
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'get_convert_document_to_xps_by_url test' do
     it "Convert url to xps" do
       source_url = "https://stallman.org/articles/anonymous-payments-thru-phones.html"
@@ -317,7 +317,7 @@ describe 'Test html_api' do
   # @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
   # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
   # @option opts [Integer] :resolution Resolution of resulting image. Default is 96 dpi.
-  # @return [File]
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'put_convert_document_in_request_to_image test' do
     it "Upload and convert html to png" do
       name = "putTest.png"
@@ -364,7 +364,7 @@ describe 'Test html_api' do
   # @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
   # @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
   # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
-  # @return [File]
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'put_convert_document_in_request_to_pdf test' do
     it "Upload and convert html to pdf" do
       name = "putTest.pdf"
@@ -409,7 +409,7 @@ describe 'Test html_api' do
   # @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
   # @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
   # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
-  # @return [File]
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'put_convert_document_in_request_to_xps test' do
     it "Upload and convert html to xps" do
       name = "putTest.xps"
@@ -458,7 +458,7 @@ describe 'Test html_api' do
   # @option opts [Integer] :resolution Resolution of resulting image. Default is 96 dpi.
   # @option opts [String] :folder The source document folder.
   # @option opts [String] :storage The source and resulting document storage.
-  # @return [File]
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'put_convert_document_to_image test' do
     it "Convert html to tiff in storage" do
 
@@ -511,7 +511,7 @@ describe 'Test html_api' do
   # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
   # @option opts [String] :folder The source document folder.
   # @option opts [String] :storage The source and resulting document storage.
-  # @return [File]
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'put_convert_document_to_pdf test' do
     it "Convert html to pdf in storage" do
 
@@ -562,7 +562,7 @@ describe 'Test html_api' do
   # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
   # @option opts [String] :folder The source document folder.
   # @option opts [String] :storage The source and resulting document storage.
-  # @return [File]
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'put_convert_document_to_xps test' do
     it "Convert html to xps in storage" do
 
@@ -610,7 +610,7 @@ describe 'Test html_api' do
   # @param [Hash] opts the optional parameters
   # @option opts [String] :storage The document folder
   # @option opts [String] :folder The document folder.
-  # @return [File]
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'get_document test' do
     it "Get html document" do
       file_name = "test_get_doc.zip"
@@ -640,7 +640,7 @@ describe 'Test html_api' do
   # @param [Hash] opts the optional parameters
   # @option opts [String] :storage The document storage.
   # @option opts [String] :folder The document folder.
-  # @return [File]
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'get_document_fragment_by_x_path test' do
     it "Get fragment document" do
       name = "test2.html.zip"
@@ -663,6 +663,30 @@ describe 'Test html_api' do
     end
   end
 
+  # unit tests for document_get_document_fragment_by_x_path_by_url
+  # Return list of HTML fragments matching the specified XPath query by the source page URL.
+  #
+  # @param source_url Source page URL.
+  # @param x_path XPath query string.
+  # @param out_format Output format. Possible values: &#39;plain&#39; and &#39;json&#39;.
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'get_document_fragment_by_x_path_by_url test' do
+    it "Get fragment document by url" do
+      source_url = "https://stallman.org/articles/anonymous-payments-thru-phones.html"
+      x_path = ".//p"
+      out_format = "plain"
+
+      answer = @instance.get_document_fragment_by_x_path_by_url(source_url, x_path, out_format)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer, "Get_fragment_xpath_by_url.html")
+    end
+  end
+
   # unit tests for get_document_images
   # Return all HTML document images packaged as a ZIP archive.
   #
@@ -670,7 +694,7 @@ describe 'Test html_api' do
   # @param [Hash] opts the optional parameters
   # @option opts [String] :folder The document folder.
   # @option opts [String] :storage The document storage.
-  # @return [File]
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'get_document_images test' do
     it "Get images from document" do
       name = "test3.html.zip"
@@ -691,6 +715,26 @@ describe 'Test html_api' do
     end
   end
 
+  # unit tests for document_get_document_images_by_url
+  # Return all HTML page images packaged as a ZIP archive by the source page URL.
+  #
+  # @param source_url Source page URL.
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'get_document_images_by_url test' do
+    it "Get images from url" do
+
+      source_url = "https://www.google.com/"
+      answer = @instance.get_document_images_by_url(source_url)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer, "Get_images_from_url.zip")
+    end
+  end
+
   #################################################
   #                 OCR API
   #################################################
@@ -703,7 +747,7 @@ describe 'Test html_api' do
   # @option opts [String] :ocr_engine_lang OCR engine language - language
   # @option opts [String] :folder The source image folder.
   # @option opts [String] :storage The source image storage.
-  # @return [File]
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'get_recognize_and_import_to_html test' do
     it "Recognize png" do
       file_name = "test_ocr.png"
@@ -733,7 +777,7 @@ describe 'Test html_api' do
   # @param [Hash] opts the optional parameters
   # @option opts [String] :folder The source image folder.
   # @option opts [String] :storage The source image storage.
-  # @return [File]
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'get_recognize_and_translate_to_html test' do
     it "Recognize and translate jpg" do
       file_name = "test_ocr.jpg"
@@ -769,7 +813,7 @@ describe 'Test html_api' do
   # @param [Hash] opts the optional parameters
   # @option opts [String] :storage The source document storage.
   # @option opts [String] :folder The source document folder.
-  # @return [File]
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'get_translate_document test' do
     it "Translate document" do
       file_name = "test_en.html"
@@ -798,7 +842,7 @@ describe 'Test html_api' do
   # @param source_url Source document URL.
   # @param src_lang Source language.
   # @param res_lang Result language.
-  # @return [File]
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'get_translate_document_by_url test' do
     it "Translate url" do
 
@@ -828,7 +872,7 @@ describe 'Test html_api' do
   # @param [Hash] opts the optional parameters
   # @option opts [String] :folder Document folder.
   # @option opts [String] :storage Document storage.
-  # @return [File]
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'get_detect_html_keywords test' do
     it "Keyword by html document" do
       name = "test_en.html"
@@ -853,7 +897,7 @@ describe 'Test html_api' do
   # Get the keywords from HTML document from Web specified by its URL using the keyword detection service
   #
   # @param source_url Source document URL.
-  # @return [File]
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'get_detect_html_keywords_by_url test' do
     it "Keyword by url" do
       source_url = "https://www.le.ac.uk/oerresources/bdra/html/page_01.htm"

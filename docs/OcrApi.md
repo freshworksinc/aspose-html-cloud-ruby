@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **get_recognize_and_import_to_html**
-> File get_recognize_and_import_to_html(name, opts)
+> Hash get_recognize_and_import_to_html(name, opts)
 
 Recognize text from the image file in the storage and import it to HTML format.
 
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**File**
+**[Hash] {file: data, status: _status_code, headers: _headers}**
 
 ### HTTP request headers
 
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 
 # **get_recognize_and_translate_to_html**
-> File get_recognize_and_translate_to_html(name, src_lang, res_lang, opts)
+> Hash get_recognize_and_translate_to_html(name, src_lang, res_lang, opts)
 
 Recognize text from the image file in the storage, import it to HTML format and translate to specified language.
 
@@ -117,7 +117,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**File**
+**[Hash] {file: data, status: _status_code, headers: _headers}**
 
 ### HTTP request headers
 

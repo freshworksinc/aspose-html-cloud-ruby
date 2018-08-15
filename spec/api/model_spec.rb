@@ -613,7 +613,7 @@ describe 'Test models' do
       dictionary = @instance3.to_hash
       expect(dictionary.has_key?(:Code)).to be true
       expect(dictionary.has_key?(:Status)).to be true
-      expect(dictionary.has_key?(:FileExist)).to be true
+      expect(dictionary.has_key?(:IsExist)).to be true
 
       expect(@instance1).to eql(@instance2)
       expect(@instance1).not_to eql(@instance3)

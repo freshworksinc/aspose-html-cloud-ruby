@@ -127,24 +127,9 @@ describe 'Test Storage API' do
   # @param name Storage name
   # @return [StorageExistResponse]
   describe 'get_is_storage_exist test' do
-    it "must be {'Code': 200, 'Status': 'OK', 'FileExist':{'IsExist':true, 'IsFolder': true}}" do
+    it "must be {'Code': 200, 'Status': 'OK', 'IsExist':false}" do
 
-      res = @api.get_is_storage_exist('/')
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      expect(res).to be_an_instance_of AsposeHtml::StorageExistResponse
-      expect(res.code).to be_an_instance_of Integer
-      expect(res.status).to be_an_instance_of String
-      expect(res.is_exist).to be_an_instance_of AsposeHtml::FileExist
-      expect(res.is_exist.is_exist).to be true
-      expect(res.is_exist.is_folder).to be true
-    end
-
-    it "must be {'Code': 200, 'Status': 'OK', 'FileExist':{'IsExist':false, 'IsFolder': false}}" do
-
-      res = @api.get_is_storage_exist('/non_exist_storage/')
+      res = @api.get_is_storage_exist('non_exist_storage')
 
       expect(res.code).to eql(200)
       expect(res.status).to eql("OK")
@@ -152,9 +137,7 @@ describe 'Test Storage API' do
       expect(res).to be_an_instance_of AsposeHtml::StorageExistResponse
       expect(res.code).to be_an_instance_of Integer
       expect(res.status).to be_an_instance_of String
-      expect(res.is_exist).to be_an_instance_of AsposeHtml::FileExist
-      expect(res.is_exist.is_exist).to be false
-      expect(res.is_exist.is_folder).to be false
+      expect(res.is_exist).to be false
     end
   end
 

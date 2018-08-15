@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **get_detect_html_keywords**
-> File get_detect_html_keywords(name, opts)
+> Hash get_detect_html_keywords(name, opts)
 
 Get the HTML document keywords using the keyword detection service.
 
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**File**
+**[Hash] {file: data, status: _status_code, headers: _headers}**
 
 ### HTTP request headers
 
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 
 # **get_detect_html_keywords_by_url**
-> File get_detect_html_keywords_by_url(source_url)
+> Hash get_detect_html_keywords_by_url(source_url)
 
 Get the keywords from HTML document from Web specified by its URL using the keyword detection service
 
@@ -103,7 +103,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**File**
+**[Hash] {file: data, status: _status_code, headers: _headers}**
 
 ### HTTP request headers
 

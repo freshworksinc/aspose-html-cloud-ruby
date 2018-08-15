@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 
 # **get_convert_document_to_image**
-> File get_convert_document_to_image(name, out_format, opts)
+> Hash  get_convert_document_to_image(name, out_format, opts)
 
 Convert the HTML document from the storage by its name to the specified image format.
 
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**File**
+**[Hash] {file: data, status: _status_code, headers: _headers}**
 
 ### HTTP request headers
 
@@ -91,9 +91,8 @@ Name | Type | Description  | Notes
  - **Accept**: multipart/form-data
 
 
-
 # **get_convert_document_to_image_by_url**
-> File get_convert_document_to_image_by_url(source_url, out_format, opts)
+> Hash get_convert_document_to_image_by_url(source_url, out_format, opts)
 
 Convert the HTML page from the web by its URL to the specified image format.
 
@@ -157,7 +156,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**File**
+**[Hash] {file: data, status: _status_code, headers: _headers}**
 
 ### HTTP request headers
 
@@ -165,9 +164,8 @@ Name | Type | Description  | Notes
  - **Accept**: multipart/form-data
 
 
-
 # **get_convert_document_to_pdf**
-> File get_convert_document_to_pdf(name, opts)
+> Hash get_convert_document_to_pdf(name, opts)
 
 Convert the HTML document from the storage by its name to PDF.
 
@@ -224,7 +222,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**File**
+**[Hash] {file: data, status: _status_code, headers: _headers}**
 
 ### HTTP request headers
 
@@ -232,9 +230,8 @@ Name | Type | Description  | Notes
  - **Accept**: multipart/form-data
 
 
-
 # **get_convert_document_to_pdf_by_url**
-> File get_convert_document_to_pdf_by_url(source_url, opts)
+> Hash get_convert_document_to_pdf_by_url(source_url, opts)
 
 Convert the HTML page from the web by its URL to PDF.
 
@@ -291,7 +288,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**File**
+**[Hash] {file: data, status: _status_code, headers: _headers}**
 
 ### HTTP request headers
 
@@ -299,9 +296,8 @@ Name | Type | Description  | Notes
  - **Accept**: multipart/form-data
 
 
-
 # **get_convert_document_to_xps**
-> File get_convert_document_to_xps(name, opts)
+> Hash get_convert_document_to_xps(name, opts)
 
 Convert the HTML document from the storage by its name to XPS.
 
@@ -357,7 +353,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**File**
+**[Hash] {file: data, status: _status_code, headers: _headers}**
 
 ### HTTP request headers
 
@@ -365,9 +361,8 @@ Name | Type | Description  | Notes
  - **Accept**: multipart/form-data
 
 
-
 # **get_convert_document_to_xps_by_url**
-> File get_convert_document_to_xps_by_url(source_url, opts)
+> Hash get_convert_document_to_xps_by_url(source_url, opts)
 
 Convert the HTML page from the web by its URL to XPS.
 
@@ -424,7 +419,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**File**
+**[Hash] {file: data, status: _status_code, headers: _headers}**
 
 ### HTTP request headers
 
@@ -433,7 +428,7 @@ Name | Type | Description  | Notes
 
 
 # **put_convert_document_in_request_to_image**
-> File put_convert_document_in_request_to_image(out_path, out_format, file, opts)
+> Hash put_convert_document_in_request_to_image(out_path, out_format, file, opts)
 
 Converts the HTML document (in request content) to the specified image format and uploads resulting file to storage.
 
@@ -494,7 +489,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-HTTP answer. See tests
+**[Hash] {file: data, status: _status_code, headers: _headers}**
 
 ### HTTP request headers
 
@@ -502,7 +497,7 @@ HTTP answer. See tests
  - **Accept**: application/json
 
 # **put_convert_document_in_request_to_pdf**
-> File put_convert_document_in_request_to_pdf(out_path, file, opts)
+> Hash put_convert_document_in_request_to_pdf(out_path, file, opts)
 
 Converts the HTML document (in request content) to PDF and uploads resulting file to storage.
 
@@ -558,7 +553,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-HTTP answer. See tests
+**[Hash] {file: data, status: _status_code, headers: _headers}**
 
 ### HTTP request headers
 
@@ -623,7 +618,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-HTTP answer. See tests
+**[Hash] {file: data, status: _status_code, headers: _headers}**
 
 ### HTTP request headers
 
@@ -696,7 +691,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-HTTP answer. See tests
+**[Hash] {file: data, status: _status_code, headers: _headers}**
 
 ### HTTP request headers
 
@@ -706,7 +701,7 @@ HTTP answer. See tests
 
 
 # **put_convert_document_to_pdf**
-> File put_convert_document_to_pdf(name, out_path, opts)
+> Hash put_convert_document_to_pdf(name, out_path, opts)
 
 Converts the HTML document (located on storage) to PDF and uploads resulting file to storage.
 
@@ -765,7 +760,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-HTTP answer. See tests
+**[Hash] {file: data, status: _status_code, headers: _headers}**
 
 ### HTTP request headers
 
@@ -775,7 +770,7 @@ HTTP answer. See tests
 
 
 # **put_convert_document_to_xps**
-> File put_convert_document_to_xps(name, out_path, opts)
+> Hash put_convert_document_to_xps(name, out_path, opts)
 
 Converts the HTML document (located on storage) to XPS and uploads resulting file to storage.
 
@@ -834,7 +829,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-HTTP answer. See tests
+**[Hash] {file: data, status: _status_code, headers: _headers}**
 
 ### HTTP request headers
 

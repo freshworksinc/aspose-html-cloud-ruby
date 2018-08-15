@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **get_translate_document**
-> File get_translate_document(name, src_lang, res_lang, opts)
+> Hash get_translate_document(name, src_lang, res_lang, opts)
 
 Translate the HTML document specified by the name from default or specified storage. 
 
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**File**
+**[Hash] {file: data, status: _status_code, headers: _headers}**
 
 ### HTTP request headers
 
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 
 # **get_translate_document_by_url**
-> File get_translate_document_by_url(source_url, src_lang, res_lang)
+> Hash get_translate_document_by_url(source_url, src_lang, res_lang)
 
 Translate the HTML document from Web specified by its URL.
 
@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**File**
+**[Hash] {file: data, status: _status_code, headers: _headers}**
 
 ### HTTP request headers
 
