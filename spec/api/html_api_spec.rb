@@ -687,6 +687,61 @@ describe 'Test html_api' do
     end
   end
 
+  # Return list of HTML fragments matching the specified CSS selector.
+  #
+  # @param name The document name.
+  # @param selector CSS selector string.
+  # @param out_format Output format. Possible values: &#39;plain&#39; and &#39;json&#39;.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :folder The document folder.
+  # @option opts [String] :storage The document storage.
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'get_document_fragments_by_css_selector test' do
+    it "Get fragment document by css" do
+      name = "test2.html.zip"
+      selector = "div p"
+      out_format = "plain"
+      opts = {folder: "HtmlTestDoc", storage: nil}
+
+      # Upload file to server
+      res = upload_file(name)
+      expect(res.code).to eql(200)
+
+      answer = @instance.get_document_fragments_by_css_selector(name, selector, out_format, opts)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer, "Get_fragment_doc_css.html")
+    end
+  end
+
+  # Return list of HTML fragments matching the specified CSS selector by the source page URL.
+  #
+  # @param source_url Source page URL.
+  # @param selector CSS selector string.
+  # @param out_format Output format. Possible values: &#39;plain&#39; and &#39;json&#39;.
+  # @param [Hash] opts the optional parameters
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'get_document_fragments_by_css_selector_by_url test' do
+    it "Get fragment document matching the specified CSS selector by url" do
+      source_url = "https://www.w3schools.com/cssref/css_selectors.asp"
+      selector = 'a[href$=".asp"]'
+      out_format = "plain"
+
+      answer = @instance.get_document_fragments_by_css_selector_by_url(source_url, selector, out_format)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer, "Get_fragment_css_by_url.html")
+    end
+  end
+
   # unit tests for get_document_images
   # Return all HTML document images packaged as a ZIP archive.
   #

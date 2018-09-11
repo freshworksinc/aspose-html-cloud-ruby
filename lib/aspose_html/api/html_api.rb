@@ -1240,6 +1240,145 @@ module AsposeHtml
       return data, status_code, headers
     end
 
+# Return list of HTML fragments matching the specified CSS selector.
+#
+# @param name The document name.
+# @param selector CSS selector string.
+# @param out_format Output format. Possible values: &#39;plain&#39; and &#39;json&#39;.
+# @param [Hash] opts the optional parameters
+# @option opts [String] :folder The document folder.
+# @option opts [String] :storage The document storage.
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
+    def get_document_fragments_by_css_selector(name, selector, out_format, opts = {})
+      data, _status_code, _headers = get_document_fragments_by_css_selector_with_http_info(name, selector, out_format, opts)
+      return {file: data, status: _status_code, headers: _headers}
+    end
+
+# Return list of HTML fragments matching the specified CSS selector.
+#
+# @param name The document name.
+# @param selector CSS selector string.
+# @param out_format Output format. Possible values: &#39;plain&#39; and &#39;json&#39;.
+# @param [Hash] opts the optional parameters
+# @option opts [String] :folder The document folder.
+# @option opts [String] :storage The document storage.
+# @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_document_fragments_by_css_selector_with_http_info(name, selector, out_format, opts = {})
+      if @api_client.config.debug
+        @api_client.config.logger.debug "Calling API: DocumentApi.get_document_fragments_by_css_selector ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling DocumentApi.get_document_fragments_by_css_selector"
+      end
+      # verify the required parameter 'selector' is set
+      if @api_client.config.client_side_validation && selector.nil?
+        fail ArgumentError, "Missing the required parameter 'selector' when calling DocumentApi.get_document_fragments_by_css_selector"
+      end
+      # verify the required parameter 'out_format' is set
+      if @api_client.config.client_side_validation && out_format.nil?
+        fail ArgumentError, "Missing the required parameter 'out_format' when calling DocumentApi.get_document_fragments_by_css_selector"
+      end
+      # resource path
+      local_var_path = "/html/{name}/fragments/css/{outFormat}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'outFormat' + '}', out_format.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'selector'] = selector
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+                                                        :header_params => header_params,
+                                                        :query_params => query_params,
+                                                        :form_params => form_params,
+                                                        :body => post_body,
+                                                        :return_type => 'File')
+      if @api_client.config.debug
+        @api_client.config.logger.debug "API called: DocumentApi#get_document_fragments_by_css_selector\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+# Return list of HTML fragments matching the specified CSS selector by the source page URL.
+#
+# @param source_url Source page URL.
+# @param selector CSS selector string.
+# @param out_format Output format. Possible values: &#39;plain&#39; and &#39;json&#39;.
+# @param [Hash] opts the optional parameters
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
+    def get_document_fragments_by_css_selector_by_url(source_url, selector, out_format, opts = {})
+      data, _status_code, _headers = get_document_fragments_by_css_selector_by_url_with_http_info(source_url, selector, out_format, opts)
+      return {file: data, status: _status_code, headers: _headers}
+    end
+
+# Return list of HTML fragments matching the specified CSS selector by the source page URL.
+#
+# @param source_url Source page URL.
+# @param selector CSS selector string.
+# @param out_format Output format. Possible values: &#39;plain&#39; and &#39;json&#39;.
+# @param [Hash] opts the optional parameters
+# @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_document_fragments_by_css_selector_by_url_with_http_info(source_url, selector, out_format, opts = {})
+      if @api_client.config.debug
+        @api_client.config.logger.debug "Calling API: DocumentApi.get_document_fragments_by_css_selector_by_url ..."
+      end
+      # verify the required parameter 'source_url' is set
+      if @api_client.config.client_side_validation && source_url.nil?
+        fail ArgumentError, "Missing the required parameter 'source_url' when calling DocumentApi.get_document_fragments_by_css_selector_by_url"
+      end
+      # verify the required parameter 'selector' is set
+      if @api_client.config.client_side_validation && selector.nil?
+        fail ArgumentError, "Missing the required parameter 'selector' when calling DocumentApi.get_document_fragments_by_css_selector_by_url"
+      end
+      # verify the required parameter 'out_format' is set
+      if @api_client.config.client_side_validation && out_format.nil?
+        fail ArgumentError, "Missing the required parameter 'out_format' when calling DocumentApi.get_document_fragments_by_css_selector_by_url"
+      end
+      # resource path
+      local_var_path = "/html/fragments/css/{outFormat}".sub('{' + 'outFormat' + '}', out_format.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'sourceUrl'] = source_url
+      query_params[:'selector'] = selector
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+                                                        :header_params => header_params,
+                                                        :query_params => query_params,
+                                                        :form_params => form_params,
+                                                        :body => post_body,
+                                                        :return_type => 'File')
+      if @api_client.config.debug
+        @api_client.config.logger.debug "API called: DocumentApi#get_document_fragments_by_css_selector_by_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
 # Return all HTML document images packaged as a ZIP archive.
 #
 # @param name The document name.

@@ -32,8 +32,8 @@ require 'aspose_html'
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v1.1",
     "authPath":"https://api.aspose.cloud/oauth2/token",
-    "apiKey":"",
-    "appSID":"",
+    "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":false
 }
 

@@ -7,6 +7,8 @@ Method | HTTP request | Description
 [**get_document**](DocumentApi.md#get_document) | **GET** /html/{name} | Return the HTML document by the name from default or specified storage.
 [**get_document_fragment_by_x_path**](DocumentApi.md#get_document_fragment_by_x_path) | **GET** /html/{name}/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query. 
 [**get_document_fragment_by_x_path_by_url**](DocumentApi.md#get_document_fragment_by_x_path_by_url) | **GET** /html/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query by the source page URL.
+[**get_document_fragments_by_css_selector**](DocumentApi.md#get_document_fragments_by_css_selector) | **GET** /html/{name}/fragments/css/{outFormat} | Return list of HTML fragments matching the specified CSS selector.
+[**get_document_fragments_by_css_selector_by_url**](DocumentApi.md#get_document_fragments_by_css_selector_by_url) | **GET** /html/fragments/css/{outFormat} | Return list of HTML fragments matching the specified CSS selector by the source page URL.
 [**get_document_images**](DocumentApi.md#get_document_images) | **GET** /html/{name}/images/all | Return all HTML document images packaged as a ZIP archive.
 [**get_document_images_by_url**](DocumentApi.md#get_document_images_by_url) | **GET** /html/images/all | Return all HTML page images packaged as a ZIP archive by the source page URL.
 
@@ -174,6 +176,114 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/zip
+
+
+# **get_document_fragments_by_css_selector**
+> Hash document_get_document_fragments_by_css_selector(name, selector, out_format, opts)
+
+Return list of HTML fragments matching the specified CSS selector.
+
+### Example
+```ruby
+# load the gem
+require 'aspose_html'
+
+CONFIG = {
+    "basePath":"https://api.aspose.cloud/v1.1",
+    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+    "debug":true
+}
+
+api_instance = AsposeHtml::HtmlApi.new CONFIG
+
+name = "test2.html.zip"
+selector = "div p"
+out_format = "plain"
+opts = {folder: "HtmlTestDoc", storage: nil}
+
+begin
+  #Return list of HTML fragments matching the specified CSS selector.
+  result = api_instance.document_get_document_fragments_by_css_selector(name, selector, out_format, opts)
+  p result
+rescue AsposeHtml::ApiError => e
+  puts "Exception when calling HtmlApi->document_get_document_fragments_by_css_selector: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. | 
+ **selector** | **String**| CSS selector string. | 
+ **out_format** | **String**| Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. | 
+ **folder** | **String**| The document folder. | [optional] 
+ **storage** | **String**| The document storage. | [optional] 
+
+### Return type
+
+**[Hash] {file: data, status: _status_code, headers: _headers}**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
+
+# **get_document_fragments_by_css_selector_by_url**
+> Hash document_get_document_fragments_by_css_selector_by_url(source_url, selector, out_format)
+
+Return list of HTML fragments matching the specified CSS selector by the source page URL.
+
+### Example
+```ruby
+# load the gem
+require 'aspose_html'
+
+CONFIG = {
+    "basePath":"https://api.aspose.cloud/v1.1",
+    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+    "debug":true
+}
+
+api_instance = AsposeHtml::HtmlApi.new CONFIG
+
+source_url = "source_url_example" # String | Source page URL.
+
+selector = "selector_example" # String | CSS selector string.
+
+out_format = "out_format_example" # String | Output format. Possible values: 'plain' and 'json'.
+
+
+begin
+  #Return list of HTML fragments matching the specified CSS selector by the source page URL.
+  result = api_instance.document_get_document_fragments_by_css_selector_by_url(source_url, selector, out_format)
+  p result
+rescue AsposeHtml::ApiError => e
+  puts "Exception when calling HtmlApi->document_get_document_fragments_by_css_selector_by_url: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **source_url** | **String**| Source page URL. | 
+ **selector** | **String**| CSS selector string. | 
+ **out_format** | **String**| Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. | 
+
+### Return type
+
+**[Hash] {file: data, status: _status_code, headers: _headers}**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
 
 
 # **get_document_images**
