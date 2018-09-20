@@ -50,7 +50,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The image file name. | 
- **ocr_engine_lang** | **String**| OCR engine language - language  | [optional] [default to en]
+ **ocr_engine_lang** | **String**| OCR engine language - language  | [optional] [default to en] Allowed values is "en", "de", "fr", "ru".
  **folder** | **String**| The source image folder. | [optional] 
  **storage** | **String**| The source image storage. | [optional] 
 
@@ -110,8 +110,8 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The image file name. | 
- **src_lang** | **String**| Source language - also supposed as the OCR engine language. | 
- **res_lang** | **String**| Result language. | 
+ **src_lang** | **String**| Source language - also supposed as the OCR engine language. | Allowed values is "en", "de", "fr", "ru".
+ **res_lang** | **String**| Result language. | Allowed values is "en", "de", "fr", "ru".
  **folder** | **String**| The source image folder. | [optional] 
  **storage** | **String**| The source image storage. | [optional] 
 

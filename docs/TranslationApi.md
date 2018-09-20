@@ -53,8 +53,8 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| Document name. | 
- **src_lang** | **String**| Source language. | 
- **res_lang** | **String**| Result language. | 
+ **src_lang** | **String**| Source language. | Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
+ **res_lang** | **String**| Result language. | Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
  **storage** | **String**| The source document storage. | [optional] 
  **folder** | **String**| The source document folder. | [optional] 
 
@@ -110,8 +110,8 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **source_url** | **String**| Source document URL. | 
- **src_lang** | **String**| Source language. | 
- **res_lang** | **String**| Result language. | 
+ **src_lang** | **String**| Source language. | Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
+ **res_lang** | **String**| Result language. | Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
 
 ### Return type
 
