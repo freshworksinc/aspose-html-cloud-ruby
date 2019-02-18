@@ -16,7 +16,10 @@ Method | HTTP request | Description
 [**put_convert_document_to_image**](ConversionApi.md#put_convert_document_to_image) | **PUT** /html/{name}/convert/image/{outFormat} | Converts the HTML document (located on storage) to the specified image format and uploads resulting file to storage.
 [**put_convert_document_to_pdf**](ConversionApi.md#put_convert_document_to_pdf) | **PUT** /html/{name}/convert/pdf | Converts the HTML document (located on storage) to PDF and uploads resulting file to storage.
 [**put_convert_document_to_xps**](ConversionApi.md#put_convert_document_to_xps) | **PUT** /html/{name}/convert/xps | Converts the HTML document (located on storage) to XPS and uploads resulting file to storage.
-
+[**get_convert_document_to_mhtml_by_url**](ConversionApi.md#get_convert_document_to_mhtml_by_url) | **GET** /html/convert/mhtml | Converts the HTML page from Web by its URL to MHTML returns resulting file in response content.
+[**get_convert_document_to_markdown**](ConversionApi.md#get_convert_document_to_markdown) | **GET** /html/{name}/convert/md | Converts the HTML document (located on storage) to Markdown and returns resulting file in response content.
+[**put_convert_document_in_request_to_markdown**](ConversionApi.md#put_convert_document_in_request_to_markdown) | **PUT** /html/convert/md | Converts the HTML document (in request content) to Markdown and uploads resulting file to storage by specified path.
+[**put_convert_document_to_markdown**](ConversionApi.md#put_convert_document_to_markdown) | **PUT** /html/{name}/convert/md | Converts the HTML document (located on storage) to Markdown and uploads resulting file to storage by specified path.
 
 # **get_convert_document_to_image**
 > Hash  get_convert_document_to_image(name, out_format, opts)
@@ -824,6 +827,223 @@ Name | Type | Description  | Notes
  **right_margin** | **Integer**| Right resulting document page margin in points (1/96 inch). | [optional] 
  **top_margin** | **Integer**| Top resulting document page margin in points (1/96 inch). | [optional] 
  **bottom_margin** | **Integer**| Bottom resulting document page margin in points (1/96 inch). | [optional] 
+ **folder** | **String**| The source document folder. | [optional] 
+ **storage** | **String**| The source and resulting document storage. | [optional] 
+
+### Return type
+
+**[Hash] {file: data, status: _status_code, headers: _headers}**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_convert_document_to_mhtml_by_url**
+> Hash get_convert_document_to_mhtml_by_url(source_url)
+
+Converts the HTML page from Web by its URL to MHTML returns resulting file in response content.
+
+### Example
+```ruby
+# load the gem
+require 'aspose_html'
+
+CONFIG = {
+    "basePath":"https://api.aspose.cloud/v1.1",
+    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+    "debug":true
+}
+
+api_instance = AsposeHtml::HtmlApi.new CONFIG
+
+source_url = 'source_url_example' # String | Source page URL.
+
+begin
+  #Converts the HTML page from Web by its URL to MHTML returns resulting file in response content.
+  result = api_instance.get_convert_document_to_mhtml_by_url(source_url)
+  p result
+rescue AsposeHtml::ApiError => e
+  puts "Exception when calling ConversionApi->get_convert_document_to_mhtml_by_url: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **source_url** | **String**| Source page URL. |
+
+### Return type
+
+**[Hash] {file: data, status: _status_code, headers: _headers}**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
+
+
+# **get_convert_document_to_markdown**
+> Hash get_convert_document_to_markdown(name, opts)
+
+Converts the HTML document (located on storage) to Markdown and returns resulting file in response content.
+
+### Example
+```ruby
+# load the gem
+require 'aspose_html'
+
+CONFIG = {
+    "basePath":"https://api.aspose.cloud/v1.1",
+    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+    "debug":true
+}
+
+api_instance = AsposeHtml::HtmlApi.new CONFIG
+
+name = 'name_example' # String | Document name.
+
+opts = { 
+  use_git: "false", # String | Use Git Markdown flavor to save ("true"/"false").
+  folder: 'folder_example', # String | Source document folder.
+  storage: 'storage_example' # String | Source document storage.
+}
+
+begin
+  #Converts the HTML document (located on storage) to Markdown and returns resulting file in response content.
+  result = api_instance.get_convert_document_to_markdown(name, opts)
+  p result
+rescue AsposeHtml::ApiError => e
+  puts "Exception when calling ConversionApi->get_convert_document_to_markdown: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| Document name. | 
+ **use_git** | **String**| Use Git Markdown flavor to save ("true"/"false"). | [optional] [default to "false"]
+ **folder** | **String**| Source document folder. | [optional] 
+ **storage** | **String**| Source document storage. | [optional] 
+
+### Return type
+
+**[Hash] {file: data, status: _status_code, headers: _headers}**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/octet-stream
+
+
+# **put_convert_document_in_request_to_markdown**
+> Hash put_convert_document_in_request_to_markdown(out_path, file, opts)
+
+Converts the HTML document (in request content) to Markdown and uploads resulting file to storage by specified path.
+
+### Example
+```ruby
+# load the gem
+require 'aspose_html'
+
+CONFIG = {
+    "basePath":"https://api.aspose.cloud/v1.1",
+    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+    "debug":true
+}
+
+api_instance = AsposeHtml::HtmlApi.new CONFIG
+
+out_path = 'out_path_example' # String | Full resulting file path in the storage (ex. /folder1/folder2/result.md)
+
+file = "/path/to/file.html" # String | File path to be converted.
+
+opts = { 
+  use_git: "false" # String | Use Git Markdown flavor to save ("true"/"false").
+}
+
+begin
+  #Converts the HTML document (in request content) to Markdown and uploads resulting file to storage by specified path.
+  result = api_instance.put_convert_document_in_request_to_markdown(out_path, file, opts)
+  p result
+rescue AsposeHtml::ApiError => e
+  puts "Exception when calling ConversionApi->put_convert_document_in_request_to_markdown: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **out_path** | **String**| Full resulting file path in the storage (ex. /folder1/folder2/result.md) | 
+ **file** | **String**| File path to be converted. | 
+ **use_git** | **String**| Use Git Markdown flavor to save ("true"/"false"). | [optional] [default to "false"]
+### Return type
+
+**[Hash] {file: data, status: _status_code, headers: _headers}**
+
+### HTTP request headers
+
+ - **Content-Type**: application/octet-stream
+ - **Accept**: application/json
+
+# **put_convert_document_to_markdown**
+> Hash put_convert_document_to_markdown(name, out_path, opts)
+
+Converts the HTML document (located on storage) to Markdown and uploads resulting file to storage by specified path.
+
+### Example
+```ruby
+# load the gem
+require 'aspose_html'
+
+CONFIG = {
+    "basePath":"https://api.aspose.cloud/v1.1",
+    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+    "debug":true
+}
+
+api_instance = AsposeHtml::HtmlApi.new CONFIG
+
+name = 'name_example' # String | Document name.
+
+out_path = 'out_path_example' # String | Full resulting file path in the storage (ex. /folder1/folder2/result.md)
+
+opts = { 
+  use_git: "false", # String | Use Git Markdown flavor to save ("true"/"false").
+  folder: 'folder_example', # String | The source document folder.
+  storage: 'storage_example' # String | The source and resulting document storage.
+}
+
+begin
+  #Converts the HTML document (located on storage) to Markdown and uploads resulting file to storage by specified path.
+  result = api_instance.put_convert_document_to_markdown(name, out_path, opts)
+  p result
+rescue AsposeHtml::ApiError => e
+  puts "Exception when calling ConversionApi->put_convert_document_to_markdown: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| Document name. | 
+ **out_path** | **String**| Full resulting file path in the storage (ex. /folder1/folder2/result.md) | 
+ **use_git** | **String**| Use Git Markdown flavor to save ("true"/"false"). | [optional] [default to "false"]
  **folder** | **String**| The source document folder. | [optional] 
  **storage** | **String**| The source and resulting document storage. | [optional] 
 

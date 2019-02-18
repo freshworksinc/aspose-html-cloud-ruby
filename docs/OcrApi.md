@@ -11,7 +11,8 @@ Method | HTTP request | Description
 # **get_recognize_and_import_to_html**
 > Hash get_recognize_and_import_to_html(name, opts)
 
-Recognize text from the image file in the storage and import it to HTML format.
+Recognize text from the image file in the storage and import it to HTML format.    
+Acceptable image formats is jpg, gif, png, bmp, tiff.
 
 ### Example
 ```ruby
@@ -68,7 +69,8 @@ Name | Type | Description  | Notes
 # **get_recognize_and_translate_to_html**
 > Hash get_recognize_and_translate_to_html(name, src_lang, res_lang, opts)
 
-Recognize text from the image file in the storage, import it to HTML format and translate to specified language.
+Recognize text from the image file in the storage, import it to HTML format and translate to specified language.    
+Acceptable image formats is jpg, gif, png, bmp, tiff.
 
 ### Example
 ```ruby

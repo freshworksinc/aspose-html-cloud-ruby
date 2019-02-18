@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 
 =begin
   --------------------------------------------------------------------------------------------------------------------
@@ -33,7 +34,7 @@ Gem::Specification.new do |s|
   s.name        = "aspose_html"
   s.version     = AsposeHtml::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = "Aspose"
+  s.authors     = ["Aspose"]
   s.homepage    = "https://www.aspose.com"
   s.summary     = "A ruby wrapper for the Aspose.HTML Cloud SDK API."
   s.description = "This repository contains Aspose.HTML Cloud SDK for ruby source code."

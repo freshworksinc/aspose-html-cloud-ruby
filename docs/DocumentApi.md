@@ -4,7 +4,7 @@ All URIs are relative to *https://api.aspose.cloud/v1.1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_document**](DocumentApi.md#get_document) | **GET** /html/{name} | Return the HTML document by the name from default or specified storage.
+[**get_document_by_url**](DocumentApi.md#get_document_by_url) | **GET** /html/download | Return all HTML page with linked resources packaged as a ZIP archive by the source page URL.
 [**get_document_fragment_by_x_path**](DocumentApi.md#get_document_fragment_by_x_path) | **GET** /html/{name}/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query. 
 [**get_document_fragment_by_x_path_by_url**](DocumentApi.md#get_document_fragment_by_x_path_by_url) | **GET** /html/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query by the source page URL.
 [**get_document_fragments_by_css_selector**](DocumentApi.md#get_document_fragments_by_css_selector) | **GET** /html/{name}/fragments/css/{outFormat} | Return list of HTML fragments matching the specified CSS selector.
@@ -13,10 +13,10 @@ Method | HTTP request | Description
 [**get_document_images_by_url**](DocumentApi.md#get_document_images_by_url) | **GET** /html/images/all | Return all HTML page images packaged as a ZIP archive by the source page URL.
 
 
-# **get_document**
-> Hash get_document(name, opts)
+# **get_document_by_url**
+> Hash get_document_by_url(source_url)
 
-Return the HTML document by the name from default or specified storage.
+Return all HTML page with linked resources packaged as a ZIP archive by the source page URL.
 
 ### Example
 ```ruby
@@ -33,19 +33,13 @@ CONFIG = {
 
 api_instance = AsposeHtml::HtmlApi.new CONFIG
 
-name = "test.html" # String | The document name.
-
-opts = { 
-  storage: "storage_example", # String | The document folder
-  folder: "folder_example" # String | The document folder.
-}
 
 begin
-  #Return the HTML document by the name from default or specified storage.
-  result = api_instance.get_document(name, opts)
+  #Return all HTML page with linked resources packaged as a ZIP archive by the source page URL.
+  result = api_instance.get_document_by_url(source_url)
   p result
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling HtmlApi->get_document: #{e}"
+  puts "Exception when calling HtmlApi->get_document_by_url: #{e}"
 end
 ```
 
@@ -53,9 +47,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| The document name. | 
- **storage** | **String**| The document folder | [optional] 
- **folder** | **String**| The document folder. | [optional] 
+ **source_url** | **String**| Source page URL. | 
 
 ### Return type
 
@@ -64,8 +56,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: multipart/form-data, application/zip
-
+ - **Accept**: application/zip
 
 # **get_document_fragment_by_x_path**
 > Hash get_document_fragment_by_x_path(name, x_path, out_format, opts)
@@ -111,7 +102,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| The document name. | 
+ **name** | **String**| The document name. | Presented as zip archive with one html file in the root or html file.
  **x_path** | **String**| XPath query string. | 
  **out_format** | **String**| Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. | 
  **storage** | **String**| The document storage. | [optional] 
@@ -179,7 +170,7 @@ Name | Type | Description  | Notes
 
 
 # **get_document_fragments_by_css_selector**
-> Hash document_get_document_fragments_by_css_selector(name, selector, out_format, opts)
+> Hash get_document_fragments_by_css_selector(name, selector, out_format, opts)
 
 Return list of HTML fragments matching the specified CSS selector.
 
@@ -205,10 +196,10 @@ opts = {folder: "HtmlTestDoc", storage: nil}
 
 begin
   #Return list of HTML fragments matching the specified CSS selector.
-  result = api_instance.document_get_document_fragments_by_css_selector(name, selector, out_format, opts)
+  result = api_instance.get_document_fragments_by_css_selector(name, selector, out_format, opts)
   p result
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling HtmlApi->document_get_document_fragments_by_css_selector: #{e}"
+  puts "Exception when calling HtmlApi->get_document_fragments_by_css_selector: #{e}"
 end
 ```
 
@@ -216,7 +207,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| The document name. | 
+ **name** | **String**| The document name. | Presented as zip archive with one html file in the root or html file.
  **selector** | **String**| CSS selector string. | 
  **out_format** | **String**| Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. | 
  **folder** | **String**| The document folder. | [optional] 
@@ -233,7 +224,7 @@ Name | Type | Description  | Notes
 
 
 # **get_document_fragments_by_css_selector_by_url**
-> Hash document_get_document_fragments_by_css_selector_by_url(source_url, selector, out_format)
+> Hash get_document_fragments_by_css_selector_by_url(source_url, selector, out_format)
 
 Return list of HTML fragments matching the specified CSS selector by the source page URL.
 
@@ -261,10 +252,10 @@ out_format = "out_format_example" # String | Output format. Possible values: 'pl
 
 begin
   #Return list of HTML fragments matching the specified CSS selector by the source page URL.
-  result = api_instance.document_get_document_fragments_by_css_selector_by_url(source_url, selector, out_format)
+  result = api_instance.get_document_fragments_by_css_selector_by_url(source_url, selector, out_format)
   p result
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling HtmlApi->document_get_document_fragments_by_css_selector_by_url: #{e}"
+  puts "Exception when calling HtmlApi->get_document_fragments_by_css_selector_by_url: #{e}"
 end
 ```
 
@@ -326,7 +317,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| The document name. | 
+ **name** | **String**| The document name. | Presented as zip archive with one html file in the root.
  **folder** | **String**| The document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
 

@@ -607,7 +607,7 @@ module AsposeHtml
       form_params = {}
 
       # http body (model)
-      post_body = ::File.open(file,"rb").read
+      post_body = ::File.open(file, "rb").read
 
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         :header_params => header_params,
@@ -686,7 +686,7 @@ module AsposeHtml
       form_params = {}
 
       # http body (model)
-      post_body = ::File.open(file,"rb").read
+      post_body = ::File.open(file, "rb").read
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         :header_params => header_params,
                                                         :query_params => query_params,
@@ -764,7 +764,7 @@ module AsposeHtml
       form_params = {}
 
       # http body (model)
-      post_body = ::File.open(file,"rb").read
+      post_body = ::File.open(file, "rb").read
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         :header_params => header_params,
                                                         :query_params => query_params,
@@ -1038,51 +1038,38 @@ module AsposeHtml
       return data, status_code, headers
     end
 
-
-################################################################################
-#                             Document Api
-################################################################################
-
-
-# Return the HTML document by the name from default or specified storage.
-#
-# @param name The document name.
+# Converts the HTML page from Web by its URL to MHTML returns resulting file in response content.
+# @param source_url Source page URL.
 # @param [Hash] opts the optional parameters
-# @option opts [String] :storage The document folder
-# @option opts [String] :folder The document folder.
 # @return [Hash] {file: data, status: _status_code, headers: _headers}
-    def get_document(name, opts = {})
-      data, _status_code, _headers = get_document_with_http_info(name, opts)
+    def get_convert_document_to_mhtml_by_url(source_url, opts = {})
+      data, _status_code, _headers = get_convert_document_to_mhtml_by_url_with_http_info(source_url, opts)
       return {file: data, status: _status_code, headers: _headers}
     end
 
-# Return the HTML document by the name from default or specified storage.
-#
-# @param name The document name.
+# Converts the HTML page from Web by its URL to MHTML returns resulting file in response content.
+# @param source_url Source page URL.
 # @param [Hash] opts the optional parameters
-# @option opts [String] :storage The document folder
-# @option opts [String] :folder The document folder.
 # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
-    def get_document_with_http_info(name, opts = {})
+    def get_convert_document_to_mhtml_by_url_with_http_info(source_url, opts = {})
       if @api_client.config.debug
-        @api_client.config.logger.debug "Calling API: HtmlApi.get_document ..."
+        @api_client.config.logger.debug 'Calling API: HtmlApi.get_convert_document_to_mhtml_by_url ...'
       end
-      # verify the required parameter 'name' is set
-      if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling HtmlApi.get_document"
+      # verify the required parameter 'source_url' is set
+      if @api_client.config.client_side_validation && source_url.nil?
+        fail ArgumentError, "Missing the required parameter 'source_url' when calling HtmlApi.get_convert_document_to_mhtml_by_url"
       end
       # resource path
-      local_var_path = "/html/{name}".sub('{' + 'name' + '}', name.to_s)
+      local_var_path = '/html/convert/mhtml'
 
       # query parameters
       query_params = {}
-      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
-      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'sourceUrl'] = source_url
 
       # header parameters
       header_params = {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data', 'application/zip'])
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
 
@@ -1098,10 +1085,268 @@ module AsposeHtml
                                                         :body => post_body,
                                                         :return_type => 'File')
       if @api_client.config.debug
-        @api_client.config.logger.debug "API called: HtmlApi#get_document\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: HtmlApi#get_convert_document_to_mhtml_by_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
+
+# Converts the HTML document (located on storage) to Markdown and returns resulting file in response content.
+# @param name Document name.
+# @param [Hash] opts the optional parameters
+# @option opts [String] :use_git Use Git Markdown flavor to save ("true" or "false"). (default to "false")
+# @option opts [String] :folder Source document folder.
+# @option opts [String] :storage Source document storage.
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
+    def get_convert_document_to_markdown(name, opts = {})
+      data, _status_code, _headers = get_convert_document_to_markdown_with_http_info(name, opts)
+      return {file: data, status: _status_code, headers: _headers}
+    end
+
+# Converts the HTML document (located on storage) to Markdown and returns resulting file in response content.
+# @param name Document name.
+# @param [Hash] opts the optional parameters
+# @option opts [String] :use_git Use Git Markdown flavor to save ("true" or "false"). (default to "false")
+# @option opts [String] :folder Source document folder.
+# @option opts [String] :storage Source document storage.
+# @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_convert_document_to_markdown_with_http_info(name, opts = {})
+      if @api_client.config.debug
+        @api_client.config.logger.debug 'Calling API: ConversionApi.get_convert_document_to_markdown ...'
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling ConversionApi.get_convert_document_to_markdown"
+      end
+      # resource path
+      local_var_path = '/html/{name}/convert/md'.sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'useGit'] = opts[:'use_git'] if !opts[:'use_git'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+                                                        :header_params => header_params,
+                                                        :query_params => query_params,
+                                                        :form_params => form_params,
+                                                        :body => post_body,
+                                                        :return_type => 'File')
+      if @api_client.config.debug
+        @api_client.config.logger.debug "API called: ConversionApi#get_convert_document_to_markdown\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+# Converts the HTML document (in request content) to Markdown and uploads resulting file to storage by specified path.
+# @param out_path Full resulting file path in the storage (ex. /folder1/folder2/result.md)
+# @param file A file to be converted.
+# @param [Hash] opts the optional parameters
+# @option opts [String] :use_git Use Git Markdown flavor to save ("true" or "false"). (default to "false")
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
+    def put_convert_document_in_request_to_markdown(out_path, file, opts = {})
+      data, _status_code, _headers = put_convert_document_in_request_to_markdown_with_http_info(out_path, file, opts)
+      return {file: data, status: _status_code, headers: _headers}
+    end
+
+# Converts the HTML document (in request content) to Markdown and uploads resulting file to storage by specified path.
+# @param out_path Full resulting file path in the storage (ex. /folder1/folder2/result.md)
+# @param file A file to be converted.
+# @param [Hash] opts the optional parameters
+# @option opts [String] :use_git Use Git Markdown flavor to save ("true" or "false"). (default to "false")
+# @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_convert_document_in_request_to_markdown_with_http_info(out_path, file, opts = {})
+      if @api_client.config.debug
+        @api_client.config.logger.debug 'Calling API: ConversionApi.put_convert_document_in_request_to_markdown ...'
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling ConversionApi.put_convert_document_in_request_to_markdown"
+      end
+      # verify the required parameter 'file' is set
+      if @api_client.config.client_side_validation && file.nil?
+        fail ArgumentError, "Missing the required parameter 'file' when calling ConversionApi.put_convert_document_in_request_to_markdown"
+      end
+      # resource path
+      local_var_path = '/html/convert/md'
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'useGit'] = opts[:'use_git'] if !opts[:'use_git'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = ::File.open(file, "rb").read
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        :header_params => header_params,
+                                                        :query_params => query_params,
+                                                        :form_params => form_params,
+                                                        :body => post_body,
+                                                        :return_type => 'File')
+      if @api_client.config.debug
+        @api_client.config.logger.debug "API called: ConversionApi#put_convert_document_in_request_to_markdown\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+# Converts the HTML document (located on storage) to Markdown and uploads resulting file to storage by specified path.
+# @param name Document name.
+# @param out_path Full resulting file path in the storage (ex. /folder1/folder2/result.md)
+# @param [Hash] opts the optional parameters
+# @option opts [String] :use_git Use Git Markdown flavor to save ("true" or "false"). (default to "false")
+# @option opts [String] :folder The source document folder.
+# @option opts [String] :storage The source and resulting document storage.
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
+    def put_convert_document_to_markdown(name, out_path, opts = {})
+      data, _status_code, _headers = put_convert_document_to_markdown_with_http_info(name, out_path, opts)
+      return {file: data, status: _status_code, headers: _headers}
+    end
+
+# Converts the HTML document (located on storage) to Markdown and uploads resulting file to storage by specified path.
+# @param name Document name.
+# @param out_path Full resulting file path in the storage (ex. /folder1/folder2/result.md)
+# @param [Hash] opts the optional parameters
+# @option opts [String] :use_git Use Git Markdown flavor to save ("true" or "false"). (default to "false")
+# @option opts [String] :folder The source document folder.
+# @option opts [String] :storage The source and resulting document storage.
+# @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_convert_document_to_markdown_with_http_info(name, out_path, opts = {})
+      if @api_client.config.debug
+        @api_client.config.logger.debug 'Calling API: ConversionApi.put_convert_document_to_markdown ...'
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling ConversionApi.put_convert_document_to_markdown"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling ConversionApi.put_convert_document_to_markdown"
+      end
+      # resource path
+      local_var_path = '/html/{name}/convert/md'.sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'useGit'] = opts[:'use_git'] if !opts[:'use_git'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        :header_params => header_params,
+                                                        :query_params => query_params,
+                                                        :form_params => form_params,
+                                                        :body => post_body,
+                                                        :return_type => 'File')
+      if @api_client.config.debug
+        @api_client.config.logger.debug "API called: ConversionApi#put_convert_document_to_markdown\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+################################################################################
+#                             Document Api
+################################################################################
+
+# Return all HTML page with linked resources packaged as a ZIP archive by the source page URL.
+#
+# @param source_url Source page URL.
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
+    def get_document_by_url(source_url)
+      data, _status_code, _headers = get_document_by_url_with_http_info(source_url)
+      return {file: data, status: _status_code, headers: _headers}
+    end
+
+# Return all HTML page with linked resources packaged as a ZIP archive by the source page URL.
+#
+# @param source_url Source page URL.
+# @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_document_by_url_with_http_info(source_url)
+      if @api_client.config.debug
+        @api_client.config.logger.debug 'Calling API: DocumentApi.get_document_by_url ...'
+      end
+      # verify the required parameter 'source_url' is set
+      if @api_client.config.client_side_validation && source_url.nil?
+        fail ArgumentError, "Missing the required parameter 'source_url' when calling DocumentApi.get_document_by_url"
+      end
+      # resource path
+      local_var_path = '/html/download'
+
+      # query parameters
+      query_params = {}
+      query_params[:'sourceUrl'] = source_url
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/zip'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+                                                        :header_params => header_params,
+                                                        :query_params => query_params,
+                                                        :form_params => form_params,
+                                                        :body => post_body,
+                                                        :return_type => 'File')
+      if @api_client.config.debug
+        @api_client.config.logger.debug "API called: DocumentApi#get_document_by_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+# Return list of HTML fragments matching the specified XPath query.
+# @param name The document name.
+# @param x_path XPath query string.
+# @param out_format Output format. Possible values: &#39;plain&#39; and &#39;json&#39;.
+# @param [Hash] opts the optional parameters
+# @option opts [String] :storage The document storage.
+# @option opts [String] :folder The document folder.
+# @return [File]
+    def document_get_document_fragment_by_x_path(name, x_path, out_format, opts = {})
+      data, _status_code, _headers = document_get_document_fragment_by_x_path_with_http_info(name, x_path, out_format, opts)
+      data
+    end
+
 
 # Return list of HTML fragments matching the specified XPath query.
 #
@@ -1604,9 +1849,9 @@ module AsposeHtml
       end
       # resource path
       local_var_path = "/html/{name}/ocr/translate/{srcLang}/{resLang}"
-          .sub('{' + 'name' + '}', name.to_s)
-          .sub('{' + 'srcLang' + '}', src_lang.to_s)
-          .sub('{' + 'resLang' + '}', res_lang.to_s)
+                           .sub('{' + 'name' + '}', name.to_s)
+                           .sub('{' + 'srcLang' + '}', src_lang.to_s)
+                           .sub('{' + 'resLang' + '}', res_lang.to_s)
 
       # query parameters
       query_params = {}
@@ -1893,6 +2138,150 @@ module AsposeHtml
                                                         :return_type => 'File')
       if @api_client.config.debug
         @api_client.config.logger.debug "API called: HtmlApi#get_detect_html_keywords_by_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+# Populate HTML document template with data located as a file in the storage.
+#
+# @param template_name Template document name. Template document is HTML or zipped HTML.
+# @param data_path Data source file path in the storage. Supported data format: XML
+# @param [Hash] opts the optional parameters
+# @option opts [String] :options Template merge options: reserved for further implementation.
+# @option opts [String] :folder The template document folder.
+# @option opts [String] :storage The template document and data source storage.
+# @return [File]
+    def get_merge_html_template(template_name, data_path, opts = {})
+      data, _status_code, _headers = get_merge_html_template_with_http_info(template_name, data_path, opts)
+      return {file: data, status: _status_code, headers: _headers}
+    end
+
+# Populate HTML document template with data located as a file in the storage.
+#
+# @param template_name Template document name. Template document is HTML or zipped HTML.
+# @param data_path Data source file path in the storage. Supported data format: XML
+# @param [Hash] opts the optional parameters
+# @option opts [String] :options Template merge options: reserved for further implementation.
+# @option opts [String] :folder The template document folder.
+# @option opts [String] :storage The template document and data source storage.
+# @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_merge_html_template_with_http_info(template_name, data_path, opts = {})
+      if @api_client.config.debug
+        @api_client.config.logger.debug "Calling API: TemplateMergeApi.get_merge_html_template ..."
+      end
+      # verify the required parameter 'template_name' is set
+      if @api_client.config.client_side_validation && template_name.nil?
+        fail ArgumentError, "Missing the required parameter 'template_name' when calling TemplateMergeApi.get_merge_html_template"
+      end
+      # verify the required parameter 'data_path' is set
+      if @api_client.config.client_side_validation && data_path.nil?
+        fail ArgumentError, "Missing the required parameter 'data_path' when calling TemplateMergeApi.get_merge_html_template"
+      end
+      # resource path
+      local_var_path = "/html/{templateName}/merge".sub('{' + 'templateName' + '}', template_name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'dataPath'] = data_path
+      query_params[:'options'] = opts[:'options'] if !opts[:'options'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+                                                        :header_params => header_params,
+                                                        :query_params => query_params,
+                                                        :form_params => form_params,
+                                                        :body => post_body,
+                                                        :return_type => 'File')
+      if @api_client.config.debug
+        @api_client.config.logger.debug "API called: TemplateMergeApi#get_merge_html_template\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+# Populate HTML document template with data from the request body. Result document will be saved to storage.
+#
+# @param template_name Template document name. Template document is HTML or zipped HTML.
+# @param out_path Result document path.
+# @param file A data file to populate template.
+# @param [Hash] opts the optional parameters
+# @option opts [String] :options Template merge options: reserved for further implementation.
+# @option opts [String] :folder The template document folder.
+# @option opts [String] :storage The template document and data source storage.
+# @return [File]
+    def put_merge_html_template(template_name, out_path, file, opts = {})
+      data, _status_code, _headers = put_merge_html_template_with_http_info(template_name, out_path, file, opts)
+      return {file: data, status: _status_code, headers: _headers}
+    end
+
+# Populate HTML document template with data from the request body. Result document will be saved to storage.
+#
+# @param template_name Template document name. Template document is HTML or zipped HTML.
+# @param out_path Result document path.
+# @param file A data file to populate template.
+# @param [Hash] opts the optional parameters
+# @option opts [String] :options Template merge options: reserved for further implementation.
+# @option opts [String] :folder The template document folder.
+# @option opts [String] :storage The template document and data source storage.
+# @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_merge_html_template_with_http_info(template_name, out_path, file, opts = {})
+      if @api_client.config.debug
+        @api_client.config.logger.debug "Calling API: TemplateMergeApi.put_merge_html_template ..."
+      end
+      # verify the required parameter 'template_name' is set
+      if @api_client.config.client_side_validation && template_name.nil?
+        fail ArgumentError, "Missing the required parameter 'template_name' when calling TemplateMergeApi.put_merge_html_template"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling TemplateMergeApi.put_merge_html_template"
+      end
+      # verify the required parameter 'file' is set
+      if @api_client.config.client_side_validation && file.nil?
+        fail ArgumentError, "Missing the required parameter 'file' when calling TemplateMergeApi.put_merge_html_template"
+      end
+      # resource path
+      local_var_path = "/html/{templateName}/merge".sub('{' + 'templateName' + '}', template_name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'options'] = opts[:'options'] if !opts[:'options'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = ::File.open(file, "rb").read
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        :header_params => header_params,
+                                                        :query_params => query_params,
+                                                        :form_params => form_params,
+                                                        :body => post_body,
+                                                        :return_type => 'File')
+      if @api_client.config.debug
+        @api_client.config.logger.debug "API called: TemplateMergeApi#put_merge_html_template\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

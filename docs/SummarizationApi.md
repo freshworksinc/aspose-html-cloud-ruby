@@ -48,7 +48,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| Document name. | 
+ **name** | **String**| Document name. | Html file in the storage.
  **folder** | **String**| Document folder. | [optional] 
  **storage** | **String**| Document storage. | [optional] 
 

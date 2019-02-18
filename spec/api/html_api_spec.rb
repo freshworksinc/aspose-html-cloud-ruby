@@ -347,8 +347,6 @@ describe 'Test html_api' do
 
       #Move to test folder
       save_to_test_dir(res, name)
-
-      expect(answer[:status]).to eql(200)
     end
   end
 
@@ -392,8 +390,6 @@ describe 'Test html_api' do
 
       #Move to test folder
       save_to_test_dir(res, name)
-
-      expect(answer[:status]).to eql(200)
     end
   end
 
@@ -437,8 +433,6 @@ describe 'Test html_api' do
 
       #Move to test folder
       save_to_test_dir(res, name)
-
-      expect(answer[:status]).to eql(200)
     end
   end
 
@@ -492,8 +486,6 @@ describe 'Test html_api' do
 
       #Move to test folder
       save_to_test_dir(res, result_name)
-
-      expect(answer[:status]).to eql(200)
     end
   end
 
@@ -543,8 +535,6 @@ describe 'Test html_api' do
 
       #Move to test folder
       save_to_test_dir(res, result_name)
-
-      expect(answer[:status]).to eql(200)
     end
   end
 
@@ -594,40 +584,153 @@ describe 'Test html_api' do
 
       #Move to test folder
       save_to_test_dir(res, result_name)
-
-      expect(answer[:status]).to eql(200)
     end
   end
 
-  #################################################
-  #            Document API
-  #################################################
-
-  # unit tests for get_document
-  # Return the HTML document by the name from default or specified storage.
+  # unit tests for get_convert_document_to_mhtml_by_url
   #
-  # @param name The document name.
+  # Converts the HTML page from Web by its URL to MHTML returns resulting file in response content.
+  # @param source_url Source page URL.
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :storage The document folder
-  # @option opts [String] :folder The document folder.
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
-  describe 'get_document test' do
-    it "Get html document" do
-      file_name = "test_get_doc.zip"
-      opts = {folder: "HtmlTestDoc", storage: nil}
+  describe 'get_convert_document_to_mhtml_by_url test' do
+    it "Convert url to mhtml" do
+      source_url = "https://www.yahoo.com"
+      opts = {}
 
-      # Upload file to server
-      res = upload_file(file_name)
-      expect(res.code).to eql(200)
-
-      answer = @instance.get_document(file_name, opts)
+      answer = @instance.get_convert_document_to_mhtml_by_url(source_url, opts)
 
       expect(answer).to be_an_instance_of Hash
       expect(answer[:file]).to be_an_instance_of File
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Get_document.zip")
+      save_to_test_dir(answer, "Convert_url.mht")
+    end
+  end
+
+  # unit tests for get_convert_document_to_markdown
+  # Converts the HTML document (located on storage) to Markdown and returns resulting file in response content.
+  # @param name Document name.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :use_git Use Git Markdown flavor to save ("true" or "false"). (default to "false")
+  # @option opts [String] :folder Source document folder.
+  # @option opts [String] :storage Source document storage.
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'get_convert_document_to_markdown test' do
+    it "Convert html to markdown" do
+      name = "test_md.html"
+      opts = {
+          use_git: "true",
+          folder: "HtmlTestDoc",
+          storage: nil
+      }
+
+      # Upload file to server
+      res = upload_file(name)
+      expect(res.code).to eql(200)
+
+      answer = @instance.get_convert_document_to_markdown(name, opts)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer, "get_convert_markdown.md")
+    end
+  end
+
+  # unit tests for put_convert_document_in_request_to_markdown
+  # Converts the HTML document (in request content) to Markdown and uploads resulting file to storage by specified path.
+  # @param out_path Full resulting file path in the storage (ex. /folder1/folder2/result.md)
+  # @param file A file to be converted.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :use_git Use Git Markdown flavor to save ("true" or "false"). (default to "false")
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'put_convert_document_in_request_to_markdown test' do
+    it "Upload and convert html to markdown" do
+      name = "putConvertInReqRuby.md"
+      out_path = "HtmlTestDoc/" + name
+      file = __dir__ + '/../../testdata/test_md.html'
+      opts = { use_git: "false" }
+
+      answer = @instance.put_convert_document_in_request_to_markdown(out_path, file, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file(name)
+
+      expect(res[:code]).to eql(200)
+      expect(res[:status]).to eql("OK")
+      expect(res[:file]).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, name)
+    end
+  end
+
+  # unit tests for put_convert_document_to_markdown
+  # Converts the HTML document (located on storage) to Markdown and uploads resulting file to storage by specified path.
+  # @param name Document name.
+  # @param out_path Full resulting file path in the storage (ex. /folder1/folder2/result.md)
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :use_git Use Git Markdown flavor to save ("true" or "false"). (default to "false")
+  # @option opts [String] :folder The source document folder.
+  # @option opts [String] :storage The source and resulting document storage.
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'put_convert_document_to_markdown test' do
+    it "Convert html to markdown and save result in the storage" do
+
+      # Already in the storage
+      name = "test_md.html"
+      result_name = "putConvertRuby.md"
+      out_path = "HtmlTestDoc/" + result_name
+      opts = {
+          use_git: "true",
+          folder: "HtmlTestDoc",
+          storage: nil
+      }
+
+      answer = @instance.put_convert_document_to_markdown(name, out_path, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file(result_name)
+
+      expect(res[:code]).to eql(200)
+      expect(res[:status]).to eql("OK")
+      expect(res[:file]).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, result_name)
+    end
+  end
+
+
+  #################################################
+  #            Document API
+  #################################################
+
+  # unit tests for document_get_document_by_url
+  # Return all HTML page with linked resources packaged as a ZIP archive by the source page URL.
+  #
+  # @param source_url Source page URL.
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'get_document_by_url test' do
+    it "Get document and all linked resources from url" do
+
+      source_url = "https://lenta.ru/"
+      answer = @instance.get_document_by_url(source_url)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer, "Get_site_from_url.zip")
     end
   end
 
@@ -968,4 +1071,69 @@ describe 'Test html_api' do
     end
   end
 
+    # unit tests for get_merge_html_template
+    # Populate HTML document template with data located as a file in the storage.
+    #
+    # @param template_name Template document name. Template document is HTML or zipped HTML.
+    # @param data_path Data source file path in the storage. Supported data format: XML
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :options Template merge options: reserved for further implementation.
+    # @option opts [String] :folder The template document folder.
+    # @option opts [String] :storage The template document and data source storage.
+    # @return [File]
+  describe 'get_merge_html_template test' do
+    it "Get merge template" do
+      template_name = "HtmlTemplate.html";
+      data_name = "XmlSourceData.xml";
+      folder = "HtmlTestDoc"
+      opts = {storage: nil, folder: folder}
+      data_path = folder + "/" + data_name
+      # Upload template file to server
+      res = upload_file(template_name)
+      expect(res.code).to eql(200)
+
+      # Upload data file to server
+      res = upload_file(data_name)
+      expect(res.code).to eql(200)
+
+      opts = {options:"", folder:"HtmlTestDoc", storage: nil}
+      answer = @instance.get_merge_html_template(template_name, data_path, opts)
+      save_to_test_dir(answer, "GetTemplateMergeRuby.html")
+    end
+  end
+
+    # unit tests for put_merge_html_template
+    # Populate HTML document template with data from the request body. Result document will be saved to storage.
+    #
+    # @param template_name Template document name. Template document is HTML or zipped HTML.
+    # @param out_path Result document path.
+    # @param file A data file to populate template.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :options Template merge options: reserved for further implementation.
+    # @option opts [String] :folder The template document folder.
+    # @option opts [String] :storage The template document and data source storage.
+    # @return [File]
+  describe 'put_merge_html_template test' do
+    it "Put merge template" do
+      result_name = "PutTemplateMergeRuby.html"
+      template_name = "HtmlTemplate.html";
+      data_name = "XmlSourceData.xml";
+      folder = "HtmlTestDoc"
+      opts = {options:"", folder:"HtmlTestDoc", storage: nil}
+      out_path = folder + "/" + result_name
+      file = __dir__ + '/../../testdata/' + data_name
+      answer = @instance.put_merge_html_template(template_name, out_path, file, opts)
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file(result_name)
+
+      expect(res[:code]).to eql(200)
+      expect(res[:status]).to eql("OK")
+      expect(res[:file]).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, result_name)
+    end
+  end
 end
