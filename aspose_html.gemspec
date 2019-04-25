@@ -28,11 +28,10 @@
 =end
 
 $:.push File.expand_path("../lib", __FILE__)
-require "aspose_html/version"
 
 Gem::Specification.new do |s|
   s.name        = "aspose_html"
-  s.version     = AsposeHtml::VERSION
+  s.version     = "1.0.2"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Aspose"]
   s.homepage    = "https://www.aspose.com"

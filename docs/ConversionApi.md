@@ -52,8 +52,7 @@ opts = {
   right_margin: 10, # Integer | Right resulting image margin.
   top_margin: 10, # Integer | Top resulting image margin.
   bottom_margin: 10, # Integer | Bottom resulting image margin.
-  x_resolution: 300, # Integer | Horizontal resolution of resulting image.
-  y_resolution: 300, # Integer | Vertical resolution of resulting image.
+  resolution: 300, # Integer | Resolution of resulting image.
   folder: "folder_example", # String | The source document folder.
   storage: "storage_example" # String | The source document storage.
 }
@@ -71,16 +70,15 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| Document name. | 
- **out_format** | **String**| Resulting image format. | 
+ **name** | **String**| Document name. | html, epub, svg formats
+ **out_format** | **String**| Resulting image format. | jpeg, png, bmp, tiff
  **width** | **Integer**| Resulting image width.  | [optional] 
  **height** | **Integer**| Resulting image height.  | [optional] 
  **left_margin** | **Integer**| Left resulting image margin. | [optional] 
  **right_margin** | **Integer**| Right resulting image margin. | [optional] 
  **top_margin** | **Integer**| Top resulting image margin. | [optional] 
  **bottom_margin** | **Integer**| Bottom resulting image margin. | [optional] 
- **x_resolution** | **Integer**| Horizontal resolution of resulting image. | [optional] 
- **y_resolution** | **Integer**| Vertical resolution of resulting image. | [optional] 
+ **resolution** | **Integer**| Resolution of resulting image. | [optional] 
  **folder** | **String**| The source document folder. | [optional] 
  **storage** | **String**| The source document storage. | [optional] 
 
@@ -125,8 +123,7 @@ opts = {
   right_margin: 40, # Integer | Right resulting image margin.
   top_margin: 50, # Integer | Top resulting image margin.
   bottom_margin: 50, # Integer | Bottom resulting image margin.
-  x_resolution: 150, # Integer | Horizontal resolution of resulting image.
-  y_resolution: 150, # Integer | Vertical resolution of resulting image.
+  resolution: 150, # Integer | Resolution of resulting image.
   folder: "remote_folder", # String | The document folder.
   storage: "remote_storage" # String | The document storage.
 }
@@ -145,15 +142,14 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **source_url** | **String**| Source page URL. | 
- **out_format** | **String**| Resulting image format. | 
+ **out_format** | **String**| Resulting image format. | jpeg, png, bmp, tiff
  **width** | **Integer**| Resulting image width.  | [optional] 
  **height** | **Integer**| Resulting image height.  | [optional] 
  **left_margin** | **Integer**| Left resulting image margin. | [optional] 
  **right_margin** | **Integer**| Right resulting image margin. | [optional] 
  **top_margin** | **Integer**| Top resulting image margin. | [optional] 
  **bottom_margin** | **Integer**| Bottom resulting image margin. | [optional] 
- **x_resolution** | **Integer**| Horizontal resolution of resulting image. | [optional] 
- **y_resolution** | **Integer**| Vertical resolution of resulting image. | [optional] 
+ **resolution** | **Integer**| Resolution of resulting image. | [optional] 
  **folder** | **String**| The document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
 
@@ -213,7 +209,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| Document name. | 
+ **name** | **String**| Document name. | html, epub, svg formats
  **width** | **Integer**| Resulting image width.  | [optional] 
  **height** | **Integer**| Resulting image height.  | [optional] 
  **left_margin** | **Integer**| Left resulting image margin. | [optional] 
@@ -344,7 +340,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| Document name. | 
+ **name** | **String**| Document name. | html, epub, svg formats
  **width** | **Integer**| Resulting image width.  | [optional] 
  **height** | **Integer**| Resulting image height.  | [optional] 
  **left_margin** | **Integer**| Left resulting image margin. | [optional] 
@@ -480,7 +476,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **out_path** | **String**| Full resulting filename (ex. /folder1/folder2/result.jpg) | 
- **out_format** | **String**|  | 
+ **out_format** | **String**|  | jpeg, png, bmp, tiff
  **file** | **String**| Path to local file. | 
  **width** | **Integer**| Resulting document page width in points (1/96 inch). | [optional] 
  **height** | **Integer**| Resulting document page height in points (1/96 inch). | [optional] 
@@ -546,7 +542,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **out_path** | **String**| Full resulting filename (ex. /folder1/folder2/result.pdf) | 
- **file** | **String**| A file to be converted. | 
+ **file** | **String**| A file to be converted. | html, epub, svg formats
  **width** | **Integer**| Resulting document page width in points (1/96 inch). | [optional] 
  **height** | **Integer**| Resulting document page height in points (1/96 inch). | [optional] 
  **left_margin** | **Integer**| Left resulting document page margin in points (1/96 inch). | [optional] 
@@ -611,7 +607,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **out_path** | **String**| Full resulting filename (ex. /folder1/folder2/result.xps) | 
- **file** | **String**| A file to be converted. | 
+ **file** | **String**| A file to be converted. | html, epub, svg formats
  **width** | **Integer**| Resulting document page width in points (1/96 inch). | [optional] 
  **height** | **Integer**| Resulting document page height in points (1/96 inch). | [optional] 
  **left_margin** | **Integer**| Left resulting document page margin in points (1/96 inch). | [optional] 
@@ -661,7 +657,7 @@ opts = {
   right_margin: 10, # Integer | Right resulting document page margin in points (1/96 inch).
   top_margin: 10, # Integer | Top resulting document page margin in points (1/96 inch).
   bottom_margin: 10, # Integer | Bottom resulting document page margin in points (1/96 inch).
-  resolution: 10, # Integer | Resolution of resulting image. Default is 96 dpi.
+  resolution: 100, # Integer | Resolution of resulting image. Default is 96 dpi.
   folder: "folder_example", # String | The source document folder.
   storage: "storage_example" # String | The source and resulting document storage.
 }
@@ -679,9 +675,9 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| Document name. | 
+ **name** | **String**| Document name. | html, epub, svg formats
  **out_path** | **String**| Full resulting filename (ex. /folder1/folder2/result.jpg) | 
- **out_format** | **String**|  | 
+ **out_format** | **String**|  | jpeg, png, bmp, tiff
  **width** | **Integer**| Resulting document page width in points (1/96 inch). | [optional] 
  **height** | **Integer**| Resulting document page height in points (1/96 inch). | [optional] 
  **left_margin** | **Integer**| Left resulting document page margin in points (1/96 inch). | [optional] 
@@ -750,7 +746,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| Document name. | 
+ **name** | **String**| Document name. | html, epub, svg formats
  **out_path** | **String**| Full resulting filename (ex. /folder1/folder2/result.pdf) | 
  **width** | **Integer**| Resulting document page width in points (1/96 inch). | [optional] 
  **height** | **Integer**| Resulting document page height in points (1/96 inch). | [optional] 
@@ -819,7 +815,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| Document name. | 
+ **name** | **String**| Document name. | html, epub, svg formats
  **out_path** | **String**| Full resulting filename (ex. /folder1/folder2/result.xps) | 
  **width** | **Integer**| Resulting document page width in points (1/96 inch). | [optional] 
  **height** | **Integer**| Resulting document page height in points (1/96 inch). | [optional] 

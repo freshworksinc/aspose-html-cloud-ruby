@@ -45,11 +45,11 @@ describe 'Test html_api' do
   #            Conversion API
   #################################################
 
-  # unit tests for get_convert_document_to_image
+  # unit tests for get_convert_document_to_image from html format
   # Convert the HTML document from the storage by its name to the specified image format.
   #
   # @param name Document name.
-  # @param out_format Resulting image format.
+  # @param out_format Resulting image format (jpeg, png, bmp, tiff).
   # @param [Hash] opts the optional parameters
   # @option opts [Integer] :width Resulting image width.
   # @option opts [Integer] :height Resulting image height.
@@ -57,12 +57,11 @@ describe 'Test html_api' do
   # @option opts [Integer] :right_margin Right resulting image margin.
   # @option opts [Integer] :top_margin Top resulting image margin.
   # @option opts [Integer] :bottom_margin Bottom resulting image margin.
-  # @option opts [Integer] :x_resolution Horizontal resolution of resulting image.
-  # @option opts [Integer] :y_resolution Vertical resolution of resulting image.
+  # @option opts [Integer] :resolution Resolution of resulting image.
   # @option opts [String] :folder The source document folder.
   # @option opts [String] :storage The source document storage.
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
-  describe 'get_convert_document_to_image test' do
+  describe 'get_convert_html_to_image test' do
     it "Convert html to bmp" do
       name = "test1.html"
       out_format = "bmp"
@@ -73,8 +72,7 @@ describe 'Test html_api' do
           right_margin: 30,
           top_margin: 50,
           bottom_margin: 50,
-          x_resolution: 300,
-          y_resolution: 300,
+          resolution: 300,
           folder: "HtmlTestDoc",
           storage: nil
       }
@@ -90,7 +88,101 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Convert_html.bmp")
+      save_to_test_dir(answer, "Convert_get_html.bmp")
+    end
+  end
+
+  # unit tests for get_convert_document_to_image from epub format
+  # Convert the EPUB document from the storage by its name to the specified image format.
+  #
+  # @param name Document name.
+  # @param out_format Resulting image format (jpeg, png, bmp, tiff).
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :width Resulting image width.
+  # @option opts [Integer] :height Resulting image height.
+  # @option opts [Integer] :left_margin Left resulting image margin.
+  # @option opts [Integer] :right_margin Right resulting image margin.
+  # @option opts [Integer] :top_margin Top resulting image margin.
+  # @option opts [Integer] :bottom_margin Bottom resulting image margin.
+  # @option opts [Integer] :resolution Resolution of resulting image.
+  # @option opts [String] :folder The source document folder.
+  # @option opts [String] :storage The source document storage.
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'get_convert_epub_to_image test' do
+    it "Convert epub to jpeg" do
+      name = "georgia.epub"
+      out_format = "jpeg"
+      opts = {
+          width: 800,
+          height: 1000,
+          left_margin: 30,
+          right_margin: 30,
+          top_margin: 50,
+          bottom_margin: 50,
+          resolution: 300,
+          folder: "HtmlTestDoc",
+          storage: nil
+      }
+
+      # Upload file to server
+      res = upload_file(name)
+      expect(res.code).to eql(200)
+
+      answer = @instance.get_convert_document_to_image(name, out_format, opts)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer, "Convert_get_epub.jpeg")
+    end
+  end
+
+  # unit tests for get_convert_document_to_image from svg format
+  # Convert the SVG document from the storage by its name to the specified image format.
+  #
+  # @param name Document name.
+  # @param out_format Resulting image format (jpeg, png, bmp, tiff).
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :width Resulting image width.
+  # @option opts [Integer] :height Resulting image height.
+  # @option opts [Integer] :left_margin Left resulting image margin.
+  # @option opts [Integer] :right_margin Right resulting image margin.
+  # @option opts [Integer] :top_margin Top resulting image margin.
+  # @option opts [Integer] :bottom_margin Bottom resulting image margin.
+  # @option opts [Integer] :resolution Resolution of resulting image.
+  # @option opts [String] :folder The source document folder.
+  # @option opts [String] :storage The source document storage.
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'get_convert_svg_to_image test' do
+    it "Convert svg to png" do
+      name = "Map-World.svg"
+      out_format = "png"
+      opts = {
+          width: 800,
+          height: 1000,
+          left_margin: 30,
+          right_margin: 30,
+          top_margin: 50,
+          bottom_margin: 50,
+          resolution: 300,
+          folder: "HtmlTestDoc",
+          storage: nil
+      }
+
+      # Upload file to server
+      res = upload_file(name)
+      expect(res.code).to eql(200)
+
+      answer = @instance.get_convert_document_to_image(name, out_format, opts)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer, "Convert_get_svg.png")
     end
   end
 
@@ -106,12 +198,11 @@ describe 'Test html_api' do
   # @option opts [Integer] :right_margin Right resulting image margin.
   # @option opts [Integer] :top_margin Top resulting image margin.
   # @option opts [Integer] :bottom_margin Bottom resulting image margin.
-  # @option opts [Integer] :x_resolution Horizontal resolution of resulting image.
-  # @option opts [Integer] :y_resolution Vertical resolution of resulting image.
+  # @option opts [Integer] :resolution Resolution of resulting image.
   # @option opts [String] :folder The document folder.
   # @option opts [String] :storage The document storage.
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
-  describe 'get_convert_document_to_image_by_url test' do
+  describe 'get_convert_html_to_image_by_url test' do
     it "Convert url to png" do
       source_url = "https://stallman.org/articles/anonymous-payments-thru-phones.html"
       out_format = "png"
@@ -122,8 +213,7 @@ describe 'Test html_api' do
           right_margin: 30,
           top_margin: 50,
           bottom_margin: 50,
-          x_resolution: 300,
-          y_resolution: 300,
+          resolution: 300,
           folder: "HtmlTestDoc",
           storage: nil
       }
@@ -135,11 +225,11 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Convert_url.png")
+      save_to_test_dir(answer, "Convert_get_url.png")
     end
   end
 
-  # unit tests for get_convert_document_to_pdf
+  # unit tests for get_convert_document_to_pdf from html format
   # Convert the HTML document from the storage by its name to PDF.
   #
   # @param name Document name.
@@ -153,8 +243,8 @@ describe 'Test html_api' do
   # @option opts [String] :folder The document folder.
   # @option opts [String] :storage The document storage.
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
-  describe 'get_convert_document_to_pdf test' do
-    it "Convert doc to pdf" do
+  describe 'get_convert_html_to_pdf test' do
+    it "Convert html to pdf" do
       name = "test1.html"
       opts = {
           width: 800,
@@ -178,7 +268,93 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Convert_html.pdf")
+      save_to_test_dir(answer, "Convert_get_html.pdf")
+    end
+  end
+
+  # unit tests for get_convert_document_to_pdf from epub format
+  # Convert the EPUB document from the storage by its name to PDF.
+  #
+  # @param name Document name.
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :width Resulting image width.
+  # @option opts [Integer] :height Resulting image height.
+  # @option opts [Integer] :left_margin Left resulting image margin.
+  # @option opts [Integer] :right_margin Right resulting image margin.
+  # @option opts [Integer] :top_margin Top resulting image margin.
+  # @option opts [Integer] :bottom_margin Bottom resulting image margin.
+  # @option opts [String] :folder The document folder.
+  # @option opts [String] :storage The document storage.
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'get_convert_epub_to_pdf test' do
+    it "Convert epub to pdf" do
+      name = "georgia.epub"
+      opts = {
+          width: 800,
+          height: 1000,
+          left_margin: 30,
+          right_margin: 30,
+          top_margin: 50,
+          bottom_margin: 50,
+          folder: "HtmlTestDoc",
+          storage: nil
+      }
+
+      # Upload file to server
+      res = upload_file(name)
+      expect(res.code).to eql(200)
+
+      answer = @instance.get_convert_document_to_pdf(name, opts)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer, "Convert_get_epub.pdf")
+    end
+  end
+
+  # unit tests for get_convert_document_to_pdf from svg format
+  # Convert the SVG document from the storage by its name to PDF.
+  #
+  # @param name Document name.
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :width Resulting image width.
+  # @option opts [Integer] :height Resulting image height.
+  # @option opts [Integer] :left_margin Left resulting image margin.
+  # @option opts [Integer] :right_margin Right resulting image margin.
+  # @option opts [Integer] :top_margin Top resulting image margin.
+  # @option opts [Integer] :bottom_margin Bottom resulting image margin.
+  # @option opts [String] :folder The document folder.
+  # @option opts [String] :storage The document storage.
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'get_convert_svg_to_pdf test' do
+    it "Convert svg to pdf" do
+      name = "Map-World.svg"
+      opts = {
+          width: 800,
+          height: 1000,
+          left_margin: 30,
+          right_margin: 30,
+          top_margin: 50,
+          bottom_margin: 50,
+          folder: "HtmlTestDoc",
+          storage: nil
+      }
+
+      # Upload file to server
+      res = upload_file(name)
+      expect(res.code).to eql(200)
+
+      answer = @instance.get_convert_document_to_pdf(name, opts)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer, "Convert_get_svg.pdf")
     end
   end
 
@@ -196,7 +372,7 @@ describe 'Test html_api' do
   # @option opts [String] :folder The document folder.
   # @option opts [String] :storage The document storage.
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
-  describe 'get_convert_document_to_pdf_by_url test' do
+  describe 'get_convert_html_to_pdf_by_url test' do
     it "Convert url to pdf" do
       source_url = "https://stallman.org/articles/anonymous-payments-thru-phones.html"
       opts = {
@@ -217,11 +393,11 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Convert_url.pdf")
+      save_to_test_dir(answer, "Convert_get_url.pdf")
     end
   end
 
-  # unit tests for get_convert_document_to_xps
+  # unit tests for get_convert_document_to_xps from html format
   # Convert the HTML document from the storage by its name to XPS.
   #
   # @param name Document name.
@@ -235,8 +411,8 @@ describe 'Test html_api' do
   # @option opts [String] :folder The document folder.
   # @option opts [String] :storage The document storage.
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
-  describe 'get_convert_document_to_xps test' do
-    it "Convert document to xps" do
+  describe 'get_convert_html_to_xps test' do
+    it "Convert html to xps" do
       name = "test1.html"
       opts = {
           width: 800,
@@ -260,7 +436,93 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Convert_html.xps")
+      save_to_test_dir(answer, "Convert_get_html.xps")
+    end
+  end
+
+  # unit tests for get_convert_document_to_xps from epub format
+  # Convert the EPUB document from the storage by its name to XPS.
+  #
+  # @param name Document name.
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :width Resulting image width.
+  # @option opts [Integer] :height Resulting image height.
+  # @option opts [Integer] :left_margin Left resulting image margin.
+  # @option opts [Integer] :right_margin Right resulting image margin.
+  # @option opts [Integer] :top_margin Top resulting image margin.
+  # @option opts [Integer] :bottom_margin Bottom resulting image margin.
+  # @option opts [String] :folder The document folder.
+  # @option opts [String] :storage The document storage.
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'get_convert_epub_to_xps test' do
+    it "Convert epnb to xps" do
+      name = "georgia.epub"
+      opts = {
+          width: 800,
+          height: 1000,
+          left_margin: 30,
+          right_margin: 30,
+          top_margin: 50,
+          bottom_margin: 50,
+          folder: "HtmlTestDoc",
+          storage: nil
+      }
+
+      # Upload file to server
+      res = upload_file(name)
+      expect(res.code).to eql(200)
+
+      answer = @instance.get_convert_document_to_xps(name, opts)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer, "Convert_get_epub.xps")
+    end
+  end
+
+  # unit tests for get_convert_document_to_xps from svg format
+  # Convert the SVG document from the storage by its name to XPS.
+  #
+  # @param name Document name.
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :width Resulting image width.
+  # @option opts [Integer] :height Resulting image height.
+  # @option opts [Integer] :left_margin Left resulting image margin.
+  # @option opts [Integer] :right_margin Right resulting image margin.
+  # @option opts [Integer] :top_margin Top resulting image margin.
+  # @option opts [Integer] :bottom_margin Bottom resulting image margin.
+  # @option opts [String] :folder The document folder.
+  # @option opts [String] :storage The document storage.
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'get_convert_svg_to_xps test' do
+    it "Convert svg to xps" do
+      name = "Map-World.svg"
+      opts = {
+          width: 800,
+          height: 1000,
+          left_margin: 30,
+          right_margin: 30,
+          top_margin: 50,
+          bottom_margin: 50,
+          folder: "HtmlTestDoc",
+          storage: nil
+      }
+
+      # Upload file to server
+      res = upload_file(name)
+      expect(res.code).to eql(200)
+
+      answer = @instance.get_convert_document_to_xps(name, opts)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer, "Convert_get_svg.xps")
     end
   end
 
@@ -299,16 +561,16 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Convert_url.xps")
+      save_to_test_dir(answer, "Convert_html_url.xps")
     end
   end
 
-  # unit tests for put_convert_document_in_request_to_image
+  # unit tests for put_convert_document_in_request_to_image from html format
   # Converts the HTML document (in request content) to the specified image format and uploads resulting file to storage.
   #
   # @param out_path Full resulting filename (ex. /folder1/folder2/result.jpg)
-  # @param out_format
-  # @param file A file to be converted.
+  # @param out_format (jpeg, png, bmp, tiff).
+  # @param file A file to be converted (html, epub, svg).
   # @param [Hash] opts the optional parameters
   # @option opts [Integer] :width Resulting document page width in points (1/96 inch).
   # @option opts [Integer] :height Resulting document page height in points (1/96 inch).
@@ -318,10 +580,10 @@ describe 'Test html_api' do
   # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
   # @option opts [Integer] :resolution Resolution of resulting image. Default is 96 dpi.
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
-  describe 'put_convert_document_in_request_to_image test' do
+  describe 'put_convert_html_in_request_to_image test' do
     it "Upload and convert html to png" do
-      name = "putTest.png"
-      out_path = "HtmlTestDoc/putTest.png"
+      name = "putHtmlToPngInReq.png"
+      out_path = "HtmlTestDoc/" + name
       out_format = "png"
       file = __dir__ + '/../../testdata/test1.html'
       opts = {
@@ -350,7 +612,101 @@ describe 'Test html_api' do
     end
   end
 
-  # unit tests for put_convert_document_in_request_to_pdf
+  # unit tests for put_convert_document_in_request_to_image from epub format
+  # Converts the EPUB document (in request content) to the specified image format and uploads resulting file to storage.
+  #
+  # @param out_path Full resulting filename (ex. /folder1/folder2/result.jpg)
+  # @param out_format (jpeg, png, bmp, tiff).
+  # @param file A file to be converted (html, epub, svg).
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :width Resulting document page width in points (1/96 inch).
+  # @option opts [Integer] :height Resulting document page height in points (1/96 inch).
+  # @option opts [Integer] :left_margin Left resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :resolution Resolution of resulting image. Default is 96 dpi.
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'put_convert_epub_in_request_to_image test' do
+    it "Upload and convert epub to tiff" do
+      name = "putEpubToTiffInReq.tiff"
+      out_path = "HtmlTestDoc/" + name
+      out_format = "tiff"
+      file = __dir__ + '/../../testdata/georgia.epub'
+      opts = {
+          width: 800,
+          height: 1000,
+          left_margin: 30,
+          right_margin: 30,
+          top_margin: 50,
+          bottom_margin: 50,
+          resolution: 300
+      }
+
+      answer = @instance.put_convert_document_in_request_to_image(out_path, out_format, file, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file(name)
+
+      expect(res[:code]).to eql(200)
+      expect(res[:status]).to eql("OK")
+      expect(res[:file]).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, name)
+    end
+  end
+
+  # unit tests for put_convert_document_in_request_to_image from svg format
+  # Converts the SVG document (in request content) to the specified image format and uploads resulting file to storage.
+  #
+  # @param out_path Full resulting filename (ex. /folder1/folder2/result.jpg)
+  # @param out_format (jpeg, png, bmp, tiff).
+  # @param file A file to be converted (html, epub, svg).
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :width Resulting document page width in points (1/96 inch).
+  # @option opts [Integer] :height Resulting document page height in points (1/96 inch).
+  # @option opts [Integer] :left_margin Left resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :resolution Resolution of resulting image. Default is 96 dpi.
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'put_convert_svg_in_request_to_image test' do
+    it "Upload and convert svg to png" do
+      name = "putSvgToPngInReq.png"
+      out_path = "HtmlTestDoc/" + name
+      out_format = "png"
+      file = __dir__ + '/../../testdata/Map-World.svg'
+      opts = {
+          width: 800,
+          height: 1000,
+          left_margin: 30,
+          right_margin: 30,
+          top_margin: 50,
+          bottom_margin: 50,
+          resolution: 300
+      }
+
+      answer = @instance.put_convert_document_in_request_to_image(out_path, out_format, file, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file(name)
+
+      expect(res[:code]).to eql(200)
+      expect(res[:status]).to eql("OK")
+      expect(res[:file]).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, name)
+    end
+  end
+
+  # unit tests for put_convert_document_in_request_to_pdf from html format
   # Converts the HTML document (in request content) to PDF and uploads resulting file to storage.
   #
   # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
@@ -363,10 +719,10 @@ describe 'Test html_api' do
   # @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
   # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
-  describe 'put_convert_document_in_request_to_pdf test' do
+  describe 'put_convert_html_in_request_to_pdf test' do
     it "Upload and convert html to pdf" do
-      name = "putTest.pdf"
-      out_path = "HtmlTestDoc/putTest.pdf"
+      name = "putHtmlToPdfInReq.pdf"
+      out_path = "HtmlTestDoc/" + name
       file = __dir__ + '/../../testdata/test1.html'
       opts = {
           width: 800,
@@ -393,7 +749,93 @@ describe 'Test html_api' do
     end
   end
 
-  # unit tests for put_convert_document_in_request_to_xps
+  # unit tests for put_convert_document_in_request_to_pdf from epub format
+  # Converts the EPUB document (in request content) to PDF and uploads resulting file to storage.
+  #
+  # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
+  # @param file A file to be converted.
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :width Resulting document page width in points (1/96 inch).
+  # @option opts [Integer] :height Resulting document page height in points (1/96 inch).
+  # @option opts [Integer] :left_margin Left resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'put_convert_epub_in_request_to_pdf test' do
+    it "Upload and convert epub to pdf" do
+      name = "putEpubToPdfInReq.pdf"
+      out_path = "HtmlTestDoc/" + name
+      file = __dir__ + '/../../testdata/georgia.epub'
+      opts = {
+          width: 800,
+          height: 1000,
+          left_margin: 30,
+          right_margin: 30,
+          top_margin: 50,
+          bottom_margin: 50
+      }
+
+      answer = @instance.put_convert_document_in_request_to_pdf(out_path, file, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file(name)
+
+      expect(res[:code]).to eql(200)
+      expect(res[:status]).to eql("OK")
+      expect(res[:file]).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, name)
+    end
+  end
+
+  # unit tests for put_convert_document_in_request_to_pdf from svg format
+  # Converts the SVG document (in request content) to PDF and uploads resulting file to storage.
+  #
+  # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
+  # @param file A file to be converted.
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :width Resulting document page width in points (1/96 inch).
+  # @option opts [Integer] :height Resulting document page height in points (1/96 inch).
+  # @option opts [Integer] :left_margin Left resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'put_convert_svg_in_request_to_pdf test' do
+    it "Upload and convert svg to pdf" do
+      name = "putSvgToPdfInReq.pdf"
+      out_path = "HtmlTestDoc/" + name
+      file = __dir__ + '/../../testdata/Map-World.svg'
+      opts = {
+          width: 800,
+          height: 1000,
+          left_margin: 30,
+          right_margin: 30,
+          top_margin: 50,
+          bottom_margin: 50
+      }
+
+      answer = @instance.put_convert_document_in_request_to_pdf(out_path, file, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file(name)
+
+      expect(res[:code]).to eql(200)
+      expect(res[:status]).to eql("OK")
+      expect(res[:file]).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, name)
+    end
+  end
+
+  # unit tests for put_convert_document_in_request_to_xps from html format
   # Converts the HTML document (in request content) to XPS and uploads resulting file to storage.
   #
   # @param out_path Full resulting filename (ex. /folder1/folder2/result.xps)
@@ -406,10 +848,10 @@ describe 'Test html_api' do
   # @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
   # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
-  describe 'put_convert_document_in_request_to_xps test' do
+  describe 'put_convert_html_in_request_to_xps test' do
     it "Upload and convert html to xps" do
-      name = "putTest.xps"
-      out_path = "HtmlTestDoc/putTest.xps"
+      name = "putHtmlToXpsInReq.xps"
+      out_path = "HtmlTestDoc/" + name
       file = __dir__ + '/../../testdata/test1.html'
       opts = {
           width: 800,
@@ -436,12 +878,98 @@ describe 'Test html_api' do
     end
   end
 
-  # unit tests for put_convert_document_to_image
+  # unit tests for put_convert_document_in_request_to_xps from epub format
+  # Converts the EPUB document (in request content) to XPS and uploads resulting file to storage.
+  #
+  # @param out_path Full resulting filename (ex. /folder1/folder2/result.xps)
+  # @param file A file to be converted.
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :width Resulting document page width in points (1/96 inch).
+  # @option opts [Integer] :height Resulting document page height in points (1/96 inch).
+  # @option opts [Integer] :left_margin Left resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'put_convert_epub_in_request_to_xps test' do
+    it "Upload and convert epub to xps" do
+      name = "putEpubToXpsInReq.xps"
+      out_path = "HtmlTestDoc/" + name
+      file = __dir__ + '/../../testdata/georgia.epub'
+      opts = {
+          width: 800,
+          height: 1000,
+          left_margin: 30,
+          right_margin: 30,
+          top_margin: 50,
+          bottom_margin: 50
+      }
+
+      answer = @instance.put_convert_document_in_request_to_xps(out_path, file, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file(name)
+
+      expect(res[:code]).to eql(200)
+      expect(res[:status]).to eql("OK")
+      expect(res[:file]).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, name)
+    end
+  end
+
+  # unit tests for put_convert_document_in_request_to_xps from svg format
+  # Converts the SVG document (in request content) to XPS and uploads resulting file to storage.
+  #
+  # @param out_path Full resulting filename (ex. /folder1/folder2/result.xps)
+  # @param file A file to be converted.
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :width Resulting document page width in points (1/96 inch).
+  # @option opts [Integer] :height Resulting document page height in points (1/96 inch).
+  # @option opts [Integer] :left_margin Left resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'put_convert_svg_in_request_to_xps test' do
+    it "Upload and convert svg to xps" do
+      name = "putSvgToXpsInReq.xps"
+      out_path = "HtmlTestDoc/" + name
+      file = __dir__ + '/../../testdata/Map-World.svg'
+      opts = {
+          width: 800,
+          height: 1000,
+          left_margin: 30,
+          right_margin: 30,
+          top_margin: 50,
+          bottom_margin: 50
+      }
+
+      answer = @instance.put_convert_document_in_request_to_xps(out_path, file, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file(name)
+
+      expect(res[:code]).to eql(200)
+      expect(res[:status]).to eql("OK")
+      expect(res[:file]).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, name)
+    end
+  end
+
+  # unit tests for put_convert_document_to_image from html format
   # Converts the HTML document (located on storage) to the specified image format and uploads resulting file to storage.
   #
   # @param name Document name.
   # @param out_path Full resulting filename (ex. /folder1/folder2/result.jpg)
-  # @param out_format
+  # @param out_format (jpeg, png, bmp, tiff)
   # @param [Hash] opts the optional parameters
   # @option opts [Integer] :width Resulting document page width in points (1/96 inch).
   # @option opts [Integer] :height Resulting document page height in points (1/96 inch).
@@ -453,13 +981,13 @@ describe 'Test html_api' do
   # @option opts [String] :folder The source document folder.
   # @option opts [String] :storage The source and resulting document storage.
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
-  describe 'put_convert_document_to_image test' do
+  describe 'put_convert_html_to_image test' do
     it "Convert html to tiff in storage" do
 
       # Already in the storage
       name = "test1.html"
-      result_name = "putTestDoc.tiff"
-      out_path = "HtmlTestDoc/putTestDoc.tiff"
+      result_name = "putHtmlToTiff.tiff"
+      out_path = "HtmlTestDoc/" + result_name
       out_format = "tiff"
       opts = {
           width: 800,
@@ -489,7 +1017,113 @@ describe 'Test html_api' do
     end
   end
 
-  # unit tests for put_convert_document_to_pdf
+  # unit tests for put_convert_document_to_image from epub format
+  # Converts the EPUB document (located on storage) to the specified image format and uploads resulting file to storage.
+  #
+  # @param name Document name.
+  # @param out_path Full resulting filename (ex. /folder1/folder2/result.jpg)
+  # @param out_format (jpeg, png, bmp, tiff)
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :width Resulting document page width in points (1/96 inch).
+  # @option opts [Integer] :height Resulting document page height in points (1/96 inch).
+  # @option opts [Integer] :left_margin Left resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :resolution Resolution of resulting image. Default is 96 dpi.
+  # @option opts [String] :folder The source document folder.
+  # @option opts [String] :storage The source and resulting document storage.
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'put_convert_epub_to_image test' do
+    it "Convert epub to bmp in storage" do
+
+      # Already in the storage
+      name = "georgia.epub"
+      result_name = "putEpubToBmp.bmp"
+      out_path = "HtmlTestDoc/" + result_name
+      out_format = "bmp"
+      opts = {
+          width: 800,
+          height: 1000,
+          left_margin: 30,
+          right_margin: 30,
+          top_margin: 50,
+          bottom_margin: 50,
+          resolution: 300,
+          folder: "HtmlTestDoc",
+          storage: nil
+      }
+
+      answer = @instance.put_convert_document_to_image(name, out_path, out_format, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file(result_name)
+
+      expect(res[:code]).to eql(200)
+      expect(res[:status]).to eql("OK")
+      expect(res[:file]).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, result_name)
+    end
+  end
+
+  # unit tests for put_convert_document_to_image from svg format
+  # Converts the SVG document (located on storage) to the specified image format and uploads resulting file to storage.
+  #
+  # @param name Document name.
+  # @param out_path Full resulting filename (ex. /folder1/folder2/result.jpg)
+  # @param out_format (jpeg, png, bmp, tiff)
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :width Resulting document page width in points (1/96 inch).
+  # @option opts [Integer] :height Resulting document page height in points (1/96 inch).
+  # @option opts [Integer] :left_margin Left resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :resolution Resolution of resulting image. Default is 96 dpi.
+  # @option opts [String] :folder The source document folder.
+  # @option opts [String] :storage The source and resulting document storage.
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'put_convert_svg_to_image test' do
+    it "Convert svg to png in storage" do
+
+      # Already in the storage
+      name = "Map-World.svg"
+      result_name = "putSvgToPng.png"
+      out_path = "HtmlTestDoc/" + result_name
+      out_format = "png"
+      opts = {
+          width: 800,
+          height: 1000,
+          left_margin: 30,
+          right_margin: 30,
+          top_margin: 50,
+          bottom_margin: 50,
+          resolution: 300,
+          folder: "HtmlTestDoc",
+          storage: nil
+      }
+
+      answer = @instance.put_convert_document_to_image(name, out_path, out_format, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file(result_name)
+
+      expect(res[:code]).to eql(200)
+      expect(res[:status]).to eql("OK")
+      expect(res[:file]).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, result_name)
+    end
+  end
+
+  # unit tests for put_convert_document_to_pdf from html format
   # Converts the HTML document (located on storage) to PDF and uploads resulting file to storage.
   #
   # @param name Document name.
@@ -504,13 +1138,13 @@ describe 'Test html_api' do
   # @option opts [String] :folder The source document folder.
   # @option opts [String] :storage The source and resulting document storage.
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
-  describe 'put_convert_document_to_pdf test' do
+  describe 'put_convert_html_to_pdf test' do
     it "Convert html to pdf in storage" do
 
       # Already in the storage
       name = "test1.html"
-      result_name = "putTestDoc.pdf"
-      out_path = "HtmlTestDoc/putTestDoc.pdf"
+      result_name = "putHtmlToPdf.pdf"
+      out_path = "HtmlTestDoc/" + result_name
       opts = {
           width: 800,
           height: 1000,
@@ -538,7 +1172,105 @@ describe 'Test html_api' do
     end
   end
 
-  # unit tests for put_convert_document_to_xps
+  # unit tests for put_convert_document_to_pdf from epub format
+  # Converts the EPUB document (located on storage) to PDF and uploads resulting file to storage.
+  #
+  # @param name Document name.
+  # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :width Resulting document page width in points (1/96 inch).
+  # @option opts [Integer] :height Resulting document page height in points (1/96 inch).
+  # @option opts [Integer] :left_margin Left resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
+  # @option opts [String] :folder The source document folder.
+  # @option opts [String] :storage The source and resulting document storage.
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'put_convert_epub_to_pdf test' do
+    it "Convert epub to pdf in storage" do
+
+      # Already in the storage
+      name = "georgia.epub"
+      result_name = "putEpubToPdf.pdf"
+      out_path = "HtmlTestDoc/" + result_name
+      opts = {
+          width: 800,
+          height: 1000,
+          left_margin: 30,
+          right_margin: 30,
+          top_margin: 50,
+          bottom_margin: 50,
+          folder: "HtmlTestDoc",
+          storage: nil
+      }
+
+      answer = @instance.put_convert_document_to_pdf(name, out_path, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file(result_name)
+
+      expect(res[:code]).to eql(200)
+      expect(res[:status]).to eql("OK")
+      expect(res[:file]).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, result_name)
+    end
+  end
+
+  # unit tests for put_convert_document_to_pdf from svg format
+  # Converts the SVG document (located on storage) to PDF and uploads resulting file to storage.
+  #
+  # @param name Document name.
+  # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :width Resulting document page width in points (1/96 inch).
+  # @option opts [Integer] :height Resulting document page height in points (1/96 inch).
+  # @option opts [Integer] :left_margin Left resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
+  # @option opts [String] :folder The source document folder.
+  # @option opts [String] :storage The source and resulting document storage.
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'put_convert_svg_to_pdf test' do
+    it "Convert svg to pdf in storage" do
+
+      # Already in the storage
+      name = "Map-World.svg"
+      result_name = "putSvgToPdf.pdf"
+      out_path = "HtmlTestDoc/" + result_name
+      opts = {
+          width: 800,
+          height: 1000,
+          left_margin: 30,
+          right_margin: 30,
+          top_margin: 50,
+          bottom_margin: 50,
+          folder: "HtmlTestDoc",
+          storage: nil
+      }
+
+      answer = @instance.put_convert_document_to_pdf(name, out_path, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file(result_name)
+
+      expect(res[:code]).to eql(200)
+      expect(res[:status]).to eql("OK")
+      expect(res[:file]).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, result_name)
+    end
+  end
+
+  # unit tests for put_convert_document_to_xps from html format
   # Converts the HTML document (located on storage) to XPS and uploads resulting file to storage.
   #
   # @param name Document name.
@@ -553,13 +1285,111 @@ describe 'Test html_api' do
   # @option opts [String] :folder The source document folder.
   # @option opts [String] :storage The source and resulting document storage.
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
-  describe 'put_convert_document_to_xps test' do
+  describe 'put_convert_html_to_xps test' do
     it "Convert html to xps in storage" do
 
       # Already in the storage
       name = "test1.html"
-      result_name = "putTestDoc.xps"
-      out_path = "HtmlTestDoc/putTestDoc.xps"
+      result_name = "putHtmlToXps.xps"
+      out_path = "HtmlTestDoc/" + result_name
+      opts = {
+          width: 800,
+          height: 1000,
+          left_margin: 30,
+          right_margin: 30,
+          top_margin: 50,
+          bottom_margin: 50,
+          folder: "HtmlTestDoc",
+          storage: nil
+      }
+
+      answer = @instance.put_convert_document_to_xps(name, out_path, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file(result_name)
+
+      expect(res[:code]).to eql(200)
+      expect(res[:status]).to eql("OK")
+      expect(res[:file]).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, result_name)
+    end
+  end
+
+  # unit tests for put_convert_document_to_xps from epub format
+  # Converts the EPUB document (located on storage) to XPS and uploads resulting file to storage.
+  #
+  # @param name Document name.
+  # @param out_path Full resulting filename (ex. /folder1/folder2/result.xps)
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :width Resulting document page width in points (1/96 inch).
+  # @option opts [Integer] :height Resulting document page height in points (1/96 inch).
+  # @option opts [Integer] :left_margin Left resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
+  # @option opts [String] :folder The source document folder.
+  # @option opts [String] :storage The source and resulting document storage.
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'put_convert_epub_to_xps test' do
+    it "Convert epub to xps in storage" do
+
+      # Already in the storage
+      name = "georgia.epub"
+      result_name = "putEpubToXps.xps"
+      out_path = "HtmlTestDoc/" + result_name
+      opts = {
+          width: 800,
+          height: 1000,
+          left_margin: 30,
+          right_margin: 30,
+          top_margin: 50,
+          bottom_margin: 50,
+          folder: "HtmlTestDoc",
+          storage: nil
+      }
+
+      answer = @instance.put_convert_document_to_xps(name, out_path, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file(result_name)
+
+      expect(res[:code]).to eql(200)
+      expect(res[:status]).to eql("OK")
+      expect(res[:file]).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, result_name)
+    end
+  end
+
+  # unit tests for put_convert_document_to_xps from svg format
+  # Converts the SVG document (located on storage) to XPS and uploads resulting file to storage.
+  #
+  # @param name Document name.
+  # @param out_path Full resulting filename (ex. /folder1/folder2/result.xps)
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :width Resulting document page width in points (1/96 inch).
+  # @option opts [Integer] :height Resulting document page height in points (1/96 inch).
+  # @option opts [Integer] :left_margin Left resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :right_margin Right resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
+  # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
+  # @option opts [String] :folder The source document folder.
+  # @option opts [String] :storage The source and resulting document storage.
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'put_convert_svg_to_xps test' do
+    it "Convert svg to xps in storage" do
+
+      # Already in the storage
+      name = "Map-World.svg"
+      result_name = "putSvgToXps.xps"
+      out_path = "HtmlTestDoc/" + result_name
       opts = {
           width: 800,
           height: 1000,

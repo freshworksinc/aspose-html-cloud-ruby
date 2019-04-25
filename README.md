@@ -83,8 +83,7 @@ opts = {
   right_margin: 10, # Integer | Right resulting image margin.
   top_margin: 20, # Integer | Top resulting image margin.
   bottom_margin: 20, # Integer | Bottom resulting image margin.
-  x_resolution: 300, # Integer | Horizontal resolution of resulting image.
-  y_resolution: 300, # Integer | Vertical resolution of resulting image.
+  resolution: 300, # Integer | Resolution of resulting image.
   folder: "/", # String | The source document folder.
   storage: nil # String | The source document storage.
 }

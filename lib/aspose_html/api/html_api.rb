@@ -3,7 +3,7 @@
   --------------------------------------------------------------------------------------------------------------------
   <copyright company="Aspose" file="html_api.rb">
   </copyright>
-   Copyright (c) 2018 Aspose.HTML for Cloud
+   Copyright (c) 2019 Aspose.HTML for Cloud
   <summary>
    Permission is hereby granted, free of charge, to any person obtaining a copy
    of this software and associated documentation files (the "Software"), to deal
@@ -43,10 +43,10 @@ module AsposeHtml
 ################################################################################
 
 
-# Convert the HTML document from the storage by its name to the specified image format.
+# Convert the HTML, EPUB, SVG document from the storage by its name to the specified image format.
 #
 # @param name Document name.
-# @param out_format Resulting image format.
+# @param out_format Resulting image format (jpeg, png, bmp, tiff).
 # @param [Hash] opts the optional parameters
 # @option opts [Integer] :width Resulting image width.
 # @option opts [Integer] :height Resulting image height.
@@ -54,8 +54,7 @@ module AsposeHtml
 # @option opts [Integer] :right_margin Right resulting image margin.
 # @option opts [Integer] :top_margin Top resulting image margin.
 # @option opts [Integer] :bottom_margin Bottom resulting image margin.
-# @option opts [Integer] :x_resolution Horizontal resolution of resulting image.
-# @option opts [Integer] :y_resolution Vertical resolution of resulting image.
+# @option opts [Integer] :resolution Resolution of resulting image.
 # @option opts [String] :folder The source document folder.
 # @option opts [String] :storage The source document storage.
 # @return [Hash] {file: data, status: _status_code, headers: _headers}
@@ -64,10 +63,10 @@ module AsposeHtml
       return {file: data, status: _status_code, headers: _headers}
     end
 
-# Convert the HTML document from the storage by its name to the specified image format.
+# Convert the HTML, EPUB, SVG document from the storage by its name to the specified image format.
 #
 # @param name Document name.
-# @param out_format Resulting image format.
+# @param out_format Resulting image format(jpeg, png, bmp, tiff).
 # @param [Hash] opts the optional parameters
 # @option opts [Integer] :width Resulting image width.
 # @option opts [Integer] :height Resulting image height.
@@ -75,8 +74,7 @@ module AsposeHtml
 # @option opts [Integer] :right_margin Right resulting image margin.
 # @option opts [Integer] :top_margin Top resulting image margin.
 # @option opts [Integer] :bottom_margin Bottom resulting image margin.
-# @option opts [Integer] :x_resolution Horizontal resolution of resulting image.
-# @option opts [Integer] :y_resolution Vertical resolution of resulting image.
+# @option opts [Integer] :resolution Resolution of resulting image.
 # @option opts [String] :folder The source document folder.
 # @option opts [String] :storage The source document storage.
 # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
@@ -103,8 +101,7 @@ module AsposeHtml
       query_params[:'rightMargin'] = opts[:'right_margin'] if !opts[:'right_margin'].nil?
       query_params[:'topMargin'] = opts[:'top_margin'] if !opts[:'top_margin'].nil?
       query_params[:'bottomMargin'] = opts[:'bottom_margin'] if !opts[:'bottom_margin'].nil?
-      query_params[:'xResolution'] = opts[:'x_resolution'] if !opts[:'x_resolution'].nil?
-      query_params[:'yResolution'] = opts[:'y_resolution'] if !opts[:'y_resolution'].nil?
+      query_params[:'resolution'] = opts[:'resolution'] if !opts[:'resolution'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
@@ -135,7 +132,7 @@ module AsposeHtml
 # Convert the HTML page from the web by its URL to the specified image format.
 #
 # @param source_url Source page URL.
-# @param out_format Resulting image format.
+# @param out_format Resulting image format(jpeg, png, bmp, tiff).
 # @param [Hash] opts the optional parameters
 # @option opts [Integer] :width Resulting image width.
 # @option opts [Integer] :height Resulting image height.
@@ -143,8 +140,7 @@ module AsposeHtml
 # @option opts [Integer] :right_margin Right resulting image margin.
 # @option opts [Integer] :top_margin Top resulting image margin.
 # @option opts [Integer] :bottom_margin Bottom resulting image margin.
-# @option opts [Integer] :x_resolution Horizontal resolution of resulting image.
-# @option opts [Integer] :y_resolution Vertical resolution of resulting image.
+# @option opts [Integer] :resolution Resolution of resulting image.
 # @option opts [String] :folder The document folder.
 # @option opts [String] :storage The document storage.
 # @return [Hash] {file: data, status: _status_code, headers: _headers}
@@ -156,7 +152,7 @@ module AsposeHtml
 # Convert the HTML page from the web by its URL to the specified image format.
 #
 # @param source_url Source page URL.
-# @param out_format Resulting image format.
+# @param out_format Resulting image format(jpeg, png, bmp, tiff).
 # @param [Hash] opts the optional parameters
 # @option opts [Integer] :width Resulting image width.
 # @option opts [Integer] :height Resulting image height.
@@ -164,8 +160,7 @@ module AsposeHtml
 # @option opts [Integer] :right_margin Right resulting image margin.
 # @option opts [Integer] :top_margin Top resulting image margin.
 # @option opts [Integer] :bottom_margin Bottom resulting image margin.
-# @option opts [Integer] :x_resolution Horizontal resolution of resulting image.
-# @option opts [Integer] :y_resolution Vertical resolution of resulting image.
+# @option opts [Integer] :resolution Resolution of resulting image.
 # @option opts [String] :folder The document folder.
 # @option opts [String] :storage The document storage.
 # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
@@ -193,8 +188,7 @@ module AsposeHtml
       query_params[:'rightMargin'] = opts[:'right_margin'] if !opts[:'right_margin'].nil?
       query_params[:'topMargin'] = opts[:'top_margin'] if !opts[:'top_margin'].nil?
       query_params[:'bottomMargin'] = opts[:'bottom_margin'] if !opts[:'bottom_margin'].nil?
-      query_params[:'xResolution'] = opts[:'x_resolution'] if !opts[:'x_resolution'].nil?
-      query_params[:'yResolution'] = opts[:'y_resolution'] if !opts[:'y_resolution'].nil?
+      query_params[:'resolution'] = opts[:'resolution'] if !opts[:'resolution'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
@@ -222,7 +216,7 @@ module AsposeHtml
       return data, status_code, headers
     end
 
-# Convert the HTML document from the storage by its name to PDF.
+# Convert the HTML, EPUB, SVG document from the storage by its name to PDF.
 #
 # @param name Document name.
 # @param [Hash] opts the optional parameters
@@ -240,7 +234,7 @@ module AsposeHtml
       return {file: data, status: _status_code, headers: _headers}
     end
 
-# Convert the HTML document from the storage by its name to PDF.
+# Convert the HTML, EPUB, SVG document from the storage by its name to PDF.
 #
 # @param name Document name.
 # @param [Hash] opts the optional parameters
@@ -377,7 +371,7 @@ module AsposeHtml
       return data, status_code, headers
     end
 
-# Convert the HTML document from the storage by its name to XPS.
+# Convert the HTML, EPUB, SVG document from the storage by its name to XPS.
 #
 # @param name Document name.
 # @param [Hash] opts the optional parameters
@@ -395,7 +389,7 @@ module AsposeHtml
       return {file: data, status: _status_code, headers: _headers}
     end
 
-# Convert the HTML document from the storage by its name to XPS.
+# Convert the HTML, EPUB, SVG document from the storage by its name to XPS.
 #
 # @param name Document name.
 # @param [Hash] opts the optional parameters
@@ -533,10 +527,10 @@ module AsposeHtml
     end
 
 
-# Converts the HTML document (in request content) to the specified image format and uploads resulting file to storage.
+# Converts the HTML, EPUB, SVG document (in request content) to the specified image format and uploads resulting file to storage.
 #
 # @param out_path Full resulting filename (ex. /folder1/folder2/result.jpg)
-# @param out_format
+# @param out_format (jpeg, png, bmp, tiff)
 # @param file A file to be converted.
 # @param [Hash] opts the optional parameters
 # @option opts [Integer] :width Resulting document page width in points (1/96 inch).
@@ -552,10 +546,10 @@ module AsposeHtml
       return {file: data, status: _status_code, headers: _headers}
     end
 
-# Converts the HTML document (in request content) to the specified image format and uploads resulting file to storage.
+# Converts the HTML, EPUB, SVG document (in request content) to the specified image format and uploads resulting file to storage.
 #
 # @param out_path Full resulting filename (ex. /folder1/folder2/result.jpg)
-# @param out_format
+# @param out_format (jpeg, png, bmp, tiff)
 # @param file A file to be converted.
 # @param [Hash] opts the optional parameters
 # @option opts [Integer] :width Resulting document page width in points (1/96 inch).
@@ -621,7 +615,7 @@ module AsposeHtml
       return data, status_code, headers
     end
 
-# Converts the HTML document (in request content) to PDF and uploads resulting file to storage.
+# Converts the HTML, EPUB, SVG document (in request content) to PDF and uploads resulting file to storage.
 #
 # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
 # @param file A file to be converted.
@@ -638,7 +632,7 @@ module AsposeHtml
       return {file: data, status: _status_code, headers: _headers}
     end
 
-# Converts the HTML document (in request content) to PDF and uploads resulting file to storage.
+# Converts the HTML, EPUB, SVG document (in request content) to PDF and uploads resulting file to storage.
 #
 # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
 # @param file A file to be converted.
@@ -699,7 +693,7 @@ module AsposeHtml
       return data, status_code, headers
     end
 
-# Converts the HTML document (in request content) to XPS and uploads resulting file to storage.
+# Converts the HTML, EPUB, SVG document (in request content) to XPS and uploads resulting file to storage.
 #
 # @param out_path Full resulting filename (ex. /folder1/folder2/result.xps)
 # @param file A file to be converted.
@@ -716,7 +710,7 @@ module AsposeHtml
       return {file: data, status: _status_code, headers: _headers}
     end
 
-# Converts the HTML document (in request content) to XPS and uploads resulting file to storage.
+# Converts the HTML, EPUB, SVG document (in request content) to XPS and uploads resulting file to storage.
 #
 # @param out_path Full resulting filename (ex. /folder1/folder2/result.xps)
 # @param file A file to be converted.
@@ -777,11 +771,11 @@ module AsposeHtml
       return data, status_code, headers
     end
 
-# Converts the HTML document (located on storage) to the specified image format and uploads resulting file to storage.
+# Converts the HTML, EPUB, SVG document (located on storage) to the specified image format and uploads resulting file to storage.
 #
 # @param name Document name.
 # @param out_path Full resulting filename (ex. /folder1/folder2/result.jpg)
-# @param out_format
+# @param out_format(jpeg, png, bmp, tiff)
 # @param [Hash] opts the optional parameters
 # @option opts [Integer] :width Resulting document page width in points (1/96 inch).
 # @option opts [Integer] :height Resulting document page height in points (1/96 inch).
@@ -798,11 +792,11 @@ module AsposeHtml
       return {file: data, status: _status_code, headers: _headers}
     end
 
-# Converts the HTML document (located on storage) to the specified image format and uploads resulting file to storage.
+# Converts the HTML, EPUB, SVG document (located on storage) to the specified image format and uploads resulting file to storage.
 #
 # @param name Document name.
 # @param out_path Full resulting filename (ex. /folder1/folder2/result.jpg)
-# @param out_format
+# @param out_format(jpeg, png, bmp, tiff)
 # @param [Hash] opts the optional parameters
 # @option opts [Integer] :width Resulting document page width in points (1/96 inch).
 # @option opts [Integer] :height Resulting document page height in points (1/96 inch).
@@ -870,7 +864,7 @@ module AsposeHtml
       return data, status_code, headers
     end
 
-# Converts the HTML document (located on storage) to PDF and uploads resulting file to storage.
+# Converts the HTML, EPUB, SVG document (located on storage) to PDF and uploads resulting file to storage.
 #
 # @param name Document name.
 # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
@@ -889,7 +883,7 @@ module AsposeHtml
       return {file: data, status: _status_code, headers: _headers}
     end
 
-# Converts the HTML document (located on storage) to PDF and uploads resulting file to storage.
+# Converts the HTML, EPUB, SVG document (located on storage) to PDF and uploads resulting file to storage.
 #
 # @param name Document name.
 # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
@@ -954,7 +948,7 @@ module AsposeHtml
       return data, status_code, headers
     end
 
-# Converts the HTML document (located on storage) to XPS and uploads resulting file to storage.
+# Converts the HTML, EPUB, SVG document (located on storage) to XPS and uploads resulting file to storage.
 #
 # @param name Document name.
 # @param out_path Full resulting filename (ex. /folder1/folder2/result.xps)
@@ -973,7 +967,7 @@ module AsposeHtml
       return {file: data, status: _status_code, headers: _headers}
     end
 
-# Converts the HTML document (located on storage) to XPS and uploads resulting file to storage.
+# Converts the HTML, EPUB, SVG document (located on storage) to XPS and uploads resulting file to storage.
 #
 # @param name Document name.
 # @param out_path Full resulting filename (ex. /folder1/folder2/result.xps)

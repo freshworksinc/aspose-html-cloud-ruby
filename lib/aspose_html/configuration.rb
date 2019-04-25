@@ -115,8 +115,8 @@ module AsposeHtml
       @temp_folder_path = Dir.tmpdir()
       @access_token = req_token
       @client_side_validation = true
-      @verify_ssl = true
-      @verify_ssl_host = true
+      @verify_ssl = false
+      @verify_ssl_host = false
       @params_encoding = nil
       @cert_file = nil
       @key_file = nil
@@ -156,6 +156,8 @@ module AsposeHtml
                                          headers: {Accept: "application/json",
                                                    ContentType: "application/x-www-form-urlencoded"
                                          },
+                                          ssl_verifyhost: 0,
+                                          ssl_verifypeer: false,
                                          verbose: @debug
         ).run
         hash = JSON.parse(response.body, symbolize_names: true)
