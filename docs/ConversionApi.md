@@ -1,6 +1,6 @@
 # Conversion API
 
-All URIs are relative to *https://api.aspose.cloud/v1.1*
+All URIs are relative to *https://api.aspose.cloud/v3.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -10,15 +10,15 @@ Method | HTTP request | Description
 [**get_convert_document_to_pdf_by_url**](ConversionApi.md#get_convert_document_to_pdf_by_url) | **GET** /html/convert/pdf | Convert the HTML page from the web by its URL to PDF.
 [**get_convert_document_to_xps**](ConversionApi.md#get_convert_document_to_xps) | **GET** /html/{name}/convert/xps | Convert the HTML document from the storage by its name to XPS.
 [**get_convert_document_to_xps_by_url**](ConversionApi.md#get_convert_document_to_xps_by_url) | **GET** /html/convert/xps | Convert the HTML page from the web by its URL to XPS.
-[**put_convert_document_in_request_to_image**](ConversionApi.md#put_convert_document_in_request_to_image) | **PUT** /html/convert/image/{outFormat} | Converts the HTML document (in request content) to the specified image format and uploads resulting file to storage.
-[**put_convert_document_in_request_to_pdf**](ConversionApi.md#put_convert_document_in_request_to_pdf) | **PUT** /html/convert/pdf | Converts the HTML document (in request content) to PDF and uploads resulting file to storage.
-[**put_convert_document_in_request_to_xps**](ConversionApi.md#put_convert_document_in_request_to_xps) | **PUT** /html/convert/xps | Converts the HTML document (in request content) to XPS and uploads resulting file to storage.
+[**post_convert_document_in_request_to_image**](ConversionApi.md#post_convert_document_in_request_to_image) | **POST** /html/convert/image/{outFormat} | Converts the HTML document (in request content) to the specified image format and uploads resulting file to storage.
+[**post_convert_document_in_request_to_pdf**](ConversionApi.md#post_convert_document_in_request_to_pdf) | **POST** /html/convert/pdf | Converts the HTML document (in request content) to PDF and uploads resulting file to storage.
+[**post_convert_document_in_request_to_xps**](ConversionApi.md#post_convert_document_in_request_to_xps) | **POST** /html/convert/xps | Converts the HTML document (in request content) to XPS and uploads resulting file to storage.
 [**put_convert_document_to_image**](ConversionApi.md#put_convert_document_to_image) | **PUT** /html/{name}/convert/image/{outFormat} | Converts the HTML document (located on storage) to the specified image format and uploads resulting file to storage.
 [**put_convert_document_to_pdf**](ConversionApi.md#put_convert_document_to_pdf) | **PUT** /html/{name}/convert/pdf | Converts the HTML document (located on storage) to PDF and uploads resulting file to storage.
 [**put_convert_document_to_xps**](ConversionApi.md#put_convert_document_to_xps) | **PUT** /html/{name}/convert/xps | Converts the HTML document (located on storage) to XPS and uploads resulting file to storage.
 [**get_convert_document_to_mhtml_by_url**](ConversionApi.md#get_convert_document_to_mhtml_by_url) | **GET** /html/convert/mhtml | Converts the HTML page from Web by its URL to MHTML returns resulting file in response content.
 [**get_convert_document_to_markdown**](ConversionApi.md#get_convert_document_to_markdown) | **GET** /html/{name}/convert/md | Converts the HTML document (located on storage) to Markdown and returns resulting file in response content.
-[**put_convert_document_in_request_to_markdown**](ConversionApi.md#put_convert_document_in_request_to_markdown) | **PUT** /html/convert/md | Converts the HTML document (in request content) to Markdown and uploads resulting file to storage by specified path.
+[**post_convert_document_in_request_to_markdown**](ConversionApi.md#post_convert_document_in_request_to_markdown) | **POST** /html/convert/md | Converts the HTML document (in request content) to Markdown and uploads resulting file to storage by specified path.
 [**put_convert_document_to_markdown**](ConversionApi.md#put_convert_document_to_markdown) | **PUT** /html/{name}/convert/md | Converts the HTML document (located on storage) to Markdown and uploads resulting file to storage by specified path.
 
 # **get_convert_document_to_image**
@@ -29,11 +29,11 @@ Convert the HTML document from the storage by its name to the specified image fo
 ### Example
 ```ruby
 # load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -71,7 +71,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| Document name. | html, epub, svg formats
- **out_format** | **String**| Resulting image format. | jpeg, png, bmp, tiff
+ **out_format** | **String**| Resulting image format. | jpeg, png, bmp, tiff, gif
  **width** | **Integer**| Resulting image width.  | [optional] 
  **height** | **Integer**| Resulting image height.  | [optional] 
  **left_margin** | **Integer**| Left resulting image margin. | [optional] 
@@ -100,11 +100,11 @@ Convert the HTML page from the web by its URL to the specified image format.
 ### Example
 ```ruby
 # load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -142,7 +142,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **source_url** | **String**| Source page URL. | 
- **out_format** | **String**| Resulting image format. | jpeg, png, bmp, tiff
+ **out_format** | **String**| Resulting image format. | jpeg, png, bmp, tiff, gif
  **width** | **Integer**| Resulting image width.  | [optional] 
  **height** | **Integer**| Resulting image height.  | [optional] 
  **left_margin** | **Integer**| Left resulting image margin. | [optional] 
@@ -171,11 +171,11 @@ Convert the HTML document from the storage by its name to PDF.
 ### Example
 ```ruby
 # load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -237,11 +237,11 @@ Convert the HTML page from the web by its URL to PDF.
 ### Example
 ```ruby
 # load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -303,10 +303,10 @@ Convert the HTML document from the storage by its name to XPS.
 ### Example
 ```ruby
 # load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -368,11 +368,11 @@ Convert the HTML page from the web by its URL to XPS.
 ### Example
 ```ruby
 # load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -426,19 +426,19 @@ Name | Type | Description  | Notes
  - **Accept**: multipart/form-data
 
 
-# **put_convert_document_in_request_to_image**
-> Hash put_convert_document_in_request_to_image(out_path, out_format, file, opts)
+# **post_convert_document_in_request_to_image**
+> Hash post_convert_document_in_request_to_image(out_path, out_format, file, opts)
 
 Converts the HTML document (in request content) to the specified image format and uploads resulting file to storage.
 
 ### Example
 ```ruby
 # load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -450,7 +450,7 @@ out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/f
 
 out_format = "out_format_example" # String | 
 
-file = "/path/to/file.html" # String | File path to be converted.
+file = File.realpath("/path/to/file.html") # String | File path to be converted.
 
 opts = { 
   width: 800, # Integer | Resulting document page width in points (1/96 inch).
@@ -464,10 +464,10 @@ opts = {
 
 begin
   #Converts the HTML document (in request content) to the specified image format and uploads resulting file to storage.
-  result = api_instance.put_convert_document_in_request_to_image(out_path, out_format, file, opts)
+  result = api_instance.post_convert_document_in_request_to_image(out_path, out_format, file, opts)
   p result # See tests
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling ConversionApi->put_convert_document_in_request_to_image: #{e}"
+  puts "Exception when calling HtmlApi->post_convert_document_in_request_to_image: #{e}"
 end
 ```
 
@@ -476,7 +476,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **out_path** | **String**| Full resulting filename (ex. /folder1/folder2/result.jpg) | 
- **out_format** | **String**|  | jpeg, png, bmp, tiff
+ **out_format** | **String**|  | jpeg, png, bmp, tiff, gif
  **file** | **String**| Path to local file. | 
  **width** | **Integer**| Resulting document page width in points (1/96 inch). | [optional] 
  **height** | **Integer**| Resulting document page height in points (1/96 inch). | [optional] 
@@ -492,22 +492,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/octet-stream
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
-# **put_convert_document_in_request_to_pdf**
-> Hash put_convert_document_in_request_to_pdf(out_path, file, opts)
+# **post_convert_document_in_request_to_pdf**
+> Hash post_convert_document_in_request_to_pdf(out_path, file, opts)
 
 Converts the HTML document (in request content) to PDF and uploads resulting file to storage.
 
 ### Example
 ```ruby
 # load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -517,7 +517,7 @@ api_instance = AsposeHtml::HtmlApi.new CONFIG
 
 out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.pdf)
 
-file = "/path/to/file.html" # String | File path to be converted.
+file = File.realpath("/path/to/file.html") # String | File path to be converted.
 
 opts = { 
   width: 800, # Integer | Resulting document page width in points (1/96 inch).
@@ -530,10 +530,10 @@ opts = {
 
 begin
   #Converts the HTML document (in request content) to PDF and uploads resulting file to storage.
-  result = api_instance.put_convert_document_in_request_to_pdf(out_path, file, opts)
+  result = api_instance.post_convert_document_in_request_to_pdf(out_path, file, opts)
   p result # See tests
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling ConversionApi->put_convert_document_in_request_to_pdf: #{e}"
+  puts "Exception when calling HtmlApi->post_convert_document_in_request_to_pdf: #{e}"
 end
 ```
 
@@ -556,23 +556,23 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/octet-stream
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 
 
-# **put_convert_document_in_request_to_xps**
-> File put_convert_document_in_request_to_xps(out_path, file, opts)
+# **post_convert_document_in_request_to_xps**
+> File post_convert_document_in_request_to_xps(out_path, file, opts)
 
 Converts the HTML document (in request content) to XPS and uploads resulting file to storage.
 
 ### Example
 ```ruby
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -582,7 +582,7 @@ api_instance = AsposeHtml::HtmlApi.new CONFIG
 
 out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.xps)
 
-file = "/path/to/file.html" # String | File path to be converted.
+file = File.realpath("/path/to/file.html") # String | File path to be converted.
 
 opts = { 
   width: 800, # Integer | Resulting document page width in points (1/96 inch).
@@ -595,10 +595,10 @@ opts = {
 
 begin
   #Converts the HTML document (in request content) to XPS and uploads resulting file to storage.
-  result = api_instance.put_convert_document_in_request_to_xps(out_path, file, opts)
+  result = api_instance.post_convert_document_in_request_to_xps(out_path, file, opts)
   p result # See tests
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling ConversionApi->put_convert_document_in_request_to_xps: #{e}"
+  puts "Exception when calling HtmlApi->post_convert_document_in_request_to_xps: #{e}"
 end
 ```
 
@@ -621,7 +621,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/octet-stream
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 
@@ -632,11 +632,11 @@ Converts the HTML document (located on storage) to the specified image format an
 
 ### Example
 ```ruby
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -667,7 +667,7 @@ begin
   result = api_instance.put_convert_document_to_image(name, out_path, out_format, opts)
   p result # See tests
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling ConversionApi->put_convert_document_to_image: #{e}"
+  puts "Exception when calling HtmlApi->put_convert_document_to_image: #{e}"
 end
 ```
 
@@ -677,7 +677,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| Document name. | html, epub, svg formats
  **out_path** | **String**| Full resulting filename (ex. /folder1/folder2/result.jpg) | 
- **out_format** | **String**|  | jpeg, png, bmp, tiff
+ **out_format** | **String**|  | jpeg, png, bmp, tiff, gif
  **width** | **Integer**| Resulting document page width in points (1/96 inch). | [optional] 
  **height** | **Integer**| Resulting document page height in points (1/96 inch). | [optional] 
  **left_margin** | **Integer**| Left resulting document page margin in points (1/96 inch). | [optional] 
@@ -706,11 +706,11 @@ Converts the HTML document (located on storage) to PDF and uploads resulting fil
 
 ### Example
 ```ruby
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -738,7 +738,7 @@ begin
   result = api_instance.put_convert_document_to_pdf(name, out_path, opts)
   p result # See tests
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling ConversionApi->put_convert_document_to_pdf: #{e}"
+  puts "Exception when calling HtmlApi->put_convert_document_to_pdf: #{e}"
 end
 ```
 
@@ -775,11 +775,11 @@ Converts the HTML document (located on storage) to XPS and uploads resulting fil
 
 ### Example
 ```ruby
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -807,7 +807,7 @@ begin
   result = api_instance.put_convert_document_to_xps(name, out_path, opts)
   p result # See tests
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling ConversionApi->put_convert_document_to_xps: #{e}"
+  puts "Exception when calling HtmlApi->put_convert_document_to_xps: #{e}"
 end
 ```
 
@@ -845,11 +845,11 @@ Converts the HTML page from Web by its URL to MHTML returns resulting file in re
 ### Example
 ```ruby
 # load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -864,7 +864,7 @@ begin
   result = api_instance.get_convert_document_to_mhtml_by_url(source_url)
   p result
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling ConversionApi->get_convert_document_to_mhtml_by_url: #{e}"
+  puts "Exception when calling HtmlApi->get_convert_document_to_mhtml_by_url: #{e}"
 end
 ```
 
@@ -893,11 +893,11 @@ Converts the HTML document (located on storage) to Markdown and returns resultin
 ### Example
 ```ruby
 # load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -918,7 +918,7 @@ begin
   result = api_instance.get_convert_document_to_markdown(name, opts)
   p result
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling ConversionApi->get_convert_document_to_markdown: #{e}"
+  puts "Exception when calling HtmlApi->get_convert_document_to_markdown: #{e}"
 end
 ```
 
@@ -938,22 +938,22 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/octet-stream
+ - **Accept**: multipart/form-data
 
 
-# **put_convert_document_in_request_to_markdown**
-> Hash put_convert_document_in_request_to_markdown(out_path, file, opts)
+# **post_convert_document_in_request_to_markdown**
+> Hash post_convert_document_in_request_to_markdown(out_path, file, opts)
 
 Converts the HTML document (in request content) to Markdown and uploads resulting file to storage by specified path.
 
 ### Example
 ```ruby
 # load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -963,18 +963,19 @@ api_instance = AsposeHtml::HtmlApi.new CONFIG
 
 out_path = 'out_path_example' # String | Full resulting file path in the storage (ex. /folder1/folder2/result.md)
 
-file = "/path/to/file.html" # String | File path to be converted.
+file = File.realpath("/path/to/file.html") # String | File path to be converted.
 
 opts = { 
-  use_git: "false" # String | Use Git Markdown flavor to save ("true"/"false").
+  use_git: "false",          # String | Use Git Markdown flavor to save ("true"/"false").
+  storage: 'storage_example' # String | The source and resulting document storage.
 }
 
 begin
   #Converts the HTML document (in request content) to Markdown and uploads resulting file to storage by specified path.
-  result = api_instance.put_convert_document_in_request_to_markdown(out_path, file, opts)
+  result = api_instance.post_convert_document_in_request_to_markdown(out_path, file, opts)
   p result
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling ConversionApi->put_convert_document_in_request_to_markdown: #{e}"
+  puts "Exception when calling HtmlApi->post_convert_document_in_request_to_markdown: #{e}"
 end
 ```
 
@@ -985,13 +986,16 @@ Name | Type | Description  | Notes
  **out_path** | **String**| Full resulting file path in the storage (ex. /folder1/folder2/result.md) | 
  **file** | **String**| File path to be converted. | 
  **use_git** | **String**| Use Git Markdown flavor to save ("true"/"false"). | [optional] [default to "false"]
+ **storage** | **String**| The source and resulting document storage. | [optional] 
+
+
 ### Return type
 
 **[Hash] {file: data, status: _status_code, headers: _headers}**
 
 ### HTTP request headers
 
- - **Content-Type**: application/octet-stream
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 # **put_convert_document_to_markdown**
@@ -1002,11 +1006,11 @@ Converts the HTML document (located on storage) to Markdown and uploads resultin
 ### Example
 ```ruby
 # load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -1029,7 +1033,7 @@ begin
   result = api_instance.put_convert_document_to_markdown(name, out_path, opts)
   p result
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling ConversionApi->put_convert_document_to_markdown: #{e}"
+  puts "Exception when calling HtmlApi->put_convert_document_to_markdown: #{e}"
 end
 ```
 

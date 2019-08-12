@@ -3,7 +3,7 @@
   --------------------------------------------------------------------------------------------------------------------
   <copyright company="Aspose" file="html_api_spec.rb">
   </copyright>
-   Copyright (c) 2018 Aspose.HTML for Cloud
+   Copyright (c) 2019 Aspose.HTML for Cloud
   <summary>
    Permission is hereby granted, free of charge, to any person obtaining a copy
    of this software and associated documentation files (the "Software"), to deal
@@ -49,7 +49,7 @@ describe 'Test html_api' do
   # Convert the HTML document from the storage by its name to the specified image format.
   #
   # @param name Document name.
-  # @param out_format Resulting image format (jpeg, png, bmp, tiff).
+  # @param out_format Resulting image format (jpeg, png, bmp, tiff, gif).
   # @param [Hash] opts the optional parameters
   # @option opts [Integer] :width Resulting image width.
   # @option opts [Integer] :height Resulting image height.
@@ -62,25 +62,24 @@ describe 'Test html_api' do
   # @option opts [String] :storage The source document storage.
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'get_convert_html_to_image test' do
-    it "Convert html to bmp" do
-      name = "test1.html"
-      out_format = "bmp"
-      opts = {
-          width: 800,
-          height: 1000,
-          left_margin: 30,
-          right_margin: 30,
-          top_margin: 50,
-          bottom_margin: 50,
-          resolution: 300,
-          folder: "HtmlTestDoc",
-          storage: nil
-      }
+    name = "test1.html"
+    opts = {
+        width: 800,
+        height: 1000,
+        left_margin: 30,
+        right_margin: 30,
+        top_margin: 50,
+        bottom_margin: 50,
+        resolution: 300,
+        folder: "HtmlTestDoc",
+        storage: nil
+    }
 
-      # Upload file to server
-      res = upload_file(name)
-      expect(res.code).to eql(200)
+    # Upload file to server
+    upload_file_helper(name)
 
+    it "Convert html to jpeg" do
+      out_format = "jpeg"
       answer = @instance.get_convert_document_to_image(name, out_format, opts)
 
       expect(answer).to be_an_instance_of Hash
@@ -88,7 +87,55 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Convert_get_html.bmp")
+      save_to_test_dir(answer[:file], "Convert_get_html.jpeg")
+    end
+
+    it "Convert html to png" do
+      out_format = "png"
+      answer = @instance.get_convert_document_to_image(name, out_format, opts)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer[:file], "Convert_get_html.png")
+    end
+
+    it "Convert html to bmp" do
+      out_format = "bmp"
+      answer = @instance.get_convert_document_to_image(name, out_format, opts)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer[:file], "Convert_get_html.bmp")
+    end
+
+    it "Convert html to tiff" do
+      out_format = "tiff"
+      answer = @instance.get_convert_document_to_image(name, out_format, opts)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer[:file], "Convert_get_html.tiff")
+    end
+
+    it "Convert html to gif" do
+      out_format = "gif"
+      answer = @instance.get_convert_document_to_image(name, out_format, opts)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer[:file], "Convert_get_html.gif")
     end
   end
 
@@ -96,7 +143,7 @@ describe 'Test html_api' do
   # Convert the EPUB document from the storage by its name to the specified image format.
   #
   # @param name Document name.
-  # @param out_format Resulting image format (jpeg, png, bmp, tiff).
+  # @param out_format Resulting image format (jpeg, png, bmp, tiff, gif).
   # @param [Hash] opts the optional parameters
   # @option opts [Integer] :width Resulting image width.
   # @option opts [Integer] :height Resulting image height.
@@ -109,25 +156,23 @@ describe 'Test html_api' do
   # @option opts [String] :storage The source document storage.
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'get_convert_epub_to_image test' do
+    name = "georgia.epub"
+    opts = {
+        width: 800,
+        height: 1000,
+        left_margin: 30,
+        right_margin: 30,
+        top_margin: 50,
+        bottom_margin: 50,
+        resolution: 300,
+        folder: "HtmlTestDoc",
+        storage: nil
+    }
+    # Upload file to server
+    upload_file_helper(name)
+
     it "Convert epub to jpeg" do
-      name = "georgia.epub"
       out_format = "jpeg"
-      opts = {
-          width: 800,
-          height: 1000,
-          left_margin: 30,
-          right_margin: 30,
-          top_margin: 50,
-          bottom_margin: 50,
-          resolution: 300,
-          folder: "HtmlTestDoc",
-          storage: nil
-      }
-
-      # Upload file to server
-      res = upload_file(name)
-      expect(res.code).to eql(200)
-
       answer = @instance.get_convert_document_to_image(name, out_format, opts)
 
       expect(answer).to be_an_instance_of Hash
@@ -135,7 +180,55 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Convert_get_epub.jpeg")
+      save_to_test_dir(answer[:file], "Convert_get_epub_jpeg.zip")
+    end
+
+    it "Convert epub to png" do
+      out_format = "png"
+      answer = @instance.get_convert_document_to_image(name, out_format, opts)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer[:file], "Convert_get_epub_png.zip")
+    end
+
+    it "Convert epub to bmp" do
+      out_format = "bmp"
+      answer = @instance.get_convert_document_to_image(name, out_format, opts)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer[:file], "Convert_get_epub_bmp.zip")
+    end
+
+    it "Convert epub to tiff" do
+      out_format = "tiff"
+      answer = @instance.get_convert_document_to_image(name, out_format, opts)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer[:file], "Convert_get_epub_tiff.zip")
+    end
+
+    it "Convert epub to gif" do
+      out_format = "gif"
+      answer = @instance.get_convert_document_to_image(name, out_format, opts)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer[:file], "Convert_get_epub_gif.zip")
     end
   end
 
@@ -143,7 +236,7 @@ describe 'Test html_api' do
   # Convert the SVG document from the storage by its name to the specified image format.
   #
   # @param name Document name.
-  # @param out_format Resulting image format (jpeg, png, bmp, tiff).
+  # @param out_format Resulting image format (jpeg, png, bmp, tiff, gif).
   # @param [Hash] opts the optional parameters
   # @option opts [Integer] :width Resulting image width.
   # @option opts [Integer] :height Resulting image height.
@@ -156,25 +249,24 @@ describe 'Test html_api' do
   # @option opts [String] :storage The source document storage.
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'get_convert_svg_to_image test' do
-    it "Convert svg to png" do
-      name = "Map-World.svg"
-      out_format = "png"
-      opts = {
-          width: 800,
-          height: 1000,
-          left_margin: 30,
-          right_margin: 30,
-          top_margin: 50,
-          bottom_margin: 50,
-          resolution: 300,
-          folder: "HtmlTestDoc",
-          storage: nil
-      }
+    name = "Map-World.svg"
+    opts = {
+        width: 800,
+        height: 1000,
+        left_margin: 30,
+        right_margin: 30,
+        top_margin: 50,
+        bottom_margin: 50,
+        resolution: 300,
+        folder: "HtmlTestDoc",
+        storage: nil
+    }
 
-      # Upload file to server
-      res = upload_file(name)
-      expect(res.code).to eql(200)
+    # Upload file to server
+    upload_file_helper(name)
 
+    it "Convert svg to jpeg" do
+      out_format = "jpeg"
       answer = @instance.get_convert_document_to_image(name, out_format, opts)
 
       expect(answer).to be_an_instance_of Hash
@@ -182,7 +274,55 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Convert_get_svg.png")
+      save_to_test_dir(answer[:file], "Convert_get_svg.jpeg")
+    end
+
+    it "Convert svg to png" do
+      out_format = "png"
+      answer = @instance.get_convert_document_to_image(name, out_format, opts)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer[:file], "Convert_get_svg.png")
+    end
+
+    it "Convert svg to bmp" do
+      out_format = "bmp"
+      answer = @instance.get_convert_document_to_image(name, out_format, opts)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer[:file], "Convert_get_svg.bmp")
+    end
+
+    it "Convert svg to tiff" do
+      out_format = "tiff"
+      answer = @instance.get_convert_document_to_image(name, out_format, opts)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer[:file], "Convert_get_svg.tiff")
+    end
+
+    it "Convert svg to gif" do
+      out_format = "gif"
+      answer = @instance.get_convert_document_to_image(name, out_format, opts)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer[:file], "Convert_get_svg.gif")
     end
   end
 
@@ -203,21 +343,21 @@ describe 'Test html_api' do
   # @option opts [String] :storage The document storage.
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'get_convert_html_to_image_by_url test' do
-    it "Convert url to png" do
-      source_url = "https://stallman.org/articles/anonymous-payments-thru-phones.html"
-      out_format = "png"
-      opts = {
-          width: 800,
-          height: 1000,
-          left_margin: 30,
-          right_margin: 30,
-          top_margin: 50,
-          bottom_margin: 50,
-          resolution: 300,
-          folder: "HtmlTestDoc",
-          storage: nil
-      }
+    source_url = "https://stallman.org/articles/anonymous-payments-thru-phones.html"
+    opts = {
+        width: 800,
+        height: 1000,
+        left_margin: 30,
+        right_margin: 30,
+        top_margin: 50,
+        bottom_margin: 50,
+        resolution: 300,
+        folder: "HtmlTestDoc",
+        storage: nil
+    }
 
+    it "Convert url to jpeg" do
+      out_format = "jpeg"
       answer = @instance.get_convert_document_to_image_by_url(source_url, out_format, opts)
 
       expect(answer).to be_an_instance_of Hash
@@ -225,7 +365,55 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Convert_get_url.png")
+      save_to_test_dir(answer[:file], "Convert_get_url.jpeg")
+    end
+
+    it "Convert url to png" do
+      out_format = "png"
+      answer = @instance.get_convert_document_to_image_by_url(source_url, out_format, opts)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer[:file], "Convert_get_url.png")
+    end
+
+    it "Convert url to bmp" do
+      out_format = "bmp"
+      answer = @instance.get_convert_document_to_image_by_url(source_url, out_format, opts)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer[:file], "Convert_get_url.bmp")
+    end
+
+    it "Convert url to tiff" do
+      out_format = "tiff"
+      answer = @instance.get_convert_document_to_image_by_url(source_url, out_format, opts)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer[:file], "Convert_get_url.tiff")
+    end
+
+    it "Convert url to gif" do
+      out_format = "gif"
+      answer = @instance.get_convert_document_to_image_by_url(source_url, out_format, opts)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer[:file], "Convert_get_url.gif")
     end
   end
 
@@ -258,8 +446,9 @@ describe 'Test html_api' do
       }
 
       # Upload file to server
-      res = upload_file(name)
-      expect(res.code).to eql(200)
+      res = upload_file_helper(name)
+      expect(res.uploaded.length).to eql(1)
+      expect(res.errors.length).to eql(0)
 
       answer = @instance.get_convert_document_to_pdf(name, opts)
 
@@ -268,7 +457,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Convert_get_html.pdf")
+      save_to_test_dir(answer[:file], "Convert_get_html.pdf")
     end
   end
 
@@ -301,8 +490,9 @@ describe 'Test html_api' do
       }
 
       # Upload file to server
-      res = upload_file(name)
-      expect(res.code).to eql(200)
+      res = upload_file_helper(name)
+      expect(res.uploaded.length).to eql(1)
+      expect(res.errors.length).to eql(0)
 
       answer = @instance.get_convert_document_to_pdf(name, opts)
 
@@ -311,7 +501,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Convert_get_epub.pdf")
+      save_to_test_dir(answer[:file], "Convert_get_epub.pdf")
     end
   end
 
@@ -344,8 +534,9 @@ describe 'Test html_api' do
       }
 
       # Upload file to server
-      res = upload_file(name)
-      expect(res.code).to eql(200)
+      res = upload_file_helper(name)
+      expect(res.uploaded.length).to eql(1)
+      expect(res.errors.length).to eql(0)
 
       answer = @instance.get_convert_document_to_pdf(name, opts)
 
@@ -354,7 +545,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Convert_get_svg.pdf")
+      save_to_test_dir(answer[:file], "Convert_get_svg.pdf")
     end
   end
 
@@ -393,7 +584,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Convert_get_url.pdf")
+      save_to_test_dir(answer[:file], "Convert_get_url.pdf")
     end
   end
 
@@ -426,8 +617,9 @@ describe 'Test html_api' do
       }
 
       # Upload file to server
-      res = upload_file(name)
-      expect(res.code).to eql(200)
+      res = upload_file_helper(name)
+      expect(res.uploaded.length).to eql(1)
+      expect(res.errors.length).to eql(0)
 
       answer = @instance.get_convert_document_to_xps(name, opts)
 
@@ -436,7 +628,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Convert_get_html.xps")
+      save_to_test_dir(answer[:file], "Convert_get_html.xps")
     end
   end
 
@@ -469,8 +661,9 @@ describe 'Test html_api' do
       }
 
       # Upload file to server
-      res = upload_file(name)
-      expect(res.code).to eql(200)
+      res = upload_file_helper(name)
+      expect(res.uploaded.length).to eql(1)
+      expect(res.errors.length).to eql(0)
 
       answer = @instance.get_convert_document_to_xps(name, opts)
 
@@ -479,7 +672,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Convert_get_epub.xps")
+      save_to_test_dir(answer[:file], "Convert_get_epub.xps")
     end
   end
 
@@ -512,8 +705,9 @@ describe 'Test html_api' do
       }
 
       # Upload file to server
-      res = upload_file(name)
-      expect(res.code).to eql(200)
+      res = upload_file_helper(name)
+      expect(res.uploaded.length).to eql(1)
+      expect(res.errors.length).to eql(0)
 
       answer = @instance.get_convert_document_to_xps(name, opts)
 
@@ -522,7 +716,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Convert_get_svg.xps")
+      save_to_test_dir(answer[:file], "Convert_get_svg.xps")
     end
   end
 
@@ -561,15 +755,15 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Convert_html_url.xps")
+      save_to_test_dir(answer[:file], "Convert_html_url.xps")
     end
   end
 
-  # unit tests for put_convert_document_in_request_to_image from html format
+  # unit tests for post_convert_document_in_request_to_image from html format
   # Converts the HTML document (in request content) to the specified image format and uploads resulting file to storage.
   #
   # @param out_path Full resulting filename (ex. /folder1/folder2/result.jpg)
-  # @param out_format (jpeg, png, bmp, tiff).
+  # @param out_format (jpeg, png, bmp, tiff, gif).
   # @param file A file to be converted (html, epub, svg).
   # @param [Hash] opts the optional parameters
   # @option opts [Integer] :width Resulting document page width in points (1/96 inch).
@@ -580,43 +774,109 @@ describe 'Test html_api' do
   # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
   # @option opts [Integer] :resolution Resolution of resulting image. Default is 96 dpi.
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
-  describe 'put_convert_html_in_request_to_image test' do
-    it "Upload and convert html to png" do
-      name = "putHtmlToPngInReq.png"
-      out_path = "HtmlTestDoc/" + name
-      out_format = "png"
-      file = __dir__ + '/../../testdata/test1.html'
-      opts = {
-          width: 800,
-          height: 1000,
-          left_margin: 30,
-          right_margin: 30,
-          top_margin: 50,
-          bottom_margin: 50,
-          resolution: 300
-      }
+  describe 'post_convert_html_in_request_to_image test' do
+    file = File.realpath(__dir__ + '/../../testdata/test1.html')
+    opts = {
+        width: 800,
+        height: 1000,
+        left_margin: 30,
+        right_margin: 30,
+        top_margin: 50,
+        bottom_margin: 50,
+        resolution: 300
+    }
 
-      answer = @instance.put_convert_document_in_request_to_image(out_path, out_format, file, opts)
+    it "Upload and convert html to jpeg" do
+      name = "postHtmlToJpegInReq.jpeg"
+      out_path = "HtmlTestDoc/" + name
+      out_format = "jpeg"
+
+      answer = @instance.post_convert_document_in_request_to_image(out_path, out_format, file, opts)
 
       expect(answer[:status]).to eql(200)
 
       #Download converted file from storage
-      res = download_file(name)
+      res = download_file_helper(name)
+      expect(res).to be_an_instance_of File
 
-      expect(res[:code]).to eql(200)
-      expect(res[:status]).to eql("OK")
-      expect(res[:file]).to be_an_instance_of File
+      #Move to test folder
+      save_to_test_dir(res, name)
+    end
+
+    it "Upload and convert html to png" do
+      name = "postHtmlToPngInReq.png"
+      out_path = "HtmlTestDoc/" + name
+      out_format = "png"
+
+      answer = @instance.post_convert_document_in_request_to_image(out_path, out_format, file, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file_helper(name)
+      expect(res).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, name)
+    end
+
+    it "Upload and convert html to bmp" do
+      name = "postHtmlToBmpInReq.bmp"
+      out_path = "HtmlTestDoc/" + name
+      out_format = "bmp"
+
+      answer = @instance.post_convert_document_in_request_to_image(out_path, out_format, file, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file_helper(name)
+      expect(res).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, name)
+    end
+
+    it "Upload and convert html to tiff" do
+      name = "postHtmlToTiffInReq.tiff"
+      out_path = "HtmlTestDoc/" + name
+      out_format = "tiff"
+
+      answer = @instance.post_convert_document_in_request_to_image(out_path, out_format, file, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file_helper(name)
+      expect(res).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, name)
+    end
+
+    it "Upload and convert html to gif" do
+      name = "postHtmlToGifInReq.gif"
+      out_path = "HtmlTestDoc/" + name
+      out_format = "gif"
+
+      answer = @instance.post_convert_document_in_request_to_image(out_path, out_format, file, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file_helper(name)
+      expect(res).to be_an_instance_of File
 
       #Move to test folder
       save_to_test_dir(res, name)
     end
   end
 
-  # unit tests for put_convert_document_in_request_to_image from epub format
+  # unit tests for post_convert_document_in_request_to_image from epub format
   # Converts the EPUB document (in request content) to the specified image format and uploads resulting file to storage.
   #
   # @param out_path Full resulting filename (ex. /folder1/folder2/result.jpg)
-  # @param out_format (jpeg, png, bmp, tiff).
+  # @param out_format (jpeg, png, bmp, tiff, gif).
   # @param file A file to be converted (html, epub, svg).
   # @param [Hash] opts the optional parameters
   # @option opts [Integer] :width Resulting document page width in points (1/96 inch).
@@ -627,43 +887,104 @@ describe 'Test html_api' do
   # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
   # @option opts [Integer] :resolution Resolution of resulting image. Default is 96 dpi.
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
-  describe 'put_convert_epub_in_request_to_image test' do
-    it "Upload and convert epub to tiff" do
-      name = "putEpubToTiffInReq.tiff"
-      out_path = "HtmlTestDoc/" + name
-      out_format = "tiff"
-      file = __dir__ + '/../../testdata/georgia.epub'
-      opts = {
-          width: 800,
-          height: 1000,
-          left_margin: 30,
-          right_margin: 30,
-          top_margin: 50,
-          bottom_margin: 50,
-          resolution: 300
-      }
+  describe 'post_convert_epub_in_request_to_image test' do
+    file = File.realpath(__dir__ + '/../../testdata/georgia.epub')
+    opts = {
+        width: 800,
+        height: 1000,
+        left_margin: 30,
+        right_margin: 30,
+        top_margin: 50,
+        bottom_margin: 50,
+        resolution: 300
+    }
 
-      answer = @instance.put_convert_document_in_request_to_image(out_path, out_format, file, opts)
+    it "Upload and convert epub to jpeg" do
+      name = "postEpubToJpegInReq.zip"
+      out_path = "HtmlTestDoc/" + name
+      out_format = "jpeg"
+      answer = @instance.post_convert_document_in_request_to_image(out_path, out_format, file, opts)
 
       expect(answer[:status]).to eql(200)
 
       #Download converted file from storage
-      res = download_file(name)
+      res = download_file_helper(name)
+      expect(res).to be_an_instance_of File
 
-      expect(res[:code]).to eql(200)
-      expect(res[:status]).to eql("OK")
-      expect(res[:file]).to be_an_instance_of File
+      #Move to test folder
+      save_to_test_dir(res, name)
+    end
+
+    it "Upload and convert epub to png" do
+      name = "postEpubToPngInReq.zip"
+      out_path = "HtmlTestDoc/" + name
+      out_format = "png"
+      answer = @instance.post_convert_document_in_request_to_image(out_path, out_format, file, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file_helper(name)
+      expect(res).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, name)
+    end
+
+    it "Upload and convert epub to bmp" do
+      name = "postEpubToBmpInReq.zip"
+      out_path = "HtmlTestDoc/" + name
+      out_format = "bmp"
+      answer = @instance.post_convert_document_in_request_to_image(out_path, out_format, file, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file_helper(name)
+      expect(res).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, name)
+    end
+
+    it "Upload and convert epub to tiff" do
+      name = "postEpubToTiffInReq.zip"
+      out_path = "HtmlTestDoc/" + name
+      out_format = "tiff"
+      answer = @instance.post_convert_document_in_request_to_image(out_path, out_format, file, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file_helper(name)
+      expect(res).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, name)
+    end
+
+    it "Upload and convert epub to gif" do
+      name = "postEpubToGifInReq.zip"
+      out_path = "HtmlTestDoc/" + name
+      out_format = "gif"
+      answer = @instance.post_convert_document_in_request_to_image(out_path, out_format, file, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file_helper(name)
+      expect(res).to be_an_instance_of File
 
       #Move to test folder
       save_to_test_dir(res, name)
     end
   end
 
-  # unit tests for put_convert_document_in_request_to_image from svg format
+  # unit tests for post_convert_document_in_request_to_image from svg format
   # Converts the SVG document (in request content) to the specified image format and uploads resulting file to storage.
   #
   # @param out_path Full resulting filename (ex. /folder1/folder2/result.jpg)
-  # @param out_format (jpeg, png, bmp, tiff).
+  # @param out_format (jpeg, png, bmp, tiff, gif).
   # @param file A file to be converted (html, epub, svg).
   # @param [Hash] opts the optional parameters
   # @option opts [Integer] :width Resulting document page width in points (1/96 inch).
@@ -674,39 +995,105 @@ describe 'Test html_api' do
   # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
   # @option opts [Integer] :resolution Resolution of resulting image. Default is 96 dpi.
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
-  describe 'put_convert_svg_in_request_to_image test' do
-    it "Upload and convert svg to png" do
-      name = "putSvgToPngInReq.png"
-      out_path = "HtmlTestDoc/" + name
-      out_format = "png"
-      file = __dir__ + '/../../testdata/Map-World.svg'
-      opts = {
-          width: 800,
-          height: 1000,
-          left_margin: 30,
-          right_margin: 30,
-          top_margin: 50,
-          bottom_margin: 50,
-          resolution: 300
-      }
+  describe 'post_convert_svg_in_request_to_image test' do
+    file = File.realpath(__dir__ + '/../../testdata/Map-World.svg')
+    opts = {
+        width: 800,
+        height: 1000,
+        left_margin: 30,
+        right_margin: 30,
+        top_margin: 50,
+        bottom_margin: 50,
+        resolution: 300
+    }
 
-      answer = @instance.put_convert_document_in_request_to_image(out_path, out_format, file, opts)
+    it "Upload and convert svg to jpeg" do
+      name = "postSvgToJpegInReq.jpeg"
+      out_path = "HtmlTestDoc/" + name
+      out_format = "jpeg"
+
+      answer = @instance.post_convert_document_in_request_to_image(out_path, out_format, file, opts)
 
       expect(answer[:status]).to eql(200)
 
       #Download converted file from storage
-      res = download_file(name)
+      res = download_file_helper(name)
+      expect(res).to be_an_instance_of File
 
-      expect(res[:code]).to eql(200)
-      expect(res[:status]).to eql("OK")
-      expect(res[:file]).to be_an_instance_of File
+      #Move to test folder
+      save_to_test_dir(res, name)
+    end
+
+    it "Upload and convert svg to png" do
+      name = "postSvgToPngInReq.png"
+      out_path = "HtmlTestDoc/" + name
+      out_format = "png"
+
+      answer = @instance.post_convert_document_in_request_to_image(out_path, out_format, file, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file_helper(name)
+      expect(res).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, name)
+    end
+
+    it "Upload and convert svg to bmp" do
+      name = "postSvgToBmpInReq.bmp"
+      out_path = "HtmlTestDoc/" + name
+      out_format = "bmp"
+
+      answer = @instance.post_convert_document_in_request_to_image(out_path, out_format, file, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file_helper(name)
+      expect(res).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, name)
+    end
+
+    it "Upload and convert svg to tiff" do
+      name = "postSvgToTiffInReq.tiff"
+      out_path = "HtmlTestDoc/" + name
+      out_format = "tiff"
+
+      answer = @instance.post_convert_document_in_request_to_image(out_path, out_format, file, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file_helper(name)
+      expect(res).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, name)
+    end
+
+    it "Upload and convert svg to gif" do
+      name = "postSvgToGifInReq.gif"
+      out_path = "HtmlTestDoc/" + name
+      out_format = "gif"
+
+      answer = @instance.post_convert_document_in_request_to_image(out_path, out_format, file, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file_helper(name)
+      expect(res).to be_an_instance_of File
 
       #Move to test folder
       save_to_test_dir(res, name)
     end
   end
 
-  # unit tests for put_convert_document_in_request_to_pdf from html format
+  # unit tests for post_convert_document_in_request_to_pdf from html format
   # Converts the HTML document (in request content) to PDF and uploads resulting file to storage.
   #
   # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
@@ -719,11 +1106,11 @@ describe 'Test html_api' do
   # @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
   # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
-  describe 'put_convert_html_in_request_to_pdf test' do
+  describe 'post_convert_html_in_request_to_pdf test' do
     it "Upload and convert html to pdf" do
-      name = "putHtmlToPdfInReq.pdf"
+      name = "postHtmlToPdfInReq.pdf"
       out_path = "HtmlTestDoc/" + name
-      file = __dir__ + '/../../testdata/test1.html'
+      file = File.realpath(__dir__ + '/../../testdata/test1.html')
       opts = {
           width: 800,
           height: 1000,
@@ -733,23 +1120,20 @@ describe 'Test html_api' do
           bottom_margin: 50
       }
 
-      answer = @instance.put_convert_document_in_request_to_pdf(out_path, file, opts)
+      answer = @instance.post_convert_document_in_request_to_pdf(out_path, file, opts)
 
       expect(answer[:status]).to eql(200)
 
       #Download converted file from storage
-      res = download_file(name)
-
-      expect(res[:code]).to eql(200)
-      expect(res[:status]).to eql("OK")
-      expect(res[:file]).to be_an_instance_of File
+      res = download_file_helper(name)
+      expect(res).to be_an_instance_of File
 
       #Move to test folder
       save_to_test_dir(res, name)
     end
   end
 
-  # unit tests for put_convert_document_in_request_to_pdf from epub format
+  # unit tests for post_convert_document_in_request_to_pdf from epub format
   # Converts the EPUB document (in request content) to PDF and uploads resulting file to storage.
   #
   # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
@@ -762,11 +1146,11 @@ describe 'Test html_api' do
   # @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
   # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
-  describe 'put_convert_epub_in_request_to_pdf test' do
+  describe 'post_convert_epub_in_request_to_pdf test' do
     it "Upload and convert epub to pdf" do
-      name = "putEpubToPdfInReq.pdf"
+      name = "postEpubToPdfInReq.pdf"
       out_path = "HtmlTestDoc/" + name
-      file = __dir__ + '/../../testdata/georgia.epub'
+      file = File.realpath(__dir__ + '/../../testdata/georgia.epub')
       opts = {
           width: 800,
           height: 1000,
@@ -776,23 +1160,20 @@ describe 'Test html_api' do
           bottom_margin: 50
       }
 
-      answer = @instance.put_convert_document_in_request_to_pdf(out_path, file, opts)
+      answer = @instance.post_convert_document_in_request_to_pdf(out_path, file, opts)
 
       expect(answer[:status]).to eql(200)
 
       #Download converted file from storage
-      res = download_file(name)
-
-      expect(res[:code]).to eql(200)
-      expect(res[:status]).to eql("OK")
-      expect(res[:file]).to be_an_instance_of File
+      res = download_file_helper(name)
+      expect(res).to be_an_instance_of File
 
       #Move to test folder
       save_to_test_dir(res, name)
     end
   end
 
-  # unit tests for put_convert_document_in_request_to_pdf from svg format
+  # unit tests for post_convert_document_in_request_to_pdf from svg format
   # Converts the SVG document (in request content) to PDF and uploads resulting file to storage.
   #
   # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
@@ -805,11 +1186,11 @@ describe 'Test html_api' do
   # @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
   # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
-  describe 'put_convert_svg_in_request_to_pdf test' do
+  describe 'post_convert_svg_in_request_to_pdf test' do
     it "Upload and convert svg to pdf" do
-      name = "putSvgToPdfInReq.pdf"
+      name = "postSvgToPdfInReq.pdf"
       out_path = "HtmlTestDoc/" + name
-      file = __dir__ + '/../../testdata/Map-World.svg'
+      file = File.realpath(__dir__ + '/../../testdata/Map-World.svg')
       opts = {
           width: 800,
           height: 1000,
@@ -819,23 +1200,20 @@ describe 'Test html_api' do
           bottom_margin: 50
       }
 
-      answer = @instance.put_convert_document_in_request_to_pdf(out_path, file, opts)
+      answer = @instance.post_convert_document_in_request_to_pdf(out_path, file, opts)
 
       expect(answer[:status]).to eql(200)
 
       #Download converted file from storage
-      res = download_file(name)
-
-      expect(res[:code]).to eql(200)
-      expect(res[:status]).to eql("OK")
-      expect(res[:file]).to be_an_instance_of File
+      res = download_file_helper(name)
+      expect(res).to be_an_instance_of File
 
       #Move to test folder
       save_to_test_dir(res, name)
     end
   end
 
-  # unit tests for put_convert_document_in_request_to_xps from html format
+  # unit tests for post_convert_document_in_request_to_xps from html format
   # Converts the HTML document (in request content) to XPS and uploads resulting file to storage.
   #
   # @param out_path Full resulting filename (ex. /folder1/folder2/result.xps)
@@ -848,11 +1226,11 @@ describe 'Test html_api' do
   # @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
   # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
-  describe 'put_convert_html_in_request_to_xps test' do
+  describe 'post_convert_html_in_request_to_xps test' do
     it "Upload and convert html to xps" do
-      name = "putHtmlToXpsInReq.xps"
+      name = "postHtmlToXpsInReq.xps"
       out_path = "HtmlTestDoc/" + name
-      file = __dir__ + '/../../testdata/test1.html'
+      file = File.realpath(__dir__ + '/../../testdata/test1.html')
       opts = {
           width: 800,
           height: 1000,
@@ -862,23 +1240,20 @@ describe 'Test html_api' do
           bottom_margin: 50
       }
 
-      answer = @instance.put_convert_document_in_request_to_xps(out_path, file, opts)
+      answer = @instance.post_convert_document_in_request_to_xps(out_path, file, opts)
 
       expect(answer[:status]).to eql(200)
 
       #Download converted file from storage
-      res = download_file(name)
-
-      expect(res[:code]).to eql(200)
-      expect(res[:status]).to eql("OK")
-      expect(res[:file]).to be_an_instance_of File
+      res = download_file_helper(name)
+      expect(res).to be_an_instance_of File
 
       #Move to test folder
       save_to_test_dir(res, name)
     end
   end
 
-  # unit tests for put_convert_document_in_request_to_xps from epub format
+  # unit tests for post_convert_document_in_request_to_xps from epub format
   # Converts the EPUB document (in request content) to XPS and uploads resulting file to storage.
   #
   # @param out_path Full resulting filename (ex. /folder1/folder2/result.xps)
@@ -891,11 +1266,11 @@ describe 'Test html_api' do
   # @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
   # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
-  describe 'put_convert_epub_in_request_to_xps test' do
+  describe 'post_convert_epub_in_request_to_xps test' do
     it "Upload and convert epub to xps" do
-      name = "putEpubToXpsInReq.xps"
+      name = "postEpubToXpsInReq.xps"
       out_path = "HtmlTestDoc/" + name
-      file = __dir__ + '/../../testdata/georgia.epub'
+      file = File.realpath(__dir__ + '/../../testdata/georgia.epub')
       opts = {
           width: 800,
           height: 1000,
@@ -905,23 +1280,20 @@ describe 'Test html_api' do
           bottom_margin: 50
       }
 
-      answer = @instance.put_convert_document_in_request_to_xps(out_path, file, opts)
+      answer = @instance.post_convert_document_in_request_to_xps(out_path, file, opts)
 
       expect(answer[:status]).to eql(200)
 
       #Download converted file from storage
-      res = download_file(name)
-
-      expect(res[:code]).to eql(200)
-      expect(res[:status]).to eql("OK")
-      expect(res[:file]).to be_an_instance_of File
+      res = download_file_helper(name)
+      expect(res).to be_an_instance_of File
 
       #Move to test folder
       save_to_test_dir(res, name)
     end
   end
 
-  # unit tests for put_convert_document_in_request_to_xps from svg format
+  # unit tests for post_convert_document_in_request_to_xps from svg format
   # Converts the SVG document (in request content) to XPS and uploads resulting file to storage.
   #
   # @param out_path Full resulting filename (ex. /folder1/folder2/result.xps)
@@ -934,11 +1306,11 @@ describe 'Test html_api' do
   # @option opts [Integer] :top_margin Top resulting document page margin in points (1/96 inch).
   # @option opts [Integer] :bottom_margin Bottom resulting document page margin in points (1/96 inch).
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
-  describe 'put_convert_svg_in_request_to_xps test' do
+  describe 'post_convert_svg_in_request_to_xps test' do
     it "Upload and convert svg to xps" do
-      name = "putSvgToXpsInReq.xps"
+      name = "postSvgToXpsInReq.xps"
       out_path = "HtmlTestDoc/" + name
-      file = __dir__ + '/../../testdata/Map-World.svg'
+      file = File.realpath(__dir__ + '/../../testdata/Map-World.svg')
       opts = {
           width: 800,
           height: 1000,
@@ -948,16 +1320,13 @@ describe 'Test html_api' do
           bottom_margin: 50
       }
 
-      answer = @instance.put_convert_document_in_request_to_xps(out_path, file, opts)
+      answer = @instance.post_convert_document_in_request_to_xps(out_path, file, opts)
 
       expect(answer[:status]).to eql(200)
 
       #Download converted file from storage
-      res = download_file(name)
-
-      expect(res[:code]).to eql(200)
-      expect(res[:status]).to eql("OK")
-      expect(res[:file]).to be_an_instance_of File
+      res = download_file_helper(name)
+      expect(res).to be_an_instance_of File
 
       #Move to test folder
       save_to_test_dir(res, name)
@@ -969,7 +1338,7 @@ describe 'Test html_api' do
   #
   # @param name Document name.
   # @param out_path Full resulting filename (ex. /folder1/folder2/result.jpg)
-  # @param out_format (jpeg, png, bmp, tiff)
+  # @param out_format (jpeg, png, bmp, tiff, gif)
   # @param [Hash] opts the optional parameters
   # @option opts [Integer] :width Resulting document page width in points (1/96 inch).
   # @option opts [Integer] :height Resulting document page height in points (1/96 inch).
@@ -982,35 +1351,100 @@ describe 'Test html_api' do
   # @option opts [String] :storage The source and resulting document storage.
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'put_convert_html_to_image test' do
-    it "Convert html to tiff in storage" do
+    # Already in the storage
+    name = "test1.html"
+    opts = {
+        width: 800,
+        height: 1000,
+        left_margin: 30,
+        right_margin: 30,
+        top_margin: 50,
+        bottom_margin: 50,
+        resolution: 300,
+        folder: "HtmlTestDoc",
+        storage: nil
+    }
 
-      # Already in the storage
-      name = "test1.html"
-      result_name = "putHtmlToTiff.tiff"
+    it "Convert html to jpeg in storage" do
+      result_name = "putHtmlToJpeg.jpeg"
       out_path = "HtmlTestDoc/" + result_name
-      out_format = "tiff"
-      opts = {
-          width: 800,
-          height: 1000,
-          left_margin: 30,
-          right_margin: 30,
-          top_margin: 50,
-          bottom_margin: 50,
-          resolution: 300,
-          folder: "HtmlTestDoc",
-          storage: nil
-      }
+      out_format = "jpeg"
 
       answer = @instance.put_convert_document_to_image(name, out_path, out_format, opts)
 
       expect(answer[:status]).to eql(200)
 
       #Download converted file from storage
-      res = download_file(result_name)
+      res = download_file_helper(result_name)
+      expect(res).to be_an_instance_of File
 
-      expect(res[:code]).to eql(200)
-      expect(res[:status]).to eql("OK")
-      expect(res[:file]).to be_an_instance_of File
+      #Move to test folder
+      save_to_test_dir(res, result_name)
+    end
+
+    it "Convert html to png in storage" do
+      result_name = "putHtmlToPng.png"
+      out_path = "HtmlTestDoc/" + result_name
+      out_format = "png"
+
+      answer = @instance.put_convert_document_to_image(name, out_path, out_format, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file_helper(result_name)
+      expect(res).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, result_name)
+    end
+
+    it "Convert html to bmp in storage" do
+      result_name = "putHtmlToBmp.bmp"
+      out_path = "HtmlTestDoc/" + result_name
+      out_format = "bmp"
+
+      answer = @instance.put_convert_document_to_image(name, out_path, out_format, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file_helper(result_name)
+      expect(res).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, result_name)
+    end
+
+    it "Convert html to tiff in storage" do
+      result_name = "putHtmlToTiff.tiff"
+      out_path = "HtmlTestDoc/" + result_name
+      out_format = "tiff"
+
+      answer = @instance.put_convert_document_to_image(name, out_path, out_format, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file_helper(result_name)
+      expect(res).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, result_name)
+    end
+
+    it "Convert html to gif in storage" do
+      result_name = "putHtmlToGif.gif"
+      out_path = "HtmlTestDoc/" + result_name
+      out_format = "gif"
+
+      answer = @instance.put_convert_document_to_image(name, out_path, out_format, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file_helper(result_name)
+      expect(res).to be_an_instance_of File
 
       #Move to test folder
       save_to_test_dir(res, result_name)
@@ -1022,7 +1456,7 @@ describe 'Test html_api' do
   #
   # @param name Document name.
   # @param out_path Full resulting filename (ex. /folder1/folder2/result.jpg)
-  # @param out_format (jpeg, png, bmp, tiff)
+  # @param out_format (jpeg, png, bmp, tiff, gif)
   # @param [Hash] opts the optional parameters
   # @option opts [Integer] :width Resulting document page width in points (1/96 inch).
   # @option opts [Integer] :height Resulting document page height in points (1/96 inch).
@@ -1035,35 +1469,102 @@ describe 'Test html_api' do
   # @option opts [String] :storage The source and resulting document storage.
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'put_convert_epub_to_image test' do
-    it "Convert epub to bmp in storage" do
 
-      # Already in the storage
-      name = "georgia.epub"
-      result_name = "putEpubToBmp.bmp"
+    # Already in the storage
+    name = "georgia.epub"
+    opts = {
+        width: 800,
+        height: 1000,
+        left_margin: 30,
+        right_margin: 30,
+        top_margin: 50,
+        bottom_margin: 50,
+        resolution: 300,
+        folder: "HtmlTestDoc",
+        storage: nil
+    }
+
+    it "Convert epub to jpeg in storage" do
+
+      result_name = "putEpubToJpeg.zip"
       out_path = "HtmlTestDoc/" + result_name
-      out_format = "bmp"
-      opts = {
-          width: 800,
-          height: 1000,
-          left_margin: 30,
-          right_margin: 30,
-          top_margin: 50,
-          bottom_margin: 50,
-          resolution: 300,
-          folder: "HtmlTestDoc",
-          storage: nil
-      }
+      out_format = "jpeg"
 
       answer = @instance.put_convert_document_to_image(name, out_path, out_format, opts)
 
       expect(answer[:status]).to eql(200)
 
       #Download converted file from storage
-      res = download_file(result_name)
+      res = download_file_helper(result_name)
+      expect(res).to be_an_instance_of File
 
-      expect(res[:code]).to eql(200)
-      expect(res[:status]).to eql("OK")
-      expect(res[:file]).to be_an_instance_of File
+      #Move to test folder
+      save_to_test_dir(res, result_name)
+    end
+
+    it "Convert epub to png in storage" do
+      result_name = "putEpubToPng.zip"
+      out_path = "HtmlTestDoc/" + result_name
+      out_format = "png"
+
+      answer = @instance.put_convert_document_to_image(name, out_path, out_format, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file_helper(result_name)
+      expect(res).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, result_name)
+    end
+
+    it "Convert epub to bmp in storage" do
+      result_name = "putEpubToBmp.zip"
+      out_path = "HtmlTestDoc/" + result_name
+      out_format = "bmp"
+
+      answer = @instance.put_convert_document_to_image(name, out_path, out_format, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file_helper(result_name)
+      expect(res).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, result_name)
+    end
+
+    it "Convert epub to tiff in storage" do
+      result_name = "putEpubToTiff.zip"
+      out_path = "HtmlTestDoc/" + result_name
+      out_format = "tiff"
+
+      answer = @instance.put_convert_document_to_image(name, out_path, out_format, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file_helper(result_name)
+      expect(res).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, result_name)
+    end
+
+    it "Convert epub to gif in storage" do
+      result_name = "putEpubToGif.zip"
+      out_path = "HtmlTestDoc/" + result_name
+      out_format = "gif"
+
+      answer = @instance.put_convert_document_to_image(name, out_path, out_format, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file_helper(result_name)
+      expect(res).to be_an_instance_of File
 
       #Move to test folder
       save_to_test_dir(res, result_name)
@@ -1075,7 +1576,7 @@ describe 'Test html_api' do
   #
   # @param name Document name.
   # @param out_path Full resulting filename (ex. /folder1/folder2/result.jpg)
-  # @param out_format (jpeg, png, bmp, tiff)
+  # @param out_format (jpeg, png, bmp, tiff, gif)
   # @param [Hash] opts the optional parameters
   # @option opts [Integer] :width Resulting document page width in points (1/96 inch).
   # @option opts [Integer] :height Resulting document page height in points (1/96 inch).
@@ -1088,35 +1589,100 @@ describe 'Test html_api' do
   # @option opts [String] :storage The source and resulting document storage.
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
   describe 'put_convert_svg_to_image test' do
-    it "Convert svg to png in storage" do
+    # Already in the storage
+    name = "Map-World.svg"
+    opts = {
+        width: 800,
+        height: 1000,
+        left_margin: 30,
+        right_margin: 30,
+        top_margin: 50,
+        bottom_margin: 50,
+        resolution: 300,
+        folder: "HtmlTestDoc",
+        storage: nil
+    }
 
-      # Already in the storage
-      name = "Map-World.svg"
-      result_name = "putSvgToPng.png"
+    it "Convert svg to jpeg in storage" do
+      result_name = "putSvgToJpeg.png"
       out_path = "HtmlTestDoc/" + result_name
-      out_format = "png"
-      opts = {
-          width: 800,
-          height: 1000,
-          left_margin: 30,
-          right_margin: 30,
-          top_margin: 50,
-          bottom_margin: 50,
-          resolution: 300,
-          folder: "HtmlTestDoc",
-          storage: nil
-      }
+      out_format = "jpeg"
 
       answer = @instance.put_convert_document_to_image(name, out_path, out_format, opts)
 
       expect(answer[:status]).to eql(200)
 
       #Download converted file from storage
-      res = download_file(result_name)
+      res = download_file_helper(result_name)
+      expect(res).to be_an_instance_of File
 
-      expect(res[:code]).to eql(200)
-      expect(res[:status]).to eql("OK")
-      expect(res[:file]).to be_an_instance_of File
+      #Move to test folder
+      save_to_test_dir(res, result_name)
+    end
+
+    it "Convert svg to png in storage" do
+      result_name = "putSvgToPng.png"
+      out_path = "HtmlTestDoc/" + result_name
+      out_format = "png"
+
+      answer = @instance.put_convert_document_to_image(name, out_path, out_format, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file_helper(result_name)
+      expect(res).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, result_name)
+    end
+
+    it "Convert svg to bmp in storage" do
+      result_name = "putSvgToBmp.bmp"
+      out_path = "HtmlTestDoc/" + result_name
+      out_format = "bmp"
+
+      answer = @instance.put_convert_document_to_image(name, out_path, out_format, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file_helper(result_name)
+      expect(res).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, result_name)
+    end
+
+    it "Convert svg to tiff in storage" do
+      result_name = "putSvgToTiff.tiff"
+      out_path = "HtmlTestDoc/" + result_name
+      out_format = "tiff"
+
+      answer = @instance.put_convert_document_to_image(name, out_path, out_format, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file_helper(result_name)
+      expect(res).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, result_name)
+    end
+
+    it "Convert svg to gif in storage" do
+      result_name = "putSvgToGif.gif"
+      out_path = "HtmlTestDoc/" + result_name
+      out_format = "gif"
+
+      answer = @instance.put_convert_document_to_image(name, out_path, out_format, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file_helper(result_name)
+      expect(res).to be_an_instance_of File
 
       #Move to test folder
       save_to_test_dir(res, result_name)
@@ -1161,11 +1727,8 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       #Download converted file from storage
-      res = download_file(result_name)
-
-      expect(res[:code]).to eql(200)
-      expect(res[:status]).to eql("OK")
-      expect(res[:file]).to be_an_instance_of File
+      res = download_file_helper(result_name)
+      expect(res).to be_an_instance_of File
 
       #Move to test folder
       save_to_test_dir(res, result_name)
@@ -1210,11 +1773,8 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       #Download converted file from storage
-      res = download_file(result_name)
-
-      expect(res[:code]).to eql(200)
-      expect(res[:status]).to eql("OK")
-      expect(res[:file]).to be_an_instance_of File
+      res = download_file_helper(result_name)
+      expect(res).to be_an_instance_of File
 
       #Move to test folder
       save_to_test_dir(res, result_name)
@@ -1259,11 +1819,8 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       #Download converted file from storage
-      res = download_file(result_name)
-
-      expect(res[:code]).to eql(200)
-      expect(res[:status]).to eql("OK")
-      expect(res[:file]).to be_an_instance_of File
+      res = download_file_helper(result_name)
+      expect(res).to be_an_instance_of File
 
       #Move to test folder
       save_to_test_dir(res, result_name)
@@ -1308,11 +1865,8 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       #Download converted file from storage
-      res = download_file(result_name)
-
-      expect(res[:code]).to eql(200)
-      expect(res[:status]).to eql("OK")
-      expect(res[:file]).to be_an_instance_of File
+      res = download_file_helper(result_name)
+      expect(res).to be_an_instance_of File
 
       #Move to test folder
       save_to_test_dir(res, result_name)
@@ -1357,11 +1911,8 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       #Download converted file from storage
-      res = download_file(result_name)
-
-      expect(res[:code]).to eql(200)
-      expect(res[:status]).to eql("OK")
-      expect(res[:file]).to be_an_instance_of File
+      res = download_file_helper(result_name)
+      expect(res).to be_an_instance_of File
 
       #Move to test folder
       save_to_test_dir(res, result_name)
@@ -1406,11 +1957,8 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       #Download converted file from storage
-      res = download_file(result_name)
-
-      expect(res[:code]).to eql(200)
-      expect(res[:status]).to eql("OK")
-      expect(res[:file]).to be_an_instance_of File
+      res = download_file_helper(result_name)
+      expect(res).to be_an_instance_of File
 
       #Move to test folder
       save_to_test_dir(res, result_name)
@@ -1435,7 +1983,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Convert_url.mht")
+      save_to_test_dir(answer[:file], "Convert_url.mht")
     end
   end
 
@@ -1457,8 +2005,9 @@ describe 'Test html_api' do
       }
 
       # Upload file to server
-      res = upload_file(name)
-      expect(res.code).to eql(200)
+      res = upload_file_helper(name)
+      expect(res.uploaded.length).to eql(1)
+      expect(res.errors.length).to eql(0)
 
       answer = @instance.get_convert_document_to_markdown(name, opts)
 
@@ -1467,34 +2016,31 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "get_convert_markdown.md")
+      save_to_test_dir(answer[:file], "get_convert_markdown.md")
     end
   end
 
-  # unit tests for put_convert_document_in_request_to_markdown
+  # unit tests for post_convert_document_in_request_to_markdown
   # Converts the HTML document (in request content) to Markdown and uploads resulting file to storage by specified path.
   # @param out_path Full resulting file path in the storage (ex. /folder1/folder2/result.md)
   # @param file A file to be converted.
   # @param [Hash] opts the optional parameters
   # @option opts [String] :use_git Use Git Markdown flavor to save ("true" or "false"). (default to "false")
   # @return [Hash] {file: data, status: _status_code, headers: _headers}
-  describe 'put_convert_document_in_request_to_markdown test' do
+  describe 'post_convert_document_in_request_to_markdown test' do
     it "Upload and convert html to markdown" do
-      name = "putConvertInReqRuby.md"
+      name = "postConvertInReqRuby.md"
       out_path = "HtmlTestDoc/" + name
-      file = __dir__ + '/../../testdata/test_md.html'
+      file = File.realpath(__dir__ + '/../../testdata/test_md.html')
       opts = { use_git: "false" }
 
-      answer = @instance.put_convert_document_in_request_to_markdown(out_path, file, opts)
+      answer = @instance.post_convert_document_in_request_to_markdown(out_path, file, opts)
 
       expect(answer[:status]).to eql(200)
 
       #Download converted file from storage
-      res = download_file(name)
-
-      expect(res[:code]).to eql(200)
-      expect(res[:status]).to eql("OK")
-      expect(res[:file]).to be_an_instance_of File
+      res = download_file_helper(name)
+      expect(res).to be_an_instance_of File
 
       #Move to test folder
       save_to_test_dir(res, name)
@@ -1528,17 +2074,108 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       #Download converted file from storage
-      res = download_file(result_name)
-
-      expect(res[:code]).to eql(200)
-      expect(res[:status]).to eql("OK")
-      expect(res[:file]).to be_an_instance_of File
+      res = download_file_helper(result_name)
+      expect(res).to be_an_instance_of File
 
       #Move to test folder
       save_to_test_dir(res, result_name)
     end
   end
 
+  #################################################
+  #                  Import API
+  #################################################
+
+  # unit tests for get_convert_markdown_to_html
+  # Converts the Markdown document (located on storage) to HTML and returns resulting file in response content.
+  # @param name Document name.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :folder Source document folder.
+  # @option opts [String] :storage Source document storage.
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'get_convert_markdown_to_html test' do
+    it "Convert markdown to html" do
+      name = "testpage1.md"
+      opts = {
+          folder: "HtmlTestDoc",
+          storage: nil
+      }
+
+      # Upload file to server
+      res = upload_file_helper(name)
+      expect(res.uploaded.length).to eql(1)
+      expect(res.errors.length).to eql(0)
+
+      answer = @instance.get_convert_markdown_to_html(name, opts)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer[:file], "get_convert_md_html.html")
+    end
+  end
+
+  # unit tests for post_convert_markdown_in_request_to_html
+  # Converts the Markdown document (in request content) to HTML and uploads resulting file to storage by specified path.
+  # @param out_path Full resulting file path in the storage (ex. /folder1/folder2/result.html)
+  # @param file A file to be converted.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :storage Source document storage.
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'post_convert_markdown_in_request_to_html test' do
+    it "Upload and convert markdown to html" do
+      name = "postMarkdownToHtmlInReqRuby.html"
+      out_path = "HtmlTestDoc/" + name
+      file = File.realpath(__dir__ + '/../../testdata/testpage1.md')
+      opts = { storage: nil }
+
+      answer = @instance.post_convert_markdown_in_request_to_html(out_path, file, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file_helper(name)
+      expect(res).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, name)
+    end
+  end
+
+  # unit tests for put_convert_markdown_to_html
+  # Converts the Markdown document (located on storage) to HTML and uploads resulting file to storage by specified path.
+  # @param name Document name.
+  # @param out_path Full resulting file path in the storage (ex. /folder1/folder2/result.html)
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :folder The source document folder.
+  # @option opts [String] :storage The source and resulting document storage.
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'put_convert_markdown_to_html test' do
+    it "Convert markdown to html and save result in the storage" do
+
+      # Already in the storage
+      name = "testpage1.md"
+      result_name = "putConvertMarkdownToHtmlRuby.html"
+      out_path = "HtmlTestDoc/" + result_name
+      opts = {
+          folder: "HtmlTestDoc",
+          storage: nil
+      }
+
+      answer = @instance.put_convert_markdown_to_html(name, out_path, opts)
+
+      expect(answer[:status]).to eql(200)
+
+      #Download converted file from storage
+      res = download_file_helper(result_name)
+      expect(res).to be_an_instance_of File
+
+      #Move to test folder
+      save_to_test_dir(res, result_name)
+    end
+  end
 
   #################################################
   #            Document API
@@ -1560,7 +2197,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Get_site_from_url.zip")
+      save_to_test_dir(answer[:file], "Get_site_from_url.zip")
     end
   end
 
@@ -1582,8 +2219,9 @@ describe 'Test html_api' do
       opts = {folder: "HtmlTestDoc", storage: nil}
 
       # Upload file to server
-      res = upload_file(name)
-      expect(res.code).to eql(200)
+      res = upload_file_helper(name)
+      expect(res.uploaded.length).to eql(1)
+      expect(res.errors.length).to eql(0)
 
       answer = @instance.get_document_fragment_by_x_path(name, x_path, out_format, opts)
 
@@ -1592,7 +2230,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Get_fragment_doc.html")
+      save_to_test_dir(answer[:file], "Get_fragment_doc.html")
     end
   end
 
@@ -1616,7 +2254,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Get_fragment_xpath_by_url.html")
+      save_to_test_dir(answer[:file], "Get_fragment_xpath_by_url.html")
     end
   end
 
@@ -1637,8 +2275,9 @@ describe 'Test html_api' do
       opts = {folder: "HtmlTestDoc", storage: nil}
 
       # Upload file to server
-      res = upload_file(name)
-      expect(res.code).to eql(200)
+      res = upload_file_helper(name)
+      expect(res.uploaded.length).to eql(1)
+      expect(res.errors.length).to eql(0)
 
       answer = @instance.get_document_fragments_by_css_selector(name, selector, out_format, opts)
 
@@ -1647,7 +2286,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Get_fragment_doc_css.html")
+      save_to_test_dir(answer[:file], "Get_fragment_doc_css.html")
     end
   end
 
@@ -1671,7 +2310,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Get_fragment_css_by_url.html")
+      save_to_test_dir(answer[:file], "Get_fragment_css_by_url.html")
     end
   end
 
@@ -1689,8 +2328,9 @@ describe 'Test html_api' do
       opts = {folder: "HtmlTestDoc", storage: nil}
 
       # Upload file to server
-      res = upload_file(name)
-      expect(res.code).to eql(200)
+      res = upload_file_helper(name)
+      expect(res.uploaded.length).to eql(1)
+      expect(res.errors.length).to eql(0)
 
       answer = @instance.get_document_images(name, opts)
 
@@ -1699,7 +2339,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Get_images_doc.zip")
+      save_to_test_dir(answer[:file], "Get_images_doc.zip")
     end
   end
 
@@ -1719,7 +2359,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Get_images_from_url.zip")
+      save_to_test_dir(answer[:file], "Get_images_from_url.zip")
     end
   end
 
@@ -1742,8 +2382,9 @@ describe 'Test html_api' do
       opts = {ocr_engine_lang: "en", folder: "HtmlTestDoc", storage: nil}
 
       # Upload file to server
-      res = upload_file(file_name)
-      expect(res.code).to eql(200)
+      res = upload_file_helper(file_name)
+      expect(res.uploaded.length).to eql(1)
+      expect(res.errors.length).to eql(0)
 
       answer = @instance.get_recognize_and_import_to_html(file_name, opts)
 
@@ -1752,7 +2393,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Recognize_en_png.html")
+      save_to_test_dir(answer[:file], "Recognize_en_png.html")
     end
   end
 
@@ -1774,8 +2415,9 @@ describe 'Test html_api' do
       opts = {folder: "HtmlTestDoc", storage: nil}
 
       # Upload file to server
-      res = upload_file(file_name)
-      expect(res.code).to eql(200)
+      res = upload_file_helper(file_name)
+      expect(res.uploaded.length).to eql(1)
+      expect(res.errors.length).to eql(0)
 
       answer = @instance.get_recognize_and_translate_to_html(file_name, src_lang, res_lang, opts)
 
@@ -1784,7 +2426,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Recognize_en_de_jpg.html")
+      save_to_test_dir(answer[:file], "Recognize_en_de_jpg.html")
     end
   end
 
@@ -1810,8 +2452,9 @@ describe 'Test html_api' do
       opts = {storage: nil, folder: "HtmlTestDoc"}
 
       # Upload file to server
-      res = upload_file(file_name)
-      expect(res.code).to eql(200)
+      res = upload_file_helper(file_name)
+      expect(res.uploaded.length).to eql(1)
+      expect(res.errors.length).to eql(0)
 
       answer = @instance.get_translate_document(file_name, src_lang, res_lang, opts)
 
@@ -1820,7 +2463,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Translate_doc_en_de.html")
+      save_to_test_dir(answer[:file], "Translate_doc_en_de.html")
     end
   end
 
@@ -1845,7 +2488,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Translate_url_en_fr.zip")
+      save_to_test_dir(answer[:file], "Translate_url_en_fr.zip")
     end
   end
 
@@ -1867,8 +2510,9 @@ describe 'Test html_api' do
       opts = {storage: nil, folder: "HtmlTestDoc"}
 
       # Upload file to server
-      res = upload_file(name)
-      expect(res.code).to eql(200)
+      res = upload_file_helper(name)
+      expect(res.uploaded.length).to eql(1)
+      expect(res.errors.length).to eql(0)
 
       answer = @instance.get_detect_html_keywords(name, opts)
 
@@ -1877,7 +2521,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Keyword_by_doc.json")
+      save_to_test_dir(answer[:file], "Keyword_by_doc.json")
     end
   end
 
@@ -1897,7 +2541,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer, "Keyword_by_url.json")
+      save_to_test_dir(answer[:file], "Keyword_by_url.json")
     end
   end
 
@@ -1919,20 +2563,22 @@ describe 'Test html_api' do
       opts = {storage: nil, folder: folder}
       data_path = folder + "/" + data_name
       # Upload template file to server
-      res = upload_file(template_name)
-      expect(res.code).to eql(200)
+      res = upload_file_helper(template_name)
+      expect(res.uploaded.length).to eql(1)
+      expect(res.errors.length).to eql(0)
 
       # Upload data file to server
-      res = upload_file(data_name)
-      expect(res.code).to eql(200)
+      res = upload_file_helper(data_name)
+      expect(res.uploaded.length).to eql(1)
+      expect(res.errors.length).to eql(0)
 
       opts = {options:"", folder:"HtmlTestDoc", storage: nil}
       answer = @instance.get_merge_html_template(template_name, data_path, opts)
-      save_to_test_dir(answer, "GetTemplateMergeRuby.html")
+      save_to_test_dir(answer[:file], "GetTemplateMergeRuby.html")
     end
   end
 
-    # unit tests for put_merge_html_template
+    # unit tests for post_merge_html_template
     # Populate HTML document template with data from the request body. Result document will be saved to storage.
     #
     # @param template_name Template document name. Template document is HTML or zipped HTML.
@@ -1943,24 +2589,21 @@ describe 'Test html_api' do
     # @option opts [String] :folder The template document folder.
     # @option opts [String] :storage The template document and data source storage.
     # @return [File]
-  describe 'put_merge_html_template test' do
-    it "Put merge template" do
-      result_name = "PutTemplateMergeRuby.html"
+  describe 'post_merge_html_template test' do
+    it "Post merge template" do
+      result_name = "PostTemplateMergeRuby.html"
       template_name = "HtmlTemplate.html";
       data_name = "XmlSourceData.xml";
       folder = "HtmlTestDoc"
       opts = {options:"", folder:"HtmlTestDoc", storage: nil}
       out_path = folder + "/" + result_name
-      file = __dir__ + '/../../testdata/' + data_name
-      answer = @instance.put_merge_html_template(template_name, out_path, file, opts)
+      file = File.realpath(__dir__ + '/../../testdata/' + data_name)
+      answer = @instance.post_merge_html_template(template_name, out_path, file, opts)
       expect(answer[:status]).to eql(200)
 
       #Download converted file from storage
-      res = download_file(result_name)
-
-      expect(res[:code]).to eql(200)
-      expect(res[:status]).to eql("OK")
-      expect(res[:file]).to be_an_instance_of File
+      res = download_file_helper(result_name)
+      expect(res).to be_an_instance_of File
 
       #Move to test folder
       save_to_test_dir(res, result_name)

@@ -1,6 +1,6 @@
 #  OCR API
 
-All URIs are relative to *https://api.aspose.cloud/v1.1*
+All URIs are relative to *https://api.aspose.cloud/v3.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -17,11 +17,11 @@ Acceptable image formats is jpg, gif, png, bmp, tiff.
 ### Example
 ```ruby
 # load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -75,11 +75,11 @@ Acceptable image formats is jpg, gif, png, bmp, tiff.
 ### Example
 ```ruby
 # load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true

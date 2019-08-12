@@ -1,11 +1,11 @@
 # AsposeHtml::TemplateMergeApi
 
-All URIs are relative to *https://api.aspose.cloud/v1.1*
+All URIs are relative to *https://api.aspose.cloud/v3.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_merge_html_template**](TemplateMergeApi.md#get_merge_html_template) | **GET** /html/{templateName}/merge | Populate HTML document template with data located as a file in the storage.
-[**put_merge_html_template**](TemplateMergeApi.md#put_merge_html_template) | **PUT** /html/{templateName}/merge | Populate HTML document template with data from the request body. Result document will be saved to storage.
+[**post_merge_html_template**](TemplateMergeApi.md#post_merge_html_template) | **POST** /html/{templateName}/merge | Populate HTML document template with data from the request body. Result document will be saved to storage.
 
 
 # **get_merge_html_template**
@@ -69,7 +69,7 @@ Populate HTML document template with data located as a file in the storage.
 
 ```ruby
 # load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 api_instance = AsposeHtml::TemplateMergeApi.new
 
@@ -106,26 +106,22 @@ Name | Type | Description  | Notes
 
 **[Hash] {file: data, status: _status_code, headers: _headers}**
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: multipart/octet-stream
+ - **Accept**: multipart/form-fata
 
 
 
-# **put_merge_html_template**
-> File put_merge_html_template(template_name, out_path, file, opts)
+# **post_merge_html_template**
+> File post_merge_html_template(template_name, out_path, file, opts)
 
 Populate HTML document template with data from the request body. Result document will be saved to storage.
 
 ### Example
 ```ruby
 # load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 api_instance = AsposeHtml::TemplateMergeApi.new
 
@@ -133,7 +129,7 @@ template_name = "template_name_example" # String | Template document name. Templ
 
 out_path = "out_path_example" # String | Result document path.
 
-file = File.new("/path/to/file.txt") # File | A data file to populate template.
+file = File.realpath("/path/to/file.txt") # File | A data file to populate template.
 
 opts = { 
   options: "options_example", # String | Template merge options: reserved for further implementation.
@@ -143,10 +139,10 @@ opts = {
 
 begin
   #Populate HTML document template with data from the request body. Result document will be saved to storage.
-  result = api_instance.put_merge_html_template(template_name, out_path, file, opts)
+  result = api_instance.post_merge_html_template(template_name, out_path, file, opts)
   p result
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling TemplateMergeApi->put_merge_html_template: #{e}"
+  puts "Exception when calling TemplateMergeApi->post_merge_html_template: #{e}"
 end
 ```
 
@@ -167,8 +163,5 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/octet-stream
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
-
-
-

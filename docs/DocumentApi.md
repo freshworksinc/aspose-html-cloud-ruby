@@ -1,6 +1,6 @@
 # Document API
 
-All URIs are relative to *https://api.aspose.cloud/v1.1*
+All URIs are relative to *https://api.aspose.cloud/v3.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -21,11 +21,11 @@ Return all HTML page with linked resources packaged as a ZIP archive by the sour
 ### Example
 ```ruby
 # load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -66,11 +66,11 @@ Return list of HTML fragments matching the specified XPath query.
 ### Example
 ```ruby
 # load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -126,11 +126,11 @@ Return list of HTML fragments matching the specified XPath query by the source p
 ### Example
 ```ruby
 # load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -177,11 +177,11 @@ Return list of HTML fragments matching the specified CSS selector.
 ### Example
 ```ruby
 # load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -231,11 +231,11 @@ Return list of HTML fragments matching the specified CSS selector by the source 
 ### Example
 ```ruby
 # load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -285,11 +285,11 @@ Return all HTML document images packaged as a ZIP archive.
 ### Example
 ```ruby
 # load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -339,11 +339,11 @@ Return all HTML page images packaged as a ZIP archive by the source page URL.
 ### Example
 ```ruby
 # load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true

@@ -1,4 +1,4 @@
-# AsposeHtml::FileVersion
+# AsposeHtml::StorageFile
 
 ## Properties
 Name | Type | Description | Notes
@@ -8,7 +8,5 @@ Name | Type | Description | Notes
 **modified_date** | **DateTime** | File or folder last modified DateTime. | [optional] 
 **size** | **Integer** | File or folder size. | 
 **path** | **String** | File or folder path. | [optional] 
-**version_id** | **String** | File Version ID. | [optional] 
-**is_latest** | **BOOLEAN** | Specifies whether the file is (true) or is not (false) the latest version of an file. | 
 
 

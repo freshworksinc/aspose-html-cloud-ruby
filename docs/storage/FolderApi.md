@@ -1,28 +1,136 @@
-# Folder API
+# AsposeHtml::StorageApi
 
-All URIs are relative to *https://api.aspose.cloud/v1.1*
+All URIs are relative to *https://api.aspose.cloud/v3.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete_folder**](FolderApi.md#delete_folder) | **DELETE** /storage/folder | Remove a specific folder 
-[**get_list_files**](FolderApi.md#get_list_files) | **GET** /storage/folder | Get the file listing of a specific folder 
-[**post_move_folder**](FolderApi.md#post_move_folder) | **POST** /storage/folder | Move a specific folder 
-[**put_create_folder**](FolderApi.md#put_create_folder) | **PUT** /storage/folder | Create the folder 
+[**copy_folder**](FolderApi.md#copy_folder) | **PUT** /html/storage/folder/copy/{srcPath} | Copy folder
+[**create_folder**](FolderApi.md#create_folder) | **PUT** /html/storage/folder/{path} | Create the folder
+[**delete_folder**](FolderApi.md#delete_folder) | **DELETE** /html/storage/folder/{path} | Delete folder
+[**get_files_list**](FolderApi.md#get_files_list) | **GET** /html/storage/folder/{path} | Get all files and folders within a folder
+[**move_folder**](FolderApi.md#move_folder) | **PUT** /html/storage/folder/move/{srcPath} | Move folder
+
+
+# **copy_folder**
+> copy_folder(src_path, dest_path, opts)
+
+Copy folder
+
+### Example
+```ruby
+# load the gem
+require 'aspose_html_cloud'
+
+CONFIG = {
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
+    "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+    "debug":true
+}
+
+api_instance = AsposeHtml::StorageApi.new CONFIG
+
+src_path = "src_path_example" # String | Source folder path e.g. '/src'
+
+dest_path = "dest_path_example" # String | Destination folder path e.g. '/dst'
+
+opts = { 
+  src_storage_name: "src_storage_name_example", # String | Source storage name
+  dest_storage_name: "dest_storage_name_example" # String | Destination storage name
+}
+
+begin
+  #Copy folder
+  api_instance.copy_folder(src_path, dest_path, opts)
+rescue AsposeHtml::ApiError => e
+  puts "Exception when calling StorageApi->copy_folder: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **src_path** | **String**| Source folder path e.g. &#39;/src&#39; | 
+ **dest_path** | **String**| Destination folder path e.g. &#39;/dst&#39; | 
+ **src_storage_name** | **String**| Source storage name | [optional] 
+ **dest_storage_name** | **String**| Destination storage name | [optional] 
+
+### Return type
+
+nil (empty response body)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **create_folder**
+> create_folder(path, opts)
+
+Create the folder
+
+### Example
+```ruby
+require 'aspose_html_cloud'
+
+CONFIG = {
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
+    "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+    "debug":true
+}
+
+api_instance = AsposeHtml::StorageApi.new CONFIG
+
+path = "path_example" # String | Folder path to create e.g. 'folder_1/folder_2/'
+
+opts = { 
+  storage_name: "storage_name_example" # String | Storage name
+}
+
+begin
+  #Create the folder
+  api_instance.create_folder(path, opts)
+rescue AsposeHtml::ApiError => e
+  puts "Exception when calling StorageApi->create_folder: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **String**| Folder path to create e.g. &#39;folder_1/folder_2/&#39; | 
+ **storage_name** | **String**| Storage name | [optional] 
+
+### Return type
+
+nil (empty response body)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 
 
 # **delete_folder**
-> RemoveFolderResponse delete_folder(path, opts)
+> delete_folder(path, opts)
 
-Remove a specific folder 
+Delete folder
 
 ### Example
 ```ruby
-# load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -30,19 +138,18 @@ CONFIG = {
 
 api_instance = AsposeHtml::StorageApi.new CONFIG
 
-path = "path_example" # String | Folder path e.g. /Folder1
+path = "path_example" # String | Folder path e.g. '/folder'
 
 opts = { 
-  storage: "storage_example", # String | User's storage name
-  recursive: false # BOOLEAN | Remove recursivelly inner folder/files. If false and folder contains data than exception is raised.
+  storage_name: "storage_name_example", # String | Storage name
+  recursive: false # BOOLEAN | Enable to delete folders, subfolders and files
 }
 
 begin
-  #Remove a specific folder 
-  result = api_instance.delete_folder(path, opts)
-  p result
-rescue AsposeStorage::ApiError => e
-  puts "Exception when calling FolderApi->delete_folder: #{e}"
+  #Delete folder
+  api_instance.delete_folder(path, opts)
+rescue AsposeHtml::ApiError => e
+  puts "Exception when calling StorageApi->delete_folder: #{e}"
 end
 ```
 
@@ -50,13 +157,13 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **String**| Folder path e.g. /Folder1 | 
- **storage** | **String**| User&#39;s storage name | [optional] 
- **recursive** | **BOOLEAN**| Remove recursivelly inner folder/files. If false and folder contains data than exception is raised. | [optional] [default to false]
+ **path** | **String**| Folder path e.g. &#39;/folder&#39; | 
+ **storage_name** | **String**| Storage name | [optional] 
+ **recursive** | **BOOLEAN**| Enable to delete folders, subfolders and files | [optional] [default to false]
 
 ### Return type
 
-[**RemoveFolderResponse**](RemoveFolderResponse.md)
+nil (empty response body)
 
 ### HTTP request headers
 
@@ -65,19 +172,18 @@ Name | Type | Description  | Notes
 
 
 
-# **get_list_files**
-> File get_list_files(opts)
+# **get_files_list**
+> FilesList get_files_list(path, opts)
 
-Get the file listing of a specific folder 
+Get all files and folders within a folder
 
 ### Example
 ```ruby
-# load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -85,17 +191,18 @@ CONFIG = {
 
 api_instance = AsposeHtml::StorageApi.new CONFIG
 
+path = "path_example" # String | Folder path e.g. '/folder'
+
 opts = { 
-  path: "/", # String | Start with name of storage e.g. root folder '/'or some folder '/folder1/..'
-  storage: "storage_example" # String | User's storage name
+  storage_name: "storage_name_example" # String | Storage name
 }
 
 begin
-  #Get the file listing of a specific folder 
-  result = api_instance.get_list_files(opts)
+  #Get all files and folders within a folder
+  result = api_instance.get_files_list(path, opts)
   p result
-rescue AsposeStorage::ApiError => e
-  puts "Exception when calling FolderApi->get_list_files: #{e}"
+rescue AsposeHtml::ApiError => e
+  puts "Exception when calling StorageApi->get_files_list: #{e}"
 end
 ```
 
@@ -103,12 +210,12 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **String**| Start with name of storage e.g. root folder &#39;/&#39;or some folder &#39;/folder1/..&#39; | [optional] [default to /]
- **storage** | **String**| User&#39;s storage name | [optional] 
+ **path** | **String**| Folder path e.g. &#39;/folder&#39; | 
+ **storage_name** | **String**| Storage name | [optional] 
 
 ### Return type
 
-[**FileDetailsResponse**](FileDetailsResponse.md)
+[**FilesList**](FilesList.md)
 
 ### HTTP request headers
 
@@ -116,20 +223,18 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 
+# **move_folder**
+> move_folder(src_path, dest_path, opts)
 
-# **post_move_folder**
-> MoveFolderResponse post_move_folder(src, dest, opts)
-
-Move a specific folder 
+Move folder
 
 ### Example
 ```ruby
-# load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -137,21 +242,20 @@ CONFIG = {
 
 api_instance = AsposeHtml::StorageApi.new CONFIG
 
-src = "src_example" # String | Source folder path e.g. /Folder1
+src_path = "src_path_example" # String | Folder path to move e.g. '/folder'
 
-dest = "dest_example" # String | Destination folder path e.g. /Folder2
+dest_path = "dest_path_example" # String | Destination folder path to move to e.g '/dst'
 
 opts = { 
-  storage: "storage_example", # String | User's source storage name
-  dest_storage: "dest_storage_example" # String | User's destination storage name
+  src_storage_name: "src_storage_name_example", # String | Source storage name
+  dest_storage_name: "dest_storage_name_example" # String | Destination storage name
 }
 
 begin
-  #Move a specific folder 
-  result = api_instance.post_move_folder(src, dest, opts)
-  p result
-rescue AsposeStorage::ApiError => e
-  puts "Exception when calling FolderApi->post_move_folder: #{e}"
+  #Move folder
+  api_instance.move_folder(src_path, dest_path, opts)
+rescue AsposeHtml::ApiError => e
+  puts "Exception when calling StorageApi->move_folder: #{e}"
 end
 ```
 
@@ -159,69 +263,14 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **src** | **String**| Source folder path e.g. /Folder1 | 
- **dest** | **String**| Destination folder path e.g. /Folder2 | 
- **storage** | **String**| User&#39;s source storage name | [optional] 
- **dest_storage** | **String**| User&#39;s destination storage name | [optional] 
+ **src_path** | **String**| Folder path to move e.g. &#39;/folder&#39; | 
+ **dest_path** | **String**| Destination folder path to move to e.g &#39;/dst&#39; | 
+ **src_storage_name** | **String**| Source storage name | [optional] 
+ **dest_storage_name** | **String**| Destination storage name | [optional] 
 
 ### Return type
 
-[**MoveFolderResponse**](MoveFolderResponse.md)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-
-# **put_create_folder**
-> File put_create_folder(path, opts)
-
-Create the folder 
-
-### Example
-```ruby
-# load the gem
-require 'aspose_html'
-
-CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
-    "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-    "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-    "debug":true
-}
-
-api_instance = AsposeHtml::StorageApi.new CONFIG
-
-path = "path_example" # String | Target folder's path e.g. Folder1/Folder2/. The folders will be created recursively
-
-opts = { 
-  storage: "storage_example", # String | User's source storage name
-  dest_storage: "dest_storage_example" # String | User's destination storage name
-}
-
-begin
-  #Create the folder 
-  result = api_instance.put_create_folder(path, opts)
-  p result
-rescue AsposeStorage::ApiError => e
-  puts "Exception when calling FolderApi->put_create_folder: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **path** | **String**| Target folder&#39;s path e.g. Folder1/Folder2/. The folders will be created recursively | 
- **storage** | **String**| User&#39;s source storage name | [optional] 
- **dest_storage** | **String**| User&#39;s destination storage name | [optional] 
-
-### Return type
-
-[**MessageResponse**](MessageResponse.md)
+nil (empty response body)
 
 ### HTTP request headers
 

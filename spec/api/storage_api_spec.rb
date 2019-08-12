@@ -1,9 +1,10 @@
+
 # -*- coding: utf-8 -*-
 =begin
   --------------------------------------------------------------------------------------------------------------------
   <copyright company="Aspose" file="storage_api_spec.rb">
   </copyright>
-   Copyright (c) 2018 Aspose.HTML for Cloud
+   Copyright (c) 2019 Aspose.HTML for Cloud
   <summary>
    Permission is hereby granted, free of charge, to any person obtaining a copy
    of this software and associated documentation files (the "Software"), to deal
@@ -45,137 +46,106 @@ describe 'Test Storage API' do
   #            Storage API
   #################################################
 
-  # unit tests for get_disc_usage
-  # Check the disk usage of the current account
-  #
+  # Get disc usage
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :storage User&#39;s storage name
-  # @return [DiscUsageResponse]
+  # @option opts [String] :storage_name Storage name
+  # @return [DiscUsage]
   describe 'get_disc_usage test' do
-    it "must be {Code: 200, Status:'OK', DiscUsage:{UsedSize: num, TotalSize: num}}" do
-      opts = {storage: nil}
-
+    it "must be DiscUsage:{usedSize: num, totalSize: num}" do
+      opts = {storage_name: nil}
       res = @api.get_disc_usage(opts)
 
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      expect(res).to be_an_instance_of AsposeHtml::DiscUsageResponse
-      expect(res.code).to be_an_instance_of Integer
-      expect(res.status).to be_an_instance_of String
-      expect(res.disc_usage).to be_an_instance_of AsposeHtml::DiscUsage
-      expect(res.disc_usage.used_size).to be_an_instance_of Integer
-      expect(res.disc_usage.total_size).to be_an_instance_of Integer
+      expect(res).to be_an_instance_of AsposeHtml::DiscUsage
+      expect(res.used_size).to be_an_instance_of Integer
+      expect(res.total_size).to be_an_instance_of Integer
+      puts(res)
     end
   end
 
-  # unit tests for get_is_exist
-  # Check if a specific file or folder exists
-  #
-  # @param path File or folder path e.g. /file.ext or /Folder1
+  # Check if file or folder exists
+  # @param path File or folder path e.g. &#39;/file.ext&#39; or &#39;/folder&#39;
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :version_id File&#39;s version
-  # @option opts [String] :storage User&#39;s storage name
-  # @return [FileExistResponse]
-  describe 'get_is_exist test' do
-    it "must be {Code: 200, Status:'OK', FileExist:{IsExist: true, IsFolder: false}}" do
+  # @option opts [String] :storage_name Storage name
+  # @option opts [String] :version_id File version ID
+  # @return [ObjectExist]
+  describe 'object_exists test' do
+    it "must be ObjectExist:{isExist: true, isFolder: false}" do
 
       name = "test3.html.zip"
 
       # Upload file to server
-      res = upload_file(name)
-      expect(res.code).to eql(200)
+      res = upload_file_helper(name)
+      expect(res.uploaded.length).to eql(1)
+      expect(res.errors.length).to eql(0)
 
       path = "HtmlTestDoc/" + name
-      opts = {storage: nil, version_id: nil}
+      opts = {storage_name: nil, version_id: nil}
 
-      res = @api.get_is_exist(path, opts)
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      expect(res).to be_an_instance_of AsposeHtml::FileExistResponse
-      expect(res.code).to be_an_instance_of Integer
-      expect(res.status).to be_an_instance_of String
-      expect(res.file_exist).to be_an_instance_of AsposeHtml::FileExist
-      expect(res.file_exist.is_exist).to be true
-      expect(res.file_exist.is_folder).to be false
+      res = @api.object_exists(path, opts)
+      expect(res).to be_an_instance_of AsposeHtml::ObjectExist
+      expect(res.exists).to be true
+      expect(res.is_folder).to be false
     end
 
-    it "must be {Code: 200, Status:'OK', FileExist:{IsExist: false, IsFolder: false}}" do
+    it "must be ObjectExist:{isExist: false, isFolder: false}" do
 
       path = "/non_exist_file.ext"
-      opts = {storage: nil, version_id: nil}
+      opts = {storageName: nil, versionId: nil}
 
-      res = @api.get_is_exist(path, opts)
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      expect(res).to be_an_instance_of AsposeHtml::FileExistResponse
-      expect(res.code).to be_an_instance_of Integer
-      expect(res.status).to be_an_instance_of String
-      expect(res.file_exist).to be_an_instance_of AsposeHtml::FileExist
-      expect(res.file_exist.is_exist).to be false
-      expect(res.file_exist.is_folder).to be false
+      res = @api.object_exists(path, opts)
+      expect(res).to be_an_instance_of AsposeHtml::ObjectExist
+      expect(res.exists).to be false
+      expect(res.is_folder).to be false
     end
  end
 
-  # unit tests for get_is_storage_exist
   # Check if storage exists
-  #
-  # @param name Storage name
-  # @return [StorageExistResponse]
-  describe 'get_is_storage_exist test' do
-    it "must be {'Code': 200, 'Status': 'OK', 'IsExist':false}" do
+  # @param storage_name Storage name
+  # @param [Hash] opts the optional parameters
+  # @return [StorageExist]
+  describe 'storage_exists test' do
+    it "must be {'exists':false}" do
 
-      res = @api.get_is_storage_exist('non_exist_storage')
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      expect(res).to be_an_instance_of AsposeHtml::StorageExistResponse
-      expect(res.code).to be_an_instance_of Integer
-      expect(res.status).to be_an_instance_of String
-      expect(res.is_exist).to be false
+      res = @api.storage_exists('non_exist_storage')
+      expect(res).to be_an_instance_of AsposeHtml::StorageExist
+      expect(res.exists).to be false
     end
   end
 
-  # unit tests for get_list_file_versions
-  # Get the file&#39;s versions list
-  #
-  # @param path File path e.g. /file.ext or /Folder1/file.ext
+  # Get file versions
+  # @param path File path e.g. &#39;/file.ext&#39;
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :storage User&#39;s storage name
-  # @return [FileVersionsResponse]
-  describe 'get_list_file_versions test' do
-    it "must be {'Code': 200, 'Status': 'OK', 'FileVertsions':[...]}" do
+  # @option opts [String] :storage_name Storage name
+  # @return [Array<(FileVersions, Fixnum, Hash)>] FileVersions data, response status code and response headers
+  describe 'get_file_versions test' do
+    it "must be {'value':[...]}" do
 
       name = "test1.html"
 
-      # Upload files to server
-      res = upload_file(name)
-      expect(res.code).to eql(200)
+      # Upload file to server
+      res = upload_file_helper(name)
+      expect(res.uploaded.length).to eql(1)
+      expect(res.errors.length).to eql(0)
 
-      res = upload_file(name)
-      expect(res.code).to eql(200)
+      # Upload file to server
+      res = upload_file_helper(name)
+      expect(res.uploaded.length).to eql(1)
+      expect(res.errors.length).to eql(0)
 
-      res = upload_file(name)
-      expect(res.code).to eql(200)
+      # Upload file to server
+      res = upload_file_helper(name)
+      expect(res.uploaded.length).to eql(1)
+      expect(res.errors.length).to eql(0)
 
       path = "HtmlTestDoc/" + name
-      opts = {storage: nil}
+      opts = {storage_name: nil}
 
-      res = @api.get_list_file_versions(path, opts)
+      res = @api.get_file_versions(path, opts)
 
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      expect(res).to be_an_instance_of AsposeHtml::FileVersionsResponse
-      expect(res.code).to be_an_instance_of Integer
-      expect(res.status).to be_an_instance_of String
-      expect(res.file_versions).to be_an_instance_of Array
-      expect(res.file_versions[0]).to be_an_instance_of AsposeHtml::FileVersion
+      expect(res).to be_an_instance_of AsposeHtml::FileVersions
+      expect(res.value).to be_an_instance_of Array
+      expect(res.value[0]).to be_an_instance_of AsposeHtml::FileVersion
+      puts(res)
     end
   end
 
@@ -186,175 +156,179 @@ describe 'Test Storage API' do
   # unit tests for delete_file
   # Remove a specific file
   #
-  # @param path Path of the file including file name and extension e.g. /Folder1/file.ext
+  # Delete file
+  # @param path File path e.g. &#39;/folder/file.ext&#39;
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :version_id File&#39;s version
-  # @option opts [String] :storage User&#39;s storage name
-  # @return [RemoveFileResponse]
+  # @option opts [String] :storage_name Storage name
+  # @option opts [String] :version_id File version ID to delete
+  # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
   describe 'delete_file test' do
-    it "must be {'Code': 200, 'Status': 'OK'}" do
+    it "return void, check if file not exist" do
       name = "test_for_delete.html"
 
       # Upload files to server
-      res = upload_file(name)
-      expect(res.code).to eql(200)
+      res = upload_file_helper(name)
+      expect(res.uploaded.length).to eql(1)
+      expect(res.errors.length).to eql(0)
 
       path = "HtmlTestDoc/" + name
-      opts = {storage: nil, version_id: nil}
+      opts = {storage_name: nil, version_id: nil}
 
-      res = @api.delete_file(path, opts)
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
+      @api.delete_file(path, opts)
 
       # Check result
-      res = @api.get_is_exist(path, opts)
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      expect(res.file_exist.is_exist).to be false
-      expect(res.file_exist.is_folder).to be false
+      res = @api.object_exists(path, opts)
+      expect(res).to be_an_instance_of AsposeHtml::ObjectExist
+      expect(res.exists).to be false
+      expect(res.is_folder).to be false
     end
   end
 
-  # unit tests for get_download
-  # Download a specific file
-  #
-  # @param path Path of the file including the file name and extension e.g. /file.ext
+  # Download file
+  # @param path File path e.g. &#39;/folder/file.ext&#39;
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :version_id File&#39;s version
-  # @option opts [String] :storage User&#39;s storage name
-  # @return {file: path_to_tmp_file, code: 200, status: 'OK'}
-  describe 'get_download test' do
-    it "must be {file: path_to_tmp_file, code: 200, status: 'OK'}" do
+  # @option opts [String] :storage_name Storage name
+  # @option opts [String] :version_id File version ID to download
+  # @return [File]
+  describe 'download_file test' do
+    it "must be file: path_to_tmp_file" do
       name = "test_download.jpg"
 
       # Upload files to server
-      res = upload_file(name)
-      expect(res.code).to eql(200)
+      res = upload_file_helper(name)
+      expect(res.uploaded.length).to eql(1)
+      expect(res.errors.length).to eql(0)
 
       path = "HtmlTestDoc/" + name
-      opts = {storage: nil, version_id: nil}
+      opts = {storage_name: nil, version_id: nil}
 
       size_src = get_file_size(name)
 
-      res = @api.get_download(path, opts)
+      res = @api.download_file(path, opts)
+      expect(res).to be_an_instance_of File
 
-      expect(res[:code]).to eql(200)
-      expect(res[:status]).to eql("OK")
-      expect(res[:file]).to be_an_instance_of File
-
-      expect(File.size(res[:file].to_path)).to eql size_src
+      expect(File.size(res.to_path)).to eql size_src
 
       #Move to test folder
       save_to_test_dir(res, name)
+
+      # clear
+      @api.delete_file(path, opts)
+
+      # Check result
+      res = @api.object_exists(path, opts)
+      expect(res).to be_an_instance_of AsposeHtml::ObjectExist
+      expect(res.exists).to be false
+      expect(res.is_folder).to be false
     end
   end
 
-  # unit tests for post_move_file
+  # Copy file
+  # @param src_path Source file path e.g. &#39;/folder/file.ext&#39;
+  # @param dest_path Destination file path
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :src_storage_name Source storage name
+  # @option opts [String] :dest_storage_name Destination storage name
+  # @option opts [String] :version_id File version ID to copy
+  # @return nil
+  describe 'copy_file test' do
+    it "must be throw if error" do
+      name = "test_for_copy.html"
+
+      # Upload files to server
+      res = upload_file_helper(name)
+      expect(res.uploaded.length).to eql(1)
+      expect(res.errors.length).to eql(0)
+
+      src_path = "HtmlTestDoc/" + name
+      dest_path = "HtmlTestDoc/test_copied.html"
+
+      opts = {src_storage: nil, dest_storage: nil, version_id: nil}
+
+      @api.copy_file(src_path, dest_path, opts)
+
+      # Check result destination
+      res = @api.object_exists(dest_path)
+      expect(res).to be_an_instance_of AsposeHtml::ObjectExist
+      expect(res.exists).to be true
+      expect(res.is_folder).to be false
+
+      # Check result source
+      res = @api.object_exists(src_path)
+      expect(res).to be_an_instance_of AsposeHtml::ObjectExist
+      expect(res.exists).to be true
+      expect(res.is_folder).to be false
+
+      # Clear
+      @api.delete_file(src_path)
+      @api.delete_file(dest_path)
+    end
+  end
+
+  # unit tests for move_file
   # Move a specific file
   #
-  # @param src Source file path e.g. /fileSource.ext
-  # @param dest Destination file path e.g. /fileDestination.ext
+  # @param src_path Source file path e.g. &#39;/src.ext&#39;
+  # @param dest_path Destination file path e.g. &#39;/dest.ext&#39;
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :version_id Source file&#39;s version,
-  # @option opts [String] :storage User&#39;s source storage name
-  # @option opts [String] :dest_storage User&#39;s destination storage name
-  # @return [MoveFileResponse]
-  describe 'post_move_file test' do
-    it "must be {'Code': 200, 'Status': 'OK'}" do
+  # @option opts [String] :src_storage_name Source storage name
+  # @option opts [String] :dest_storage_name Destination storage name
+  # @option opts [String] :version_id File version ID to move
+  # @return [nil]
+  describe 'move_file test' do
+    it "must be throw if error" do
       name = "test_for_move.html"
 
       # Upload files to server
-      res = upload_file(name)
-      expect(res.code).to eql(200)
+      res = upload_file_helper(name)
+      expect(res.uploaded.length).to eql(1)
+      expect(res.errors.length).to eql(0)
 
-      src = "HtmlTestDoc/" + name
-      dest = "HtmlTestDoc/test_moved.html"
+      src_path = "HtmlTestDoc/" + name
+      dest_path = "HtmlTestDoc/test_moved.html"
 
-      opts = {storage: nil, dest_storage: nil, version_id: nil}
+      opts = {src_storage: nil, dest_storage: nil, version_id: nil}
 
-      res = @api.post_move_file(src, dest, opts)
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
+      @api.move_file(src_path, dest_path, opts)
 
       # Check result destination
-      res = @api.get_is_exist(dest)
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      expect(res.file_exist.is_exist).to be true
-      expect(res.file_exist.is_folder).to be false
+      res = @api.object_exists(dest_path)
+      expect(res).to be_an_instance_of AsposeHtml::ObjectExist
+      expect(res.exists).to be true
+      expect(res.is_folder).to be false
 
       # Check result source
-      res = @api.get_is_exist(src)
+      res = @api.object_exists(src_path)
+      expect(res).to be_an_instance_of AsposeHtml::ObjectExist
+      expect(res.exists).to be false
+      expect(res.is_folder).to be false
 
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      expect(res.file_exist.is_exist).to be false
-      expect(res.file_exist.is_folder).to be false
+      # Clear
+      @api.delete_file(dest_path)
     end
   end
 
-  # unit tests for put_create
-  # Upload a specific file
-  #
-  # @param path Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext
+  # Upload file
+  # @param path Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext             If the content is multipart and path does not contains the file name it tries to get them from filename parameter             from Content-Disposition header.
   # @param file File to upload
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :version_id Source file&#39;s version
-  # @option opts [String] :storage User&#39;s storage name
-  # @return [MessageResponse]
-  describe 'put_create test' do
-    it "must be {'Code': 200, 'Status': 'OK'}" do
-      name = "test_put_create.html"
+  # @option opts [String] :storage_name Storage name
+  # @return [FilesUploadResult]
+  describe 'upload_file test' do
+    it "must be FilesUploadResult" do
+      name = "test_upload_file.html"
 
       path = "HtmlTestDoc/" + name
       file = File.realpath(__dir__ + '/../../testdata/' + name)
 
-      opts = {storage: nil, version_id: nil}
+      opts = {storage_name: nil, version_id: nil}
 
-      # Check before
-      res = @api.get_is_exist(path, opts)
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      expect(res.file_exist.is_exist).to be false
-      expect(res.file_exist.is_folder).to be false
-
-      res = @api.put_create(path, file, opts)
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      # Check after
-      res = @api.get_is_exist(path, opts)
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      expect(res.file_exist.is_exist).to be true
-      expect(res.file_exist.is_folder).to be false
+      res = @api.upload_file(path, file, opts)
+      expect(res.uploaded.length).to eql(1)
+      expect(res.errors.length).to eql(0)
 
       # clear
-      res = @api.delete_file(path, opts)
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      # Check after clear
-      res = @api.get_is_exist(path, opts)
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      expect(res.file_exist.is_exist).to be false
-      expect(res.file_exist.is_folder).to be false
+      @api.delete_file(path)
     end
   end
 
@@ -362,235 +336,207 @@ describe 'Test Storage API' do
   #            Folder API
   #################################################
 
-  # unit tests for put_create_folder
   # Create the folder
-  #
-  # @param path Target folder&#39;s path e.g. Folder1/Folder2/. The folders will be created recursively
+  # @param path Folder path to create e.g. &#39;folder_1/folder_2/&#39;
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :storage User&#39;s source storage name
-  # @option opts [String] :dest_storage User&#39;s destination storage name
-  # @return [MessageResponse]
-  describe 'put_create_folder test' do
-    it "must be {'Code': 200, 'Status': 'OK'}" do
+  # @option opts [String] :storage_name Storage name
+  # @return [nil]
+  describe 'create_folder test' do
+    it "must be throw if error" do
 
       path = "HtmlTestDoc/testFolder1/testFolder2/testFolder3"
 
-      opts_exist = {storage: nil, version_id: nil}
+      opts_exist = {storage_name: nil, version_id: nil}
 
       # Check before
-      res = @api.get_is_exist(path, opts_exist)
+      res = @api.object_exists(path, opts_exist)
+      expect(res).to be_an_instance_of AsposeHtml::ObjectExist
+      expect(res.exists).to be false
+      expect(res.is_folder).to be false
 
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
+      opts_folder = {storage_name: nil}
 
-      expect(res.file_exist.is_exist).to be false
-      expect(res.file_exist.is_folder).to be false
-
-      opts_folder = {storage: nil, dest_storage: nil}
-
-      res = @api.put_create_folder(path, opts_folder)
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
+      @api.create_folder(path, opts_folder)
 
       # Check after
-      res = @api.get_is_exist(path, opts_exist)
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      expect(res.file_exist.is_exist).to be true
-      expect(res.file_exist.is_folder).to be true
+      res = @api.object_exists(path, opts_exist)
+      expect(res).to be_an_instance_of AsposeHtml::ObjectExist
+      expect(res.exists).to be true
+      expect(res.is_folder).to be true
 
       # clear
       path = "HtmlTestDoc/testFolder1"
-      opts_delete = {storage: nil, recursive: true}
+      opts_delete = {storage_name: nil, recursive: true}
 
-      res = @api.delete_folder(path, opts_delete)
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
+      @api.delete_folder(path, opts_delete)
 
       # Check after clear
-      res = @api.get_is_exist(path, opts_exist)
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      expect(res.file_exist.is_exist).to be false
-      expect(res.file_exist.is_folder).to be false
+      res = @api.object_exists(path, opts_exist)
+      expect(res).to be_an_instance_of AsposeHtml::ObjectExist
+      expect(res.exists).to be false
+      expect(res.is_folder).to be false
     end
   end
 
-  # unit tests for delete_folder
-  # Remove a specific folder
-  #
-  # @param path Folder path e.g. /Folder1
+  # Copy folder
+  # @param src_path Source folder path e.g. &#39;/src&#39;
+  # @param dest_path Destination folder path e.g. &#39;/dst&#39;
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :storage User&#39;s storage name
-  # @option opts [BOOLEAN] :recursive Remove recursivelly inner folder/files. If false and folder contains data than exception is raised.
-  # @return [RemoveFolderResponse]
-  describe 'delete_folder test' do
-    it "must be {'Code': 200, 'Status': 'OK'}" do
+  # @option opts [String] :src_storage_name Source storage name
+  # @option opts [String] :dest_storage_name Destination storage name
+  # @return [nil]
+  describe 'copy_folder test' do
+    it "must be throw if error" do
 
-      path = "HtmlTestDoc/testFolder1/testFolder2/testFolder3"
-
-      opts_exist = {storage: nil, version_id: nil}
+      src_path = "HtmlTestDoc/testSourceFolder"
+      opts_exist = {storage_name: nil, version_id: nil}
 
       # Check before
-      res = @api.get_is_exist(path, opts_exist)
+      res = @api.object_exists(src_path, opts_exist)
+      expect(res).to be_an_instance_of AsposeHtml::ObjectExist
+      expect(res.exists).to be false
+      expect(res.is_folder).to be false
 
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
+      # create folder
+      opts_folder = {storage_name: nil}
+      @api.create_folder(src_path, opts_folder)
 
-      expect(res.file_exist.is_exist).to be false
-      expect(res.file_exist.is_folder).to be false
+      # Check creating
+      res = @api.object_exists(src_path, opts_exist)
+      expect(res).to be_an_instance_of AsposeHtml::ObjectExist
+      expect(res.exists).to be true
+      expect(res.is_folder).to be true
 
-      opts_folder = {storage: nil, dest_storage: nil}
+      # Test copy folder
+      dest_path = "HtmlTestDoc/CopiedFolder"
+      opts_copy = {src_storage_name: nil, dest_storage_name: nil}
 
-      res = @api.put_create_folder(path, opts_folder)
+      @api.copy_folder(src_path, dest_path, opts_copy)
 
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
+      # Check src after copy
+      res = @api.object_exists(src_path, opts_exist)
+      expect(res).to be_an_instance_of AsposeHtml::ObjectExist
+      expect(res.exists).to be true
+      expect(res.is_folder).to be true
 
-      # Check after
-      res = @api.get_is_exist(path, opts_exist)
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      expect(res.file_exist.is_exist).to be true
-      expect(res.file_exist.is_folder).to be true
-
-      # Test delete folder
-      path = "HtmlTestDoc/testFolder1"
-      opts_delete = {storage: nil, recursive: true}
-
-      res = @api.delete_folder(path, opts_delete)
-
-      expect(res).to be_instance_of(AsposeHtml::RemoveFolderResponse)
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      # Check after clear
-      res = @api.get_is_exist(path, opts_exist)
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      expect(res.file_exist.is_exist).to be false
-      expect(res.file_exist.is_folder).to be false
-    end
-  end
-
-  # unit tests for post_move_folder
-  # Move a specific folder
-  #
-  # @param src Source folder path e.g. /Folder1
-  # @param dest Destination folder path e.g. /Folder2
-  # @param [Hash] opts the optional parameters
-  # @option opts [String] :storage User&#39;s source storage name
-  # @option opts [String] :dest_storage User&#39;s destination storage name
-  # @return [MoveFolderResponse]
-  describe 'post_move_folder test' do
-    it "must be {'Code': 200, 'Status': 'OK'}" do
-
-      src = "HtmlTestDoc/testSourceFolder"
-      opts_exist = {storage: nil, version_id: nil}
-
-      # Check before
-      res = @api.get_is_exist(src, opts_exist)
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      expect(res.file_exist.is_exist).to be false
-      expect(res.file_exist.is_folder).to be false
-
-      opts_folder = {storage: nil, dest_storage: nil}
-
-      # Create test folder
-      res = @api.put_create_folder(src, opts_folder)
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      # Check after
-      res = @api.get_is_exist(src, opts_exist)
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      expect(res.file_exist.is_exist).to be true
-      expect(res.file_exist.is_folder).to be true
-
-      # Test move folder
-      dst = "HtmlTestDoc/MovedFolder"
-      opts_move = {storage: nil, dest_storage: nil}
-
-      res = @api.post_move_folder(src, dst, opts_move)
-
-      expect(res).to be_instance_of(AsposeHtml::MoveFolderResponse)
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      # Check src after move
-      res = @api.get_is_exist(src, opts_exist)
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      expect(res.file_exist.is_exist).to be false
-      expect(res.file_exist.is_folder).to be false
-
-      # Check dst after move
-      res = @api.get_is_exist(dst, opts_exist)
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      expect(res.file_exist.is_exist).to be true
-      expect(res.file_exist.is_folder).to be true
+      # Check dst after copy
+      res = @api.object_exists(dest_path, opts_exist)
+      expect(res).to be_an_instance_of AsposeHtml::ObjectExist
+      expect(res.exists).to be true
+      expect(res.is_folder).to be true
 
       # Clear test folder
-      opts_delete = {storage: nil, recursive: true}
-      res = @api.delete_folder(dst, opts_delete)
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      # Check after clear
-      res = @api.get_is_exist(dst, opts_exist)
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      expect(res.file_exist.is_exist).to be false
-      expect(res.file_exist.is_folder).to be false
+      opts_delete = {storage_name: nil, recursive: true}
+      @api.delete_folder(src_path, opts_delete)
+      @api.delete_folder(dest_path, opts_delete)
     end
   end
 
-  # unit tests for get_list_files
-  # Get the file listing of a specific folder
-  #
+  # Move folder
+  # @param src_path Folder path to move e.g. &#39;/folder&#39;
+  # @param dest_path Destination folder path to move to e.g &#39;/dst&#39;
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :path Start with name of storage e.g. root folder &#39;/&#39;or some folder &#39;/folder1/..&#39;
-  # @option opts [String] :storage User&#39;s storage name
-  # @return [FileDetailsResponse]
-  describe 'get_list_files test' do
+  # @option opts [String] :src_storage_name Source storage name
+  # @option opts [String] :dest_storage_name Destination storage name
+  # @return [nil]
+  describe 'move_folder test' do
+    it "must be throw if error" do
+
+      src_path = "HtmlTestDoc/testSourceFolder"
+      opts_exist = {storage_name: nil, version_id: nil}
+
+      # Check before
+      res = @api.object_exists(src_path, opts_exist)
+      expect(res).to be_an_instance_of AsposeHtml::ObjectExist
+      expect(res.exists).to be false
+      expect(res.is_folder).to be false
+
+      # create folder
+      opts_folder = {storage_name: nil}
+      @api.create_folder(src_path, opts_folder)
+
+      # Check creating
+      res = @api.object_exists(src_path, opts_exist)
+      expect(res).to be_an_instance_of AsposeHtml::ObjectExist
+      expect(res.exists).to be true
+      expect(res.is_folder).to be true
+
+      # Test move folder
+      dest_path = "HtmlTestDoc/MovedFolder"
+      opts_copy = {src_storage_name: nil, dest_storage_name: nil}
+
+      @api.move_folder(src_path, dest_path, opts_copy)
+
+      # Check src after copy
+      res = @api.object_exists(src_path, opts_exist)
+      expect(res).to be_an_instance_of AsposeHtml::ObjectExist
+      expect(res.exists).to be false
+      expect(res.is_folder).to be false
+
+      # Check dst after copy
+      res = @api.object_exists(dest_path, opts_exist)
+      expect(res).to be_an_instance_of AsposeHtml::ObjectExist
+      expect(res.exists).to be true
+      expect(res.is_folder).to be true
+
+      # Clear test folder
+      opts_delete = {storage_name: nil, recursive: true}
+      @api.delete_folder(src_path, opts_delete)
+      @api.delete_folder(dest_path, opts_delete)
+    end
+  end
+
+  # Delete folder
+  # @param path Folder path e.g. &#39;/folder&#39;
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :storage_name Storage name
+  # @option opts [BOOLEAN] :recursive Enable to delete folders, subfolders and files (default to false)
+  # @return [nil]
+  describe 'delete_folder test' do
+    it "must be throw if error" do
+
+      path = "HtmlTestDoc/testDeketeFolder"
+      opts_exist = {storage_name: nil, version_id: nil}
+
+      # Check before
+      res = @api.object_exists(path, opts_exist)
+      expect(res).to be_an_instance_of AsposeHtml::ObjectExist
+      expect(res.exists).to be false
+      expect(res.is_folder).to be false
+
+      # create folder
+      opts_folder = {storage_name: nil}
+      @api.create_folder(path, opts_folder)
+
+      # Check creating
+      res = @api.object_exists(path, opts_exist)
+      expect(res).to be_an_instance_of AsposeHtml::ObjectExist
+      expect(res.exists).to be true
+      expect(res.is_folder).to be true
+
+      # Test delete folder
+      opts_delete = {storage_name: nil, recursive: true}
+      @api.delete_folder(path, opts_delete)
+
+      # Check after delete
+      res = @api.object_exists(path, opts_exist)
+      expect(res).to be_an_instance_of AsposeHtml::ObjectExist
+      expect(res.exists).to be false
+      expect(res.is_folder).to be false
+    end
+  end
+
+  # Get all files and folders within a folder
+  # @param path Folder path e.g. &#39;/folder&#39;
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :storage_name Storage name
+  # @return [FilesList]
+  describe 'get_files_list test' do
     it "should work" do
-      opts = {path: '/', storage: nil}
-
-      res = @api.get_list_files(opts)
-
-      expect(res.code).to eql(200)
-      expect(res.status).to eql("OK")
-
-      expect(res).to be_an_instance_of AsposeHtml::FileDetailsResponse
-      expect(res.code).to be_an_instance_of Integer
-      expect(res.status).to be_an_instance_of String
-      expect(res.file_details).to be_an_instance_of Array
-      expect(res.file_details[0]).to be_an_instance_of AsposeHtml::FileDetail
+      path = "HtmlTestDoc"
+      opts = {storage_name: nil}
+      res = @api.get_files_list(path, opts)
+      puts(res)
     end
   end
 end

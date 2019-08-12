@@ -1,28 +1,28 @@
-# File API
+# AsposeHtml::StorageApi
 
-All URIs are relative to *https://api.aspose.cloud/v1.1*
+All URIs are relative to *https://api.aspose.cloud/v3.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete_file**](FileApi.md#delete_file) | **DELETE** /storage/file | Remove a specific file 
-[**get_download**](FileApi.md#get_download) | **GET** /storage/file | Download a specific file 
-[**post_move_file**](FileApi.md#post_move_file) | **POST** /storage/file | Move a specific file 
-[**put_create**](FileApi.md#put_create) | **PUT** /storage/file | Upload a specific file 
+[**copy_file**](FileApi.md#copy_file) | **PUT** /html/storage/file/copy/{srcPath} | Copy file
+[**delete_file**](FileApi.md#delete_file) | **DELETE** /html/storage/file/{path} | Delete file
+[**download_file**](FileApi.md#download_file) | **GET** /html/storage/file/{path} | Download file
+[**move_file**](FileApi.md#move_file) | **PUT** /html/storage/file/move/{srcPath} | Move file
+[**upload_file**](FileApi.md#upload_file) | **PUT** /html/storage/file/{path} | Upload file
 
 
-# **delete_file**
-> RemoveFileResponse delete_file(path, opts)
+# **copy_file**
+> copy_file(src_path, dest_path, opts)
 
-Remove a specific file 
+Copy file
 
 ### Example
 ```ruby
-# load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -30,19 +30,21 @@ CONFIG = {
 
 api_instance = AsposeHtml::StorageApi.new CONFIG
 
-path = "path_example" # String | Path of the file including file name and extension e.g. /Folder1/file.ext
+src_path = "src_path_example" # String | Source file path e.g. '/folder/file.ext'
+
+dest_path = "dest_path_example" # String | Destination file path
 
 opts = { 
-  version_id: "version_id_example", # String | File's version
-  storage: "storage_example" # String | User's storage name
+  src_storage_name: "src_storage_name_example", # String | Source storage name
+  dest_storage_name: "dest_storage_name_example", # String | Destination storage name
+  version_id: "version_id_example" # String | File version ID to copy
 }
 
 begin
-  #Remove a specific file 
-  result = api_instance.delete_file(path, opts)
-  p result
-rescue AsposeStorage::ApiError => e
-  puts "Exception when calling FileApi->delete_file: #{e}"
+  #Copy file
+  api_instance.copy_file(src_path, dest_path, opts)
+rescue AsposeHtml::ApiError => e
+  puts "Exception when calling StorageApi->copy_file: #{e}"
 end
 ```
 
@@ -50,13 +52,15 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **String**| Path of the file including file name and extension e.g. /Folder1/file.ext | 
- **version_id** | **String**| File&#39;s version | [optional] 
- **storage** | **String**| User&#39;s storage name | [optional] 
+ **src_path** | **String**| Source file path e.g. &#39;/folder/file.ext&#39; | 
+ **dest_path** | **String**| Destination file path | 
+ **src_storage_name** | **String**| Source storage name | [optional] 
+ **dest_storage_name** | **String**| Destination storage name | [optional] 
+ **version_id** | **String**| File version ID to copy | [optional] 
 
 ### Return type
 
-[**RemoveFileResponse**](RemoveFileResponse.md)
+nil (empty response body)
 
 ### HTTP request headers
 
@@ -65,19 +69,18 @@ Name | Type | Description  | Notes
 
 
 
-# **get_download**
-> File get_download(path, opts)
+# **delete_file**
+> delete_file(path, opts)
 
-Download a specific file 
+Delete file
 
 ### Example
 ```ruby
-# load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -85,19 +88,18 @@ CONFIG = {
 
 api_instance = AsposeHtml::StorageApi.new CONFIG
 
-path = "path_example" # String | Path of the file including the file name and extension e.g. /file.ext
+path = "path_example" # String | File path e.g. '/folder/file.ext'
 
 opts = { 
-  version_id: "version_id_example", # String | File's version
-  storage: "storage_example" # String | User's storage name
+  storage_name: "storage_name_example", # String | Storage name
+  version_id: "version_id_example" # String | File version ID to delete
 }
 
 begin
-  #Download a specific file 
-  result = api_instance.get_download(path, opts)
-  p result
-rescue AsposeStorage::ApiError => e
-  puts "Exception when calling FileApi->get_download: #{e}"
+  #Delete file
+  api_instance.delete_file(path, opts)
+rescue AsposeHtml::ApiError => e
+  puts "Exception when calling StorageApi->delete_file: #{e}"
 end
 ```
 
@@ -105,13 +107,67 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **String**| Path of the file including the file name and extension e.g. /file.ext | 
- **version_id** | **String**| File&#39;s version | [optional] 
- **storage** | **String**| User&#39;s storage name | [optional] 
+ **path** | **String**| File path e.g. &#39;/folder/file.ext&#39; | 
+ **storage_name** | **String**| Storage name | [optional] 
+ **version_id** | **String**| File version ID to delete | [optional] 
 
 ### Return type
 
-**{file: path_to_tmp_file, code: 200, status: 'OK'}**
+nil (empty response body)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **download_file**
+> File download_file(path, opts)
+
+Download file
+
+### Example
+```ruby
+require 'aspose_html_cloud'
+
+CONFIG = {
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
+    "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+    "debug":true
+}
+
+api_instance = AsposeHtml::StorageApi.new CONFIG
+
+path = "path_example" # String | File path e.g. '/folder/file.ext'
+
+opts = { 
+  storage_name: "storage_name_example", # String | Storage name
+  version_id: "version_id_example" # String | File version ID to download
+}
+
+begin
+  #Download file
+  result = api_instance.download_file(path, opts)
+  p result
+rescue AsposeHtml::ApiError => e
+  puts "Exception when calling StorageApi->download_file: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **String**| File path e.g. &#39;/folder/file.ext&#39; | 
+ **storage_name** | **String**| Storage name | [optional] 
+ **version_id** | **String**| File version ID to download | [optional] 
+
+### Return type
+
+**File**
 
 ### HTTP request headers
 
@@ -120,19 +176,18 @@ Name | Type | Description  | Notes
 
 
 
-# **post_move_file**
-> MoveFileResponse post_move_file(src, dest, opts)
+# **move_file**
+> move_file(src_path, dest_path, opts)
 
-Move a specific file 
+Move file
 
 ### Example
 ```ruby
-# load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -140,22 +195,21 @@ CONFIG = {
 
 api_instance = AsposeHtml::StorageApi.new CONFIG
 
-src = "src_example" # String | Source file path e.g. /fileSource.ext
+src_path = "src_path_example" # String | Source file path e.g. '/src.ext'
 
-dest = "dest_example" # String | Destination file path e.g. /fileDestination.ext
+dest_path = "dest_path_example" # String | Destination file path e.g. '/dest.ext'
 
 opts = { 
-  version_id: "version_id_example", # String | Source file's version,
-  storage: "storage_example", # String | User's source storage name
-  dest_storage: "dest_storage_example" # String | User's destination storage name
+  src_storage_name: "src_storage_name_example", # String | Source storage name
+  dest_storage_name: "dest_storage_name_example", # String | Destination storage name
+  version_id: "version_id_example" # String | File version ID to move
 }
 
 begin
-  #Move a specific file 
-  result = api_instance.post_move_file(src, dest, opts)
-  p result
-rescue AsposeStorage::ApiError => e
-  puts "Exception when calling FileApi->post_move_file: #{e}"
+  #Move file
+  api_instance.move_file(src_path, dest_path, opts)
+rescue AsposeHtml::ApiError => e
+  puts "Exception when calling StorageApi->move_file: #{e}"
 end
 ```
 
@@ -163,36 +217,35 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **src** | **String**| Source file path e.g. /fileSource.ext | 
- **dest** | **String**| Destination file path e.g. /fileDestination.ext | 
- **version_id** | **String**| Source file&#39;s version, | [optional] 
- **storage** | **String**| User&#39;s source storage name | [optional] 
- **dest_storage** | **String**| User&#39;s destination storage name | [optional] 
+ **src_path** | **String**| Source file path e.g. &#39;/src.ext&#39; | 
+ **dest_path** | **String**| Destination file path e.g. &#39;/dest.ext&#39; | 
+ **src_storage_name** | **String**| Source storage name | [optional] 
+ **dest_storage_name** | **String**| Destination storage name | [optional] 
+ **version_id** | **String**| File version ID to move | [optional] 
 
 ### Return type
 
-[**MoveFileResponse**](MoveFileResponse.md)
+nil (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
 
-# **put_create**
-> File put_create(path, file, opts)
+# **upload_file**
+> FilesUploadResult upload_file(path, file, opts)
 
-Upload a specific file 
+Upload file
 
 ### Example
 ```ruby
-# load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
     "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug":true
@@ -200,21 +253,20 @@ CONFIG = {
 
 api_instance = AsposeHtml::StorageApi.new CONFIG
 
-path = "path_example" # String | Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext
+path = "path_example" # String | Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext             If the content is multipart and path does not contains the file name it tries to get them from filename parameter             from Content-Disposition header.             
 
-file = File.new("/path/to/file.txt") # File | File to upload
+file = File.realpath("/path/to/file.txt") # File | File to upload
 
 opts = { 
-  version_id: "version_id_example", # String | Source file's version
-  storage: "storage_example" # String | User's storage name
+  storage_name: "storage_name_example" # String | Storage name
 }
 
 begin
-  #Upload a specific file 
-  result = api_instance.put_create(path, file, opts)
+  #Upload file
+  result = api_instance.upload_file(path, file, opts)
   p result
-rescue AsposeStorage::ApiError => e
-  puts "Exception when calling FileApi->put_create: #{e}"
+rescue AsposeHtml::ApiError => e
+  puts "Exception when calling StorageApi->upload_file: #{e}"
 end
 ```
 
@@ -222,14 +274,13 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **String**| Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext | 
+ **path** | **String**| Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext             If the content is multipart and path does not contains the file name it tries to get them from filename parameter             from Content-Disposition header.              | 
  **file** | **File**| File to upload | 
- **version_id** | **String**| Source file&#39;s version | [optional] 
- **storage** | **String**| User&#39;s storage name | [optional] 
+ **storage_name** | **String**| Storage name | [optional] 
 
 ### Return type
 
-[**MessageResponse**](MessageResponse.md)
+[**FilesUploadResult**](FilesUploadResult.md)
 
 ### HTTP request headers
 

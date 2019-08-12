@@ -3,7 +3,7 @@
   --------------------------------------------------------------------------------------------------------------------
   <copyright company="Aspose" file="spec_helper.rb">
   </copyright>
-   Copyright (c) 2018 Aspose.HTML for Cloud
+   Copyright (c) 2019 Aspose.HTML for Cloud
   <summary>
    Permission is hereby granted, free of charge, to any person obtaining a copy
    of this software and associated documentation files (the "Software"), to deal
@@ -27,41 +27,35 @@
 =end
 
 # load the gem
-require 'aspose_html'
+require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath": "https://api-qa.aspose.cloud/v1.1",
-#    "basePath": "http://sikorsky-js3.dynabic.com:9083/v1.1",
-    "authPath": "https://api-qa.aspose.cloud/oauth2/token",
-#    "authPath": "http://sikorsky-js3.dynabic.com:9083/oauth2/token",
-    "apiKey": "60487a72d6325241191177e37ae52146",
-    "appSID": "80e32ca5-a828-46a4-9d54-7199dfd3764a",
+    "basePath": "http://localhost:5000/v3.0",
+    "authPath": "https://api-qa.aspose.cloud/connect/token",
+    "apiKey": "html.cloud",
+    "appSID": "html.cloud",
     "debug": true
 }
-
-
 # from storage api
-
 Storage_api = AsposeHtml::StorageApi.new CONFIG
 
 # Helper methods
-def upload_file(file_name, upload_folder = nil)
+def upload_file_helper(file_name, upload_folder = nil)
   folder = upload_folder.nil? ? "HtmlTestDoc" : upload_folder
   path = folder + '/' + file_name
-  file = __dir__ + '/../testdata/' + file_name
-  Storage_api.put_create path, file
+  file = File.realpath(__dir__ + '/../testdata/' + file_name)
+  Storage_api.upload_file(path, file)
 end
 
-def download_file(file_name, download_folder = nil)
+def download_file_helper(file_name, download_folder = nil)
   folder = download_folder.nil? ? "HtmlTestDoc" : download_folder
-
   path = folder + "/" + file_name
-  opts = {version_id: nil,  storage: nil}
-  Storage_api.get_download(path, opts)
+  opts = {version_id: nil,  storageName: nil}
+  Storage_api.download_file(path, opts)
 end
 
 def save_to_test_dir(answer, dst_file)
-  src = answer[:file].path
+  src = answer.path
   dst = File.realpath(__dir__ + '/../testresult')
   dst << "/" << dst_file
   FileUtils.mv(src, dst)
