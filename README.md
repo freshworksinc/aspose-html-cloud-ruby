@@ -3,7 +3,7 @@
 AsposeHtml - the Ruby gem for the Aspose.HTML for Cloud API Reference
 
 - API version: 3.0
-- Package version: 19.5.0
+- Package version: 19.6.0
 
 ## Requirements
 - Ruby >= 1.9
@@ -25,15 +25,15 @@ gem build aspose_html_cloud.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./aspose_html_cloud-19.5.0.gem
+gem install ./aspose_html_cloud-19.6.0.gem
 ```
-(for development, run `gem install --dev ./aspose_html_cloud-19.5.0.gem` to install the development dependencies)
+(for development, run `gem install --dev ./aspose_html_cloud-19.6.0.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'aspose_html_cloud', '~> 19.5.0'
+    gem 'aspose_html_cloud', '~> 19.6.0'
 
 ### Load from git
 
@@ -130,12 +130,6 @@ Class | Method | HTTP request | Description
 *AsposeHtml::HtmlApi* | [**get_document_fragments_by_css_selector_by_url**](docs/DocumentApi.md#get_document_fragments_by_css_selector_by_url) | **GET** /html/fragments/css/{outFormat} | Return list of HTML fragments matching the specified CSS selector by the source page URL.
 *AsposeHtml::HtmlApi* | [**get_document_images**](docs/DocumentApi.md#get_document_images) | **GET** /html/{name}/images/all | Return all HTML document images packaged as a ZIP archive.
 *AsposeHtml::HtmlApi* | [**get_document_images_by_url**](docs/DocumentApi.md#get_document_images_by_url) | **GET** /html/images/all | Return all HTML page images packaged as a ZIP archive by the source page URL.
-*AsposeHtml::HtmlApi* | [**get_recognize_and_import_to_html**](docs/OcrApi.md#get_recognize_and_import_to_html) | **GET** /html/{name}/ocr/import | Recognize text from the image file in the storage and import it to HTML format.
-*AsposeHtml::HtmlApi* | [**get_recognize_and_translate_to_html**](docs/OcrApi.md#get_recognize_and_translate_to_html) | **GET** /html/{name}/ocr/translate/{srcLang}/{resLang} | Recognize text from the image file in the storage, import it to HTML format and translate to specified language.
-*AsposeHtml::HtmlApi* | [**get_translate_document**](docs/TranslationApi.md#get_translate_document) | **GET** /html/{name}/translate/{srcLang}/{resLang} | Translate the HTML document specified by the name from default or specified storage. 
-*AsposeHtml::HtmlApi* | [**get_translate_document_by_url**](docs/TranslationApi.md#get_translate_document_by_url) | **GET** /html/translate/{srcLang}/{resLang} | Translate the HTML document from Web specified by its URL.
-*AsposeHtml::HtmlApi* | [**get_detect_html_keywords**](docs/SummarizationApi.md#get_detect_html_keywords) | **GET** /html/{name}/summ/keywords | Get the HTML document keywords using the keyword detection service.
-*AsposeHtml::HtmlApi* | [**get_detect_html_keywords_by_url**](docs/SummarizationApi.md#get_detect_html_keywords_by_url) | **GET** /html/summ/keywords | Get the keywords from HTML document from Web specified by its URL using the keyword detection service
 *AsposeHtml::HtmlApi* | [**get_merge_html_template**](docs/TemplateMergeApi.md#get_merge_html_template) | **GET** /html/{templateName}/merge | Populate HTML document template with data located as a file in the storage.
 *AsposeHtml::HtmlApi* | [**post_merge_html_template**](docs/TemplateMergeApi.md#post_merge_html_template) | **POST** /html/{templateName}/merge | Populate HTML document template with data from the request body. Result document will be saved to storage.
 

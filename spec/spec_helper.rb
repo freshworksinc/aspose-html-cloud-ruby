@@ -30,7 +30,8 @@
 require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath": "http://localhost:5000/v3.0",
+    "basePath": "https://api-qa.aspose.cloud/v3.0",
+#    "basePath": "http://localhost:5000/v3.0",
     "authPath": "https://api-qa.aspose.cloud/connect/token",
     "apiKey": "html.cloud",
     "appSID": "html.cloud",
