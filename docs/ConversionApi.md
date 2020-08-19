@@ -31,6 +31,10 @@ Convert the HTML document from the storage by its name to the specified image fo
 # load the gem
 require 'aspose_html_cloud'
 
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
+
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",
     "authPath":"https://api.aspose.cloud/connect/token",
@@ -101,6 +105,11 @@ Convert the HTML page from the web by its URL to the specified image format.
 ```ruby
 # load the gem
 require 'aspose_html_cloud'
+
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
+
 
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",
@@ -173,6 +182,11 @@ Convert the HTML document from the storage by its name to PDF.
 # load the gem
 require 'aspose_html_cloud'
 
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
+
+
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",
     "authPath":"https://api.aspose.cloud/connect/token",
@@ -239,6 +253,10 @@ Convert the HTML page from the web by its URL to PDF.
 # load the gem
 require 'aspose_html_cloud'
 
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
+
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",
     "authPath":"https://api.aspose.cloud/connect/token",
@@ -304,6 +322,11 @@ Convert the HTML document from the storage by its name to XPS.
 ```ruby
 # load the gem
 require 'aspose_html_cloud'
+
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
+
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",
     "authPath":"https://api.aspose.cloud/connect/token",
@@ -370,6 +393,10 @@ Convert the HTML page from the web by its URL to XPS.
 # load the gem
 require 'aspose_html_cloud'
 
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
+
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",
     "authPath":"https://api.aspose.cloud/connect/token",
@@ -435,6 +462,10 @@ Converts the HTML document (in request content) to the specified image format an
 ```ruby
 # load the gem
 require 'aspose_html_cloud'
+
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
 
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",
@@ -505,6 +536,10 @@ Converts the HTML document (in request content) to PDF and uploads resulting fil
 # load the gem
 require 'aspose_html_cloud'
 
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
+
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",
     "authPath":"https://api.aspose.cloud/connect/token",
@@ -560,7 +595,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 
-
 # **post_convert_document_in_request_to_xps**
 > File post_convert_document_in_request_to_xps(out_path, file, opts)
 
@@ -569,6 +603,10 @@ Converts the HTML document (in request content) to XPS and uploads resulting fil
 ### Example
 ```ruby
 require 'aspose_html_cloud'
+
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
 
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",
@@ -634,6 +672,10 @@ Converts the HTML document (located on storage) to the specified image format an
 ```ruby
 require 'aspose_html_cloud'
 
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
+
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",
     "authPath":"https://api.aspose.cloud/connect/token",
@@ -698,7 +740,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 
-
 # **put_convert_document_to_pdf**
 > Hash put_convert_document_to_pdf(name, out_path, opts)
 
@@ -707,6 +748,10 @@ Converts the HTML document (located on storage) to PDF and uploads resulting fil
 ### Example
 ```ruby
 require 'aspose_html_cloud'
+
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
 
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",
@@ -767,7 +812,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 
-
 # **put_convert_document_to_xps**
 > Hash put_convert_document_to_xps(name, out_path, opts)
 
@@ -776,6 +820,10 @@ Converts the HTML document (located on storage) to XPS and uploads resulting fil
 ### Example
 ```ruby
 require 'aspose_html_cloud'
+
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
 
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",
@@ -836,7 +884,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 
-
 # **get_convert_document_to_mhtml_by_url**
 > Hash get_convert_document_to_mhtml_by_url(source_url)
 
@@ -846,6 +893,10 @@ Converts the HTML page from Web by its URL to MHTML returns resulting file in re
 ```ruby
 # load the gem
 require 'aspose_html_cloud'
+
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
 
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",
@@ -884,7 +935,6 @@ Name | Type | Description  | Notes
  - **Accept**: multipart/form-data
 
 
-
 # **get_convert_document_to_markdown**
 > Hash get_convert_document_to_markdown(name, opts)
 
@@ -894,6 +944,10 @@ Converts the HTML document (located on storage) to Markdown and returns resultin
 ```ruby
 # load the gem
 require 'aspose_html_cloud'
+
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
 
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",
@@ -951,6 +1005,10 @@ Converts the HTML document (in request content) to Markdown and uploads resultin
 # load the gem
 require 'aspose_html_cloud'
 
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
+
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",
     "authPath":"https://api.aspose.cloud/connect/token",
@@ -998,6 +1056,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
+
 # **put_convert_document_to_markdown**
 > Hash put_convert_document_to_markdown(name, out_path, opts)
 
@@ -1007,6 +1066,10 @@ Converts the HTML document (located on storage) to Markdown and uploads resultin
 ```ruby
 # load the gem
 require 'aspose_html_cloud'
+
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
 
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",

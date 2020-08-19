@@ -3,7 +3,7 @@
   --------------------------------------------------------------------------------------------------------------------
   <copyright company="Aspose" file="spec_helper.rb">
   </copyright>
-   Copyright (c) 2019 Aspose.HTML for Cloud
+  Copyright (c) 2020 Aspose.HTML for Cloud
   <summary>
    Permission is hereby granted, free of charge, to any person obtaining a copy
    of this software and associated documentation files (the "Software"), to deal
@@ -30,11 +30,10 @@
 require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath": "https://api-qa.aspose.cloud/v3.0",
-#    "basePath": "http://localhost:5000/v3.0",
-    "authPath": "https://api-qa.aspose.cloud/connect/token",
-    "apiKey": "html.cloud",
-    "appSID": "html.cloud",
+    "basePath": "https://api.aspose.cloud/v3.0",
+    "authPath": "https://api.aspose.cloud/connect/token",
+    "apiKey": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "appSID": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "debug": true
 }
 # from storage api

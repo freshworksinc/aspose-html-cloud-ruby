@@ -18,6 +18,10 @@ Converts the Markdown document (located on storage) to HTML and returns resultin
 # load the gem
 require 'aspose_html_cloud'
 
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
+
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",
     "authPath":"https://api.aspose.cloud/connect/token",
@@ -72,6 +76,10 @@ Converts the Markdown document (in request content) to HTML and uploads resultin
 # load the gem
 require 'aspose_html_cloud'
 
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
+
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",
     "authPath":"https://api.aspose.cloud/connect/token",
@@ -116,6 +124,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
+
 # **put_convert_markdown_to_html**
 > Hash put_convert_markdown_to_html(name, out_path, opts)
 
@@ -125,6 +134,10 @@ Converts the Markdown document (located on storage) to HTML and uploads resultin
 ```ruby
 # load the gem
 require 'aspose_html_cloud'
+
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
 
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",

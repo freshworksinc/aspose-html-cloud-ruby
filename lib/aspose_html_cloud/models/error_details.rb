@@ -3,7 +3,7 @@
   --------------------------------------------------------------------------------------------------------------------
   <copyright company="Aspose" file="error_details.rb">
   </copyright>
-   Copyright (c) 2019 Aspose.HTML for Cloud
+  Copyright (c) 2020 Aspose.HTML for Cloud
   <summary>
    Permission is hereby granted, free of charge, to any person obtaining a copy
    of this software and associated documentation files (the "Software"), to deal

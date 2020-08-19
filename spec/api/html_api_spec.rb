@@ -3,7 +3,7 @@
   --------------------------------------------------------------------------------------------------------------------
   <copyright company="Aspose" file="html_api_spec.rb">
   </copyright>
-   Copyright (c) 2019 Aspose.HTML for Cloud
+  Copyright (c) 2020 Aspose.HTML for Cloud
   <summary>
    Permission is hereby granted, free of charge, to any person obtaining a copy
    of this software and associated documentation files (the "Software"), to deal
@@ -87,7 +87,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer[:file], "Convert_get_html.jpeg")
+      save_to_test_dir(answer[:file], "Convert_get_html_jpeg.zip")
     end
 
     it "Convert html to png" do
@@ -99,7 +99,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer[:file], "Convert_get_html.png")
+      save_to_test_dir(answer[:file], "Convert_get_html_png.zip")
     end
 
     it "Convert html to bmp" do
@@ -111,7 +111,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer[:file], "Convert_get_html.bmp")
+      save_to_test_dir(answer[:file], "Convert_get_html_bmp.zip")
     end
 
     it "Convert html to tiff" do
@@ -123,7 +123,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer[:file], "Convert_get_html.tiff")
+      save_to_test_dir(answer[:file], "Convert_get_html_tiff.zip")
     end
 
     it "Convert html to gif" do
@@ -135,7 +135,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer[:file], "Convert_get_html.gif")
+      save_to_test_dir(answer[:file], "Convert_get_html_gif.zip")
     end
   end
 
@@ -365,7 +365,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer[:file], "Convert_get_url.jpeg")
+      save_to_test_dir(answer[:file], "Convert_get_url_jpeg.zip")
     end
 
     it "Convert url to png" do
@@ -377,7 +377,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer[:file], "Convert_get_url.png")
+      save_to_test_dir(answer[:file], "Convert_get_url_png.zip")
     end
 
     it "Convert url to bmp" do
@@ -389,7 +389,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer[:file], "Convert_get_url.bmp")
+      save_to_test_dir(answer[:file], "Convert_get_url_bmp.zip")
     end
 
     it "Convert url to tiff" do
@@ -401,7 +401,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer[:file], "Convert_get_url.tiff")
+      save_to_test_dir(answer[:file], "Convert_get_url_tiff.zip")
     end
 
     it "Convert url to gif" do
@@ -413,7 +413,7 @@ describe 'Test html_api' do
       expect(answer[:status]).to eql(200)
 
       # Save to test dir
-      save_to_test_dir(answer[:file], "Convert_get_url.gif")
+      save_to_test_dir(answer[:file], "Convert_get_url_gif.zip")
     end
   end
 
@@ -787,7 +787,7 @@ describe 'Test html_api' do
     }
 
     it "Upload and convert html to jpeg" do
-      name = "postHtmlToJpegInReq.jpeg"
+      name = "postHtmlToJpegInReq.zip"
       out_path = "HtmlTestDoc/" + name
       out_format = "jpeg"
 
@@ -804,7 +804,7 @@ describe 'Test html_api' do
     end
 
     it "Upload and convert html to png" do
-      name = "postHtmlToPngInReq.png"
+      name = "postHtmlToPngInReq.zip"
       out_path = "HtmlTestDoc/" + name
       out_format = "png"
 
@@ -821,7 +821,7 @@ describe 'Test html_api' do
     end
 
     it "Upload and convert html to bmp" do
-      name = "postHtmlToBmpInReq.bmp"
+      name = "postHtmlToBmpInReq.zip"
       out_path = "HtmlTestDoc/" + name
       out_format = "bmp"
 
@@ -838,7 +838,7 @@ describe 'Test html_api' do
     end
 
     it "Upload and convert html to tiff" do
-      name = "postHtmlToTiffInReq.tiff"
+      name = "postHtmlToTiffInReq.zip"
       out_path = "HtmlTestDoc/" + name
       out_format = "tiff"
 
@@ -855,7 +855,7 @@ describe 'Test html_api' do
     end
 
     it "Upload and convert html to gif" do
-      name = "postHtmlToGifInReq.gif"
+      name = "postHtmlToGifInReq.zip"
       out_path = "HtmlTestDoc/" + name
       out_format = "gif"
 
@@ -1366,7 +1366,7 @@ describe 'Test html_api' do
     }
 
     it "Convert html to jpeg in storage" do
-      result_name = "putHtmlToJpeg.jpeg"
+      result_name = "putHtmlToJpeg.zip"
       out_path = "HtmlTestDoc/" + result_name
       out_format = "jpeg"
 
@@ -1383,7 +1383,7 @@ describe 'Test html_api' do
     end
 
     it "Convert html to png in storage" do
-      result_name = "putHtmlToPng.png"
+      result_name = "putHtmlToPng.zip"
       out_path = "HtmlTestDoc/" + result_name
       out_format = "png"
 
@@ -1400,7 +1400,7 @@ describe 'Test html_api' do
     end
 
     it "Convert html to bmp in storage" do
-      result_name = "putHtmlToBmp.bmp"
+      result_name = "putHtmlToBmp.zip"
       out_path = "HtmlTestDoc/" + result_name
       out_format = "bmp"
 
@@ -1417,7 +1417,7 @@ describe 'Test html_api' do
     end
 
     it "Convert html to tiff in storage" do
-      result_name = "putHtmlToTiff.tiff"
+      result_name = "putHtmlToTiff.zip"
       out_path = "HtmlTestDoc/" + result_name
       out_format = "tiff"
 
@@ -1434,7 +1434,7 @@ describe 'Test html_api' do
     end
 
     it "Convert html to gif in storage" do
-      result_name = "putHtmlToGif.gif"
+      result_name = "putHtmlToGif.zip"
       out_path = "HtmlTestDoc/" + result_name
       out_format = "gif"
 
@@ -2362,6 +2362,54 @@ describe 'Test html_api' do
       save_to_test_dir(answer[:file], "Get_images_from_url.zip")
     end
   end
+
+  #################################################
+  #                   SEO API
+  #################################################
+
+  # unit tests for get_seo_warning
+  # Page analysis and return of SEO warnings in json format.
+  #
+  # @param addr Source page URL.
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'get_seo_warning test' do
+    it "Get seo warning" do
+
+      addr = "https://edition.cnn.com/"
+      answer = @instance.get_seo_warning(addr)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer[:file], "Get_seo_warning.json")
+    end
+  end
+
+  # unit tests for get_html_warning
+  # Checks the markup validity of Web documents in HTML, XHTML, etc., and return result in json format.
+  #
+  # @param url Source page URL.
+  # @return [Hash] {file: data, status: _status_code, headers: _headers}
+  describe 'get_html_warning test' do
+    it "Get html warning" do
+
+      url = "https://edition.cnn.com/"
+      answer = @instance.get_html_warning(url)
+
+      expect(answer).to be_an_instance_of Hash
+      expect(answer[:file]).to be_an_instance_of File
+      expect(answer[:status]).to eql(200)
+
+      # Save to test dir
+      save_to_test_dir(answer[:file], "Get_html_warning.json")
+    end
+  end
+
+    #################################################
+    #            TemplateMerge API
+    #################################################
 
     # unit tests for get_merge_html_template
     # Populate HTML document template with data located as a file in the storage.

@@ -3,7 +3,7 @@
   --------------------------------------------------------------------------------------------------------------------
   <copyright company="Aspose" file="api_client.rb">
   </copyright>
-   Copyright (c) 2019 Aspose.HTML for Cloud
+  Copyright (c) 2020 Aspose.HTML for Cloud
   <summary>
    Permission is hereby granted, free of charge, to any person obtaining a copy
    of this software and associated documentation files (the "Software"), to deal
@@ -54,7 +54,9 @@ module AsposeHtml
       @default_headers = {
         'Content-Type' => "application/json",
         'User-Agent' => @user_agent,
-        'Authorization' => "Bearer #{@config.access_token}"
+        'Authorization' => "Bearer #{@config.access_token}",
+        'x-aspose-client' => "aspose.html-cloud ruby sdk",
+        'x-aspose-client-version' => "20.8.0"
       }
     end
 

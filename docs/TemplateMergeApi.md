@@ -71,7 +71,19 @@ Populate HTML document template with data located as a file in the storage.
 # load the gem
 require 'aspose_html_cloud'
 
-api_instance = AsposeHtml::TemplateMergeApi.new
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
+
+CONFIG = {
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
+    "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+    "debug":true
+}
+
+api_instance = AsposeHtml::HtmlApi.new CONFIG
 
 template_name = "template_name_example" # String | Template document name. Template document is HTML or zipped HTML.
 
@@ -123,7 +135,19 @@ Populate HTML document template with data from the request body. Result document
 # load the gem
 require 'aspose_html_cloud'
 
-api_instance = AsposeHtml::TemplateMergeApi.new
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
+
+CONFIG = {
+    "basePath":"https://api.aspose.cloud/v3.0",
+    "authPath":"https://api.aspose.cloud/connect/token",
+    "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+    "debug":true
+}
+
+api_instance = AsposeHtml::HtmlApi.new CONFIG
 
 template_name = "template_name_example" # String | Template document name. Template document is HTML or zipped HTML.
 

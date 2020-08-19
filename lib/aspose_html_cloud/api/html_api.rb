@@ -3,7 +3,7 @@
   --------------------------------------------------------------------------------------------------------------------
   <copyright company="Aspose" file="html_api.rb">
   </copyright>
-   Copyright (c) 2019 Aspose.HTML for Cloud
+  Copyright (c) 2020 Aspose.HTML for Cloud
   <summary>
    Permission is hereby granted, free of charge, to any person obtaining a copy
    of this software and associated documentation files (the "Software"), to deal
@@ -562,19 +562,19 @@ module AsposeHtml
 # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def post_convert_document_in_request_to_image_with_http_info(out_path, out_format, file, opts = {})
       if @api_client.config.debug
-        @api_client.config.logger.debug "Calling API: ConversionApi.post_convert_document_in_request_to_image ..."
+        @api_client.config.logger.debug "Calling API: HtmlApi.post_convert_document_in_request_to_image ..."
       end
       # verify the required parameter 'out_path' is set
       if @api_client.config.client_side_validation && out_path.nil?
-        fail ArgumentError, "Missing the required parameter 'out_path' when calling ConversionApi.post_convert_document_in_request_to_image"
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling HtmlApi.post_convert_document_in_request_to_image"
       end
       # verify the required parameter 'out_format' is set
       if @api_client.config.client_side_validation && out_format.nil?
-        fail ArgumentError, "Missing the required parameter 'out_format' when calling ConversionApi.post_convert_document_in_request_to_image"
+        fail ArgumentError, "Missing the required parameter 'out_format' when calling HtmlApi.post_convert_document_in_request_to_image"
       end
       # verify the required parameter 'file' is set
       if @api_client.config.client_side_validation && file.nil?
-        fail ArgumentError, "Missing the required parameter 'file' when calling ConversionApi.post_convert_document_in_request_to_image"
+        fail ArgumentError, "Missing the required parameter 'file' when calling HtmlApi.post_convert_document_in_request_to_image"
       end
       # resource path
       local_var_path = "/html/convert/image/{outFormat}".sub('{' + 'outFormat' + '}', out_format.to_s)
@@ -609,7 +609,7 @@ module AsposeHtml
                                                         :body => post_body,
                                                         :return_type => 'File')
       if @api_client.config.debug
-        @api_client.config.logger.debug "API called: ConversionApi#post_convert_document_in_request_to_image\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: HtmlApi#post_convert_document_in_request_to_image\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -645,15 +645,15 @@ module AsposeHtml
 # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def post_convert_document_in_request_to_pdf_with_http_info(out_path, file, opts = {})
       if @api_client.config.debug
-        @api_client.config.logger.debug "Calling API: ConversionApi.post_convert_document_in_request_to_pdf ..."
+        @api_client.config.logger.debug "Calling API: HtmlApi.post_convert_document_in_request_to_pdf ..."
       end
       # verify the required parameter 'out_path' is set
       if @api_client.config.client_side_validation && out_path.nil?
-        fail ArgumentError, "Missing the required parameter 'out_path' when calling ConversionApi.post_convert_document_in_request_to_pdf"
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling HtmlApi.post_convert_document_in_request_to_pdf"
       end
       # verify the required parameter 'file' is set
       if @api_client.config.client_side_validation && file.nil?
-        fail ArgumentError, "Missing the required parameter 'file' when calling ConversionApi.post_convert_document_in_request_to_pdf"
+        fail ArgumentError, "Missing the required parameter 'file' when calling HtmlApi.post_convert_document_in_request_to_pdf"
       end
       # resource path
       local_var_path = "/html/convert/pdf"
@@ -689,7 +689,7 @@ module AsposeHtml
                                                         :body => post_body,
                                                         :return_type => 'File')
       if @api_client.config.debug
-        @api_client.config.logger.debug "API called: ConversionApi#post_convert_document_in_request_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: HtmlApi#post_convert_document_in_request_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -725,15 +725,15 @@ module AsposeHtml
 # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def post_convert_document_in_request_to_xps_with_http_info(out_path, file, opts = {})
       if @api_client.config.debug
-        @api_client.config.logger.debug "Calling API: ConversionApi.post_convert_document_in_request_to_xps ..."
+        @api_client.config.logger.debug "Calling API: HtmlApi.post_convert_document_in_request_to_xps ..."
       end
       # verify the required parameter 'out_path' is set
       if @api_client.config.client_side_validation && out_path.nil?
-        fail ArgumentError, "Missing the required parameter 'out_path' when calling ConversionApi.post_convert_document_in_request_to_xps"
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling HtmlApi.post_convert_document_in_request_to_xps"
       end
       # verify the required parameter 'file' is set
       if @api_client.config.client_side_validation && file.nil?
-        fail ArgumentError, "Missing the required parameter 'file' when calling ConversionApi.post_convert_document_in_request_to_xps"
+        fail ArgumentError, "Missing the required parameter 'file' when calling HtmlApi.post_convert_document_in_request_to_xps"
       end
       # resource path
       local_var_path = "/html/convert/xps"
@@ -769,7 +769,7 @@ module AsposeHtml
                                                         :body => post_body,
                                                         :return_type => 'File')
       if @api_client.config.debug
-        @api_client.config.logger.debug "API called: ConversionApi#post_convert_document_in_request_to_xps\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: HtmlApi#post_convert_document_in_request_to_xps\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -813,19 +813,19 @@ module AsposeHtml
 # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def put_convert_document_to_image_with_http_info(name, out_path, out_format, opts = {})
       if @api_client.config.debug
-        @api_client.config.logger.debug "Calling API: ConversionApi.put_convert_document_to_image ..."
+        @api_client.config.logger.debug "Calling API: HtmlApi.put_convert_document_to_image ..."
       end
       # verify the required parameter 'name' is set
       if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling ConversionApi.put_convert_document_to_image"
+        fail ArgumentError, "Missing the required parameter 'name' when calling HtmlApi.put_convert_document_to_image"
       end
       # verify the required parameter 'out_path' is set
       if @api_client.config.client_side_validation && out_path.nil?
-        fail ArgumentError, "Missing the required parameter 'out_path' when calling ConversionApi.put_convert_document_to_image"
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling HtmlApi.put_convert_document_to_image"
       end
       # verify the required parameter 'out_format' is set
       if @api_client.config.client_side_validation && out_format.nil?
-        fail ArgumentError, "Missing the required parameter 'out_format' when calling ConversionApi.put_convert_document_to_image"
+        fail ArgumentError, "Missing the required parameter 'out_format' when calling HtmlApi.put_convert_document_to_image"
       end
       # resource path
       local_var_path = "/html/{name}/convert/image/{outFormat}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'outFormat' + '}', out_format.to_s)
@@ -862,7 +862,7 @@ module AsposeHtml
                                                         :body => post_body,
                                                         :return_type => 'File')
       if @api_client.config.debug
-        @api_client.config.logger.debug "API called: ConversionApi#put_convert_document_to_image\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: HtmlApi#put_convert_document_to_image\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -902,15 +902,15 @@ module AsposeHtml
 # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def put_convert_document_to_pdf_with_http_info(name, out_path, opts = {})
       if @api_client.config.debug
-        @api_client.config.logger.debug "Calling API: ConversionApi.put_convert_document_to_pdf ..."
+        @api_client.config.logger.debug "Calling API: HtmlApi.put_convert_document_to_pdf ..."
       end
       # verify the required parameter 'name' is set
       if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling ConversionApi.put_convert_document_to_pdf"
+        fail ArgumentError, "Missing the required parameter 'name' when calling HtmlApi.put_convert_document_to_pdf"
       end
       # verify the required parameter 'out_path' is set
       if @api_client.config.client_side_validation && out_path.nil?
-        fail ArgumentError, "Missing the required parameter 'out_path' when calling ConversionApi.put_convert_document_to_pdf"
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling HtmlApi.put_convert_document_to_pdf"
       end
       # resource path
       local_var_path = "/html/{name}/convert/pdf".sub('{' + 'name' + '}', name.to_s)
@@ -946,7 +946,7 @@ module AsposeHtml
                                                         :body => post_body,
                                                         :return_type => 'File')
       if @api_client.config.debug
-        @api_client.config.logger.debug "API called: ConversionApi#put_convert_document_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: HtmlApi#put_convert_document_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -986,15 +986,15 @@ module AsposeHtml
 # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def put_convert_document_to_xps_with_http_info(name, out_path, opts = {})
       if @api_client.config.debug
-        @api_client.config.logger.debug "Calling API: ConversionApi.put_convert_document_to_xps ..."
+        @api_client.config.logger.debug "Calling API: HtmlApi.put_convert_document_to_xps ..."
       end
       # verify the required parameter 'name' is set
       if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling ConversionApi.put_convert_document_to_xps"
+        fail ArgumentError, "Missing the required parameter 'name' when calling HtmlApi.put_convert_document_to_xps"
       end
       # verify the required parameter 'out_path' is set
       if @api_client.config.client_side_validation && out_path.nil?
-        fail ArgumentError, "Missing the required parameter 'out_path' when calling ConversionApi.put_convert_document_to_xps"
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling HtmlApi.put_convert_document_to_xps"
       end
       # resource path
       local_var_path = "/html/{name}/convert/xps".sub('{' + 'name' + '}', name.to_s)
@@ -1030,7 +1030,7 @@ module AsposeHtml
                                                         :body => post_body,
                                                         :return_type => 'File')
       if @api_client.config.debug
-        @api_client.config.logger.debug "API called: ConversionApi#put_convert_document_to_xps\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: HtmlApi#put_convert_document_to_xps\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1108,11 +1108,11 @@ module AsposeHtml
 # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_convert_document_to_markdown_with_http_info(name, opts = {})
       if @api_client.config.debug
-        @api_client.config.logger.debug 'Calling API: ConversionApi.get_convert_document_to_markdown ...'
+        @api_client.config.logger.debug 'Calling API: HtmlApi.get_convert_document_to_markdown ...'
       end
       # verify the required parameter 'name' is set
       if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling ConversionApi.get_convert_document_to_markdown"
+        fail ArgumentError, "Missing the required parameter 'name' when calling HtmlApi.get_convert_document_to_markdown"
       end
       # resource path
       local_var_path = '/html/{name}/convert/md'.sub('{' + 'name' + '}', name.to_s)
@@ -1142,7 +1142,7 @@ module AsposeHtml
                                                         :body => post_body,
                                                         :return_type => 'File')
       if @api_client.config.debug
-        @api_client.config.logger.debug "API called: ConversionApi#get_convert_document_to_markdown\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: HtmlApi#get_convert_document_to_markdown\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1166,15 +1166,15 @@ module AsposeHtml
 # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def post_convert_document_in_request_to_markdown_with_http_info(out_path, file, opts = {})
       if @api_client.config.debug
-        @api_client.config.logger.debug 'Calling API: ConversionApi.post_convert_document_in_request_to_markdown ...'
+        @api_client.config.logger.debug 'Calling API: HtmlApi.post_convert_document_in_request_to_markdown ...'
       end
       # verify the required parameter 'out_path' is set
       if @api_client.config.client_side_validation && out_path.nil?
-        fail ArgumentError, "Missing the required parameter 'out_path' when calling ConversionApi.post_convert_document_in_request_to_markdown"
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling HtmlApi.post_convert_document_in_request_to_markdown"
       end
       # verify the required parameter 'file' is set
       if @api_client.config.client_side_validation && file.nil?
-        fail ArgumentError, "Missing the required parameter 'file' when calling ConversionApi.post_convert_document_in_request_to_markdown"
+        fail ArgumentError, "Missing the required parameter 'file' when calling HtmlApi.post_convert_document_in_request_to_markdown"
       end
       # resource path
       local_var_path = '/html/convert/md'
@@ -1205,7 +1205,7 @@ module AsposeHtml
                                                         :body => post_body,
                                                         :return_type => 'File')
       if @api_client.config.debug
-        @api_client.config.logger.debug "API called: ConversionApi#put_convert_document_in_request_to_markdown\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: HtmlApi#put_convert_document_in_request_to_markdown\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1233,15 +1233,15 @@ module AsposeHtml
 # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def put_convert_document_to_markdown_with_http_info(name, out_path, opts = {})
       if @api_client.config.debug
-        @api_client.config.logger.debug 'Calling API: ConversionApi.put_convert_document_to_markdown ...'
+        @api_client.config.logger.debug 'Calling API: HtmlApi.put_convert_document_to_markdown ...'
       end
       # verify the required parameter 'name' is set
       if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling ConversionApi.put_convert_document_to_markdown"
+        fail ArgumentError, "Missing the required parameter 'name' when calling HtmlApi.put_convert_document_to_markdown"
       end
       # verify the required parameter 'out_path' is set
       if @api_client.config.client_side_validation && out_path.nil?
-        fail ArgumentError, "Missing the required parameter 'out_path' when calling ConversionApi.put_convert_document_to_markdown"
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling HtmlApi.put_convert_document_to_markdown"
       end
       # resource path
       local_var_path = '/html/{name}/convert/md'.sub('{' + 'name' + '}', name.to_s)
@@ -1272,7 +1272,7 @@ module AsposeHtml
                                                         :body => post_body,
                                                         :return_type => 'File')
       if @api_client.config.debug
-        @api_client.config.logger.debug "API called: ConversionApi#put_convert_document_to_markdown\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: HtmlApi#put_convert_document_to_markdown\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1300,11 +1300,11 @@ module AsposeHtml
 # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_convert_markdown_to_html_with_http_info(name, opts = {})
       if @api_client.config.debug
-        @api_client.config.logger.debug 'Calling API: ConversionApi.get_convert_markdown_to_html ...'
+        @api_client.config.logger.debug 'Calling API: HtmlApi.get_convert_markdown_to_html ...'
       end
       # verify the required parameter 'name' is set
       if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling ConversionApi.get_convert_markdown_to_html"
+        fail ArgumentError, "Missing the required parameter 'name' when calling HtmlApi.get_convert_markdown_to_html"
       end
       # resource path
       local_var_path = '/html/{name}/import/md'.sub('{' + 'name' + '}', name.to_s)
@@ -1333,7 +1333,7 @@ module AsposeHtml
                                                         :body => post_body,
                                                         :return_type => 'File')
       if @api_client.config.debug
-        @api_client.config.logger.debug "API called: ConversionApi#get_convert_markdown_to_html\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: HtmlApi#get_convert_markdown_to_html\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1357,15 +1357,15 @@ module AsposeHtml
 # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def post_convert_markdown_in_request_to_html_with_http_info(out_path, file, opts = {})
       if @api_client.config.debug
-        @api_client.config.logger.debug 'Calling API: ConversionApi.post_convert_markdown_in_request_to_html ...'
+        @api_client.config.logger.debug 'Calling API: HtmlApi.post_convert_markdown_in_request_to_html ...'
       end
       # verify the required parameter 'out_path' is set
       if @api_client.config.client_side_validation && out_path.nil?
-        fail ArgumentError, "Missing the required parameter 'out_path' when calling ConversionApi.post_convert_markdown_in_request_to_html"
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling HtmlApi.post_convert_markdown_in_request_to_html"
       end
       # verify the required parameter 'file' is set
       if @api_client.config.client_side_validation && file.nil?
-        fail ArgumentError, "Missing the required parameter 'file' when calling ConversionApi.post_convert_markdown_in_request_to_html"
+        fail ArgumentError, "Missing the required parameter 'file' when calling HtmlApi.post_convert_markdown_in_request_to_html"
       end
       # resource path
       local_var_path = '/html/import/md'
@@ -1396,7 +1396,7 @@ module AsposeHtml
                                                         :body => post_body,
                                                         :return_type => 'File')
       if @api_client.config.debug
-        @api_client.config.logger.debug "API called: ConversionApi#put_convert_markdown_in_request_to_html\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: HtmlApi#put_convert_markdown_in_request_to_html\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1422,15 +1422,15 @@ module AsposeHtml
 # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def put_convert_markdown_to_html_with_http_info(name, out_path, opts = {})
       if @api_client.config.debug
-        @api_client.config.logger.debug 'Calling API: ConversionApi.put_convert_markdown_to_html ...'
+        @api_client.config.logger.debug 'Calling API: HtmlApi.put_convert_markdown_to_html ...'
       end
       # verify the required parameter 'name' is set
       if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling ConversionApi.put_convert_markdown_to_html"
+        fail ArgumentError, "Missing the required parameter 'name' when calling HtmlApi.put_convert_markdown_to_html"
       end
       # verify the required parameter 'out_path' is set
       if @api_client.config.client_side_validation && out_path.nil?
-        fail ArgumentError, "Missing the required parameter 'out_path' when calling ConversionApi.put_convert_markdown_to_html"
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling HtmlApi.put_convert_markdown_to_html"
       end
       # resource path
       local_var_path = '/html/{name}/import/md'.sub('{' + 'name' + '}', name.to_s)
@@ -1460,7 +1460,7 @@ module AsposeHtml
                                                         :body => post_body,
                                                         :return_type => 'File')
       if @api_client.config.debug
-        @api_client.config.logger.debug "API called: ConversionApi#put_convert_markdown_to_html\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: HtmlApi#put_convert_markdown_to_html\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1484,11 +1484,11 @@ module AsposeHtml
 # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_document_by_url_with_http_info(source_url)
       if @api_client.config.debug
-        @api_client.config.logger.debug 'Calling API: DocumentApi.get_document_by_url ...'
+        @api_client.config.logger.debug 'Calling API: `HtmlApi.get_document_by_url ...'
       end
       # verify the required parameter 'source_url' is set
       if @api_client.config.client_side_validation && source_url.nil?
-        fail ArgumentError, "Missing the required parameter 'source_url' when calling DocumentApi.get_document_by_url"
+        fail ArgumentError, "Missing the required parameter 'source_url' when calling HtmlApi.get_document_by_url"
       end
       # resource path
       local_var_path = '/html/download'
@@ -1516,7 +1516,7 @@ module AsposeHtml
                                                         :body => post_body,
                                                         :return_type => 'File')
       if @api_client.config.debug
-        @api_client.config.logger.debug "API called: DocumentApi#get_document_by_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: HtmlApi#get_document_by_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1626,19 +1626,19 @@ module AsposeHtml
 # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_document_fragment_by_x_path_by_url_with_http_info(source_url, x_path, out_format)
       if @api_client.config.debug
-        @api_client.config.logger.debug "Calling API: DocumentApi.get_document_fragment_by_x_path_by_url ..."
+        @api_client.config.logger.debug "Calling API: HtmlApi.get_document_fragment_by_x_path_by_url ..."
       end
       # verify the required parameter 'source_url' is set
       if @api_client.config.client_side_validation && source_url.nil?
-        fail ArgumentError, "Missing the required parameter 'source_url' when calling DocumentApi.get_document_fragment_by_x_path_by_url"
+        fail ArgumentError, "Missing the required parameter 'source_url' when calling HtmlApi.get_document_fragment_by_x_path_by_url"
       end
       # verify the required parameter 'x_path' is set
       if @api_client.config.client_side_validation && x_path.nil?
-        fail ArgumentError, "Missing the required parameter 'x_path' when calling DocumentApi.get_document_fragment_by_x_path_by_url"
+        fail ArgumentError, "Missing the required parameter 'x_path' when calling HtmlApi.get_document_fragment_by_x_path_by_url"
       end
       # verify the required parameter 'out_format' is set
       if @api_client.config.client_side_validation && out_format.nil?
-        fail ArgumentError, "Missing the required parameter 'out_format' when calling DocumentApi.get_document_fragment_by_x_path_by_url"
+        fail ArgumentError, "Missing the required parameter 'out_format' when calling HtmlApi.get_document_fragment_by_x_path_by_url"
       end
       # resource path
       local_var_path = "/html/fragments/{outFormat}".sub('{' + 'outFormat' + '}', out_format.to_s)
@@ -1667,7 +1667,7 @@ module AsposeHtml
                                                         :body => post_body,
                                                         :return_type => 'File')
       if @api_client.config.debug
-        @api_client.config.logger.debug "API called: DocumentApi#get_document_fragment_by_x_path_by_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: HtmlApi#get_document_fragment_by_x_path_by_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1697,19 +1697,19 @@ module AsposeHtml
 # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_document_fragments_by_css_selector_with_http_info(name, selector, out_format, opts = {})
       if @api_client.config.debug
-        @api_client.config.logger.debug "Calling API: DocumentApi.get_document_fragments_by_css_selector ..."
+        @api_client.config.logger.debug "Calling API: HtmlApi.get_document_fragments_by_css_selector ..."
       end
       # verify the required parameter 'name' is set
       if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling DocumentApi.get_document_fragments_by_css_selector"
+        fail ArgumentError, "Missing the required parameter 'name' when calling HtmlApi.get_document_fragments_by_css_selector"
       end
       # verify the required parameter 'selector' is set
       if @api_client.config.client_side_validation && selector.nil?
-        fail ArgumentError, "Missing the required parameter 'selector' when calling DocumentApi.get_document_fragments_by_css_selector"
+        fail ArgumentError, "Missing the required parameter 'selector' when calling HtmlApi.get_document_fragments_by_css_selector"
       end
       # verify the required parameter 'out_format' is set
       if @api_client.config.client_side_validation && out_format.nil?
-        fail ArgumentError, "Missing the required parameter 'out_format' when calling DocumentApi.get_document_fragments_by_css_selector"
+        fail ArgumentError, "Missing the required parameter 'out_format' when calling HtmlApi.get_document_fragments_by_css_selector"
       end
       # resource path
       local_var_path = "/html/{name}/fragments/css/{outFormat}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'outFormat' + '}', out_format.to_s)
@@ -1739,7 +1739,7 @@ module AsposeHtml
                                                         :body => post_body,
                                                         :return_type => 'File')
       if @api_client.config.debug
-        @api_client.config.logger.debug "API called: DocumentApi#get_document_fragments_by_css_selector\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: HtmlApi#get_document_fragments_by_css_selector\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1765,19 +1765,19 @@ module AsposeHtml
 # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_document_fragments_by_css_selector_by_url_with_http_info(source_url, selector, out_format, opts = {})
       if @api_client.config.debug
-        @api_client.config.logger.debug "Calling API: DocumentApi.get_document_fragments_by_css_selector_by_url ..."
+        @api_client.config.logger.debug "Calling API: HtmlApi.get_document_fragments_by_css_selector_by_url ..."
       end
       # verify the required parameter 'source_url' is set
       if @api_client.config.client_side_validation && source_url.nil?
-        fail ArgumentError, "Missing the required parameter 'source_url' when calling DocumentApi.get_document_fragments_by_css_selector_by_url"
+        fail ArgumentError, "Missing the required parameter 'source_url' when calling HtmlApi.get_document_fragments_by_css_selector_by_url"
       end
       # verify the required parameter 'selector' is set
       if @api_client.config.client_side_validation && selector.nil?
-        fail ArgumentError, "Missing the required parameter 'selector' when calling DocumentApi.get_document_fragments_by_css_selector_by_url"
+        fail ArgumentError, "Missing the required parameter 'selector' when calling HtmlApi.get_document_fragments_by_css_selector_by_url"
       end
       # verify the required parameter 'out_format' is set
       if @api_client.config.client_side_validation && out_format.nil?
-        fail ArgumentError, "Missing the required parameter 'out_format' when calling DocumentApi.get_document_fragments_by_css_selector_by_url"
+        fail ArgumentError, "Missing the required parameter 'out_format' when calling HtmlApi.get_document_fragments_by_css_selector_by_url"
       end
       # resource path
       local_var_path = "/html/fragments/css/{outFormat}".sub('{' + 'outFormat' + '}', out_format.to_s)
@@ -1806,7 +1806,7 @@ module AsposeHtml
                                                         :body => post_body,
                                                         :return_type => 'File')
       if @api_client.config.debug
-        @api_client.config.logger.debug "API called: DocumentApi#get_document_fragments_by_css_selector_by_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: HtmlApi#get_document_fragments_by_css_selector_by_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1886,11 +1886,11 @@ module AsposeHtml
 # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_document_images_by_url_with_http_info(source_url)
       if @api_client.config.debug
-        @api_client.config.logger.debug "Calling API: DocumentApi.get_document_images_by_url ..."
+        @api_client.config.logger.debug "Calling API: HtmlApi.get_document_images_by_url ..."
       end
       # verify the required parameter 'source_url' is set
       if @api_client.config.client_side_validation && source_url.nil?
-        fail ArgumentError, "Missing the required parameter 'source_url' when calling DocumentApi.get_document_images_by_url"
+        fail ArgumentError, "Missing the required parameter 'source_url' when calling HtmlApi.get_document_images_by_url"
       end
       # resource path
       local_var_path = "/html/images/all"
@@ -1918,10 +1918,122 @@ module AsposeHtml
                                                         :body => post_body,
                                                         :return_type => 'File')
       if @api_client.config.debug
-        @api_client.config.logger.debug "API called: DocumentApi#get_document_images_by_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: HtmlApi#get_document_images_by_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
+
+################################################################################
+#                                SEO Api
+################################################################################
+
+# Page analysis and return of SEO warnings in json format.
+#
+# @param addr Source page URL.
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
+    def get_seo_warning(addr)
+      data, _status_code, _headers = get_seo_warning_with_http_info(addr)
+      return {file: data, status: _status_code, headers: _headers}
+    end
+
+# Page analysis and return of SEO warnings in json format.
+#
+# @param addr Source page URL.
+# @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_seo_warning_with_http_info(addr)
+      if @api_client.config.debug
+        @api_client.config.logger.debug "Calling API: HtmlApi.get_seo_warning ..."
+      end
+      # verify the required parameter 'addr' is set
+      if @api_client.config.client_side_validation && addr.nil?
+        fail ArgumentError, "Missing the required parameter 'addr' when calling HtmlApi.get_seo_warning"
+      end
+      # resource path
+      local_var_path = "/html/seo"
+
+      # query parameters
+      query_params = {}
+      query_params[:'addr'] = addr
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+                                                        :header_params => header_params,
+                                                        :query_params => query_params,
+                                                        :form_params => form_params,
+                                                        :body => post_body,
+                                                        :return_type => 'File')
+      if @api_client.config.debug
+        @api_client.config.logger.debug "API called: HtmlApi#get_seo_warning\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+# Checks the markup validity of Web documents in HTML, XHTML, etc., and return result in json format.
+#
+# @param url Source page URL.
+# @return [Hash] {file: data, status: _status_code, headers: _headers}
+    def get_html_warning(url)
+      data, _status_code, _headers = get_html_warning_with_http_info(url)
+      return {file: data, status: _status_code, headers: _headers}
+    end
+
+# Checks the markup validity of Web documents in HTML, XHTML, etc., and return result in json format.
+#
+# @param url Source page URL.
+# @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_html_warning_with_http_info(url)
+      if @api_client.config.debug
+        @api_client.config.logger.debug "Calling API: HtmlApi.get_html_warning ..."
+      end
+      # verify the required parameter 'url' is set
+      if @api_client.config.client_side_validation && url.nil?
+        fail ArgumentError, "Missing the required parameter 'url' when calling HtmlApi.get_html_warning"
+      end
+      # resource path
+      local_var_path = "/html/validator"
+
+      # query parameters
+      query_params = {}
+      query_params[:'url'] = url
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+                                                        :header_params => header_params,
+                                                        :query_params => query_params,
+                                                        :form_params => form_params,
+                                                        :body => post_body,
+                                                        :return_type => 'File')
+      if @api_client.config.debug
+        @api_client.config.logger.debug "API called: HtmlApi#get_html_warning\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+################################################################################
+#                         TemplateMerge Api
+################################################################################
 
 # Populate HTML document template with data located as a file in the storage.
 #
@@ -1948,15 +2060,15 @@ module AsposeHtml
 # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_merge_html_template_with_http_info(template_name, data_path, opts = {})
       if @api_client.config.debug
-        @api_client.config.logger.debug "Calling API: TemplateMergeApi.get_merge_html_template ..."
+        @api_client.config.logger.debug "Calling API: HtmlApi.get_merge_html_template ..."
       end
       # verify the required parameter 'template_name' is set
       if @api_client.config.client_side_validation && template_name.nil?
-        fail ArgumentError, "Missing the required parameter 'template_name' when calling TemplateMergeApi.get_merge_html_template"
+        fail ArgumentError, "Missing the required parameter 'template_name' when calling HtmlApi.get_merge_html_template"
       end
       # verify the required parameter 'data_path' is set
       if @api_client.config.client_side_validation && data_path.nil?
-        fail ArgumentError, "Missing the required parameter 'data_path' when calling TemplateMergeApi.get_merge_html_template"
+        fail ArgumentError, "Missing the required parameter 'data_path' when calling HtmlApi.get_merge_html_template"
       end
       # resource path
       local_var_path = "/html/{templateName}/merge".sub('{' + 'templateName' + '}', template_name.to_s)
@@ -1987,7 +2099,7 @@ module AsposeHtml
                                                         :body => post_body,
                                                         :return_type => 'File')
       if @api_client.config.debug
-        @api_client.config.logger.debug "API called: TemplateMergeApi#get_merge_html_template\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: HtmlApi#get_merge_html_template\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -2019,19 +2131,19 @@ module AsposeHtml
 # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def post_merge_html_template_with_http_info(template_name, out_path, file, opts = {})
       if @api_client.config.debug
-        @api_client.config.logger.debug "Calling API: TemplateMergeApi.post_merge_html_template ..."
+        @api_client.config.logger.debug "Calling API: HtmlApi.post_merge_html_template ..."
       end
       # verify the required parameter 'template_name' is set
       if @api_client.config.client_side_validation && template_name.nil?
-        fail ArgumentError, "Missing the required parameter 'template_name' when calling TemplateMergeApi.post_merge_html_template"
+        fail ArgumentError, "Missing the required parameter 'template_name' when calling HtmlApi.post_merge_html_template"
       end
       # verify the required parameter 'out_path' is set
       if @api_client.config.client_side_validation && out_path.nil?
-        fail ArgumentError, "Missing the required parameter 'out_path' when calling TemplateMergeApi.post_merge_html_template"
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling HtmlApi.post_merge_html_template"
       end
       # verify the required parameter 'file' is set
       if @api_client.config.client_side_validation && file.nil?
-        fail ArgumentError, "Missing the required parameter 'file' when calling TemplateMergeApi.post_merge_html_template"
+        fail ArgumentError, "Missing the required parameter 'file' when calling HtmlApi.post_merge_html_template"
       end
       # resource path
       local_var_path = "/html/{templateName}/merge".sub('{' + 'templateName' + '}', template_name.to_s)
@@ -2064,7 +2176,7 @@ module AsposeHtml
                                                         :body => post_body,
                                                         :return_type => 'File')
       if @api_client.config.debug
-        @api_client.config.logger.debug "API called: TemplateMergeApi#post_merge_html_template\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: HtmlApi#post_merge_html_template\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

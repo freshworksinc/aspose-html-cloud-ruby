@@ -3,11 +3,11 @@
 AsposeHtml - the Ruby gem for the Aspose.HTML for Cloud API Reference
 
 - API version: 3.0
-- Package version: 19.6.0
+- Package version: 20.8.0
 
 ## Requirements
 - Ruby >= 1.9
-- libcurl.dll (libcurl.so)
+- libcurl.dll (libcurl.so) (in the ruby /bin directory)
 
 ## Installation
 ```shell
@@ -25,15 +25,15 @@ gem build aspose_html_cloud.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./aspose_html_cloud-19.6.0.gem
+gem install ./aspose_html_cloud-20.8.0.gem
 ```
-(for development, run `gem install --dev ./aspose_html_cloud-19.6.0.gem` to install the development dependencies)
+(for development, run `gem install --dev ./aspose_html_cloud-20.8.0.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'aspose_html_cloud', '~> 19.6.0'
+    gem 'aspose_html_cloud', '~> 20.8.0'
 
 ### Load from git
 
@@ -61,6 +61,9 @@ Please follow the [installation](#installation) procedure and then run the follo
 # Load the gem
 require 'aspose_html_cloud'
 
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
 
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",
@@ -104,34 +107,37 @@ All URIs are relative to *https://api.aspose.cloud/v3.0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AsposeHtml::HtmlApi* | [**get_convert_document_to_image**](docs/ConversionApi.md#get_convert_document_to_image) | **GET** /html/{name}/convert/image/{outFormat} | Convert the HTML document from the storage by its name to the specified image format.
-*AsposeHtml::HtmlApi* | [**get_convert_document_to_image_by_url**](docs/ConversionApi.md#get_convert_document_to_image_by_url) | **GET** /html/convert/image/{outFormat} | Convert the HTML page from the web by its URL to the specified image format.
-*AsposeHtml::HtmlApi* | [**get_convert_document_to_pdf**](docs/ConversionApi.md#get_convert_document_to_pdf) | **GET** /html/{name}/convert/pdf | Convert the HTML document from the storage by its name to PDF.
-*AsposeHtml::HtmlApi* | [**get_convert_document_to_pdf_by_url**](docs/ConversionApi.md#get_convert_document_to_pdf_by_url) | **GET** /html/convert/pdf | Convert the HTML page from the web by its URL to PDF.
-*AsposeHtml::HtmlApi* | [**get_convert_document_to_xps**](docs/ConversionApi.md#get_convert_document_to_xps) | **GET** /html/{name}/convert/xps | Convert the HTML document from the storage by its name to XPS.
-*AsposeHtml::HtmlApi* | [**get_convert_document_to_xps_by_url**](docs/ConversionApi.md#get_convert_document_to_xps_by_url) | **GET** /html/convert/xps | Convert the HTML page from the web by its URL to XPS.
-*AsposeHtml::HtmlApi* | [**post_convert_document_in_request_to_image**](docs/ConversionApi.md#post_convert_document_in_request_to_image) | **POST** /html/convert/image/{outFormat} | Converts the HTML document (in request content) to the specified image format and uploads resulting file to storage.
-*AsposeHtml::HtmlApi* | [**post_convert_document_in_request_to_pdf**](docs/ConversionApi.md#post_convert_document_in_request_to_pdf) | **POST** /html/convert/pdf | Converts the HTML document (in request content) to PDF and uploads resulting file to storage.
-*AsposeHtml::HtmlApi* | [**post_convert_document_in_request_to_xps**](docs/ConversionApi.md#post_convert_document_in_request_to_xps) | **POST** /html/convert/xps | Converts the HTML document (in request content) to XPS and uploads resulting file to storage.
-*AsposeHtml::HtmlApi* | [**get_convert_document_to_mhtml_by_url**](docs/ConversionApi.md#get_convert_document_to_mhtml_by_url) | **GET** /html/convert/mhtml | Converts the HTML page from Web by its URL to MHTML returns resulting file in response content.
-*AsposeHtml::HtmlApi* | [**put_convert_document_to_image**](docs/ConversionApi.md#put_convert_document_to_image) | **PUT** /html/{name}/convert/image/{outFormat} | Converts the HTML document (located on storage) to the specified image format and uploads resulting file to storage.
-*AsposeHtml::HtmlApi* | [**put_convert_document_to_pdf**](docs/ConversionApi.md#put_convert_document_to_pdf) | **PUT** /html/{name}/convert/pdf | Converts the HTML document (located on storage) to PDF and uploads resulting file to storage.
-*AsposeHtml::HtmlApi* | [**put_convert_document_to_xps**](docs/ConversionApi.md#put_convert_document_to_xps) | **PUT** /html/{name}/convert/xps | Converts the HTML document (located on storage) to XPS and uploads resulting file to storage.
-*AsposeHtml::HtmlApi* | [**get_convert_document_to_markdown**](docs/ConversionApi.md#get_convert_document_to_markdown) | **GET** /html/{name}/convert/md | Converts the HTML document (located on storage) to Markdown and returns resulting file in response content.
-*AsposeHtml::HtmlApi* | [**post_convert_document_in_request_to_markdown**](docs/ConversionApi.md#post_convert_document_in_request_to_markdown) | **POST** /html/convert/md | Converts the HTML document (in request content) to Markdown and uploads resulting file to storage by specified path.
-*AsposeHtml::HtmlApi* | [**put_convert_document_to_markdown**](docs/ConversionApi.md#put_convert_document_to_markdown) | **PUT** /html/{name}/convert/md | Converts the HTML document (located on storage) to Markdown and uploads resulting file to storage by specified path.
-*AsposeHtml::HtmlApi* | [**get_convert_markdown_to_html**](docs/ImportApi.md#get_convert_markdown_to_html) | **GET** /html/{name}/import/md | Converts the Markdown document (located on storage) to HTML and returns resulting file in response content.
-*AsposeHtml::HtmlApi* | [**post_convert_markdown_in_request_to_html**](docs/ImportApi.md#post_convert_markdown_in_request_to_html) | **POST** /html/import/md | Converts the Markdown document (in request content) to HTML and uploads resulting file to storage by specified path.
-*AsposeHtml::HtmlApi* | [**put_convert_markdown_to_html**](docs/ImportApi.md#put_convert_markdown_to_html) | **PUT** /html/{name}/import/md | Converts the Markdown document (located on storage) to HTML and uploads resulting file to storage by specified path.
-*AsposeHtml::HtmlApi* | [**get_document_by_url**](docs/DocumentApi.md#get_document_by_url) | **GET** /html/download | Return all HTML page with linked resources packaged as a ZIP archive by the source page URL.
-*AsposeHtml::HtmlApi* | [**get_document_fragment_by_x_path**](docs/DocumentApi.md#get_document_fragment_by_x_path) | **GET** /html/{name}/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query. 
-*AsposeHtml::HtmlApi* | [**get_document_fragment_by_x_path_by_url**](docs/DocumentApi.md#get_document_fragment_by_x_path_by_url) | **GET** /html/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query by the source page URL.
-*AsposeHtml::HtmlApi* | [**get_document_fragments_by_css_selector**](docs/DocumentApi.md#get_document_fragments_by_css_selector) | **GET** /html/{name}/fragments/css/{outFormat} | Return list of HTML fragments matching the specified CSS selector.
-*AsposeHtml::HtmlApi* | [**get_document_fragments_by_css_selector_by_url**](docs/DocumentApi.md#get_document_fragments_by_css_selector_by_url) | **GET** /html/fragments/css/{outFormat} | Return list of HTML fragments matching the specified CSS selector by the source page URL.
-*AsposeHtml::HtmlApi* | [**get_document_images**](docs/DocumentApi.md#get_document_images) | **GET** /html/{name}/images/all | Return all HTML document images packaged as a ZIP archive.
-*AsposeHtml::HtmlApi* | [**get_document_images_by_url**](docs/DocumentApi.md#get_document_images_by_url) | **GET** /html/images/all | Return all HTML page images packaged as a ZIP archive by the source page URL.
-*AsposeHtml::HtmlApi* | [**get_merge_html_template**](docs/TemplateMergeApi.md#get_merge_html_template) | **GET** /html/{templateName}/merge | Populate HTML document template with data located as a file in the storage.
-*AsposeHtml::HtmlApi* | [**post_merge_html_template**](docs/TemplateMergeApi.md#post_merge_html_template) | **POST** /html/{templateName}/merge | Populate HTML document template with data from the request body. Result document will be saved to storage.
+*AsposeHtml::HtmlApi* | [**get_convert_document_to_image**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/ConversionApi.md#get_convert_document_to_image) | **GET** /html/{name}/convert/image/{outFormat} | Convert the HTML document from the storage by its name to the specified image format.
+*AsposeHtml::HtmlApi* | [**get_convert_document_to_image_by_url**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/ConversionApi.md#get_convert_document_to_image_by_url) | **GET** /html/convert/image/{outFormat} | Convert the HTML page from the web by its URL to the specified image format.
+*AsposeHtml::HtmlApi* | [**get_convert_document_to_pdf**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/ConversionApi.md#get_convert_document_to_pdf) | **GET** /html/{name}/convert/pdf | Convert the HTML document from the storage by its name to PDF.
+*AsposeHtml::HtmlApi* | [**get_convert_document_to_pdf_by_url**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/ConversionApi.md#get_convert_document_to_pdf_by_url) | **GET** /html/convert/pdf | Convert the HTML page from the web by its URL to PDF.
+*AsposeHtml::HtmlApi* | [**get_convert_document_to_xps**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/ConversionApi.md#get_convert_document_to_xps) | **GET** /html/{name}/convert/xps | Convert the HTML document from the storage by its name to XPS.
+*AsposeHtml::HtmlApi* | [**get_convert_document_to_xps_by_url**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/ConversionApi.md#get_convert_document_to_xps_by_url) | **GET** /html/convert/xps | Convert the HTML page from the web by its URL to XPS.
+*AsposeHtml::HtmlApi* | [**post_convert_document_in_request_to_image**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/ConversionApi.md#post_convert_document_in_request_to_image) | **POST** /html/convert/image/{outFormat} | Converts the HTML document (in request content) to the specified image format and uploads resulting file to storage.
+*AsposeHtml::HtmlApi* | [**post_convert_document_in_request_to_pdf**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/ConversionApi.md#post_convert_document_in_request_to_pdf) | **POST** /html/convert/pdf | Converts the HTML document (in request content) to PDF and uploads resulting file to storage.
+*AsposeHtml::HtmlApi* | [**post_convert_document_in_request_to_xps**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/ConversionApi.md#post_convert_document_in_request_to_xps) | **POST** /html/convert/xps | Converts the HTML document (in request content) to XPS and uploads resulting file to storage.
+*AsposeHtml::HtmlApi* | [**get_convert_document_to_mhtml_by_url**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/ConversionApi.md#get_convert_document_to_mhtml_by_url) | **GET** /html/convert/mhtml | Converts the HTML page from Web by its URL to MHTML returns resulting file in response content.
+*AsposeHtml::HtmlApi* | [**put_convert_document_to_image**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/ConversionApi.md#put_convert_document_to_image) | **PUT** /html/{name}/convert/image/{outFormat} | Converts the HTML document (located on storage) to the specified image format and uploads resulting file to storage.
+*AsposeHtml::HtmlApi* | [**put_convert_document_to_pdf**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/ConversionApi.md#put_convert_document_to_pdf) | **PUT** /html/{name}/convert/pdf | Converts the HTML document (located on storage) to PDF and uploads resulting file to storage.
+*AsposeHtml::HtmlApi* | [**put_convert_document_to_xps**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/ConversionApi.md#put_convert_document_to_xps) | **PUT** /html/{name}/convert/xps | Converts the HTML document (located on storage) to XPS and uploads resulting file to storage.
+*AsposeHtml::HtmlApi* | [**get_convert_document_to_markdown**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/ConversionApi.md#get_convert_document_to_markdown) | **GET** /html/{name}/convert/md | Converts the HTML document (located on storage) to Markdown and returns resulting file in response content.
+*AsposeHtml::HtmlApi* | [**post_convert_document_in_request_to_markdown**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/ConversionApi.md#post_convert_document_in_request_to_markdown) | **POST** /html/convert/md | Converts the HTML document (in request content) to Markdown and uploads resulting file to storage by specified path.
+*AsposeHtml::HtmlApi* | [**put_convert_document_to_markdown**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/ConversionApi.md#put_convert_document_to_markdown) | **PUT** /html/{name}/convert/md | Converts the HTML document (located on storage) to Markdown and uploads resulting file to storage by specified path.
+*AsposeHtml::HtmlApi* | [**get_convert_markdown_to_html**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/ImportApi.md#get_convert_markdown_to_html) | **GET** /html/{name}/import/md | Converts the Markdown document (located on storage) to HTML and returns resulting file in response content.
+*AsposeHtml::HtmlApi* | [**post_convert_markdown_in_request_to_html**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/ImportApi.md#post_convert_markdown_in_request_to_html) | **POST** /html/import/md | Converts the Markdown document (in request content) to HTML and uploads resulting file to storage by specified path.
+*AsposeHtml::HtmlApi* | [**put_convert_markdown_to_html**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/ImportApi.md#put_convert_markdown_to_html) | **PUT** /html/{name}/import/md | Converts the Markdown document (located on storage) to HTML and uploads resulting file to storage by specified path.
+*AsposeHtml::HtmlApi* | [**get_document_by_url**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/DocumentApi.md#get_document_by_url) | **GET** /html/download | Return all HTML page with linked resources packaged as a ZIP archive by the source page URL.
+*AsposeHtml::HtmlApi* | [**get_document_fragment_by_x_path**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/DocumentApi.md#get_document_fragment_by_x_path) | **GET** /html/{name}/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query. 
+*AsposeHtml::HtmlApi* | [**get_document_fragment_by_x_path_by_url**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/DocumentApi.md#get_document_fragment_by_x_path_by_url) | **GET** /html/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query by the source page URL.
+*AsposeHtml::HtmlApi* | [**get_document_fragments_by_css_selector**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/DocumentApi.md#get_document_fragments_by_css_selector) | **GET** /html/{name}/fragments/css/{outFormat} | Return list of HTML fragments matching the specified CSS selector.
+*AsposeHtml::HtmlApi* | [**get_document_fragments_by_css_selector_by_url**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/DocumentApi.md#get_document_fragments_by_css_selector_by_url) | **GET** /html/fragments/css/{outFormat} | Return list of HTML fragments matching the specified CSS selector by the source page URL.
+*AsposeHtml::HtmlApi* | [**get_document_images**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/DocumentApi.md#get_document_images) | **GET** /html/{name}/images/all | Return all HTML document images packaged as a ZIP archive.
+*AsposeHtml::HtmlApi* | [**get_document_images_by_url**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/DocumentApi.md#get_document_images_by_url) | **GET** /html/images/all | Return all HTML page images packaged as a ZIP archive by the source page URL.
+*AsposeHtml::HtmlApi* | [**get_merge_html_template**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/TemplateMergeApi.md#get_merge_html_template) | **GET** /html/{templateName}/merge | Populate HTML document template with data located as a file in the storage.
+*AsposeHtml::HtmlApi* | [**post_merge_html_template**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/TemplateMergeApi.md#post_merge_html_template) | **POST** /html/{templateName}/merge | Populate HTML document template with data from the request body. Result document will be saved to storage.
+*AsposeHtml::HtmlApi* | [**get_seo_warning**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/SeoApi.md#get_seo_warning) | **GET** /html/seo | Page analysis and return of SEO warnings in json format.
+*AsposeHtml::HtmlApi* | [**get_html_warning**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/SeoApi.md#get_html_warning) | **GET** /html/validator | Checks the markup validity of Web documents in HTML, XHTML, etc., and return result in json format.
+
 
 ## oauth
 
@@ -148,36 +154,36 @@ Class | Method | HTTP request | Description
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AsposeHtml::StorageApi* | [**copy_file**](docs/storage/FileApi.md#copy_file) | **PUT** /html/storage/file/copy/{srcPath} | Copy file
-*AsposeHtml::StorageApi* | [**delete_file**](docs/storage/FileApi.md#delete_file) | **DELETE** /html/storage/file/{path} | Delete file
-*AsposeHtml::StorageApi* | [**download_file**](docs/storage/FileApi.md#download_file) | **GET** /html/storage/file/{path} | Download file
-*AsposeHtml::StorageApi* | [**move_file**](docs/storage/FileApi.md#move_file) | **PUT** /html/storage/file/move/{srcPath} | Move file
-*AsposeHtml::StorageApi* | [**upload_file**](docs/storage/FileApi.md#upload_file) | **PUT** /html/storage/file/{path} | Upload file
-*AsposeHtml::StorageApi* | [**copy_folder**](docs/storage/FolderApi.md#copy_folder) | **PUT** /html/storage/folder/copy/{srcPath} | Copy folder
-*AsposeHtml::StorageApi* | [**create_folder**](docs/storage/FolderApi.md#create_folder) | **PUT** /html/storage/folder/{path} | Create the folder
-*AsposeHtml::StorageApi* | [**delete_folder**](docs/storage/FolderApi.md#delete_folder) | **DELETE** /html/storage/folder/{path} | Delete folder
-*AsposeHtml::StorageApi* | [**get_files_list**](docs/storage/FolderApi.md#get_files_list) | **GET** /html/storage/folder/{path} | Get all files and folders within a folder
-*AsposeHtml::StorageApi* | [**move_folder**](docs/storage/FolderApi.md#move_folder) | **PUT** /html/storage/folder/move/{srcPath} | Move folder
-*AsposeHtml::StorageApi* | [**get_disc_usage**](docs/storage/StorageApi.md#get_disc_usage) | **GET** /html/storage/disc | Get disc usage
-*AsposeHtml::StorageApi* | [**get_file_versions**](docs/storage/StorageApi.md#get_file_versions) | **GET** /html/storage/version/{path} | Get file versions
-*AsposeHtml::StorageApi* | [**object_exists**](docs/storage/StorageApi.md#object_exists) | **GET** /html/storage/exist/{path} | Check if file or folder exists
-*AsposeHtml::StorageApi* | [**storage_exists**](docs/storage/StorageApi.md#storage_exists) | **GET** /html/storage/{storageName}/exist | Check if storage exists
+*AsposeHtml::StorageApi* | [**copy_file**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/storage/FileApi.md#copy_file) | **PUT** /html/storage/file/copy/{srcPath} | Copy file
+*AsposeHtml::StorageApi* | [**delete_file**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/storage/FileApi.md#delete_file) | **DELETE** /html/storage/file/{path} | Delete file
+*AsposeHtml::StorageApi* | [**download_file**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/storage/FileApi.md#download_file) | **GET** /html/storage/file/{path} | Download file
+*AsposeHtml::StorageApi* | [**move_file**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/storage/FileApi.md#move_file) | **PUT** /html/storage/file/move/{srcPath} | Move file
+*AsposeHtml::StorageApi* | [**upload_file**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/storage/FileApi.md#upload_file) | **PUT** /html/storage/file/{path} | Upload file
+*AsposeHtml::StorageApi* | [**copy_folder**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/storage/FolderApi.md#copy_folder) | **PUT** /html/storage/folder/copy/{srcPath} | Copy folder
+*AsposeHtml::StorageApi* | [**create_folder**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/storage/FolderApi.md#create_folder) | **PUT** /html/storage/folder/{path} | Create the folder
+*AsposeHtml::StorageApi* | [**delete_folder**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/storage/FolderApi.md#delete_folder) | **DELETE** /html/storage/folder/{path} | Delete folder
+*AsposeHtml::StorageApi* | [**get_files_list**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/storage/FolderApi.md#get_files_list) | **GET** /html/storage/folder/{path} | Get all files and folders within a folder
+*AsposeHtml::StorageApi* | [**move_folder**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/storage/FolderApi.md#move_folder) | **PUT** /html/storage/folder/move/{srcPath} | Move folder
+*AsposeHtml::StorageApi* | [**get_disc_usage**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/storage/StorageApi.md#get_disc_usage) | **GET** /html/storage/disc | Get disc usage
+*AsposeHtml::StorageApi* | [**get_file_versions**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/storage/StorageApi.md#get_file_versions) | **GET** /html/storage/version/{path} | Get file versions
+*AsposeHtml::StorageApi* | [**object_exists**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/storage/StorageApi.md#object_exists) | **GET** /html/storage/exist/{path} | Check if file or folder exists
+*AsposeHtml::StorageApi* | [**storage_exists**](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/storage/StorageApi.md#storage_exists) | **GET** /html/storage/{storageName}/exist | Check if storage exists
 
 
 ## Documentation for Models
 
- - [AsposeHtml::DiscUsage](docs/storage/DiscUsage.md)
- - [AsposeHtml::Error](docs/storage/Error.md)
- - [AsposeHtml::ErrorDetails](docs/storage/ErrorDetails.md)
- - [AsposeHtml::FileVersion](docs/storage/FileVersion.md)
- - [AsposeHtml::FileVersions](docs/storage/FileVersions.md)
- - [AsposeHtml::FilesList](docs/storage/FilesList.md)
- - [AsposeHtml::FilesUploadResult](docs/storage/FilesUploadResult.md)
- - [AsposeHtml::ObjectExist](docs/storage/ObjectExist.md)
- - [AsposeHtml::StorageExist](docs/storage/StorageExist.md)
- - [AsposeHtml::StorageFile](docs/storage/StorageFile.md)
+ - [AsposeHtml::DiscUsage](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/storage/DiscUsage.md)
+ - [AsposeHtml::Error](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/storage/Error.md)
+ - [AsposeHtml::ErrorDetails](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/storage/ErrorDetails.md)
+ - [AsposeHtml::FileVersion](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/storage/FileVersion.md)
+ - [AsposeHtml::FileVersions](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/storage/FileVersions.md)
+ - [AsposeHtml::FilesList](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/storage/FilesList.md)
+ - [AsposeHtml::FilesUploadResult](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/storage/FilesUploadResult.md)
+ - [AsposeHtml::ObjectExist](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/storage/ObjectExist.md)
+ - [AsposeHtml::StorageExist](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/storage/StorageExist.md)
+ - [AsposeHtml::StorageFile](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/storage/StorageFile.md)
 
 
-[Tests](./spec/api/storage_api_spec.rb) contain various examples of using the Aspose.Storage SDK.
+[Tests](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/spec) contain various examples of using the Aspose.Storage SDK.
 
-[Docs](docs/storage/) Documentation for Aspose.Storage Api SDK
+[Docs](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby/tree/master/docs/storage) Documentation for Aspose.Storage Api SDK

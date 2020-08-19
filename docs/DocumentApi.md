@@ -23,6 +23,10 @@ Return all HTML page with linked resources packaged as a ZIP archive by the sour
 # load the gem
 require 'aspose_html_cloud'
 
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
+
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",
     "authPath":"https://api.aspose.cloud/connect/token",
@@ -58,6 +62,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/zip
 
+
 # **get_document_fragment_by_x_path**
 > Hash get_document_fragment_by_x_path(name, x_path, out_format, opts)
 
@@ -67,6 +72,10 @@ Return list of HTML fragments matching the specified XPath query.
 ```ruby
 # load the gem
 require 'aspose_html_cloud'
+
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
 
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",
@@ -128,6 +137,10 @@ Return list of HTML fragments matching the specified XPath query by the source p
 # load the gem
 require 'aspose_html_cloud'
 
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
+
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",
     "authPath":"https://api.aspose.cloud/connect/token",
@@ -178,6 +191,10 @@ Return list of HTML fragments matching the specified CSS selector.
 ```ruby
 # load the gem
 require 'aspose_html_cloud'
+
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
 
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",
@@ -233,6 +250,10 @@ Return list of HTML fragments matching the specified CSS selector by the source 
 # load the gem
 require 'aspose_html_cloud'
 
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
+
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",
     "authPath":"https://api.aspose.cloud/connect/token",
@@ -287,6 +308,10 @@ Return all HTML document images packaged as a ZIP archive.
 # load the gem
 require 'aspose_html_cloud'
 
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
+
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",
     "authPath":"https://api.aspose.cloud/connect/token",
@@ -340,6 +365,10 @@ Return all HTML page images packaged as a ZIP archive by the source page URL.
 ```ruby
 # load the gem
 require 'aspose_html_cloud'
+
+# Get keys from aspose site.
+# There is free quota available. 
+# For more details, see https://purchase.aspose.cloud/pricing
 
 CONFIG = {
     "basePath":"https://api.aspose.cloud/v3.0",
