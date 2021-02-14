@@ -85,48 +85,43 @@ ruby -Ilib aspose_html_cloud.rb
 ## Getting Started
 
 Please follow the [installation](#installation) procedure and then run the following code:
+
+## Convert HTML to Image as PNG in Ruby
+
 ```ruby
-# Load the gem
-require 'aspose_html_cloud'
+    # Get your ClientId and ClientSecret from https://dashboard.aspose.cloud (free registration required).
 
-# Get keys from aspose site.
-# There is free quota available.
-# For more details, see https://purchase.aspose.cloud/pricing
+	CONFIG = {
+		appSID: "MY_CLIENT_ID",
+		apiKey: "MY_CLIENT_SECRET",
+		basePath: "https://api.aspose.cloud/v3.0",
+		authPath: "https://api.aspose.cloud/connect/token",
+		debugging: true
+	}
 
-CONFIG = {
-    "basePath":"https://api.aspose.cloud/v3.0",
-    "authPath":"https://api.aspose.cloud/connect/token",
-    "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-    "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-    "debug":true
-}
+	api_instance = AsposeHtml::HtmlApi.new CONFIG
 
-api_instance = AsposeHtml::HtmlApi.new CONFIG
+	name = "sample.html"
+	out_format = "png"
 
-name = "test.html" # String | Document name.
+	opts = {
+	  width: 800, # Integer | Resulting image width.
+	  height: 1000, # Integer | Resulting image height.
+	  left_margin: 10, # Integer | Left resulting image margin.
+	  right_margin: 10, # Integer | Right resulting image margin.
+	  top_margin: 20, # Integer | Top resulting image margin.
+	  bottom_margin: 20, # Integer | Bottom resulting image margin.
+	  resolution: 300, # Integer | Resolution of resulting image.
+	  folder: "/", # String | The source document folder.
+	  storage: "My_Storage_Name" # String | The source document storage.
+	}
 
-out_format = "png" # String | Resulting image format.
-
-opts = {
-  width: 800, # Integer | Resulting image width.
-  height: 1000, # Integer | Resulting image height.
-  left_margin: 10, # Integer | Left resulting image margin.
-  right_margin: 10, # Integer | Right resulting image margin.
-  top_margin: 20, # Integer | Top resulting image margin.
-  bottom_margin: 20, # Integer | Bottom resulting image margin.
-  resolution: 300, # Integer | Resolution of resulting image.
-  folder: "/", # String | The source document folder.
-  storage: nil # String | The source document storage.
-}
-
-begin
-  #Convert the HTML document from the storage by its name to the specified image format.
-  result = api_instance.get_convert_document_to_image(name, out_format, opts)
-  p result
-rescue AsposeHtml::ApiError => e
-  puts "Exception when calling HtmlApi->get_convert_document_to_image: #{e}"
-end
-
+	begin
+	  result = api_instance.get_convert_document_to_image(name, out_format, opts)
+	  p result
+	rescue AsposeHtml::ApiError => e
+	  puts "Exception when calling HtmlApi->get_convert_document_to_image: #{e}"
+	end
 ```
 
 ## Documentation for API Endpoints
