@@ -4,7 +4,7 @@
   --------------------------------------------------------------------------------------------------------------------
   <copyright company="Aspose" file="aspose_html_cloud.gemspec">
   </copyright>
-  Copyright (c) 2020 Aspose.HTML for Cloud
+  Copyright (c) 2022 Aspose.HTML for Cloud
   <summary>
    Permission is hereby granted, free of charge, to any person obtaining a copy
    of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "aspose_html_cloud"
-  s.version     = "20.8.0"
+  s.version     = "22.9.1"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Alexander Makogon"]
   s.email       = 'alexander.makogon@aspose.com'

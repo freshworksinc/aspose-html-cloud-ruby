@@ -3,7 +3,7 @@
   --------------------------------------------------------------------------------------------------------------------
   <copyright company="Aspose" file="api_client.rb">
   </copyright>
-  Copyright (c) 2020 Aspose.HTML for Cloud
+  Copyright (c) 2022 Aspose.HTML for Cloud
   <summary>
    Permission is hereby granted, free of charge, to any person obtaining a copy
    of this software and associated documentation files (the "Software"), to deal
@@ -34,6 +34,7 @@ require 'typhoeus'
 require 'uri'
 require 'securerandom'
 require 'net/http'
+
 
 
 module AsposeHtml
@@ -284,8 +285,7 @@ module AsposeHtml
 
     def build_request_url(path)
       # Add leading and trailing slashes to path
-      path = "/#{path}".gsub(/\/+/, '/')
-      URI.encode(@config.base_url + path)
+      @config.basePath + "/#{path}".gsub(/\/+/, '/')
     end
 
     # Builds the HTTP request body

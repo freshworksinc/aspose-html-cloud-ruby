@@ -3,7 +3,7 @@
   --------------------------------------------------------------------------------------------------------------------
   <copyright company="Aspose" file="storage_api.rb">
   </copyright>
-  Copyright (c) 2020 Aspose.HTML for Cloud
+  Copyright (c) 2022 Aspose.HTML for Cloud
   <summary>
    Permission is hereby granted, free of charge, to any person obtaining a copy
    of this software and associated documentation files (the "Software"), to deal
@@ -49,7 +49,7 @@ module AsposeHtml
       data
     end
 
-    # Get disc usage
+# Get disc usage
 # @param [Hash] opts the optional parameters
 # @option opts [String] :storage_name Storage name
 # @return [Array<(DiscUsage, Fixnum, Hash)>] DiscUsage data, response status code and response headers
@@ -88,61 +88,8 @@ module AsposeHtml
       return data, status_code, headers
     end
 
-    # Get file versions
-# @param path File path e.g. &#39;/file.ext&#39;
-# @param [Hash] opts the optional parameters
-# @option opts [String] :storage_name Storage name
-# @return [FileVersions]
-    def get_file_versions(path, opts = {})
-      data, _status_code, _headers = get_file_versions_with_http_info(path, opts)
-      data
-    end
 
-    # Get file versions
-# @param path File path e.g. &#39;/file.ext&#39;
-# @param [Hash] opts the optional parameters
-# @option opts [String] :storage_name Storage name
-# @return [Array<(FileVersions, Fixnum, Hash)>] FileVersions data, response status code and response headers
-    def get_file_versions_with_http_info(path, opts = {})
-      if @api_client.config.debug
-        @api_client.config.logger.debug 'Calling API: StorageApi.get_file_versions ...'
-      end
-      # verify the required parameter 'path' is set
-      if @api_client.config.client_side_validation && path.nil?
-        fail ArgumentError, "Missing the required parameter 'path' when calling StorageApi.get_file_versions"
-      end
-      # resource path
-      local_var_path = '/html/storage/version/{path}'.sub('{' + 'path' + '}', path.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'storageName'] = opts[:'storage_name'] if !opts[:'storage_name'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-                                                        :header_params => header_params,
-                                                        :query_params => query_params,
-                                                        :form_params => form_params,
-                                                        :body => post_body,
-                                                        :return_type => 'FileVersions')
-      if @api_client.config.debug
-        @api_client.config.logger.debug "API called: StorageApi#get_file_versions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Check if file or folder exists
+# Check if file or folder exists
 # @param path File or folder path e.g. &#39;/file.ext&#39; or &#39;/folder&#39;
 # @param [Hash] opts the optional parameters
 # @option opts [String] :storage_name Storage name
@@ -153,7 +100,7 @@ module AsposeHtml
       data
     end
 
-    # Check if file or folder exists
+# Check if file or folder exists
 # @param path File or folder path e.g. &#39;/file.ext&#39; or &#39;/folder&#39;
 # @param [Hash] opts the optional parameters
 # @option opts [String] :storage_name Storage name
@@ -168,10 +115,11 @@ module AsposeHtml
         fail ArgumentError, "Missing the required parameter 'path' when calling StorageApi.object_exists"
       end
       # resource path
-      local_var_path = '/html/storage/exist/{path}'.sub('{' + 'path' + '}', path.to_s)
+      local_var_path = '/html/storage/exist'
 
       # query parameters
       query_params = {}
+      query_params[:'path'] = path.to_s
       query_params[:'storageName'] = opts[:'storage_name'] if !opts[:'storage_name'].nil?
       query_params[:'versionId'] = opts[:'version_id'] if !opts[:'version_id'].nil?
 
@@ -199,7 +147,7 @@ module AsposeHtml
       return data, status_code, headers
     end
 
-    # Check if storage exists
+# Check if storage exists
 # @param storage_name Storage name
 # @param [Hash] opts the optional parameters
 # @return [StorageExist]
@@ -208,7 +156,7 @@ module AsposeHtml
       data
     end
 
-    # Check if storage exists
+# Check if storage exists
 # @param storage_name Storage name
 # @param [Hash] opts the optional parameters
 # @return [Array<(StorageExist, Fixnum, Hash)>] StorageExist data, response status code and response headers
@@ -221,12 +169,13 @@ module AsposeHtml
         fail ArgumentError, "Missing the required parameter 'storage_name' when calling StorageApi.storage_exists"
       end
       # resource path
-      local_var_path = '/html/storage/{storageName}/exist'.sub('{' + 'storageName' + '}', storage_name.to_s)
+      local_var_path = '/html/storage/exist/storage'
 
       # query parameters
       query_params = {}
+      query_params[:'storageName'] = storage_name.to_s
 
-      # header parameters
+        # header parameters
       header_params = {}
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
@@ -254,73 +203,6 @@ module AsposeHtml
     #                           File Api
     ################################################################################
 
-    # Copy file
-    # @param src_path Source file path e.g. &#39;/folder/file.ext&#39;
-    # @param dest_path Destination file path
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :src_storage_name Source storage name
-    # @option opts [String] :dest_storage_name Destination storage name
-    # @option opts [String] :version_id File version ID to copy
-    # @return [nil]
-    def copy_file(src_path, dest_path, opts = {})
-      copy_file_with_http_info(src_path, dest_path, opts)
-      nil
-    end
-
-    # Copy file
-    # @param src_path Source file path e.g. &#39;/folder/file.ext&#39;
-    # @param dest_path Destination file path
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :src_storage_name Source storage name
-    # @option opts [String] :dest_storage_name Destination storage name
-    # @option opts [String] :version_id File version ID to copy
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def copy_file_with_http_info(src_path, dest_path, opts = {})
-      if @api_client.config.debug
-        @api_client.config.logger.debug 'Calling API: StorageApi.copy_file ...'
-      end
-      # verify the required parameter 'src_path' is set
-      if @api_client.config.client_side_validation && src_path.nil?
-        fail ArgumentError, "Missing the required parameter 'src_path' when calling StorageApi.copy_file"
-      end
-      # verify the required parameter 'dest_path' is set
-      if @api_client.config.client_side_validation && dest_path.nil?
-        fail ArgumentError, "Missing the required parameter 'dest_path' when calling StorageApi.copy_file"
-      end
-      # resource path
-      local_var_path = '/html/storage/file/copy/{srcPath}'.sub('{' + 'srcPath' + '}', src_path.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'destPath'] = dest_path
-      query_params[:'srcStorageName'] = opts[:'src_storage_name'] if !opts[:'src_storage_name'].nil?
-      query_params[:'destStorageName'] = opts[:'dest_storage_name'] if !opts[:'dest_storage_name'].nil?
-      query_params[:'versionId'] = opts[:'version_id'] if !opts[:'version_id'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
-                                                        :header_params => header_params,
-                                                        :query_params => query_params,
-                                                        :form_params => form_params,
-                                                        :body => post_body)
-      if @api_client.config.debug
-        @api_client.config.logger.debug "API called: StorageApi#copy_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Delete file
     # @param path File path e.g. &#39;/folder/file.ext&#39;
     # @param [Hash] opts the optional parameters
@@ -347,10 +229,11 @@ module AsposeHtml
         fail ArgumentError, "Missing the required parameter 'path' when calling StorageApi.delete_file"
       end
       # resource path
-      local_var_path = '/html/storage/file/{path}'.sub('{' + 'path' + '}', path.to_s)
+      local_var_path = '/html/file'
 
       # query parameters
       query_params = {}
+      query_params[:'path'] = path.to_s
       query_params[:'storageName'] = opts[:'storage_name'] if !opts[:'storage_name'].nil?
       query_params[:'versionId'] = opts[:'version_id'] if !opts[:'version_id'].nil?
 
@@ -403,10 +286,11 @@ module AsposeHtml
         fail ArgumentError, "Missing the required parameter 'path' when calling StorageApi.download_file"
       end
       # resource path
-      local_var_path = '/html/storage/file/{path}'.sub('{' + 'path' + '}', path.to_s)
+      local_var_path = '/html/file'
 
       # query parameters
       query_params = {}
+      query_params[:'path'] = path.to_s
       query_params[:'storageName'] = opts[:'storage_name'] if !opts[:'storage_name'].nil?
       query_params[:'versionId'] = opts[:'version_id'] if !opts[:'version_id'].nil?
 
@@ -435,71 +319,6 @@ module AsposeHtml
       return data, status_code, headers
     end
 
-    # Move file
-    # @param src_path Source file path e.g. &#39;/src.ext&#39;
-    # @param dest_path Destination file path e.g. &#39;/dest.ext&#39;
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :src_storage_name Source storage name
-    # @option opts [String] :dest_storage_name Destination storage name
-    # @option opts [String] :version_id File version ID to move
-    # @return [nil]
-    def move_file(src_path, dest_path, opts = {})
-      move_file_with_http_info(src_path, dest_path, opts)
-      nil
-    end
-
-    # Move file
-    # @param src_path Source file path e.g. &#39;/src.ext&#39;
-    # @param dest_path Destination file path e.g. &#39;/dest.ext&#39;
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :src_storage_name Source storage name
-    # @option opts [String] :dest_storage_name Destination storage name
-    # @option opts [String] :version_id File version ID to move
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def move_file_with_http_info(src_path, dest_path, opts = {})
-      if @api_client.config.debug
-        @api_client.config.logger.debug 'Calling API: StorageApi.move_file ...'
-      end
-      # verify the required parameter 'src_path' is set
-      if @api_client.config.client_side_validation && src_path.nil?
-        fail ArgumentError, "Missing the required parameter 'src_path' when calling StorageApi.move_file"
-      end
-      # verify the required parameter 'dest_path' is set
-      if @api_client.config.client_side_validation && dest_path.nil?
-        fail ArgumentError, "Missing the required parameter 'dest_path' when calling StorageApi.move_file"
-      end
-      # resource path
-      local_var_path = '/html/storage/file/move/{srcPath}'.sub('{' + 'srcPath' + '}', src_path.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'destPath'] = dest_path
-      query_params[:'srcStorageName'] = opts[:'src_storage_name'] if !opts[:'src_storage_name'].nil?
-      query_params[:'destStorageName'] = opts[:'dest_storage_name'] if !opts[:'dest_storage_name'].nil?
-      query_params[:'versionId'] = opts[:'version_id'] if !opts[:'version_id'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
-                                                        :header_params => header_params,
-                                                        :query_params => query_params,
-                                                        :form_params => form_params,
-                                                        :body => post_body)
-      if @api_client.config.debug
-        @api_client.config.logger.debug "API called: StorageApi#move_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
 
     # Upload file
     # @param path Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext             If the content is multipart and path does not contains the file name it tries to get them from filename parameter             from Content-Disposition header.
@@ -531,10 +350,11 @@ module AsposeHtml
         fail ArgumentError, "Missing the required parameter 'file' when calling StorageApi.upload_file"
       end
       # resource path
-      local_var_path = '/html/storage/file/{path}'.sub('{' + 'path' + '}', path.to_s)
+      local_var_path = '/html/file'
 
       # query parameters
       query_params = {}
+      query_params[:'path'] = path.to_s
       query_params[:'storageName'] = opts[:'storage_name'] if !opts[:'storage_name'].nil?
 
       # header parameters
@@ -542,16 +362,15 @@ module AsposeHtml
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(
-          ['application/octet-stream'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
 
       # form parameters
       form_params = {}
-
+      form_params['file'] = File.new(file)
       # http body (model)
-      post_body = ::File.open(file,"rb").read
+      post_body = nil
 
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         :header_params => header_params,
                                                         :query_params => query_params,
                                                         :form_params => form_params,
@@ -560,75 +379,16 @@ module AsposeHtml
       if @api_client.config.debug
         @api_client.config.logger.debug "API called: StorageApi#upload_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
+
+      if status_code != 200
+        fail ArgumentError, "Unable upload file"
+      end
       return data, status_code, headers
     end
 
     ################################################################################
     #                           Folder Api
     ################################################################################
-
-    # Copy folder
-    # @param src_path Source folder path e.g. &#39;/src&#39;
-    # @param dest_path Destination folder path e.g. &#39;/dst&#39;
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :src_storage_name Source storage name
-    # @option opts [String] :dest_storage_name Destination storage name
-    # @return [nil]
-    def copy_folder(src_path, dest_path, opts = {})
-      copy_folder_with_http_info(src_path, dest_path, opts)
-      nil
-    end
-
-    # Copy folder
-    # @param src_path Source folder path e.g. &#39;/src&#39;
-    # @param dest_path Destination folder path e.g. &#39;/dst&#39;
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :src_storage_name Source storage name
-    # @option opts [String] :dest_storage_name Destination storage name
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def copy_folder_with_http_info(src_path, dest_path, opts = {})
-      if @api_client.config.debug
-        @api_client.config.logger.debug 'Calling API: StorageApi.copy_folder ...'
-      end
-      # verify the required parameter 'src_path' is set
-      if @api_client.config.client_side_validation && src_path.nil?
-        fail ArgumentError, "Missing the required parameter 'src_path' when calling StorageApi.copy_folder"
-      end
-      # verify the required parameter 'dest_path' is set
-      if @api_client.config.client_side_validation && dest_path.nil?
-        fail ArgumentError, "Missing the required parameter 'dest_path' when calling StorageApi.copy_folder"
-      end
-      # resource path
-      local_var_path = '/html/storage/folder/copy/{srcPath}'.sub('{' + 'srcPath' + '}', src_path.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'destPath'] = dest_path
-      query_params[:'srcStorageName'] = opts[:'src_storage_name'] if !opts[:'src_storage_name'].nil?
-      query_params[:'destStorageName'] = opts[:'dest_storage_name'] if !opts[:'dest_storage_name'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
-                                                        :header_params => header_params,
-                                                        :query_params => query_params,
-                                                        :form_params => form_params,
-                                                        :body => post_body)
-      if @api_client.config.debug
-        @api_client.config.logger.debug "API called: StorageApi#copy_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
 
     # Create the folder
     # @param path Folder path to create e.g. &#39;folder_1/folder_2/&#39;
@@ -654,10 +414,11 @@ module AsposeHtml
         fail ArgumentError, "Missing the required parameter 'path' when calling StorageApi.create_folder"
       end
       # resource path
-      local_var_path = '/html/storage/folder/{path}'.sub('{' + 'path' + '}', path.to_s)
+      local_var_path = '/html/folder'
 
       # query parameters
       query_params = {}
+      query_params[:'path'] = path.to_s
       query_params[:'storageName'] = opts[:'storage_name'] if !opts[:'storage_name'].nil?
 
       # header parameters
@@ -672,7 +433,7 @@ module AsposeHtml
 
       # http body (model)
       post_body = nil
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         :header_params => header_params,
                                                         :query_params => query_params,
                                                         :form_params => form_params,
@@ -709,10 +470,11 @@ module AsposeHtml
         fail ArgumentError, "Missing the required parameter 'path' when calling StorageApi.delete_folder"
       end
       # resource path
-      local_var_path = '/html/storage/folder/{path}'.sub('{' + 'path' + '}', path.to_s)
+      local_var_path = '/html/folder'
 
       # query parameters
       query_params = {}
+      query_params[:'path'] = path.to_s
       query_params[:'storageName'] = opts[:'storage_name'] if !opts[:'storage_name'].nil?
       query_params[:'recursive'] = opts[:'recursive'] if !opts[:'recursive'].nil?
 
@@ -763,10 +525,11 @@ module AsposeHtml
         fail ArgumentError, "Missing the required parameter 'path' when calling StorageApi.get_files_list"
       end
       # resource path
-      local_var_path = '/html/storage/folder/{path}'.sub('{' + 'path' + '}', path.to_s)
+      local_var_path = '/html/folder'
 
       # query parameters
       query_params = {}
+      query_params[:'path'] = path.to_s
       query_params[:'storageName'] = opts[:'storage_name'] if !opts[:'storage_name'].nil?
 
       # header parameters
@@ -792,68 +555,5 @@ module AsposeHtml
       end
       return data, status_code, headers
     end
-
-    # Move folder
-    # @param src_path Folder path to move e.g. &#39;/folder&#39;
-    # @param dest_path Destination folder path to move to e.g &#39;/dst&#39;
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :src_storage_name Source storage name
-    # @option opts [String] :dest_storage_name Destination storage name
-    # @return [nil]
-    def move_folder(src_path, dest_path, opts = {})
-      move_folder_with_http_info(src_path, dest_path, opts)
-      nil
-    end
-
-    # Move folder
-    # @param src_path Folder path to move e.g. &#39;/folder&#39;
-    # @param dest_path Destination folder path to move to e.g &#39;/dst&#39;
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :src_storage_name Source storage name
-    # @option opts [String] :dest_storage_name Destination storage name
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def move_folder_with_http_info(src_path, dest_path, opts = {})
-        if @api_client.config.debug
-          @api_client.config.logger.debug 'Calling API: StorageApi.move_folder ...'
-        end
-        # verify the required parameter 'src_path' is set
-        if @api_client.config.client_side_validation && src_path.nil?
-          fail ArgumentError, "Missing the required parameter 'src_path' when calling StorageApi.move_folder"
-        end
-        # verify the required parameter 'dest_path' is set
-        if @api_client.config.client_side_validation && dest_path.nil?
-          fail ArgumentError, "Missing the required parameter 'dest_path' when calling StorageApi.move_folder"
-        end
-        # resource path
-        local_var_path = '/html/storage/folder/move/{srcPath}'.sub('{' + 'srcPath' + '}', src_path.to_s)
-
-        # query parameters
-        query_params = {}
-        query_params[:'destPath'] = dest_path
-        query_params[:'srcStorageName'] = opts[:'src_storage_name'] if !opts[:'src_storage_name'].nil?
-        query_params[:'destStorageName'] = opts[:'dest_storage_name'] if !opts[:'dest_storage_name'].nil?
-
-        # header parameters
-        header_params = {}
-        # HTTP header 'Accept' (if needed)
-        header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-        # HTTP header 'Content-Type'
-        header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-        # form parameters
-        form_params = {}
-
-        # http body (model)
-        post_body = nil
-        data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
-                                                          :header_params => header_params,
-                                                          :query_params => query_params,
-                                                          :form_params => form_params,
-                                                          :body => post_body)
-        if @api_client.config.debug
-          @api_client.config.logger.debug "API called: StorageApi#move_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-        end
-        return data, status_code, headers
-      end
   end
 end

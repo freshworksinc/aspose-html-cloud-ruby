@@ -4,5 +4,11 @@ gemspec
 
 group :development, :test do
   gem 'rake', '~> 12.0.0'
+  gem 'rubocop'
+  gem 'rubocop'
+  gem 'rubocop'
+  gem 'rubocop'
 end
 
+
+gem "typhoeus", "~> 1.4"

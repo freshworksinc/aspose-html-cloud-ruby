@@ -3,7 +3,7 @@
   --------------------------------------------------------------------------------------------------------------------
   <copyright company="Aspose" file="aspose_html_cloud.rb">
   </copyright>
-  Copyright (c) 2020 Aspose.HTML for Cloud
+  Copyright (c) 2022 Aspose.HTML for Cloud
   <summary>
    Permission is hereby granted, free of charge, to any person obtaining a copy
    of this software and associated documentation files (the "Software"), to deal
@@ -49,6 +49,7 @@ require 'aspose_html_cloud/models/files_upload_result'
 require 'aspose_html_cloud/models/object_exist'
 require 'aspose_html_cloud/models/storage_exist'
 require 'aspose_html_cloud/models/storage_file'
+require 'aspose_html_cloud/models/conversion_result'
 
 module AsposeHtml
   class << self

@@ -3,7 +3,7 @@
   --------------------------------------------------------------------------------------------------------------------
   <copyright company="Aspose" file="spec_helper.rb">
   </copyright>
-  Copyright (c) 2020 Aspose.HTML for Cloud
+  Copyright (c) 2022 Aspose.HTML for Cloud
   <summary>
    Permission is hereby granted, free of charge, to any person obtaining a copy
    of this software and associated documentation files (the "Software"), to deal
@@ -30,11 +30,11 @@
 require 'aspose_html_cloud'
 
 CONFIG = {
-    "basePath": "https://api.aspose.cloud/v3.0",
-    "authPath": "https://api.aspose.cloud/connect/token",
-    "apiKey": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-    "appSID": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-    "debug": true
+  "basePath": "https://api.aspose.cloud/v4.0",
+  "authPath": "https://api.aspose.cloud/connect/token",
+  "apiKey": "c8dda7d6445d82635b8797d1c8edd153",
+  "appSID": "2225baa2-097b-4731-9831-d0d56c28230f",
+  "debug": true
 }
 # from storage api
 Storage_api = AsposeHtml::StorageApi.new CONFIG
@@ -42,9 +42,8 @@ Storage_api = AsposeHtml::StorageApi.new CONFIG
 # Helper methods
 def upload_file_helper(file_name, upload_folder = nil)
   folder = upload_folder.nil? ? "HtmlTestDoc" : upload_folder
-  path = folder + '/' + file_name
   file = File.realpath(__dir__ + '/../testdata/' + file_name)
-  Storage_api.upload_file(path, file)
+  Storage_api.upload_file(folder, file)
 end
 
 def download_file_helper(file_name, download_folder = nil)
