@@ -92,7 +92,7 @@ begin
   result = api_instance.convert_local_to_local(src, dst, opts)
   p result
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling HtmlApi->get_convert_document_to_image: #{e}"
+  puts "Exception when calling api_instance.convert_local_to_local: #{e}"
 end
 
 ```
