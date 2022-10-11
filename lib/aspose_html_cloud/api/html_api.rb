@@ -44,13 +44,12 @@ module AsposeHtml
     # @param src Full path to source file.
     # @param dst Full path to a result file (pdf, xps, docx, md, mhtml, jpeg, png, bmp, tiff, gif).
     # @param [Hash] options the optional parameters
-    # @option options [Integer] :width Resulting image width.
-    # @option opts [Integer] :height Resulting image height.
-    # @option opts [Integer] :left_margin Left resulting image margin.
-    # @option opts [Integer] :right_margin Right resulting image margin.
-    # @option opts [Integer] :top_margin Top resulting image margin.
-    # @option opts [Integer] :bottom_margin Bottom resulting image margin.
-    # @option opts [Integer] :resolution Resolution of resulting image.
+    # @option options [Double] :width Resulting width. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :height Resulting height. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :left_margin Left resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :right_margin Right resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :top_margin Top resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :bottom_margin Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
     # @return [ConversionResult] Result of conversion. See ConversionResult object.
     def convert_local_to_local(src, dst, options = nil)
       return convert(src, dst, true, true, false, options)
@@ -62,13 +61,12 @@ module AsposeHtml
     # @param dst Full path to a result file (pdf, xps, docx, md, mhtml, jpeg, png, bmp, tiff, gif).
     # @param storage Storage name. Default storage is nil.
     # @param [Hash] options the optional parameters
-    # @option options [Integer] :width Resulting image width.
-    # @option opts [Integer] :height Resulting image height.
-    # @option opts [Integer] :left_margin Left resulting image margin.
-    # @option opts [Integer] :right_margin Right resulting image margin.
-    # @option opts [Integer] :top_margin Top resulting image margin.
-    # @option opts [Integer] :bottom_margin Bottom resulting image margin.
-    # @option opts [Integer] :resolution Resolution of resulting image.
+    # @option options [Double] :width Resulting width. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :height Resulting height. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :left_margin Left resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :right_margin Right resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :top_margin Top resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :bottom_margin Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
     # @return [ConversionResult] Result of conversion. See ConversionResult object.
     def convert_local_to_storage(src, dst, storage, options=nil)
       return convert(src, dst, true, false, false, options, storage)
@@ -80,13 +78,12 @@ module AsposeHtml
     # @param dst Full path to a result file (pdf, xps, docx, md, mhtml, jpeg, png, bmp, tiff, gif).
     # @param storage Storage name. Default storage is nil.
     # @param [Hash] options the optional parameters
-    # @option options [Integer] :width Resulting image width.
-    # @option opts [Integer] :height Resulting image height.
-    # @option opts [Integer] :left_margin Left resulting image margin.
-    # @option opts [Integer] :right_margin Right resulting image margin.
-    # @option opts [Integer] :top_margin Top resulting image margin.
-    # @option opts [Integer] :bottom_margin Bottom resulting image margin.
-    # @option opts [Integer] :resolution Resolution of resulting image.
+    # @option options [Double] :width Resulting width. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :height Resulting height. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :left_margin Left resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :right_margin Right resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :top_margin Top resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :bottom_margin Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
     # @return [ConversionResult] Result of conversion. See ConversionResult object.
     def convert_storage_to_local(src, dst, storage, options=nil)
       return convert(src, dst, false, true, false, options, storage)
@@ -98,13 +95,12 @@ module AsposeHtml
     # @param dst Full path to a result file (pdf, xps, docx, md, mhtml, jpeg, png, bmp, tiff, gif).
     # @param storage Storage name. Default storage is nil.
     # @param [Hash] options the optional parameters
-    # @option options [Integer] :width Resulting image width.
-    # @option opts [Integer] :height Resulting image height.
-    # @option opts [Integer] :left_margin Left resulting image margin.
-    # @option opts [Integer] :right_margin Right resulting image margin.
-    # @option opts [Integer] :top_margin Top resulting image margin.
-    # @option opts [Integer] :bottom_margin Bottom resulting image margin.
-    # @option opts [Integer] :resolution Resolution of resulting image.
+    # @option options [Double] :width Resulting width. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :height Resulting height. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :left_margin Left resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :right_margin Right resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :top_margin Top resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :bottom_margin Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
     # @return [ConversionResult] Result of conversion. See ConversionResult object.
     def convert_storage_to_storage(src, dst, storage, options=nil)
       return convert(src, dst, false, false, false, options, storage)
@@ -115,13 +111,12 @@ module AsposeHtml
     # @param src URI of the website.
     # @param dst Full path to a result file (pdf, xps, docx, md, mhtml, jpeg, png, bmp, tiff, gif).
     # @param [Hash] options the optional parameters
-    # @option options [Integer] :width Resulting image width.
-    # @option opts [Integer] :height Resulting image height.
-    # @option opts [Integer] :left_margin Left resulting image margin.
-    # @option opts [Integer] :right_margin Right resulting image margin.
-    # @option opts [Integer] :top_margin Top resulting image margin.
-    # @option opts [Integer] :bottom_margin Bottom resulting image margin.
-    # @option opts [Integer] :resolution Resolution of resulting image.
+    # @option options [Double] :width Resulting width. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :height Resulting height. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :left_margin Left resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :right_margin Right resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :top_margin Top resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :bottom_margin Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
     # @return [ConversionResult] Result of conversion. See ConversionResult object.
     def convert_url_to_local(src, dst, options=nil)
       return convert(src, dst, false, true, true, options)
@@ -133,13 +128,12 @@ module AsposeHtml
     # @param dst Full path to a result file (pdf, xps, docx, md, mhtml, jpeg, png, bmp, tiff, gif).
     # @param storage Storage name. Default storage is nil.
     # @param [Hash] options the optional parameters
-    # @option options [Integer] :width Resulting image width.
-    # @option opts [Integer] :height Resulting image height.
-    # @option opts [Integer] :left_margin Left resulting image margin.
-    # @option opts [Integer] :right_margin Right resulting image margin.
-    # @option opts [Integer] :top_margin Top resulting image margin.
-    # @option opts [Integer] :bottom_margin Bottom resulting image margin.
-    # @option opts [Integer] :resolution Resolution of resulting image.
+    # @option options [Double] :width Resulting width. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :height Resulting height. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :left_margin Left resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :right_margin Right resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :top_margin Top resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :bottom_margin Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
     # @return [ConversionResult] Result of conversion. See ConversionResult object.
     def convert_url_to_storage(src, dst, storage, options=nil)
       return convert(src, dst, false, false, true, options, storage)
@@ -153,13 +147,12 @@ module AsposeHtml
     # @param dst_in_local Flag, true if result in the local file.
     # @param is_url Flag, true if source is website.
     # @param [Hash] options the optional parameters
-    # @option options [Integer] :width Resulting image width.
-    # @option opts [Integer] :height Resulting image height.
-    # @option opts [Integer] :left_margin Left resulting image margin.
-    # @option opts [Integer] :right_margin Right resulting image margin.
-    # @option opts [Integer] :top_margin Top resulting image margin.
-    # @option opts [Integer] :bottom_margin Bottom resulting image margin.
-    # @option opts [Integer] :resolution Resolution of resulting image.
+    # @option options [Double] :width Resulting width. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :height Resulting height. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :left_margin Left resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :right_margin Right resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :top_margin Top resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Double] :bottom_margin Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
     # @param storage_name Storage name. Default storage is nil.
     # @return [ConversionResult] Result of conversion. See ConversionResult object.
     def convert(src, dst, src_in_local, dst_in_local, is_url, options=nil, storage_name=nil)

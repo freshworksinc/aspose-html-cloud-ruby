@@ -44,12 +44,12 @@ src = "test.html" # String | Full path to the input file.
 dst = "test.jpg"  # String | Full path to the result.
 
 opts = { 
-  width: 800, # Integer | Resulting image width in pixels. 
-  height: 1000, # Integer | Resulting image height in pixels. 
-  left_margin: 10, # Integer | Left resulting image margin in pixels.
-  right_margin: 10, # Integer | Right resulting image margin in pixels.
-  top_margin: 10, # Integer | Top resulting image margin in pixels.
-  bottom_margin: 10 # Integer | Bottom resulting image margin in pixels.
+  width: 800, # Float | Resulting image width in pixels. 
+  height: 1000, # Float | Resulting image height in pixels. 
+  left_margin: 10, # Float | Left resulting image margin in pixels.
+  right_margin: 10, # Float | Right resulting image margin in pixels.
+  top_margin: 10, # Float | Top resulting image margin in pixels.
+  bottom_margin: 10 # Float | Bottom resulting image margin in pixels.
 }
 
 begin
@@ -62,17 +62,17 @@ end
 ```
 
 ### Parameters
-| Name              | Type        | Description                    | Notes                   |
-|-------------------|-------------|--------------------------------|-------------------------|
-| **src**           | **String**  | Full path to the input file.   | html, epub formats      |
-| **dst**           | **String**  | Full path to the result file.  | See possible conversion | 
-| **opts**          | **Hash**    | Conversion options.            | [optional]              |    
-| **width**         | **Integer** | Resulting image width.         | [optional]              |    
-| **height**        | **Integer** | Resulting image height.        | [optional]              |    
-| **left_margin**   | **Integer** | Left resulting image margin.   | [optional]              |        
-| **right_margin**  | **Integer** | Right resulting image margin.  | [optional]              |        
-| **top_margin**    | **Integer** | Top resulting image margin.    | [optional]              |     
-| **bottom_margin** | **Integer** | Bottom resulting image margin. | [optional]              |       
+| Name              | Type       | Description                                                                   | Notes                   |
+|-------------------|------------|-------------------------------------------------------------------------------|-------------------------|
+| **src**           | **String** | Full path to the input file.                                                  | html, epub formats      |
+| **dst**           | **String** | Full path to the result file.                                                 | See possible conversion | 
+| **opts**          | **Hash**   | Conversion options.                                                           | [optional]              |    
+| **width**         | **Float**  | Resulting width. For images in pixels, for PDF, XPS, DOCX in  inches.         | [optional]              |    
+| **height**        | **Float**  | Resulting height. For images in pixels, for PDF, XPS, DOCX in  inches.        | [optional]              |    
+| **left_margin**   | **Float**  | Left resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches.   | [optional]              |        
+| **right_margin**  | **Float**  | Right resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches.  | [optional]              |        
+| **top_margin**    | **Float**  | Top resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches.    | [optional]              |     
+| **bottom_margin** | **Float**  | Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches. | [optional]              |       
 
 ### Return type
 
@@ -113,12 +113,12 @@ src = "test.epub" # String | Source file.
 dst = "FolderInStorage/test.tiff" # String | Result file.
 
 opts = { 
-  width: 700, # Integer | Resulting image width. 
-  height: 1000, # Integer | Resulting image height. 
-  left_margin: 40, # Integer | Left resulting image margin.
-  right_margin: 40, # Integer | Right resulting image margin.
-  top_margin: 50, # Integer | Top resulting image margin.
-  bottom_margin: 50 # Integer | Bottom resulting image margin.
+  width: 700, # Float | Resulting image width. 
+  height: 1000, # Float | Resulting image height. 
+  left_margin: 40, # Float | Left resulting image margin.
+  right_margin: 40, # Float | Right resulting image margin.
+  top_margin: 50, # Float | Top resulting image margin.
+  bottom_margin: 50 # Float | Bottom resulting image margin.
 }
 
 begin
@@ -131,18 +131,19 @@ end
 ```
 
 ### Parameters
-| Name              | Type        | Description                    | Notes                   |
-|-------------------|-------------|--------------------------------|-------------------------|
-| **src**           | **String**  | Full path to the input file.   | html, epub formats      |
-| **dst**           | **String**  | Full path to the result file.  | See possible conversion | 
-| **storage**       | **String**  | Storage name.                  | nil - default storage   | 
-| **opts**          | **Hash**    | Conversion options.            | [optional]              |    
-| **width**         | **Integer** | Resulting image width.         | [optional]              |    
-| **height**        | **Integer** | Resulting image height.        | [optional]              |    
-| **left_margin**   | **Integer** | Left resulting image margin.   | [optional]              |        
-| **right_margin**  | **Integer** | Right resulting image margin.  | [optional]              |        
-| **top_margin**    | **Integer** | Top resulting image margin.    | [optional]              |     
-| **bottom_margin** | **Integer** | Bottom resulting image margin. | [optional]              |       
+| Name              | Type       | Description                                                                   | Notes                   |
+|-------------------|------------|-------------------------------------------------------------------------------|-------------------------|
+| **src**           | **String** | Full path to the input file.                                                  | html, epub formats      |
+| **dst**           | **String** | Full path to the result file.                                                 | See possible conversion | 
+| **storage**       | **String** | Storage name.                                                                 | nil - default storage   | 
+| **opts**          | **Hash**   | Conversion options.                                                           | [optional]              |    
+| **width**         | **Float**  | Resulting width. For images in pixels, for PDF, XPS, DOCX in  inches.         | [optional]              |    
+| **height**        | **Float**  | Resulting height. For images in pixels, for PDF, XPS, DOCX in  inches.        | [optional]              |    
+| **left_margin**   | **Float**  | Left resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches.   | [optional]              |        
+| **right_margin**  | **Float**  | Right resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches.  | [optional]              |        
+| **top_margin**    | **Float**  | Top resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches.    | [optional]              |     
+| **bottom_margin** | **Float**  | Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches. | [optional]              |       
+    
 
 ### Return type
 **[ConversionResult](ConversionResult.md)**
@@ -182,12 +183,12 @@ src = "FolderInStorage/test.epub" # String | Source file.
 dst = "test.tiff" # String | Result file.
 
 opts = { 
-  width: 700, # Integer | Resulting image width. 
-  height: 1000, # Integer | Resulting image height. 
-  left_margin: 40, # Integer | Left resulting image margin.
-  right_margin: 40, # Integer | Right resulting image margin.
-  top_margin: 50, # Integer | Top resulting image margin.
-  bottom_margin: 50 # Integer | Bottom resulting image margin.
+  width: 700, # Float | Resulting image width. 
+  height: 1000, # Float | Resulting image height. 
+  left_margin: 40, # Float | Left resulting image margin.
+  right_margin: 40, # Float | Right resulting image margin.
+  top_margin: 50, # Float | Top resulting image margin.
+  bottom_margin: 50 # Float | Bottom resulting image margin.
 }
 
 begin
@@ -200,18 +201,19 @@ end
 ```
 
 ### Parameters
-| Name              | Type        | Description                    | Notes                   |
-|-------------------|-------------|--------------------------------|-------------------------|
-| **src**           | **String**  | Full path to the input file.   | html, epub formats      |
-| **dst**           | **String**  | Full path to the result file.  | See possible conversion | 
-| **storage**       | **String**  | Storage name.                  | nil - default storage   | 
-| **opts**          | **Hash**    | Conversion options.            | [optional]              |    
-| **width**         | **Integer** | Resulting image width.         | [optional]              |    
-| **height**        | **Integer** | Resulting image height.        | [optional]              |    
-| **left_margin**   | **Integer** | Left resulting image margin.   | [optional]              |        
-| **right_margin**  | **Integer** | Right resulting image margin.  | [optional]              |        
-| **top_margin**    | **Integer** | Top resulting image margin.    | [optional]              |     
-| **bottom_margin** | **Integer** | Bottom resulting image margin. | [optional]              |       
+| Name              | Type       | Description                                                                   | Notes                   |
+|-------------------|------------|-------------------------------------------------------------------------------|-------------------------|
+| **src**           | **String** | Full path to the input file.                                                  | html, epub formats      |
+| **dst**           | **String** | Full path to the result file.                                                 | See possible conversion | 
+| **storage**       | **String** | Storage name.                                                                 | nil - default storage   | 
+| **opts**          | **Hash**   | Conversion options.                                                           | [optional]              |    
+| **width**         | **Float**  | Resulting width. For images in pixels, for PDF, XPS, DOCX in  inches.         | [optional]              |    
+| **height**        | **Float**  | Resulting height. For images in pixels, for PDF, XPS, DOCX in  inches.        | [optional]              |    
+| **left_margin**   | **Float**  | Left resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches.   | [optional]              |        
+| **right_margin**  | **Float**  | Right resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches.  | [optional]              |        
+| **top_margin**    | **Float**  | Top resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches.    | [optional]              |     
+| **bottom_margin** | **Float**  | Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches. | [optional]              |       
+   
 
 ### Return type
 **[ConversionResult](ConversionResult.md)**
@@ -251,12 +253,12 @@ src = "FolderInStorage/test.epub" # String | Source file.
 dst = "FolderInStorage/test.tiff" # String | Result file.
 
 opts = { 
-  width: 700, # Integer | Resulting image width. 
-  height: 1000, # Integer | Resulting image height. 
-  left_margin: 40, # Integer | Left resulting image margin.
-  right_margin: 40, # Integer | Right resulting image margin.
-  top_margin: 50, # Integer | Top resulting image margin.
-  bottom_margin: 50 # Integer | Bottom resulting image margin.
+  width: 700, # Float | Resulting image width. 
+  height: 1000, # Float | Resulting image height. 
+  left_margin: 40, # Float | Left resulting image margin.
+  right_margin: 40, # Float | Right resulting image margin.
+  top_margin: 50, # Float | Top resulting image margin.
+  bottom_margin: 50 # Float | Bottom resulting image margin.
 }
 
 begin
@@ -269,18 +271,19 @@ end
 ```
 
 ### Parameters
-| Name              | Type        | Description                    | Notes                   |
-|-------------------|-------------|--------------------------------|-------------------------|
-| **src**           | **String**  | Full path to the input file.   | html, epub formats      |
-| **dst**           | **String**  | Full path to the result file.  | See possible conversion | 
-| **storage**       | **String**  | Storage name.                  | nil - default storage   | 
-| **opts**          | **Hash**    | Conversion options.            | [optional]              |    
-| **width**         | **Integer** | Resulting image width.         | [optional]              |    
-| **height**        | **Integer** | Resulting image height.        | [optional]              |    
-| **left_margin**   | **Integer** | Left resulting image margin.   | [optional]              |        
-| **right_margin**  | **Integer** | Right resulting image margin.  | [optional]              |        
-| **top_margin**    | **Integer** | Top resulting image margin.    | [optional]              |     
-| **bottom_margin** | **Integer** | Bottom resulting image margin. | [optional]              |       
+| Name              | Type       | Description                                                                   | Notes                   |
+|-------------------|------------|-------------------------------------------------------------------------------|-------------------------|
+| **src**           | **String** | Full path to the input file.                                                  | html, epub formats      |
+| **dst**           | **String** | Full path to the result file.                                                 | See possible conversion | 
+| **storage**       | **String** | Storage name.                                                                 | nil - default storage   | 
+| **opts**          | **Hash**   | Conversion options.                                                           | [optional]              |    
+| **width**         | **Float**  | Resulting width. For images in pixels, for PDF, XPS, DOCX in  inches.         | [optional]              |    
+| **height**        | **Float**  | Resulting height. For images in pixels, for PDF, XPS, DOCX in  inches.        | [optional]              |    
+| **left_margin**   | **Float**  | Left resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches.   | [optional]              |        
+| **right_margin**  | **Float**  | Right resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches.  | [optional]              |        
+| **top_margin**    | **Float**  | Top resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches.    | [optional]              |     
+| **bottom_margin** | **Float**  | Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches. | [optional]              |       
+     
 
 ### Return type
 **[ConversionResult](ConversionResult.md)**
@@ -331,17 +334,18 @@ end
 ```
 
 ### Parameters
-| Name              | Type        | Description                    | Notes                    |
-|-------------------|-------------|--------------------------------|--------------------------|
-| **src**           | **String**  | Url address of the webpage.    | With http:// or https:// |
-| **dst**           | **String**  | Full path to the result file.  | See possible conversion  | 
-| **opts**          | **Hash**    | Conversion options.            | [optional]               |    
-| **width**         | **Integer** | Resulting image width.         | [optional]               |    
-| **height**        | **Integer** | Resulting image height.        | [optional]               |    
-| **left_margin**   | **Integer** | Left resulting image margin.   | [optional]               |        
-| **right_margin**  | **Integer** | Right resulting image margin.  | [optional]               |        
-| **top_margin**    | **Integer** | Top resulting image margin.    | [optional]               |     
-| **bottom_margin** | **Integer** | Bottom resulting image margin. | [optional]               |       
+| Name              | Type       | Description                                                                   | Notes                    |
+|-------------------|------------|-------------------------------------------------------------------------------|--------------------------|
+| **src**           | **String** | Url address of the webpage.                                                   | With http:// or https:// |
+| **dst**           | **String** | Full path to the result file.                                                 | See possible conversion  | 
+| **opts**          | **Hash**   | Conversion options.                                                           | [optional]               |    
+| **width**         | **Float**  | Resulting width. For images in pixels, for PDF, XPS, DOCX in  inches.         | [optional]               |    
+| **height**        | **Float**  | Resulting height. For images in pixels, for PDF, XPS, DOCX in  inches.        | [optional]               |    
+| **left_margin**   | **Float**  | Left resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches.   | [optional]               |        
+| **right_margin**  | **Float**  | Right resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches.  | [optional]               |        
+| **top_margin**    | **Float**  | Top resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches.    | [optional]               |     
+| **bottom_margin** | **Float**  | Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches. | [optional]               |       
+   
 
 ### Return type
 **[ConversionResult](ConversionResult.md)**
@@ -392,18 +396,19 @@ end
 ```
 
 ### Parameters
-| Name              | Type        | Description                    | Notes                    |
-|-------------------|-------------|--------------------------------|--------------------------|
-| **src**           | **String**  | Url address of the webpage.    | With http:// or https:// |
-| **dst**           | **String**  | Full path to the result file.  | See possible conversion  | 
-| **storage**       | **String**  | Storage name.                  | nil - default storage    | 
-| **opts**          | **Hash**    | Conversion options.            | [optional]               |    
-| **width**         | **Integer** | Resulting image width.         | [optional]               |    
-| **height**        | **Integer** | Resulting image height.        | [optional]               |    
-| **left_margin**   | **Integer** | Left resulting image margin.   | [optional]               |        
-| **right_margin**  | **Integer** | Right resulting image margin.  | [optional]               |        
-| **top_margin**    | **Integer** | Top resulting image margin.    | [optional]               |     
-| **bottom_margin** | **Integer** | Bottom resulting image margin. | [optional]               |       
+| Name              | Type       | Description                                                                   | Notes                    |
+|-------------------|------------|-------------------------------------------------------------------------------|--------------------------|
+| **src**           | **String** | Url address of the webpage.                                                   | With http:// or https:// |
+| **dst**           | **String** | Full path to the result file.                                                 | See possible conversion  | 
+| **storage**       | **String** | Storage name.                                                                 | nil - default storage    | 
+| **opts**          | **Hash**   | Conversion options.                                                           | [optional]               |    
+| **width**         | **Float**  | Resulting width. For images in pixels, for PDF, XPS, DOCX in  inches.         | [optional]               |    
+| **height**        | **Float**  | Resulting height. For images in pixels, for PDF, XPS, DOCX in  inches.        | [optional]               |    
+| **left_margin**   | **Float**  | Left resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches.   | [optional]               |        
+| **right_margin**  | **Float**  | Right resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches.  | [optional]               |        
+| **top_margin**    | **Float**  | Top resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches.    | [optional]               |     
+| **bottom_margin** | **Float**  | Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches. | [optional]               |       
+    
 
 ### Return type
 **[ConversionResult](ConversionResult.md)**
@@ -455,21 +460,21 @@ end
 
 
 ### Parameters
-| Name              | Type        | Description                    | Notes                                 |
-|-------------------|-------------|--------------------------------|---------------------------------------|
-| **src**           | **String**  | Path to source (file or url).  | Url with http:// or https://          |
-| **dst**           | **String**  | Full path to the result file.  | See possible conversion for extension | 
-| **src_in_local**  | **Boolean** | True if src is a local file.   |                                       | 
-| **dst_in_local**  | **Boolean** | True if dst is a local file.   |                                       | 
-| **is_url**        | **Boolean** | True if src is url.            |                                       | 
-| **opts**          | **Hash**    | Conversion options.            | [optional]                            |    
-| **width**         | **Integer** | Resulting image width.         | [optional]                            |    
-| **height**        | **Integer** | Resulting image height.        | [optional]                            |    
-| **left_margin**   | **Integer** | Left resulting image margin.   | [optional]                            |        
-| **right_margin**  | **Integer** | Right resulting image margin.  | [optional]                            |        
-| **top_margin**    | **Integer** | Top resulting image margin.    | [optional]                            |     
-| **bottom_margin** | **Integer** | Bottom resulting image margin. | [optional]                            |       
-| **storage**       | **String**  | Storage name.                  | nil - default storage                 | 
+| Name              | Type        | Description                                                                   | Notes                                 |
+|-------------------|-------------|-------------------------------------------------------------------------------|---------------------------------------|
+| **src**           | **String**  | Path to source (file or url).                                                 | Url with http:// or https://          |
+| **dst**           | **String**  | Full path to the result file.                                                 | See possible conversion for extension | 
+| **src_in_local**  | **Boolean** | True if src is a local file.                                                  |                                       | 
+| **dst_in_local**  | **Boolean** | True if dst is a local file.                                                  |                                       | 
+| **is_url**        | **Boolean** | True if src is url.                                                           |                                       | 
+| **opts**          | **Hash**    | Conversion options.                                                           | [optional]                            |    
+| **width**         | **Float**   | Resulting width. For images in pixels, for PDF, XPS, DOCX in  inches.         | [optional]                            |    
+| **height**        | **Float**   | Resulting height. For images in pixels, for PDF, XPS, DOCX in  inches.        | [optional]                            |    
+| **left_margin**   | **Float**   | Left resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches.   | [optional]                            |        
+| **right_margin**  | **Float**   | Right resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches.  | [optional]                            |        
+| **top_margin**    | **Float**   | Top resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches.    | [optional]                            |     
+| **bottom_margin** | **Float**   | Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches. | [optional]                            |       
+| **storage**       | **String**  | Storage name.                                                                 | nil - default storage                 | 
 
 ### Return type
 **[ConversionResult](ConversionResult.md)**

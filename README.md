@@ -3,7 +3,7 @@
 AsposeHtml - the Ruby gem for the Aspose.HTML for Cloud API Reference
 
 - API version: 4.0
-- Package version: 22.9.1
+- Package version: 22.10.1
 
 ## Requirements
 - Ruby >= 1.9
@@ -25,15 +25,15 @@ gem build aspose_html_cloud.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./aspose_html_cloud-22.9.1.gem
+gem install ./aspose_html_cloud-22.10.1.gem
 ```
-(for development, run `gem install --dev ./aspose_html_cloud-22.9.1.gem` to install the development dependencies)
+(for development, run `gem install --dev ./aspose_html_cloud-22.10.1.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'aspose_html_cloud', '~> 22.9.1'
+    gem 'aspose_html_cloud', '~> 22.10.1'
 
 ### Load from git
 
@@ -78,12 +78,12 @@ api_instance = AsposeHtml::HtmlApi.new CONFIG
 src = "test.html" # String | Document name.
 dst = "test.jpg"
 opts = { 
-  width: 800, # Integer | Resulting image width. 
-  height: 1000, # Integer | Resulting image height. 
-  left_margin: 10, # Integer | Left resulting image margin.
-  right_margin: 10, # Integer | Right resulting image margin.
-  top_margin: 20, # Integer | Top resulting image margin.
-  bottom_margin: 20 # Integer | Bottom resulting image margin.
+  width: 800, # Double | Resulting image width in pixels. For PDF, XPS and DOCX in inches.
+  height: 1000, # Double | Resulting image height in pixels. For PDF, XPS and DOCX in inches. 
+  left_margin: 10, # Double | Left resulting image margin in pixels. For PDF, XPS and DOCX in inches.
+  right_margin: 10, # Double | Right resulting image margin in pixels. For PDF, XPS and DOCX in inches.
+  top_margin: 20, # Double | Top resulting image margin in pixels. For PDF, XPS and DOCX in inches.
+  bottom_margin: 20 # Double | Bottom resulting image margin in pixels. For PDF, XPS and DOCX in inches.
 
 }
 
@@ -92,7 +92,7 @@ begin
   result = api_instance.convert_local_to_local(src, dst, opts)
   p result
 rescue AsposeHtml::ApiError => e
-  puts "Exception when calling api_instance.convert_local_to_local: #{e}"
+  puts "Exception when calling HtmlApi->get_convert_document_to_image: #{e}"
 end
 
 ```
