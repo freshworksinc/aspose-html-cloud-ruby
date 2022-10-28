@@ -56,7 +56,7 @@ ruby -Ilib aspose_html_cloud.rb
 
 ## Getting Started
 
-### Possible conversions:
+Possible conversions:
 - HTML -> PDF, XPS, DOCX, MD, MHTML, JPEG, BMP, PNG, TIFF, GIF
 - EPUB -> PDF, XPS, DOCX, JPEG, BMP, PNG, TIFF, GIF
 - MD -> PDF, XPS, DOCX, HTML, MHTML, JPEG, BMP, PNG, TIFF, GIF
@@ -84,12 +84,12 @@ api_instance = AsposeHtml::HtmlApi.new CONFIG
 src = "test.html" # String | Document name.
 dst = "test.jpg"
 opts = { 
-  width: 800,       # Float | Resulting image width in pixels. For PDF, XPS and DOCX in inches.
-  height: 1000,     # Float | Resulting image height in pixels. For PDF, XPS and DOCX in inches. 
-  left_margin: 10,  # Float | Left resulting image margin in pixels. For PDF, XPS and DOCX in inches.
-  right_margin: 10, # Float | Right resulting image margin in pixels. For PDF, XPS and DOCX in inches.
-  top_margin: 20,   # Float | Top resulting image margin in pixels. For PDF, XPS and DOCX in inches.
-  bottom_margin: 20 # Float | Bottom resulting image margin in pixels. For PDF, XPS and DOCX in inches.
+  width: 800, # Double | Resulting image width in pixels. For PDF, XPS and DOCX in inches.
+  height: 1000, # Double | Resulting image height in pixels. For PDF, XPS and DOCX in inches. 
+  left_margin: 10, # Double | Left resulting image margin in pixels. For PDF, XPS and DOCX in inches.
+  right_margin: 10, # Double | Right resulting image margin in pixels. For PDF, XPS and DOCX in inches.
+  top_margin: 20, # Double | Top resulting image margin in pixels. For PDF, XPS and DOCX in inches.
+  bottom_margin: 20 # Double | Bottom resulting image margin in pixels. For PDF, XPS and DOCX in inches.
 
 }
 

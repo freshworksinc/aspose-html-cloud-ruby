@@ -57,7 +57,7 @@ module AsposeHtml
         'User-Agent' => @user_agent,
         'Authorization' => "Bearer #{@config.access_token}",
         'x-aspose-client' => "aspose.html-cloud ruby sdk",
-        'x-aspose-client-version' => "20.8.0"
+        'x-aspose-client-version' => "22.10.2"
       }
     end
 

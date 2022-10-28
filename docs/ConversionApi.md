@@ -2,9 +2,11 @@
 
 All URIs are relative to *https://api.aspose.cloud/v4.0*
 
-Possible conversions:
+### Possible conversions:
 - HTML -> PDF, XPS, DOCX, MD, MHTML, JPEG, BMP, PNG, TIFF, GIF
 - EPUB -> PDF, XPS, DOCX, JPEG, BMP, PNG, TIFF, GIF
+- MD -> PDF, XPS, DOCX, HTML, MHTML, JPEG, BMP, PNG, TIFF, GIF
+- MHTML -> PDF, XPS, DOCX, JPEG, BMP, PNG, TIFF, GIF
 
 | Method                                                                        | Description                                                              |
 |-------------------------------------------------------------------------------|--------------------------------------------------------------------------|
@@ -44,11 +46,11 @@ src = "test.html" # String | Full path to the input file.
 dst = "test.jpg"  # String | Full path to the result.
 
 opts = { 
-  width: 800, # Float | Resulting image width in pixels. 
-  height: 1000, # Float | Resulting image height in pixels. 
-  left_margin: 10, # Float | Left resulting image margin in pixels.
+  width: 800,       # Float | Resulting image width in pixels. 
+  height: 1000,     # Float | Resulting image height in pixels. 
+  left_margin: 10,  # Float | Left resulting image margin in pixels.
   right_margin: 10, # Float | Right resulting image margin in pixels.
-  top_margin: 10, # Float | Top resulting image margin in pixels.
+  top_margin: 10,   # Float | Top resulting image margin in pixels.
   bottom_margin: 10 # Float | Bottom resulting image margin in pixels.
 }
 
@@ -113,11 +115,11 @@ src = "test.epub" # String | Source file.
 dst = "FolderInStorage/test.tiff" # String | Result file.
 
 opts = { 
-  width: 700, # Float | Resulting image width. 
-  height: 1000, # Float | Resulting image height. 
-  left_margin: 40, # Float | Left resulting image margin.
+  width: 700,       # Float | Resulting image width. 
+  height: 1000,     # Float | Resulting image height. 
+  left_margin: 40,  # Float | Left resulting image margin.
   right_margin: 40, # Float | Right resulting image margin.
-  top_margin: 50, # Float | Top resulting image margin.
+  top_margin: 50,   # Float | Top resulting image margin.
   bottom_margin: 50 # Float | Bottom resulting image margin.
 }
 
@@ -183,11 +185,11 @@ src = "FolderInStorage/test.epub" # String | Source file.
 dst = "test.tiff" # String | Result file.
 
 opts = { 
-  width: 700, # Float | Resulting image width. 
-  height: 1000, # Float | Resulting image height. 
-  left_margin: 40, # Float | Left resulting image margin.
+  width: 700,       # Float | Resulting image width. 
+  height: 1000,     # Float | Resulting image height. 
+  left_margin: 40,  # Float | Left resulting image margin.
   right_margin: 40, # Float | Right resulting image margin.
-  top_margin: 50, # Float | Top resulting image margin.
+  top_margin: 50,   # Float | Top resulting image margin.
   bottom_margin: 50 # Float | Bottom resulting image margin.
 }
 
@@ -253,11 +255,11 @@ src = "FolderInStorage/test.epub" # String | Source file.
 dst = "FolderInStorage/test.tiff" # String | Result file.
 
 opts = { 
-  width: 700, # Float | Resulting image width. 
-  height: 1000, # Float | Resulting image height. 
-  left_margin: 40, # Float | Left resulting image margin.
+  width: 700,       # Float | Resulting image width. 
+  height: 1000,     # Float | Resulting image height. 
+  left_margin: 40,  # Float | Left resulting image margin.
   right_margin: 40, # Float | Right resulting image margin.
-  top_margin: 50, # Float | Top resulting image margin.
+  top_margin: 50,   # Float | Top resulting image margin.
   bottom_margin: 50 # Float | Bottom resulting image margin.
 }
 

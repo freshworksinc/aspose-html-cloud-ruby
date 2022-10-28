@@ -411,4 +411,172 @@ describe 'Test html_api_V4' do
       }
     end
   end
+
+  describe 'convert markdown local to local' do
+
+    src = File.realpath(__dir__ + '/../../testdata') + '/README.md'
+    dst_dir = File.realpath(__dir__ + '/../../testresult') + '/'
+
+    describe 'convert local to local markdown to doc' do
+
+      %w[pdf xps docx html mhtml mht].each { |ext|
+        it "Convert markdown to " + ext do
+
+          dst = dst_dir + 'locToLocDocMD.' + ext
+          answer = @html_api.convert_local_to_local(src, dst)
+
+          expect(answer.code).to eql(200)
+          expect(answer.status).to eql('completed')
+          expect(File.exist?(answer.file)).to be_truthy
+        end
+      }
+    end
+
+    describe 'convert local to local markdown to doc with options' do
+
+      %w[pdf xps docx].each { |ext|
+        it "Convert markdown to " + ext do
+
+          options_A4 = {
+            width: 8.3,
+            height: 11.7,
+            top_margin: 0.5,
+            bottom_margin: 0.5,
+            left_margin: 0.5,
+            right_margin: 0.5
+          }
+
+          dst = dst_dir + 'locToLocDocMDWithOpts.' + ext
+          answer = @html_api.convert_local_to_local(src, dst, options_A4)
+
+          expect(answer.code).to eql(200)
+          expect(answer.status).to eql('completed')
+          expect(File.exist?(answer.file)).to be_truthy
+        end
+      }
+    end
+
+    describe 'convert local to local markdown to image' do
+
+      %w[jpeg jpg bmp png tiff tif gif].each { |ext|
+        it "Convert markdown to " + ext do
+
+          dst = dst_dir + 'locToLocMDImg.' + ext
+          answer = @html_api.convert_local_to_local(src, dst)
+
+          expect(answer.code).to eql(200)
+          expect(answer.status).to eql('completed')
+          expect(File.exist?(answer.file)).to be_truthy
+        end
+      }
+    end
+
+    describe 'convert local to local markdown to image with options' do
+
+      opts = {
+        width: 800,
+        height: 1000,
+        left_margin: 30,
+        right_margin: 30,
+        top_margin: 50,
+        bottom_margin: 50
+      }
+
+      %w[jpeg jpg bmp png tiff tif gif].each { |ext|
+        it "Convert markdown to " + ext do
+
+          dst = dst_dir + 'locToLocMDImgOpt.' + ext
+          answer = @html_api.convert_local_to_local(src, dst, opts)
+
+          expect(answer.code).to eql(200)
+          expect(answer.status).to eql('completed')
+          expect(File.exist?(answer.file)).to be_truthy
+        end
+      }
+    end
+  end
+
+  describe 'convert MHTML local to local' do
+
+    src = File.realpath(__dir__ + '/../../testdata') + '/fileformatinfo.mht'
+    dst_dir = File.realpath(__dir__ + '/../../testresult') + '/'
+
+    describe 'convert local to local MHTML to doc' do
+
+      %w[pdf xps docx].each { |ext|
+        it "Convert MHTML to " + ext do
+
+          dst = dst_dir + 'locToLocDocMHTML.' + ext
+          answer = @html_api.convert_local_to_local(src, dst)
+
+          expect(answer.code).to eql(200)
+          expect(answer.status).to eql('completed')
+          expect(File.exist?(answer.file)).to be_truthy
+        end
+      }
+    end
+
+    describe 'convert local to local MHTML to doc with options' do
+
+      %w[pdf xps docx].each { |ext|
+        it "Convert MHTML to " + ext do
+
+          options_A4 = {
+            width: 8.3,
+            height: 11.7,
+            top_margin: 0.5,
+            bottom_margin: 0.5,
+            left_margin: 0.5,
+            right_margin: 0.5
+          }
+
+          dst = dst_dir + 'locToLocDocMHTMLWithOpts.' + ext
+          answer = @html_api.convert_local_to_local(src, dst, options_A4)
+
+          expect(answer.code).to eql(200)
+          expect(answer.status).to eql('completed')
+          expect(File.exist?(answer.file)).to be_truthy
+        end
+      }
+    end
+
+    describe 'convert local to local MHTML to image' do
+
+      %w[jpeg jpg bmp png tiff tif gif].each { |ext|
+        it "Convert MHTML to " + ext do
+
+          dst = dst_dir + 'locToLocMHTMLImg.' + ext
+          answer = @html_api.convert_local_to_local(src, dst)
+
+          expect(answer.code).to eql(200)
+          expect(answer.status).to eql('completed')
+          expect(File.exist?(answer.file)).to be_truthy
+        end
+      }
+    end
+
+    describe 'convert local to local MHTML to image with options' do
+
+      opts = {
+        width: 800,
+        height: 1000,
+        left_margin: 30,
+        right_margin: 30,
+        top_margin: 50,
+        bottom_margin: 50
+      }
+
+      %w[jpeg jpg bmp png tiff tif gif].each { |ext|
+        it "Convert MHTML to " + ext do
+
+          dst = dst_dir + 'locToLocMHTMLImgOpt.' + ext
+          answer = @html_api.convert_local_to_local(src, dst, opts)
+
+          expect(answer.code).to eql(200)
+          expect(answer.status).to eql('completed')
+          expect(File.exist?(answer.file)).to be_truthy
+        end
+      }
+    end
+  end
 end
