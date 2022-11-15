@@ -579,4 +579,130 @@ describe 'Test html_api_V4' do
       }
     end
   end
+
+  describe 'convert SVG local to local' do
+
+    src = File.realpath(__dir__ + '/../../testdata') + '/testpage1.svg'
+    dst_dir = File.realpath(__dir__ + '/../../testresult') + '/'
+
+    describe 'convert local to local SVG to doc' do
+
+      %w[pdf xps].each { |ext|
+        it "Convert SVG to " + ext do
+
+          dst = dst_dir + 'locToLocDocSVG.' + ext
+          answer = @html_api.convert_local_to_local(src, dst)
+
+          expect(answer.code).to eql(200)
+          expect(answer.status).to eql('completed')
+          expect(File.exist?(answer.file)).to be_truthy
+        end
+      }
+    end
+
+    describe 'convert local to local SVG to doc with options' do
+
+      %w[pdf xps].each { |ext|
+        it "Convert SVG to " + ext do
+
+          options_A4 = {
+            width: 8.3,
+            height: 11.7,
+            top_margin: 0.5,
+            bottom_margin: 0.5,
+            left_margin: 0.5,
+            right_margin: 0.5
+          }
+
+          dst = dst_dir + 'locToLocDocSVGWithOpts.' + ext
+          answer = @html_api.convert_local_to_local(src, dst, options_A4)
+
+          expect(answer.code).to eql(200)
+          expect(answer.status).to eql('completed')
+          expect(File.exist?(answer.file)).to be_truthy
+        end
+      }
+    end
+
+    describe 'convert local to local SVG to image' do
+
+      %w[jpeg jpg bmp png tiff tif gif].each { |ext|
+        it "Convert SVG to " + ext do
+
+          dst = dst_dir + 'locToLocSVGImg.' + ext
+          answer = @html_api.convert_local_to_local(src, dst)
+
+          expect(answer.code).to eql(200)
+          expect(answer.status).to eql('completed')
+          expect(File.exist?(answer.file)).to be_truthy
+        end
+      }
+    end
+
+    describe 'convert local to local SVG to image with options' do
+
+      opts = {
+        width: 800,
+        height: 1000,
+        left_margin: 30,
+        right_margin: 30,
+        top_margin: 50,
+        bottom_margin: 50
+      }
+
+      %w[jpeg jpg bmp png tiff tif gif].each { |ext|
+        it "Convert SVG to " + ext do
+
+          dst = dst_dir + 'locToLocSVGImgOpt.' + ext
+          answer = @html_api.convert_local_to_local(src, dst, opts)
+
+          expect(answer.code).to eql(200)
+          expect(answer.status).to eql('completed')
+          expect(File.exist?(answer.file)).to be_truthy
+        end
+      }
+    end
+  end
+
+  describe 'convert to SVG local to local' do
+
+    src = File.realpath(__dir__ + '/../../testdata') + '/car.'
+    dst_dir = File.realpath(__dir__ + '/../../testresult') + '/'
+
+    describe 'convert to SVG' do
+
+      %w[bmp jpg gif tiff png].each { |ext|
+        it "Trace " + ext + " to svg" do
+          dst = dst_dir + ext.upcase + 'toSVG.svg'
+          answer = @html_api.convert_local_to_local(src + ext, dst)
+
+          expect(answer.code).to eql(200)
+          expect(answer.status).to eql('completed')
+          expect(File.exist?(answer.file)).to be_truthy
+        end
+      }
+    end
+
+    describe 'convert to SVG with options' do
+
+      %w[bmp jpg gif tiff png].each { |ext|
+        it "Trace to SVG with opts " + ext do
+
+          opts = {
+            error_threshold: 30,
+            max_iterations: 50,
+            colors_limit: 3,
+            line_width: 2.0,
+          }
+          dst = dst_dir + ext.upcase + 'ToSVGWithOpts.svg'
+          answer = @html_api.convert_local_to_local(src + ext, dst, opts)
+
+          expect(answer.code).to eql(200)
+          expect(answer.status).to eql('completed')
+          expect(File.exist?(answer.file)).to be_truthy
+        end
+      }
+    end
+
+  end
 end

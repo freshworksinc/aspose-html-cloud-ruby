@@ -198,6 +198,13 @@ module AsposeHtml
         post_body[:'options'][:'topMargin'] = options[:'top_margin'] unless options[:'top_margin'].nil?
         post_body[:'options'][:'bottomMargin'] = options[:'bottom_margin'] unless options[:'bottom_margin'].nil?
         post_body[:'options'][:'resolution'] = options[:'resolution'] unless options[:'resolution'].nil?
+        post_body[:'options'][:'background'] = options[:'background'] unless options[:'background'].nil?
+        post_body[:'options'][:'jpegquality'] = options[:'jpeg_quality'] unless options[:'jpeg_quality'].nil?
+        post_body[:'options'][:'usegit'] = options[:'use_git'] unless options[:'use_git'].nil?
+        post_body[:'options'][:'error_threshold'] = options[:'error_threshold'] unless options[:'error_threshold'].nil?
+        post_body[:'options'][:'max_iterations'] = options[:'max_iterations'] unless options[:'max_iterations'].nil?
+        post_body[:'options'][:'colors_limit'] = options[:'colors_limit'] unless options[:'colors_limit'].nil?
+        post_body[:'options'][:'line_width'] = options[:'line_width'] unless options[:'line_width'].nil?
       end
 
       query_params = {}
@@ -268,22 +275,20 @@ module AsposeHtml
     end
 
     def get_input_format(path)
-      ext = File.extname(path).upcase
+      ext = File.extname(path).downcase[1..-1]
       case ext
-        when '.HTML', '.HTM'
+        when 'htm'
           return 'html'
-        when '.MHT', '.MHTML'
+        when 'mht'
           return 'mhtml'
-        when '.XHTML', '.XML'
+        when 'xml'
           return 'xhtml'
-        when '.EPUB'
-          return 'epub'
-        when '.SVG'
-          return 'svg'
-        when '.MD'
-          return 'md'
+        when 'jpg'
+          return 'jpeg'
+        when 'tif'
+          return 'tiff'
         else
-          return nil
+          ext
       end
     end
 

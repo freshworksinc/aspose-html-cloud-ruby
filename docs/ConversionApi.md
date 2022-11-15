@@ -7,16 +7,18 @@ All URIs are relative to *https://api.aspose.cloud/v4.0*
 - EPUB -> PDF, XPS, DOCX, JPEG, BMP, PNG, TIFF, GIF
 - MD -> PDF, XPS, DOCX, HTML, MHTML, JPEG, BMP, PNG, TIFF, GIF
 - MHTML -> PDF, XPS, DOCX, JPEG, BMP, PNG, TIFF, GIF
+- SVG -> PDF, XPS, JPEG, BMP, PNG, TIFF, GIF
+- JPEG, BMP, PNG, TIFF, GIF -> SVG
 
-| Method                                                                        | Description                                                              |
-|-------------------------------------------------------------------------------|--------------------------------------------------------------------------|
-| [**convert_local_to_local**](ConversionApi.md#convert_local_to_local)         | Convert the HTML or EPUB document from the local file to the local file. |
-| [**convert_local_to_storage**](ConversionApi.md#convert_local_to_storage)     | Convert the HTML or EPUB document from the local file to the storage.    |
-| [**convert_storage_to_local**](ConversionApi.md#convert_storage_to_local)     | Convert the HTML or EPUB document from the storage to the local file.    |
-| [**convert_storage_to_storage**](ConversionApi.md#convert_storage_to_storage) | Convert the HTML or EPUB document from the storage to the storage.       |
-| [**convert_url_to_local**](ConversionApi.md#convert_url_to_local)             | Convert the website by URL to the local file.                            |
-| [**convert_url_to_storage**](ConversionApi.md#convert_url_to_storage)         | Convert the website to the storage.                                      |
-| [**convert**](ConversionApi.md#convert)                                       | General conversion function.                                             |
+| Method                                                                        | Description                                               |
+|-------------------------------------------------------------------------------|-----------------------------------------------------------|
+| [**convert_local_to_local**](ConversionApi.md#convert_local_to_local)         | Convert a document from the local file to the local file. |
+| [**convert_local_to_storage**](ConversionApi.md#convert_local_to_storage)     | Convert a document from the local file to the storage.    |
+| [**convert_storage_to_local**](ConversionApi.md#convert_storage_to_local)     | Convert a document from the storage to the local file.    |
+| [**convert_storage_to_storage**](ConversionApi.md#convert_storage_to_storage) | Convert a document from the storage to the storage.       |
+| [**convert_url_to_local**](ConversionApi.md#convert_url_to_local)             | Convert the website by URL to the local file.             |
+| [**convert_url_to_storage**](ConversionApi.md#convert_url_to_storage)         | Convert the website to the storage.                       |
+| [**convert**](ConversionApi.md#convert)                                       | General conversion function.                              |
 
 # **convert_local_to_local**
 > [ConversionResult](ConversionResult.md)  convert_local_to_local(src, dst, opts)
@@ -66,7 +68,7 @@ end
 ### Parameters
 | Name              | Type       | Description                                                                   | Notes                   |
 |-------------------|------------|-------------------------------------------------------------------------------|-------------------------|
-| **src**           | **String** | Full path to the input file.                                                  | html, epub formats      |
+| **src**           | **String** | Full path to the input file.                                                  | See possible conversion |
 | **dst**           | **String** | Full path to the result file.                                                 | See possible conversion | 
 | **opts**          | **Hash**   | Conversion options.                                                           | [optional]              |    
 | **width**         | **Float**  | Resulting width. For images in pixels, for PDF, XPS, DOCX in  inches.         | [optional]              |    
@@ -135,7 +137,7 @@ end
 ### Parameters
 | Name              | Type       | Description                                                                   | Notes                   |
 |-------------------|------------|-------------------------------------------------------------------------------|-------------------------|
-| **src**           | **String** | Full path to the input file.                                                  | html, epub formats      |
+| **src**           | **String** | Full path to the input file.                                                  | See possible conversion |
 | **dst**           | **String** | Full path to the result file.                                                 | See possible conversion | 
 | **storage**       | **String** | Storage name.                                                                 | nil - default storage   | 
 | **opts**          | **Hash**   | Conversion options.                                                           | [optional]              |    
@@ -205,7 +207,7 @@ end
 ### Parameters
 | Name              | Type       | Description                                                                   | Notes                   |
 |-------------------|------------|-------------------------------------------------------------------------------|-------------------------|
-| **src**           | **String** | Full path to the input file.                                                  | html, epub formats      |
+| **src**           | **String** | Full path to the input file.                                                  | See possible conversion |
 | **dst**           | **String** | Full path to the result file.                                                 | See possible conversion | 
 | **storage**       | **String** | Storage name.                                                                 | nil - default storage   | 
 | **opts**          | **Hash**   | Conversion options.                                                           | [optional]              |    
@@ -275,7 +277,7 @@ end
 ### Parameters
 | Name              | Type       | Description                                                                   | Notes                   |
 |-------------------|------------|-------------------------------------------------------------------------------|-------------------------|
-| **src**           | **String** | Full path to the input file.                                                  | html, epub formats      |
+| **src**           | **String** | Full path to the input file.                                                  | See possible conversion |
 | **dst**           | **String** | Full path to the result file.                                                 | See possible conversion | 
 | **storage**       | **String** | Storage name.                                                                 | nil - default storage   | 
 | **opts**          | **Hash**   | Conversion options.                                                           | [optional]              |    
@@ -470,12 +472,6 @@ end
 | **dst_in_local**  | **Boolean** | True if dst is a local file.                                                  |                                       | 
 | **is_url**        | **Boolean** | True if src is url.                                                           |                                       | 
 | **opts**          | **Hash**    | Conversion options.                                                           | [optional]                            |    
-| **width**         | **Float**   | Resulting width. For images in pixels, for PDF, XPS, DOCX in  inches.         | [optional]                            |    
-| **height**        | **Float**   | Resulting height. For images in pixels, for PDF, XPS, DOCX in  inches.        | [optional]                            |    
-| **left_margin**   | **Float**   | Left resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches.   | [optional]                            |        
-| **right_margin**  | **Float**   | Right resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches.  | [optional]                            |        
-| **top_margin**    | **Float**   | Top resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches.    | [optional]                            |     
-| **bottom_margin** | **Float**   | Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in  inches. | [optional]                            |       
 | **storage**       | **String**  | Storage name.                                                                 | nil - default storage                 | 
 
 ### Return type

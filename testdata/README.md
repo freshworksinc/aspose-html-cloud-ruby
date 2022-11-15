@@ -3,7 +3,7 @@
 AsposeHtml - the Ruby gem for the Aspose.HTML for Cloud API Reference
 
 - API version: 4.0
-- Package version: 22.10.2
+- Package version: 22.11.1
 
 ## Requirements
 - Ruby >= 1.9
@@ -25,15 +25,15 @@ gem build aspose_html_cloud.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./aspose_html_cloud-22.10.2.gem
+gem install ./aspose_html_cloud-22.11.1.gem
 ```
-(for development, run `gem install --dev ./aspose_html_cloud-22.10.2.gem` to install the development dependencies)
+(for development, run `gem install --dev ./aspose_html_cloud-22.11.1.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'aspose_html_cloud', '~> 22.10.2'
+    gem 'aspose_html_cloud', '~> 22.11.1'
 
 ### Load from git
 
