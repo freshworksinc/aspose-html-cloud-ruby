@@ -58,7 +58,7 @@ module AsposeHtml
         @api_client.config.logger.debug 'Calling API: StorageApi.get_disc_usage ...'
       end
       # resource path
-      local_var_path = '/html/storage/disc'
+      local_var_path = '/html/storage/disc/usage'
 
       # query parameters
       query_params = {}

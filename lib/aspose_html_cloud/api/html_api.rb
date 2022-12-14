@@ -39,69 +39,69 @@ module AsposeHtml
     end
 
 
-    # Converting the HTML, EPUB document from the local file and putting the result in the local file
+    # Converting a document from the local file and putting the result in the local file
     #
     # @param src Full path to source file.
-    # @param dst Full path to a result file (pdf, xps, docx, md, mhtml, jpeg, png, bmp, tiff, gif).
+    # @param dst Full path to a result file.
     # @param [Hash, nil] options the optional parameters
-    # @option options [Double] :width Resulting width. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :height Resulting height. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :left_margin Left resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :right_margin Right resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :top_margin Top resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :bottom_margin Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @return [ConversionResult] Result of conversion. See ConversionResult object.
+    # @option options [Float] :width Resulting width. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :height Resulting height. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :left_margin Left resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :right_margin Right resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :top_margin Top resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :bottom_margin Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @return [OperationResult] Result of operation. See OperationResult object.
     def convert_local_to_local(src, dst, options = nil)
       convert(src, dst, true, true, false, options)
     end
 
-    # Converting the HTML, EPUB document from the local file and putting the result in the storage
+    # Converting a document from the local file and putting the result in the storage
     #
     # @param src Full path to source file.
-    # @param dst Full path to a result file (pdf, xps, docx, md, mhtml, jpeg, png, bmp, tiff, gif).
+    # @param dst Full path to a result file.
     # @param storage Storage name. Default storage is nil.
     # @param [Hash, nil] options the optional parameters
-    # @option options [Double] :width Resulting width. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :height Resulting height. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :left_margin Left resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :right_margin Right resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :top_margin Top resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :bottom_margin Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @return [ConversionResult] Result of conversion. See ConversionResult object.
+    # @option options [Float] :width Resulting width. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :height Resulting height. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :left_margin Left resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :right_margin Right resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :top_margin Top resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :bottom_margin Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @return [OperationResult] Result of operation. See OperationResult object.
     def convert_local_to_storage(src, dst, storage, options=nil)
       convert(src, dst, true, false, false, options, storage)
     end
 
-    # Converting the HTML, EPUB document from the storage and putting the result in the local file
+    # Converting a document from the storage and putting the result in the local file
     #
     # @param src Full path to source file.
-    # @param dst Full path to a result file (pdf, xps, docx, md, mhtml, jpeg, png, bmp, tiff, gif).
+    # @param dst Full path to a result file.
     # @param storage Storage name. Default storage is nil.
     # @param [Hash, nil] options the optional parameters
-    # @option options [Double] :width Resulting width. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :height Resulting height. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :left_margin Left resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :right_margin Right resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :top_margin Top resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :bottom_margin Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @return [ConversionResult] Result of conversion. See ConversionResult object.
+    # @option options [Float] :width Resulting width. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :height Resulting height. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :left_margin Left resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :right_margin Right resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :top_margin Top resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :bottom_margin Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @return [OperationResult] Result of operation. See OperationResult object.
     def convert_storage_to_local(src, dst, storage, options=nil)
       convert(src, dst, false, true, false, options, storage)
     end
 
-    # Converting the HTML, EPUB document from the storage and putting the result in the storage
+    # Converting a document from the storage and putting the result in the storage
     #
     # @param src Full path to source file.
-    # @param dst Full path to a result file (pdf, xps, docx, md, mhtml, jpeg, png, bmp, tiff, gif).
+    # @param dst Full path to a result file.
     # @param storage Storage name. Default storage is nil.
     # @param [Hash, nil] options the optional parameters
-    # @option options [Double] :width Resulting width. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :height Resulting height. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :left_margin Left resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :right_margin Right resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :top_margin Top resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :bottom_margin Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @return [ConversionResult] Result of conversion. See ConversionResult object.
+    # @option options [Float] :width Resulting width. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :height Resulting height. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :left_margin Left resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :right_margin Right resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :top_margin Top resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :bottom_margin Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @return [OperationResult] Result of operation. See OperationResult object.
     def convert_storage_to_storage(src, dst, storage, options=nil)
       convert(src, dst, false, false, false, options, storage)
     end
@@ -109,15 +109,15 @@ module AsposeHtml
     # Converting the HTML page from URL and putting the result in the local file
     #
     # @param src URI of the website.
-    # @param dst Full path to a result file (pdf, xps, docx, md, mhtml, jpeg, png, bmp, tiff, gif).
+    # @param dst Full path to a result file.
     # @param [Hash, nil] options the optional parameters
-    # @option options [Double] :width Resulting width. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :height Resulting height. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :left_margin Left resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :right_margin Right resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :top_margin Top resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :bottom_margin Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @return [ConversionResult] Result of conversion. See ConversionResult object.
+    # @option options [Float] :width Resulting width. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :height Resulting height. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :left_margin Left resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :right_margin Right resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :top_margin Top resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :bottom_margin Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @return [OperationResult] Result of operation. See OperationResult object.
     def convert_url_to_local(src, dst, options=nil)
       convert(src, dst, false, true, true, options)
     end
@@ -125,36 +125,117 @@ module AsposeHtml
     # Converting the HTML page from URL and putting the result in the storage
     #
     # @param src URI of the website.
-    # @param dst Full path to a result file (pdf, xps, docx, md, mhtml, jpeg, png, bmp, tiff, gif).
+    # @param dst Full path to a result file.
     # @param storage Storage name. Default storage is nil.
     # @param [Hash, nil] options the optional parameters
-    # @option options [Double] :width Resulting width. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :height Resulting height. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :left_margin Left resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :right_margin Right resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :top_margin Top resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :bottom_margin Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @return [ConversionResult] Result of conversion. See ConversionResult object.
+    # @option options [Float] :width Resulting width. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :height Resulting height. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :left_margin Left resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :right_margin Right resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :top_margin Top resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :bottom_margin Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @return [OperationResult] Result of operation. See OperationResult object.
     def convert_url_to_storage(src, dst, storage, options=nil)
       convert(src, dst, false, false, true, options, storage)
     end
 
-    # Converting the HTML document to various formats
+    # Vectorization an image from the local file and putting the result in the local file
+    #
+    # @param src Full path to source file(bmp, png, gif, tiff, jpeg).
+    # @param dst Full path to a result file (svg).
+    # @param [Hash, nil] options the optional parameters
+    # @option options [Float] :error_threshold Defines maximum deviation of points to fitted curve. By default it is 30.
+    # @option options [Integer] :max_iterations Defines number of iteration for least-squares approximation method. By default, it is 30.
+    # @option options [Integer] :colors_limit The maximum number of colors used to quantize an image. Default value is 25.
+    # @option options [Float] :line_width The value of this parameter is affected by the graphics scale. Default value is 1.
+    # @return [OperationResult] Result of operation. See OperationResult object.
+    def vectorize_local_to_local(src, dst, options = nil)
+      vectorize(src, dst, true, true, options)
+    end
+
+    # Vectorization an image from the local file and putting the result in the storage
+    #
+    # @param src Full path to source file(bmp, png, gif, tiff, jpeg).
+    # @param dst Full path to a result file (svg).
+    # @param storage Storage name. Default storage is nil.
+    # @param [Hash, nil] options the optional parameters
+    # @option options [Float] :error_threshold Defines maximum deviation of points to fitted curve. By default it is 30.
+    # @option options [Integer] :max_iterations Defines number of iteration for least-squares approximation method. By default, it is 30.
+    # @option options [Integer] :colors_limit The maximum number of colors used to quantize an image. Default value is 25.
+    # @option options [Float] :line_width The value of this parameter is affected by the graphics scale. Default value is 1.
+    # @return [OperationResult] Result of operation. See OperationResult object.
+    def vectorize_local_to_storage(src, dst, storage, options=nil)
+      vectorize(src, dst, true, false, options, storage)
+    end
+
+    # Vectorization an image from the storage and putting the result in the local file
+    #
+    # @param src Full path to source file(bmp, png, gif, tiff, jpeg).
+    # @param dst Full path to a result file (svg).
+    # @param storage Storage name. Default storage is nil.
+    # @param [Hash, nil] options the optional parameters
+    # @option options [Float] :error_threshold Defines maximum deviation of points to fitted curve. By default it is 30.
+    # @option options [Integer] :max_iterations Defines number of iteration for least-squares approximation method. By default, it is 30.
+    # @option options [Integer] :colors_limit The maximum number of colors used to quantize an image. Default value is 25.
+    # @option options [Float] :line_width The value of this parameter is affected by the graphics scale. Default value is 1.
+    # @return [OperationResult] Result of operation. See OperationResult object.
+    def vectorize_storage_to_local(src, dst, storage, options=nil)
+      vectorize(src, dst, false, true, options, storage)
+    end
+
+    # Vectorization an image from the storage and putting the result in the storage
+    #
+    # @param src Full path to source file(bmp, png, gif, tiff, jpeg).
+    # @param dst Full path to a result file (svg).
+    # @param storage Storage name. Default storage is nil.
+    # @param [Hash, nil] options the optional parameters
+    # @option options [Float] :error_threshold Defines maximum deviation of points to fitted curve. By default it is 30.
+    # @option options [Integer] :max_iterations Defines number of iteration for least-squares approximation method. By default, it is 30.
+    # @option options [Integer] :colors_limit The maximum number of colors used to quantize an image. Default value is 25.
+    # @option options [Float] :line_width The value of this parameter is affected by the graphics scale. Default value is 1.
+    # @return [OperationResult] Result of operation. See OperationResult object.
+    def vectorize_storage_to_storage(src, dst, storage, options=nil)
+      vectorize(src, dst, false, false, options, storage)
+    end
+
+    # Vectorization an image from to SVG format
+    #
+    # @param src Full path to source file(bmp, png, gif, tiff, jpeg).
+    # @param dst Full path to a result file (svg).
+    # @param src_in_local Flag, true if source in the local file.
+    # @param dst_in_local Flag, true if result in the local file.
+    # @param [Hash, nil] options the optional parameters
+    # @option options [Float] :error_threshold Defines maximum deviation of points to fitted curve. By default it is 30.
+    # @option options [Integer] :max_iterations Defines number of iteration for least-squares approximation method. By default, it is 30.
+    # @option options [Integer] :colors_limit The maximum number of colors used to quantize an image. Default value is 25.
+    # @option options [Float] :line_width The value of this parameter is affected by the graphics scale. Default value is 1.
+    # @param storage_name Storage name. Default storage is nil.
+    # @return [OperationResult] Result of operation. See OperationResult object.
+    def vectorize(src, dst, src_in_local, dst_in_local, options=nil, storage_name=nil)
+      input_format = get_input_format(src)
+      output_format = File.extname(dst).strip.downcase[1..-1]
+      fail ApiError.new('Input format must be bmp, jpeg, gif, tiff, png') unless %w[bmp jpeg gif tiff png].include? input_format
+      fail ApiError.new('Output format must be SVG') if output_format != 'svg'
+      convert(src, dst, src_in_local, dst_in_local, false, options, storage_name)
+    end
+
+
+    # Converting a document to various formats
     #
     # @param src Source file or URL.
-    # @param dst Full path to a result file (pdf, xps, docx, md, mhtml, jpeg, png, bmp, tiff, gif).
+    # @param dst Full path to a result file.
     # @param src_in_local Flag, true if source in the local file.
     # @param dst_in_local Flag, true if result in the local file.
     # @param is_url Flag, true if source is website.
     # @param [Hash, nil] options the optional parameters
-    # @option options [Double] :width Resulting width. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :height Resulting height. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :left_margin Left resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :right_margin Right resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :top_margin Top resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
-    # @option options [Double] :bottom_margin Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :width Resulting width. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :height Resulting height. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :left_margin Left resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :right_margin Right resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :top_margin Top resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
+    # @option options [Float] :bottom_margin Bottom resulting margin. For images in pixels, for PDF, XPS, DOCX in inches.
     # @param storage_name Storage name. Default storage is nil.
-    # @return [ConversionResult] Result of conversion. See ConversionResult object.
+    # @return [OperationResult] Result of operation. See OperationResult object.
     def convert(src, dst, src_in_local, dst_in_local, is_url, options=nil, storage_name=nil)
       if src_in_local
         res = @storage_api.upload_file("/", src)
@@ -224,7 +305,7 @@ module AsposeHtml
                                                         :query_params => query_params,
                                                         :form_params => form_params,
                                                         :body => post_body,
-                                                        :return_type => 'ConversionResult')
+                                                        :return_type => 'OperationResult')
       if @api_client.config.debug
         @api_client.config.logger.debug "API called: Create task\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -270,7 +351,7 @@ module AsposeHtml
                                                         :query_params => query_params,
                                                         :form_params => form_params,
                                                         :body => post_body,
-                                                        :return_type => 'ConversionResult')
+                                                        :return_type => 'OperationResult')
 
     end
 

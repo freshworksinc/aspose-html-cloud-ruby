@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    aspose_html_cloud (22.11.1)
+    aspose_html_cloud (22.12.1)
       json (~> 2.1, >= 2.1.0)
       typhoeus (~> 1.0, >= 1.0.1)
 

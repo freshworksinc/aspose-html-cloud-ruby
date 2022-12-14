@@ -29,7 +29,7 @@
 require_relative 'base_model'
 
 module AsposeHtml
-  class ConversionResult < BaseModel
+  class OperationResult < BaseModel
     attr_accessor :code
 
     attr_accessor :id

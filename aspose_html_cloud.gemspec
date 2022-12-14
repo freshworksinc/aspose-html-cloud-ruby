@@ -31,7 +31,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "aspose_html_cloud"
-  s.version     = "22.11.1"
+  s.version     = "22.12.1"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Alexander Makogon"]
   s.email       = 'alexander.makogon@aspose.com'

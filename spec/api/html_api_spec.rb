@@ -120,7 +120,7 @@ describe 'Test html_api_V4' do
 
           expect(answer.code).to eql(200)
           expect(answer.status).to eql('completed')
-          expect(@storage_api.object_exists(answer.file)).to be_truthy
+          expect(@storage_api.object_exists(answer.file).exists).to be_truthy
         end
       }
     end
@@ -135,7 +135,7 @@ describe 'Test html_api_V4' do
 
           expect(answer.code).to eql(200)
           expect(answer.status).to eql('completed')
-          expect(@storage_api.object_exists(answer.file)).to be_truthy
+          expect(@storage_api.object_exists(answer.file).exists).to be_truthy
         end
       }
     end
@@ -159,7 +159,7 @@ describe 'Test html_api_V4' do
 
           expect(answer.code).to eql(200)
           expect(answer.status).to eql('completed')
-          expect(@storage_api.object_exists(answer.file)).to be_truthy
+          expect(@storage_api.object_exists(answer.file).exists).to be_truthy
         end
       }
     end
@@ -248,7 +248,7 @@ describe 'Test html_api_V4' do
 
           expect(answer.code).to eql(200)
           expect(answer.status).to eql('completed')
-          expect(@storage_api.object_exists(answer.file)).to be_truthy
+          expect(@storage_api.object_exists(answer.file).exists).to be_truthy
         end
       }
     end
@@ -263,7 +263,7 @@ describe 'Test html_api_V4' do
 
           expect(answer.code).to eql(200)
           expect(answer.status).to eql('completed')
-          expect(@storage_api.object_exists(answer.file)).to be_truthy
+          expect(@storage_api.object_exists(answer.file).exists).to be_truthy
         end
       }
     end
@@ -287,7 +287,7 @@ describe 'Test html_api_V4' do
 
           expect(answer.code).to eql(200)
           expect(answer.status).to eql('completed')
-          expect(@storage_api.object_exists(answer.file)).to be_truthy
+          expect(@storage_api.object_exists(answer.file).exists).to be_truthy
         end
       }
     end
@@ -367,7 +367,7 @@ describe 'Test html_api_V4' do
 
           expect(answer.code).to eql(200)
           expect(answer.status).to eql('completed')
-          expect(@storage_api.object_exists(answer.file)).to be_truthy
+          expect(@storage_api.object_exists(answer.file).exists).to be_truthy
         end
       }
     end
@@ -382,7 +382,7 @@ describe 'Test html_api_V4' do
 
           expect(answer.code).to eql(200)
           expect(answer.status).to eql('completed')
-          expect(@storage_api.object_exists(answer.file)).to be_truthy
+          expect(@storage_api.object_exists(answer.file).exists).to be_truthy
         end
       }
     end
@@ -406,7 +406,7 @@ describe 'Test html_api_V4' do
 
           expect(answer.code).to eql(200)
           expect(answer.status).to eql('completed')
-          expect(@storage_api.object_exists(answer.file)).to be_truthy
+          expect(@storage_api.object_exists(answer.file).exists).to be_truthy
         end
       }
     end
@@ -703,6 +703,193 @@ describe 'Test html_api_V4' do
         end
       }
     end
-
   end
+
+  describe 'vectorize an image to SVG local to local' do
+
+    src = File.realpath(__dir__ + '/../../testdata') + '/car.'
+    dst_dir = File.realpath(__dir__ + '/../../testresult') + '/'
+
+    describe 'vectorize to SVG' do
+
+      %w[bmp jpg gif tiff png].each { |ext|
+        it "Vectorize " + ext + " to svg" do
+          dst = dst_dir + ext.upcase + 'VectorizetoSVG.svg'
+          answer = @html_api.vectorize_local_to_local(src + ext, dst)
+
+          expect(answer.code).to eql(200)
+          expect(answer.status).to eql('completed')
+          expect(File.exist?(answer.file)).to be_truthy
+        end
+      }
+    end
+
+    describe 'vectorize to SVG with options' do
+
+      %w[bmp jpg gif tiff png].each { |ext|
+        it "Vectorize to SVG with opts " + ext do
+
+          opts = {
+            error_threshold: 30,
+            max_iterations: 50,
+            colors_limit: 3,
+            line_width: 2.0,
+          }
+          dst = dst_dir + ext.upcase + 'VectorizeToSVGWithOpts.svg'
+          answer = @html_api.vectorize_local_to_local(src + ext, dst, opts)
+
+          expect(answer.code).to eql(200)
+          expect(answer.status).to eql('completed')
+          expect(File.exist?(answer.file)).to be_truthy
+        end
+      }
+    end
+  end
+
+  describe 'vectorize an image to SVG local to storage' do
+
+    src = File.realpath(__dir__ + '/../../testdata') + '/car.'
+    dst_dir = '/VectorizeSvgRuby/'
+
+    describe 'vectorize to SVG' do
+
+      %w[bmp jpg gif tiff png].each { |ext|
+        it "Vectorize " + ext + " to svg" do
+          dst = dst_dir + ext.upcase + 'VectorizetoSVG.svg'
+          answer = @html_api.vectorize_local_to_storage(src + ext, dst, nil)
+
+          expect(answer.code).to eql(200)
+          expect(answer.status).to eql('completed')
+          expect(@storage_api.object_exists(answer.file).exists).to be_truthy
+        end
+      }
+    end
+
+    describe 'vectorize to SVG with options' do
+
+      %w[bmp jpg gif tiff png].each { |ext|
+        it "Vectorize to SVG with opts " + ext do
+
+          opts = {
+            error_threshold: 30,
+            max_iterations: 50,
+            colors_limit: 3,
+            line_width: 2.0,
+          }
+          dst = dst_dir + ext.upcase + 'VectorizeToSVGWithOpts.svg'
+          answer = @html_api.vectorize_local_to_storage(src + ext, dst, opts)
+
+          expect(answer.code).to eql(200)
+          expect(answer.status).to eql('completed')
+          expect(@storage_api.object_exists(answer.file).exists).to be_truthy
+        end
+      }
+    end
+  end
+
+  describe 'vectorize an image to SVG storage to local' do
+
+    src = File.realpath(__dir__ + '/../../testdata') + '/car.'
+    src_dir = '/RubyTest/'
+    dst_dir = File.realpath(__dir__ + '/../../testresult') + '/'
+
+    describe 'vectorize to SVG' do
+      %w[bmp jpg gif tiff png].each { |ext|
+        it "Vectorize " + ext + " to svg" do
+          uploaded_file = src + ext
+
+          res = @storage_api.upload_file(src_dir, uploaded_file)
+          expect(res.uploaded.length).to eql(1)
+          expect(res.errors.length).to eql(0)
+
+          dst = dst_dir + ext.upcase + 'StorToLoc.svg'
+          answer = @html_api.vectorize_storage_to_local(src_dir + 'car.' + ext, dst, nil)
+
+          expect(answer.code).to eql(200)
+          expect(answer.status).to eql('completed')
+          expect(File.exist?(answer.file)).to be_truthy
+        end
+      }
+    end
+
+    describe 'vectorize to SVG with options' do
+
+      %w[bmp jpg gif tiff png].each { |ext|
+        it "Vectorize to SVG with opts " + ext do
+
+          opts = {
+            error_threshold: 30,
+            max_iterations: 50,
+            colors_limit: 3,
+            line_width: 2.0,
+          }
+          uploaded_file = src + ext
+
+          res = @storage_api.upload_file(src_dir, uploaded_file)
+          expect(res.uploaded.length).to eql(1)
+          expect(res.errors.length).to eql(0)
+
+          dst = dst_dir + ext.upcase + 'StorToLocWithOpts.svg'
+          answer = @html_api.vectorize_storage_to_local(src_dir + 'car.' + ext, dst, nil, opts)
+
+          expect(answer.code).to eql(200)
+          expect(answer.status).to eql('completed')
+          expect(File.exist?(answer.file)).to be_truthy
+        end
+      }
+    end
+  end
+
+  describe 'vectorize an image to SVG storage to storage' do
+
+    src = File.realpath(__dir__ + '/../../testdata') + '/car.'
+    src_dir = '/RubyTest/'
+
+    describe 'vectorize to SVG' do
+      %w[bmp jpg gif tiff png].each { |ext|
+        it "Vectorize " + ext + " to svg" do
+          uploaded_file = src + ext
+
+          res = @storage_api.upload_file(src_dir, uploaded_file)
+          expect(res.uploaded.length).to eql(1)
+          expect(res.errors.length).to eql(0)
+
+          dst = src_dir + ext.upcase + 'StorToStor.svg'
+          answer = @html_api.vectorize_storage_to_storage(src_dir + 'car.' + ext, dst, nil)
+
+          expect(answer.code).to eql(200)
+          expect(answer.status).to eql('completed')
+          expect(@storage_api.object_exists(answer.file).exists).to be_truthy
+        end
+      }
+    end
+
+    describe 'vectorize to SVG with options' do
+
+      %w[bmp jpg gif tiff png].each { |ext|
+        it "Vectorize to SVG with opts " + ext do
+
+          opts = {
+            error_threshold: 30,
+            max_iterations: 50,
+            colors_limit: 3,
+            line_width: 2.0,
+          }
+          uploaded_file = src + ext
+
+          res = @storage_api.upload_file(src_dir, uploaded_file)
+          expect(res.uploaded.length).to eql(1)
+          expect(res.errors.length).to eql(0)
+
+          dst = src_dir + ext.upcase + 'StorToStorWithOpts.svg'
+          answer = @html_api.vectorize_storage_to_storage(src_dir + 'car.' + ext, dst, nil, opts)
+
+          expect(answer.code).to eql(200)
+          expect(answer.status).to eql('completed')
+          expect(@storage_api.object_exists(answer.file).exists).to be_truthy
+        end
+      }
+    end
+  end
+
 end

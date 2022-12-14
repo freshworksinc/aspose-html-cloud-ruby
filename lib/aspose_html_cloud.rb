@@ -49,7 +49,7 @@ require 'aspose_html_cloud/models/files_upload_result'
 require 'aspose_html_cloud/models/object_exist'
 require 'aspose_html_cloud/models/storage_exist'
 require 'aspose_html_cloud/models/storage_file'
-require 'aspose_html_cloud/models/conversion_result'
+require 'aspose_html_cloud/models/operation_result'
 
 module AsposeHtml
   class << self

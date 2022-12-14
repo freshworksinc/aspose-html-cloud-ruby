@@ -3,7 +3,7 @@
 AsposeHtml - the Ruby gem for the Aspose.HTML for Cloud API Reference
 
 - API version: 4.0
-- Package version: 22.11.1
+- Package version: 22.12.1
 
 ## Requirements
 - Ruby >= 1.9
@@ -25,15 +25,15 @@ gem build aspose_html_cloud.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./aspose_html_cloud-22.11.1.gem
+gem install ./aspose_html_cloud-22.12.1.gem
 ```
-(for development, run `gem install --dev ./aspose_html_cloud-22.11.1.gem` to install the development dependencies)
+(for development, run `gem install --dev ./aspose_html_cloud-22.12.1.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'aspose_html_cloud', '~> 22.11.1'
+    gem 'aspose_html_cloud', '~> 22.12.1'
 
 ### Load from git
 
@@ -62,6 +62,9 @@ ruby -Ilib aspose_html_cloud.rb
 - MD -> PDF, XPS, DOCX, HTML, MHTML, JPEG, BMP, PNG, TIFF, GIF
 - MHTML -> PDF, XPS, DOCX, JPEG, BMP, PNG, TIFF, GIF
 - SVG -> PDF, XPS, JPEG, BMP, PNG, TIFF, GIF
+- JPEG, BMP, PNG, TIFF, GIF -> SVG
+
+### Possible vectorization:
 - JPEG, BMP, PNG, TIFF, GIF -> SVG
 
 Please follow the [installation](#installation) procedure and then run the following code:
@@ -109,15 +112,20 @@ end
 
 All URIs are relative to *https://api.aspose.cloud/v4.0*
 
-| Class                 | Method                                                                             | Description                                                              |
-|-----------------------|------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
-| *AsposeHtml::HtmlApi* | [**convert_local_to_local**](docs/ConversionApi.md#convert_local_to_local)         | Convert the HTML or EPUB document from the local file to the local file. |
-| *AsposeHtml::HtmlApi* | [**convert_local_to_storage**](docs/ConversionApi.md#convert_local_to_storage)     | Convert the HTML or EPUB document from the local file to the storage.    |
-| *AsposeHtml::HtmlApi* | [**convert_storage_to_local**](docs/ConversionApi.md#convert_storage_to_local)     | Convert the HTML or EPUB document from the storage to the local file.    |
-| *AsposeHtml::HtmlApi* | [**convert_storage_to_storage**](docs/ConversionApi.md#convert_storage_to_storage) | Convert the HTML or EPUB document from the storage to the storage.       |
-| *AsposeHtml::HtmlApi* | [**convert_url_to_local**](docs/ConversionApi.md#convert_url_to_local)             | Convert the URL to the local file.                                       |
-| *AsposeHtml::HtmlApi* | [**convert_url_to_storage**](docs/ConversionApi.md#convert_url_to_storage)         | Convert the URL to the storage.                                          |
-| *AsposeHtml::HtmlApi* | [**convert**](docs/ConversionApi.md#convert)                                       | General function for conversion.                                         |
+| Class                 | Method                                                                           | Description                                                   |
+|-----------------------|----------------------------------------------------------------------------------|---------------------------------------------------------------|
+| *AsposeHtml::HtmlApi* | [**convert_local_to_local**](docs/HtmlApi.md#convert_local_to_local)             | Convert a document from the local file to the local file.     |
+| *AsposeHtml::HtmlApi* | [**convert_local_to_storage**](docs/HtmlApi.md#convert_local_to_storage)         | Convert a document from the local file to the storage.        |
+| *AsposeHtml::HtmlApi* | [**convert_storage_to_local**](docs/HtmlApi.md#convert_storage_to_local)         | Convert a document from the storage to the local file.        |
+| *AsposeHtml::HtmlApi* | [**convert_storage_to_storage**](docs/HtmlApi.md#convert_storage_to_storage)     | Convert a document from the storage to the storage.           |
+| *AsposeHtml::HtmlApi* | [**convert_url_to_local**](docs/HtmlApi.md#convert_url_to_local)                 | Convert the URL to the local file.                            |
+| *AsposeHtml::HtmlApi* | [**convert_url_to_storage**](docs/HtmlApi.md#convert_url_to_storage)             | Convert the URL to the storage.                               |
+| *AsposeHtml::HtmlApi* | [**convert**](docs/HtmlApi.md#convert)                                           | General function for conversion.                              |
+| *AsposeHtml::HtmlApi* | [**vectorize_local_to_local**](docs/HtmlApi.md#vectorize_local_to_local)         | Vectorization an image from the local file to the local file. |
+| *AsposeHtml::HtmlApi* | [**vectorize_local_to_storage**](docs/HtmlApi.md#vectorize_local_to_storage)     | Vectorization an image from the local file to the storage.    |
+| *AsposeHtml::HtmlApi* | [**vectorize_storage_to_local**](docs/HtmlApi.md#vectorize_storage_to_local)     | Vectorization an image from the storage to the local file.    |
+| *AsposeHtml::HtmlApi* | [**vectorize_storage_to_storage**](docs/HtmlApi.md#vectorize_storage_to_storage) | Vectorization an image from the storage to the storage.       |
+| *AsposeHtml::HtmlApi* | [**vectorize**](docs/HtmlApi.md#vectorize)                                       | General function for vectorization.                           |
 
 
 ## conversionOptions
@@ -130,6 +138,14 @@ All URIs are relative to *https://api.aspose.cloud/v4.0*
 | [**SvgOptions**](docs/ConversionOptions.md#SvgOptions)           | Trace images to the SVG format.                   |
 | [**MarkdownOptions**](docs/ConversionOptions.md#MarkdownOptions) | Convert the HTML document to the markdown format. |
 
+
+## vectorizationOptions
+| Field               | Type    | Description                                                                                             | Note     |
+|---------------------|---------|---------------------------------------------------------------------------------------------------------|----------|
+| **error_threshold** | Float   | This parameter defines maximum deviation of points to fitted curve. By default it is 30.                | Optional |
+| **max_iterations**  | Integer | This parameter defines number of iteration for least-squares approximation method. By default it is 30. | Optional |
+| **colors_limit**    | Integer | The maximum number of colors used to quantize an image. Default value is 25.                            | Optional |
+| **line_width**      | Float   | The value of this parameter is affected by the graphics scale. Default value is 1.                      | Optional |
 
 ## oauth
 
