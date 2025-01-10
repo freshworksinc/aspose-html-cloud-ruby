@@ -8,4 +8,4 @@ group :development, :test do
 end
 
 
-gem "typhoeus", "~> 1.4"
+gem "typhoeus", '~> 0.7', '>= 0.7.3'
